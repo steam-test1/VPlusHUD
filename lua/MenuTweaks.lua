@@ -795,7 +795,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menumanagerdialogs" then
 	MenuManager.show_confirm_pay_casino_fee = expect_yes
 
 	local show_person_joining_original = MenuManager.show_person_joining
-	local update_person_joining_original = MenuManager.update_person_joining
 	local close_person_joining_original = MenuManager.close_person_joining
 	function MenuManager:show_person_joining( id, nick, ... )
 		self.peer_join_start_t = self.peer_join_start_t or {}
@@ -808,18 +807,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menumanagerdialogs" then
 			nick = "(" .. (peer:rank() > 0 and managers.experience:rank_string(peer:rank()) .. "-" or "") .. peer:level() .. ") " .. nick
 		end
 		return show_person_joining_original(self, id, nick, ...)
-	end
-
-	function MenuManager:update_person_joining( id, progress_percentage, ... )
-		if self.peer_join_start_t and self.peer_join_start_t[id] then
-			local t = os.clock() - self.peer_join_start_t[id]
-			local result = update_person_joining_original(self, id, progress_percentage, ...)
-			local time_left = (t / progress_percentage) * (100 - progress_percentage)
-			local dialog = managers.system_menu:get_dialog("user_dropin" .. id)
-			if dialog and time_left then
-				dialog:set_text(managers.localization:text("dialog_wait") .. string.format(" %d%% (%0.2fs)", progress_percentage, time_left))
-			end
-		end
 	end
 
 	function MenuManager:close_person_joining(id, ...)
