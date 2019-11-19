@@ -5555,7 +5555,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 12,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			invert_timers = true,
-			ignore = false,
+			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "anarchist_armor_regeneration"}, true),
 		},
 		standard_armor_regeneration = {
 			perks = {6, 0},
@@ -5563,7 +5563,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 12,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			invert_timers = true,
-			ignore = false,
+			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "standard_armor_regeneration"}, true),
 		},
 		weapon_charge = {
 			texture = "guis/textures/contact_vlad",
@@ -5571,7 +5571,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = false,
+			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "weapon_charge"}, true),
 		},
 		melee_charge = {
 			--skills_new = tweak_data.skilltree.skills.hidden_blade.icon_xy,
@@ -5579,7 +5579,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = VHUDPlus:getSetting({"INTERACTION", "SHOW_MELEE"}, true)
+			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "melee_charge"}, true),
 		},
 		reload = {
 			--skills_new = tweak_data.skilltree.skills.speedy_reload.icon_xy,
@@ -5587,7 +5587,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = VHUDPlus:getSetting({"INTERACTION", "SHOW_RELOAD"}, true)
+			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "reload"}, true),
 		},
 		interact = {
 			--skills_new = tweak_data.skilltree.skills.second_chances.icon_xy,
@@ -5595,7 +5595,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedInteractionItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = (VHUDPlus:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true) or VHUDPlus:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true))
+			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "interact"}, true),
 		},
 		interact_debuff = {
 			--skills_new = tweak_data.skilltree.skills.second_chances.icon_xy,
