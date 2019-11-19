@@ -159,7 +159,6 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		if not self._ai then
 			if VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "TRUNCATE_TAGS"}, true) then
 				name = VHUDPlus:truncateNameTag(name)
-				self:_truncate_name()
 			end
 			if VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "RANK"}, true) then
 				local peer = self:peer_id() and managers.network:session():peer(self:peer_id())
@@ -173,6 +172,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 			end
 		end
 		set_name_original(self, name,...)
+		self:_truncate_name()
 	end
 
 	function HUDTeammate:_truncate_name()
@@ -181,7 +181,9 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		local teammate_name = name_panel:text()
 		name_panel:set_vertical("center")
 		name_panel:set_font_size(tweak_data.hud_players.name_size)
+		if not self._ai then
 		name_panel:set_w(self._panel:w() - name_panel:x())
+		end
 		local _,_,w,h = name_panel:text_rect()
 		while (name_panel:x() + w) > self._max_name_panel_width do
 			if name_panel:font_size() > 15.1 then
