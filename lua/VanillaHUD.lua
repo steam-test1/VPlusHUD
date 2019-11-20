@@ -425,7 +425,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammate:_init_inspire_timer()
 		self._inspire_timer = self._player_panel:text({
 			name = "inspire_timer",
-			text = "0.0s",
+			text = "",
 			color = Color.white,
 			visible = false,
 			align = "right",
@@ -436,7 +436,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		})
 		self._inspire_timer:set_right(self._player_panel:child("radial_health_panel"):right())
 		self._inspire_timer_bg = OutlinedText:new(self._player_panel, {
-			text = "0.0s",
+			text = "",
 			color = Color.black:with_alpha(0.5),
 			visible = false,
 			align = "right",
