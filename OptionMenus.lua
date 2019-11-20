@@ -2320,6 +2320,84 @@ if VHUDPlus then
 							},
 							{
 								type = "menu",
+								menu_id = "wolfhud_hudlist_buffs_player_actions_options_menu",
+								name_id = "wolfhud_infopanels_buff_player_actions_options_name",
+								desc_id = "wolfhud_infopanels_buff_player_actions_options_help",
+								options = {
+									{
+										type = "toggle",
+										name_id = "wolfhud_hudlist_anarchist_armor_regeneration_action_title",
+										desc_id = "wolfhud_hudlist_anarchist_armor_regeneration_buff_desc",
+										value = {"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "anarchist_armor_regeneration"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "wolfhud_hudlist_standard_armor_regeneration_action_title",
+										desc_id = "wolfhud_hudlist_standard_armor_regeneration_action_desc",
+										value = {"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "standard_armor_regeneration"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "wolfhud_hudlist_weapon_charge_action_title",
+										desc_id = "wolfhud_hudlist_weapon_charge_action_desc",
+										value = {"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "weapon_charge"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "wolfhud_hudlist_melee_charge_action_title",
+										desc_id = "wolfhud_hudlist_melee_charge_action_desc",
+										value = {"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "melee_charge"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "wolfhud_hudlist_reload_action_title",
+										desc_id = "wolfhud_hudlist_reload_action_desc",
+										value = {"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "reload"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "wolfhud_hudlist_interact_action_title",
+										desc_id = "wolfhud_hudlist_interact_action_desc",
+										value = {"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "interact"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+								},
+							},
+							{
+								type = "divider",
+								size = 16,
+							},
+							{
+								type = "menu",
 								menu_id = "wolfhud_hudlist_buffs_mastermind_options_menu",
 								name_id = "wolfhud_infopanels_buff_mastermind_options_name",
 								desc_id = "wolfhud_infopanels_buff_mastermind_options_help",

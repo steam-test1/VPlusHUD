@@ -1040,4 +1040,19 @@
 	"wolfhud_invertedfbg_title" : "Enable Inverted Flashbang Glare",
 	"wolfhud_invertedfbg_desc" : "This changes the flashbang glare from white to black",
 	"wolfhud_enemy_bolivian_security_mex" : "Coyopa Security"
+	
+        "wolfhud_hudlist_anarchist_armor_regeneration_action_title" : "Anarchist Armor Regeneration",
+	"wolfhud_hudlist_anarchist_armor_regeneration_buff_desc" : "",
+	"wolfhud_hudlist_interact_action_title" : "Interaction Duration",
+	"wolfhud_hudlist_interact_action_desc" : "",
+	"wolfhud_hudlist_reload_action_title" : "Reload Duration",
+	"wolfhud_hudlist_reload_action_desc" : "",
+	"wolfhud_hudlist_melee_charge_action_title" : "Melee Charge",
+	"wolfhud_hudlist_melee_charge_action_desc" : "",
+	"wolfhud_hudlist_weapon_charge_action_title" : "Weapon Charge",
+	"wolfhud_hudlist_weapon_charge_action_desc" : "",
+	"wolfhud_hudlist_standard_armor_regeneration_action_title" : "Armor Regeneration",
+	"wolfhud_hudlist_standard_armor_regeneration_action_desc" : "",
+	"wolfhud_infopanels_buff_player_actions_options_help" : "Enable/disable specific actions",
+	"wolfhud_infopanels_buff_player_actions_options_name" : "Player Action Options"
 }

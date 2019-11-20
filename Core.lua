@@ -378,6 +378,14 @@ if not _G.VHUDPlus then
 					melee_damage_increase					= true,
 					passive_health_regen 					= true,
 					total_dodge_chance 						= true,
+					PLAYER_ACTIONS = {
+					        anarchist_armor_regeneration            = false,
+					        standard_armor_regeneration             = false,
+					        weapon_charge                           = false,
+					        melee_charge                            = false,
+					        reload                                  = false,
+					        interact                                = false,
+					},      
 					MASTERMIND_BUFFS = {
 						forced_friendship					= true,
 						aggressive_reload_aced				= true,
