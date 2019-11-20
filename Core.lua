@@ -314,6 +314,7 @@ if not _G.VHUDPlus then
 				SHOW_IN_CS_LOBBY 						= true,
 				SHOW_ON_STATS_PANEL						= true,
                 REPLACE_PROFILE_MENU                    = true,
+				ENABLE_PEER_PING                        = true,
 			},
 			HUDList = {
 				ENABLED	 								= true,
