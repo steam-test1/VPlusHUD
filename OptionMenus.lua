@@ -1985,7 +1985,7 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_hudlist_show_own_minions_only_title",
 								desc_id = "wolfhud_hudlist_show_own_minions_only_desc",
-								value = {"HUDList", "LEFT_LIST", "show_minions"},
+								value = {"HUDList", "LEFT_LIST", "show_own_minions_only"},
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
