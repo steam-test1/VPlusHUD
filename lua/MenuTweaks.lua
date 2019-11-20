@@ -681,7 +681,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/contractboxgui" then
 	function ContractBoxGui:create_character_text(peer_id, ...)
 		create_character_text_original(self, peer_id, ...)
 
-		if managers.network:session() then
+		if managers.network:session() and VHUDPlus:getSetting({"CrewLoadout", "ENABLE_PEER_PING"}, true) then
 			if managers.network:session():local_peer():id() ~= peer_id then
 				local peer_label = self._peers[peer_id]
 				if alive(peer_label) then
@@ -703,7 +703,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/contractboxgui" then
 						alpha = 0.8,
 						blend_mode = "add"
 					})
-					self._peer_latency[peer_id]:set_text( latency > 0 and string.format("%.0fms", latency) or "---ms" )
+					self._peer_latency[peer_id]:set_text( latency > 0 and string.format("%.0fms", latency) or "" )
 					self._peer_latency[peer_id]:set_visible(self._enabled)
 					local _, _, w, h = self._peer_latency[peer_id]:text_rect()
 					self._peer_latency[peer_id]:set_size(w, h)
