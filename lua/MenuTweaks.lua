@@ -43,7 +43,7 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 		self:save_lobby_settings("kick_option")
 	end)
 	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_permission" , "MenuCallbackHandlerPostSavePermission_WolfHUD" , function( self, ... )
-		--self:save_lobby_settings("permission")
+		self:save_lobby_settings("permission")
 	end)
 	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_reputation_permission" , "MenuCallbackHandlerPostSaveReputationPermission_WolfHUD" , function( self, ... )
 		self:save_lobby_settings("reputation_permission")
