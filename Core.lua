@@ -223,6 +223,7 @@ if not _G.VHUDPlus then
 				},
 				USE_REAL_AMMO 						= true,
 				ENABLE_IFBG							= true,
+				ENABLE_TIME_LEFT                    = true,
 			},
 			HUDChat = {
 				ENABLED									= true,
