@@ -73,6 +73,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		end
 	end
 
+--[[
 	local previous_value = 0
 
 	-- local update_actual = HUDManager.update
@@ -434,6 +435,7 @@ elseif string.lower(RequiredScript) == "core/lib/managers/coreenvironmentcontrol
 			self._lut_modifier_material:set_variable(ids_LUT_contrast, flashbang * 0.5)
 		end
 	end
+]]	
 elseif string.lower(RequiredScript) == "lib/tweak_data/timespeedeffecttweakdata" then
 	local init_original = TimeSpeedEffectTweakData.init
 	local FORCE_ENABLE = {
