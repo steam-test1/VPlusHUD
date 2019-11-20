@@ -612,7 +612,7 @@
 	"wolfhud_hudlist_aggressive_reload_aced_buff_desc" : "",
 	"wolfhud_hudlist_ammo_efficiency_buff_title" : "Ammo Efficiency",
 	"wolfhud_hudlist_ammo_efficiency_buff_desc" : "",
-	"wolfhud_hudlist_armor_break_invulnerable_buff_title" : "Blitzkrieg Bop (Anarchist)",
+	"wolfhud_hudlist_armor_break_invulnerable_buff_title" : "Armor Break Invulnerability Cooldown",
 	"wolfhud_hudlist_armor_break_invulnerable_buff_desc" : "",
 	"wolfhud_hudlist_berserker_buff_title" : "Berserker",
 	"wolfhud_hudlist_berserker_buff_desc" : "Parte dos Buffs compostos.",

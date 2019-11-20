@@ -610,8 +610,6 @@
 	"wolfhud_hudlist_aggressive_reload_aced_buff_desc" : "",
 	"wolfhud_hudlist_ammo_efficiency_buff_title" : "Эффективность боеприпасов",
 	"wolfhud_hudlist_ammo_efficiency_buff_desc" : "",
-	"wolfhud_hudlist_armor_break_invulnerable_buff_title" : "Блицкриг-боп (Анархист)",
-	"wolfhud_hudlist_armor_break_invulnerable_buff_desc" : "",
 	"wolfhud_hudlist_berserker_buff_title" : "Берсеркер",
 	"wolfhud_hudlist_berserker_buff_desc" : "Часть составных баффов.",
 	"wolfhud_hudlist_biker_buff_title" : "Реген дебафф (Байкер)",
@@ -1073,5 +1071,7 @@
 	"wolfhud_hudlist_show_keycard_title" : "Show Keycards",
 	"wolfhud_hudlist_show_keycard_desc" : "",
 	"wolfhud_enable_peer_ping_title" : "Display ping in lobby",
-	"wolfhud_enable_peer_ping_desc" : "Display how much ping each player in the lobby have."
+	"wolfhud_enable_peer_ping_desc" : "Display how much ping each player in the lobby have.",
+	"wolfhud_hudlist_armor_break_invulnerable_buff_title" : "Armor Break Invulnerability Cooldown",
+	"wolfhud_hudlist_armor_break_invulnerable_buff_desc" : ""
 }

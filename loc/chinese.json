@@ -613,8 +613,6 @@
 	"wolfhud_hudlist_aggressive_reload_aced_buff_desc" : "",
 	"wolfhud_hudlist_ammo_efficiency_buff_title" : "节约弹药",
 	"wolfhud_hudlist_ammo_efficiency_buff_desc" : "",
-	"wolfhud_hudlist_armor_break_invulnerable_buff_title" : "闪电战(反动派)",
-	"wolfhud_hudlist_armor_break_invulnerable_buff_desc" : "",
 	"wolfhud_hudlist_berserker_buff_title" : "狂战士",
 	"wolfhud_hudlist_berserker_buff_desc" : "这是狂战士综合buff.",
 	"wolfhud_hudlist_biker_buff_title" : "远景眺望（飞车党回复）",
@@ -1071,5 +1069,7 @@
 	"wolfhud_hudlist_show_keycard_title" : "Show Keycards",
 	"wolfhud_hudlist_show_keycard_desc" : "",
 	"wolfhud_enable_peer_ping_title" : "Display ping in lobby",
-	"wolfhud_enable_peer_ping_desc" : "Display how much ping each player in the lobby have."
+	"wolfhud_enable_peer_ping_desc" : "Display how much ping each player in the lobby have.",
+	"wolfhud_hudlist_armor_break_invulnerable_buff_title" : "Armor Break Invulnerability Cooldown",
+	"wolfhud_hudlist_armor_break_invulnerable_buff_desc" : "Shared buff for armorer and anarchist decks."
 }
