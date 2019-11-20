@@ -816,7 +816,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menumanagerdialogs" then
 			local result = update_person_joining_original(self, id, progress_percentage, ...)
 			local time_left = (t / progress_percentage) * (100 - progress_percentage)
 			local dialog = managers.system_menu:get_dialog("user_dropin" .. id)
-			if dialog and time_left then
+			if dialog and time_left and VHUDPlus:getSetting({"CustomHUD", "ENABLE_TIME_LEFT"}, true) then
 				dialog:set_text(managers.localization:text("dialog_wait") .. string.format(" %d%% (%0.2fs)", progress_percentage, time_left))
 			end
 		end

@@ -889,6 +889,13 @@ if VHUDPlus then
 						value = {"CustomHUD", "ENABLE_IFBG"},
 					},
 					{
+						type = "toggle",
+						name_id = "wolfhud_enable_time_left_title",
+						desc_id = "wolfhud_enable_time_left_desc",
+						visible_reqs = {}, enabled_reqs = {},
+						value = {"CustomHUD", "ENABLE_TIME_LEFT"},
+					},
+					{
 						type = "divider",
 						size = 16,
 					},
