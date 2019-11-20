@@ -4925,7 +4925,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "armor_break_invulnerable"}, true),
+			ignore = true,
 		},
 		berserker = {
 			skills_new = tweak_data.skilltree.skills.wolverine.icon_xy,
@@ -5281,7 +5281,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
-			ignore = true,	--Composite debuff
+			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "armor_break_invulnerable"}, true),
 		},
 		bullseye_debuff = {
 			skills_new = tweak_data.skilltree.skills.prison_wife.icon_xy,
