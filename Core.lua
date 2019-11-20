@@ -365,6 +365,9 @@ if not _G.VHUDPlus then
 						show_potential_loot					= false,
 					show_special_pickups 					= true,    	--Show number of special equipment/items
 					SHOW_PICKUP_CATEGORIES = {
+					        keycard                             = true,
+						crowbar                             = true,
+						planks                              = true,
 						mission_pickups 					= true,
 						collectables 						= true,
 						valuables 							= true,
