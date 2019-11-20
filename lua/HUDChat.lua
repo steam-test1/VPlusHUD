@@ -317,7 +317,12 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 			layer = 1
 		})
 		local _, _, w, _ = time_text:text_rect()
-		x_offset = x_offset + w + 2
+		
+		if VHUDPlus:getSetting({"HUDChat", "HEISTTIMER"}, true) then
+		    x_offset = x_offset + w + 2
+		else 
+		    x_offset = x_offset
+		end
 
 		if icon then
 			local icon_texture, icon_texture_rect = tweak_data.hud_icons:get_icon_data(icon)
