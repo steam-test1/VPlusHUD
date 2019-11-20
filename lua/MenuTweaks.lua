@@ -681,7 +681,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/contractboxgui" then
 	function ContractBoxGui:create_character_text(peer_id, ...)
 		create_character_text_original(self, peer_id, ...)
 
-		if managers.network:session() and VHUDPlus:getSetting({"CrewLoadout", "ENABLE_PEER_PING"}, true) then
+		if managers.network:session() and VHUDPlus:getSetting({"INVENTORY", "ENABLE_PEER_PING"}, true) then
 			if managers.network:session():local_peer():id() ~= peer_id then
 				local peer_label = self._peers[peer_id]
 				if alive(peer_label) then
