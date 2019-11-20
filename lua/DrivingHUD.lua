@@ -105,6 +105,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			valign = "bottom",
 			layer = 1,
 			wrap = false,
+		        visible = VHUDPlus:getSetting({"DrivingHUD", "SHOW_SPEED"}, true),
 			word_wrap = false
 		})
 		
@@ -122,6 +123,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			valign = "bottom",
 			layer = 1,
 			wrap = false,
+		        visible = VHUDPlus:getSetting({"DrivingHUD", "SHOW_RPM"}, true),
 			word_wrap = false
 		})
 		
@@ -139,6 +141,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			valign = "bottom",
 			layer = 1,
 			wrap = false,
+			visible = VHUDPlus:getSetting({"DrivingHUD", "SHOW_GEAR"}, true),
 			word_wrap = false
 		})
 		
@@ -156,6 +159,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			valign = "bottom",
 			layer = 1,
 			wrap = false,
+			visible = VHUDPlus:getSetting({"DrivingHUD", "SHOW_PASSENGERS"}, true),
 			word_wrap = false
 		})
 		
@@ -165,10 +169,10 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			vertical = "bottom",
 			valign = "bottom",
 			name = "seats_bitmap",
-			visible = true,
 			layer = 1,
 			texture = "assets/guis/textures/contact_vlad",
 			texture_rect = seats_texture_rect,
+			visible = VHUDPlus:getSetting({"DrivingHUD", "SHOW_PASSENGERS"}, true),
 			x = self.drivingpanel:w() - (x_pos),
 			y = self.drivingpanel:h() + (y_pos + -110),
 			w = seats_texture_rect[3] / 4,
@@ -191,6 +195,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			valign = "bottom",
 			layer = 1,
 			wrap = false,
+			visible = VHUDPlus:getSetting({"DrivingHUD", "SHOW_LOOT"}, true),
 			word_wrap = false
 		})
 		local loot_texture_rect = {1840, 63, 160, 137}
@@ -199,10 +204,10 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			vertical = "bottom",
 			valign = "bottom",
 			name = "loot_bitmap",
-			visible = true,
 			layer = 1,
 			texture = "assets/guis/textures/contact_vlad",
 			texture_rect = loot_texture_rect,
+			visible = VHUDPlus:getSetting({"DrivingHUD", "SHOW_LOOT"}, true),
 			x = self.drivingpanel:w() - (x_pos),
 			y = self.drivingpanel:h() + (y_pos + -120),
 			w = loot_texture_rect[3] / 8,
