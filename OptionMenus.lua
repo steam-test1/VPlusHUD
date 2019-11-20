@@ -882,6 +882,7 @@ if VHUDPlus then
 						value = {"CustomHUD", "USE_REAL_AMMO"},
 					},
 					{
+					--[[	
 						type = "toggle",
 						name_id = "wolfhud_invertedfbg_title",
 						desc_id = "wolfhud_invertedfbg_desc",
@@ -889,6 +890,7 @@ if VHUDPlus then
 						value = {"CustomHUD", "ENABLE_IFBG"},
 					},
 					{
+					]]	
 						type = "toggle",
 						name_id = "wolfhud_enable_time_left_title",
 						desc_id = "wolfhud_enable_time_left_desc",
