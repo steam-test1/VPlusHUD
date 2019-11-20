@@ -3859,17 +3859,6 @@ if VHUDPlus then
 						value = {"CrewLoadout", "REPLACE_PROFILE_MENU"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
-					{
-						type = "divider",
-						size = 16,
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_enable_peer_ping_title",
-						desc_id = "wolfhud_enable_peer_ping_desc",
-						value = {"CrewLoadout", "ENABLE_PEER_PING"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
 				},
 			},
 			{
@@ -3909,6 +3898,17 @@ if VHUDPlus then
 						name_id = "wolfhud_skill_names_title",
 						desc_id = "wolfhud_skill_names_desc",
 						value = {"INVENTORY", "SHOW_SKILL_NAMES"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+			                {
+				                type ="divider",
+				                size = 16,
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_enable_peer_ping_title",
+						desc_id = "wolfhud_enable_peer_ping_desc",
+						value = {"INVENTORY", "ENABLE_PEER_PING"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
