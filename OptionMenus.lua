@@ -1091,6 +1091,20 @@ if VHUDPlus then
 							},
 							{
 								type = "toggle",
+								name_id = "wolfhud_pacified_civs_alt_icon_title",
+								desc_id = "wolfhud_pacified_civs_alt_icon_desc",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDSuspicion", "SHOW_PACIFIED_CIVILIANS" }, invert = false },
+								},
+								value = {"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"},
+							},
+							{
+								type = "divider",
+								size = 24,
+							},
+							{
+								type = "toggle",
 								name_id = "wolfhud_hudlist_remove_answered_pagers_title",
 								desc_id = "wolfhud_hudlist_remove_answered_pagers_desc",
 								visible_reqs = {}, enabled_reqs = {},
