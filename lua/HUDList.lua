@@ -3058,9 +3058,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDList.SpecialPickupItem = HUDList.SpecialPickupItem or class(HUDList.RightListItem)
 	HUDList.SpecialPickupItem.MAP = {
-		crowbar =					{ hudpickups = { 0, 64, 32, 32 }, 												priority = 1, category = "mission_pickups", ignore = not VHUDPlus:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
-		keycard =					{ hudpickups = { 32, 0, 32, 32 }, 												priority = 1, category = "mission_pickups", ignore = not VHUDPlus:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
-		planks =					{ hudpickups = { 0, 32, 32, 32 }, 												priority = 2, category = "mission_pickups", ignore = not VHUDPlus:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
+		crowbar =					{ hudpickups = { 0, 64, 32, 32 }, 												priority = 1, category = "crowbar", ignore = not VHUDPlus:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "crowbar"}, true) 	},
+		keycard =					{ hudpickups = { 32, 0, 32, 32 }, 												priority = 1, category = "keycard", ignore = not VHUDPlus:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "keycard"}, true) 	},
+		planks =					{ hudpickups = { 0, 32, 32, 32 }, 												priority = 2, category = "planks", ignore = not VHUDPlus:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "planks"}, true) 	},
 		meth_ingredients =			{ waypoints  = { 192, 32, 32, 32 }, 											priority = 2, category = "mission_pickups", ignore = not VHUDPlus:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
 		blowtorch = 				{ hudpickups = { 96, 192, 32, 32 }, 											priority = 1, category = "mission_pickups", ignore = not VHUDPlus:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
 		thermite = 					{ hudpickups = { 64, 64, 32, 32 }, 												priority = 1, category = "mission_pickups", ignore = not VHUDPlus:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
