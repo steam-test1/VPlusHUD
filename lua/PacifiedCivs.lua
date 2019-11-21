@@ -13,9 +13,14 @@ function GroupAIStateBase:_upd_criminal_suspicion_progress(...)
 						if not obs_susp_data._subdued_civ then
 							obs_susp_data._alerted_civ = nil
 							obs_susp_data._subdued_civ = true
+						if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"}, true) then	
+							waypoint.bitmap:set_color(Color(0.0, 1.0, 0.0))
+							waypoint.arrow:set_color(Color(0.75, 0, 0.3, 0))
+						else
 							color = Color(0, 0.71, 1)
 							arrow_color = Color(0, 0.35, 0.5)
 							waypoint.bitmap:set_image("guis/textures/menu_singletick")
+					        end
 						end
 					elseif obs_susp_data.alerted then
 						if not obs_susp_data._alerted_civ then
