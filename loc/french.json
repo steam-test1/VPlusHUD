@@ -615,7 +615,7 @@
 	"wolfhud_hudlist_ammo_efficiency_buff_title" : "Munitions rentables",
 	"wolfhud_hudlist_ammo_efficiency_buff_desc" : "",
 	"wolfhud_hudlist_armor_break_invulnerable_buff_title" : "Armor Break Invulnerability Cooldown",
-	"wolfhud_hudlist_armor_break_invulnerable_buff_desc" : "",
+	"wolfhud_hudlist_armor_break_invulnerable_buff_desc" : "Shared buff for armorer and anarchist decks.",
 	"wolfhud_hudlist_berserker_buff_title" : "Berserk",
 	"wolfhud_hudlist_berserker_buff_desc" : "",
 	"wolfhud_hudlist_biker_buff_title" : "Regen Debuff (Biker)",
@@ -1055,13 +1055,11 @@
 	"wolfhud_hudlist_reload_action_desc" : "",
 	"wolfhud_hudlist_interact_action_title" : "Interaction Duration",
 	"wolfhud_hudlist_interact_action_desc" : "",
-	"wolfhud_heist_timer_title" : "Hide Heist Timer In Chat",
-	"wolfhud_heist_timer_desc" : "This hides the heist timer from the chat box",
+	"wolfhud_heist_timer_title" : "Show Heist Timer In Chat",
+	"wolfhud_heist_timer_desc" : "This shows the heist timer from the chat box",
 	"wolfhud_enable_time_left_title" : "Ingame join remaining",
 	"wolfhud_enable_time_left_desc" : "In-game joining dialog will show you how many seconds left",	"wolfhud_infopanels_show_special_pickups_options_name" : "Special pickups options",
 	"wolfhud_infopanels_show_special_pickups_options_help" : "Pick what type of pickups you want to be shown in game.",
-	"wolfhud_hudlist_show_mission_pickups_title" : "Show mission items",
-	"wolfhud_hudlist_show_mission_pickups_desc" : "",
 	"wolfhud_hudlist_show_crowbar_title" : "Show crowbars",
 	"wolfhud_hudlist_show_crowbar_desc" : "",
 	"wolfhud_hudlist_show_planks_title" : "Show planks",
@@ -1069,5 +1067,7 @@
 	"wolfhud_hudlist_show_keycard_title" : "Show Keycards",
 	"wolfhud_hudlist_show_keycard_desc" : "",
 	"wolfhud_enable_peer_ping_title" : "Display ping in lobby",
-	"wolfhud_enable_peer_ping_desc" : "Display how much ping each player in the lobby have."
+	"wolfhud_enable_peer_ping_desc" : "Display how much ping each player in the lobby have.",
+	"wolfhud_pacified_civs_alt_icon_title" : "Alternative icon",
+	"wolfhud_pacified_civs_alt_icon_desc" : "An optional green icon for pacified civilians"
 }
