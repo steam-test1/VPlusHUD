@@ -354,7 +354,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammate:set_condition(icon_data, ...)
 		local visible = icon_data ~= "mugshot_normal"
 		self:set_stamina_meter_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true))
-		self:set_armor_timer_visibility(not visible)
+		self:set_armor_timer_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "ARMOR"}, true))
 		self:set_inspire_timer_visibility(not visible)
 		-- self:set_inf_ammo_visibility(not visible and )
 		--[[
@@ -385,7 +385,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammate:_init_armor_timer()
 		self._armor_timer = OutlinedText:new(self._player_panel, {
 			name = "armor_regen",
-			text = "0.0s",
+			text = "",
 			color = Color.white,
 			visible = false,
 			align = "left",
