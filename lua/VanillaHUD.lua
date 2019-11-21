@@ -355,7 +355,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		local visible = icon_data ~= "mugshot_normal"
 		self:set_stamina_meter_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true))
 		self:set_armor_timer_visibility(not visible)
-		self:set_inspire_timer_visibility(not visible)
+		self:set_inspire_timer_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "INSPIRE"}, true))
 		-- self:set_inf_ammo_visibility(not visible and )
 		--[[
 		local teammate_panel = self._panel:child( "player" )
