@@ -91,6 +91,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" and not HU
 			w = self._health_panel:w(),
 			h = self._health_panel:h(),
 			layer = 1,
+			visible = HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) or false,
 		})
 
 		self._downs_counter = self._health_panel:text({
