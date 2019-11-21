@@ -354,18 +354,9 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammate:set_condition(icon_data, ...)
 		local visible = icon_data ~= "mugshot_normal"
 		self:set_stamina_meter_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true))
-		self:set_armor_timer_visibility(not visible)
+		self:set_armor_timer_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "ARMOR"}, true))
 		self:set_inspire_timer_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "INSPIRE"}, true))
-		-- self:set_inf_ammo_visibility(not visible and )
-		--[[
-		local teammate_panel = self._panel:child( "player" )
-		local radial_health_panel = teammate_panel:child( "radial_health_panel" )
-		local underdog_glow = radial_health_panel:child( "underdog_glow" )
-		if icon_data == "mugshot_in_custody" then
-			underdog_glow:set_visible( false )
-		end
-		]]
-		--self:set_underdog_glow_visibility(not visible)
+		
 		if HUDManager.DOWNS_COUNTER_PLUGIN and self._downs_counter and self._detection_counter then
 			local disabled = visible or not VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) or self._ai
 			self._downs_counter:set_visible(not disabled and (not managers.groupai:state():whisper_mode() or self:down_amount() > 0))
@@ -385,7 +376,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammate:_init_armor_timer()
 		self._armor_timer = OutlinedText:new(self._player_panel, {
 			name = "armor_regen",
-			text = "0.0s",
+			text = "",
 			color = Color.white,
 			visible = false,
 			align = "left",
@@ -423,7 +414,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	end
 	
 	function HUDTeammate:_init_inspire_timer()
-		self._inspire_timer = self._player_panel:text({
+		self._inspire_timer = OutlinedText:new(self._player_panel, {
 			name = "inspire_timer",
 			text = "",
 			color = Color.white,
@@ -435,16 +426,6 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 			layer = 4
 		})
 		self._inspire_timer:set_right(self._player_panel:child("radial_health_panel"):right())
-		self._inspire_timer_bg = OutlinedText:new(self._player_panel, {
-			text = "",
-			color = Color.black:with_alpha(0.5),
-			visible = false,
-			align = "right",
-			vertical = "bottom",
-			font = tweak_data.hud_players.name_font,
-			font_size = 20,
-			layer = 3
-		}, self._inspire_timer)
 	end
 	
 	function HUDTeammate:update_inspire_timer(t)
