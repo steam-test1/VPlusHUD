@@ -23,7 +23,7 @@ if not _G.VHUDPlus then
 		["lib/managers/hudmanager"] 								= { "EnemyHealthbar.lua", "CustomWaypoints.lua", "EnemyHealthbarAlt.lua" },
 		["lib/managers/hudmanagerpd2"] 								= {  "VanillaHUD.lua", "HUDChat.lua", "HUDList.lua", "KillCounter.lua", "DownCounter.lua", "DrivingHUD.lua", "DamageIndicator.lua", "WaypointsManager.lua", "Interaction.lua", "Scripts.lua", "BurstFire.lua", "AdvAssault.lua", "TabStats.lua" },
 		["lib/managers/statisticsmanager"] 							= { "KillCounter.lua", "TabStats.lua" },
-		["lib/managers/playermanager"] 								= { "GameInfoManager.lua", "BurstFire.lua", "VanillaHUD.lua" },
+		["lib/managers/playermanager"] 								= { "GameInfoManager.lua", "BurstFire.lua", "VanillaHUD.lua", "Scripts.lua" },
 		["lib/managers/preplanningmanager"] 						= { "PrePlanManager.lua" },
 		["lib/managers/hud/huddriving"] 							= { "DrivingHUD.lua" },
 		["lib/managers/hud/hudteammate"] 							= { "VanillaHUD.lua", "KillCounter.lua", "DownCounter.lua", "BurstFire.lua" },
@@ -114,6 +114,7 @@ if not _G.VHUDPlus then
 		["lib/managers/skirmishmanager"] 							= { "RichPresence.lua" },
 		["core/lib/managers/coreenvironmentcontrollermanager"] 		= { "Scripts.lua" },
 		["lib/managers/menu/preplanningmapgui"]						= { "PrePlanManager.lua" },
+		["lib/managers/hud/hudhitconfirm"] 							= { "Scripts.lua" },
 
 		--Utils and custom classes...
 		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },
@@ -224,6 +225,7 @@ if not _G.VHUDPlus then
 				USE_REAL_AMMO 						= true,
 				ENABLE_IFBG							= true,
 				ENABLE_TIME_LEFT                    = true,
+				HEADSHOT                            = true,
 			},
 			HUDChat = {
 				ENABLED									= true,
