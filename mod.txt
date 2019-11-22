@@ -110,6 +110,7 @@
 		{ "hook_id" : "lib/managers/skirmishmanager", 							"script_path" : "Core.lua" },
 		{ "hook_id" : "core/lib/managers/coreenvironmentcontrollermanager", 	"script_path" : "Core.lua" },
 		{ "hook_id" : "lib/managers/menu/preplanningmapgui", 					"script_path" : "Core.lua" },
+		{ "hook_id" : "lib/managers/hud/hudhitconfirm", 					    "script_path" : "Core.lua" },
 
 		{ "hook_id" : "lib/entry", 												"script_path" : "Core.lua" },
 		{ "hook_id" : "lib/managers/systemmenumanager", 						"script_path" : "Core.lua" },
