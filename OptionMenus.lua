@@ -896,6 +896,13 @@ if VHUDPlus then
 						value = {"CustomHUD", "ENABLE_TIME_LEFT"},
 					},
 					{
+						type = "toggle",
+						name_id = "wolfhud_enable_headshot_title",
+						desc_id = "wolfhud_enable_headshot_desc",
+						visible_reqs = {}, enabled_reqs = {},
+						value = {"CustomHUD", "HEADSHOT"},	
+					},
+					{
 						type = "divider",
 						size = 16,
 					},
