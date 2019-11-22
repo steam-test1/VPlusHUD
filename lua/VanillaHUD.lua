@@ -640,8 +640,8 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammate:inject_ammo_glow()
 		self._primary_ammo = self._player_panel:child("weapons_panel"):child("primary_weapon_panel"):bitmap({
 			align           = "center",
-			w 				= 64,
-			h 				= 64,
+			w 				= 50,
+			h 				= 45,
 			name 			= "primary_ammo",
 			visible 		= false,
 			texture 		= "guis/textures/pd2/crimenet_marker_glow",
@@ -651,8 +651,8 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		})
 		self._secondary_ammo = self._player_panel:child("weapons_panel"):child("secondary_weapon_panel"):bitmap({
 			align           = "center",
-			w 				= 64,
-			h 				= 64,
+			w 				= 50,
+			h 				= 45,
 			name 			= "secondary_ammo",
 			visible 		= false,
 			texture 		= "guis/textures/pd2/crimenet_marker_glow",
