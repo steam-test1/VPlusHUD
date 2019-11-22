@@ -1,3 +1,5 @@
+if VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED_ALT"}, true) then return end
+
 if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 
 local _setup_player_info_hud_pd2_original = HUDManager._setup_player_info_hud_pd2
