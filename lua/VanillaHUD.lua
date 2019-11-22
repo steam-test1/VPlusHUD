@@ -414,7 +414,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	end
 	
 	function HUDTeammate:_init_inspire_timer()
-		self._inspire_timer = OutlinedText:new(self._player_panel, {
+		self._inspire_timer = self._player_panel:text({
 			name = "inspire_timer",
 			text = "",
 			color = Color.white,
@@ -425,12 +425,26 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 			font_size = 20,
 			layer = 4
 		})
+		self._inspire_timer:set_right(self._player_panel:child("radial_health_panel"):right())
+		self._inspire_timer_bg = OutlinedText:new(self._player_panel, {
+			text = "",
+			color = Color.black:with_alpha(0.5),
+			visible = false,
+			align = "right",
+			vertical = "bottom",
+			font = tweak_data.hud_players.name_font,
+			font_size = 20,
+			layer = 3
+		}, self._inspire_timer)
 	end
 	
 	function HUDTeammate:update_inspire_timer(t)
 		if t and t > 0 and self._inspire_timer then
 			t = string.format("%.1f", t) .. "s"
 			self._inspire_timer:set_text(t)
+			for _, bg in ipairs(self._inspire_timer_bg) do
+				bg:set_text(t)
+			end
 			self:set_inspire_timer_visibility(VHUDPlus:getSetting({"CustomHUD", "PLAYER", "INSPIRE"}, true))
 		elseif self._inspire_timer and self._inspire_timer:visible() then
 			self:set_inspire_timer_visibility(false)
@@ -440,6 +454,9 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammate:set_inspire_timer_visibility(visible)
 		if self._inspire_timer then
 			self._inspire_timer:set_visible(visible)
+			for _, bg in ipairs(self._inspire_timer_bg) do
+				bg:set_visible(visible)
+			end
 		end
 	end
 	
@@ -815,8 +832,10 @@ elseif RequiredScript == "lib/managers/playermanager" then
 		self._bullet_storm_clbk = nil
 		managers.hud:set_bulletstorm( false )
 		
-		for id , weapon in pairs( managers.player:player_unit():inventory():available_selections() ) do
-			managers.hud:set_ammo_amount( id , weapon.unit:base():ammo_info() )
+		if managers.player and managers.player:player_unit() and managers.player:player_unit():inventory() then
+			for id , weapon in pairs( managers.player:player_unit():inventory():available_selections() ) do
+				managers.hud:set_ammo_amount( id , weapon.unit:base():ammo_info() )
+			end
 		end
 	
 	end
@@ -825,7 +844,7 @@ elseif RequiredScript == "lib/managers/playermanager" then
 	
 		if name == "bullet_storm" and time then
 		
-			if not self._bullet_storm_clbk and not Utils:IsInCustody() then
+			if not self._bullet_storm_clbk then
 				self._bullet_storm_clbk = "Infinite"
 				managers.hud:set_bulletstorm( true )
 				managers.enemy:add_delayed_clbk( self._bullet_storm_clbk , callback( self , self , "_clbk_bulletstorm_expire" ) , TimerManager:game():time() + time )
