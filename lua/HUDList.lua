@@ -5566,7 +5566,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "standard_armor_regeneration"}, true),
 		},
 		weapon_charge = {
-			texture = "guis/textures/contact_vlad",
+			texture = "assets/guis/textures/contact_vlad",
 			texture_rect = {1984, 0, 64, 64},
 			class = "TimedBuffItem",
 			priority = 15,
