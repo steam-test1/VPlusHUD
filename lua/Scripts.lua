@@ -274,6 +274,45 @@ elseif string.lower(RequiredScript) == "core/lib/managers/coreenvironmentcontrol
 			return set_post_composite_actual(self, t, dt)
 		end
 	end
+elseif string.lower(RequiredScript) == "lib/managers/hud/hudhitconfirm" then
+	local old_init = HUDHitConfirm.init
+	function HUDHitConfirm:init(...)
+		old_init(self, ...)
+		local size = 24
+		local red = (80)/100
+		local green = (20)/100
+		local blue = (20)/100
+		local new_color = Color(red, green, blue)
+		if self._hud_panel:child("headshot_confirm") then
+			self._hud_panel:remove(self._hud_panel:child("headshot_confirm"))
+		end
+		self._headshot_confirm = self._hud_panel:bitmap({
+			valign = "center",
+			halign = "center",
+			visible = false,
+			name = "headshot_confirm",
+			texture = "guis/textures/pd2/hud_progress_active",
+			color = new_color,
+			layer = 1,
+			h = size,
+			w = size,
+			blend_mode = "normal"
+		})
+		self._headshot_confirm:set_center(self._hud_panel:w() / 2, self._hud_panel:h() / 2)
+	end
+	function HUDHitConfirm:on_headshot_confirmed()
+	if VHUDPlus:getSetting({"CustomHUD", "HEADSHOT"}, true) then
+		self._headshot_confirm:stop()
+		self._headshot_confirm:animate(callback(self, self, "_animate_show"), callback(self, self, "show_done"), 0.25)
+	end
+	end
+	
+elseif string.lower(RequiredScript) == "lib/managers/playermanager" then
+	local old_ohd = PlayerManager.on_headshot_dealt
+	function PlayerManager:on_headshot_dealt(...)
+		managers.hud:on_headshot_confirmed()
+		return old_ohd(self, ...)
+	end
 elseif string.lower(RequiredScript) == "lib/tweak_data/timespeedeffecttweakdata" then
 	local init_original = TimeSpeedEffectTweakData.init
 	local FORCE_ENABLE = {
