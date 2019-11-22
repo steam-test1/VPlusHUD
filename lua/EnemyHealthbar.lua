@@ -1,4 +1,4 @@
-if not (VHUDPlus and VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED"}, true)) then return end
+if VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED_ALT"}, true) then return end
 
 if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 
