@@ -636,6 +636,23 @@ if not _G.VHUDPlus then
 			},
 		}
 	end
+	
+	function VHUDPlus:OutlineText(panel, bg, txt)
+        bg.name = nil
+        local bgs = {}
+        for i = 1, 4 do
+            table.insert(bgs, panel:text(bg))
+        end
+        bgs[1]:set_x(txt:x() - 1)
+        bgs[1]:set_y(txt:y() - 1)
+        bgs[2]:set_x(txt:x() + 1)
+        bgs[2]:set_y(txt:y() - 1)
+        bgs[3]:set_x(txt:x() - 1)
+        bgs[3]:set_y(txt:y() + 1)
+        bgs[4]:set_x(txt:x() + 1)
+        bgs[4]:set_y(txt:y() + 1)
+        return bgs
+    end	
 
 	function VHUDPlus:print_log(...)
 		local LOG_MODES = self:getTweakEntry("LOG_MODE", "table", {})
