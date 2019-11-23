@@ -432,7 +432,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 			layer = 4
 		})
 		self._inspire_timer:set_right(self._player_panel:child("radial_health_panel"):right() + 5)
-		self._inspire_timer_bg = OutlinedText:new(self._player_panel, {
+		self._inspire_timer_bg = VHUDPlus:OutlineText(self._player_panel, {
 			text = "",
 			color = Color.black:with_alpha(0.5),
 			visible = false,
