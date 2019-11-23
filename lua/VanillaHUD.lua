@@ -388,8 +388,14 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		--self._armor_timer:set_outlines_visible(true)
 	end
 	
+	local hide_time_state = {
+		["bleed_out"] = true,
+		["fatal"] = true,
+		["incapacitated"] = true
+	}
+	
 	function HUDTeammate:update_armor_timer(t)
-		if t and t > 0 and self._armor_timer then
+		if t and t > 0 and self._armor_timer and not hide_time_state[managers.player:current_state()] and not managers.player:player_unit():character_damage().swansong then
 			t = string.format("%.1f", t) .. "s"
 			self._armor_timer:set_text(t)
 			self:set_armor_timer_visibility(VHUDPlus:getSetting({"CustomHUD", "PLAYER", "ARMOR"}, true))
