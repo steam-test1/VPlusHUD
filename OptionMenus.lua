@@ -883,6 +883,16 @@ if VHUDPlus then
 					},
 					{
 						type = "toggle",
+						name_id = "wolfhud_use_enhanced_objective_title",
+						desc_id = "wolfhud_use_enhanced_objective_desc",
+						visible_reqs = {}, 
+						enabled_reqs = {
+						    { setting = {"AssaultBanner", "USE_CENTER_ASSAULT"}, invert = true }
+						},
+						value = {"CustomHUD", "ENABLED_ENHANCED_OBJECTIVE"},
+					},
+					{
+						type = "toggle",
 						name_id = "wolfhud_invertedfbg_title",
 						desc_id = "wolfhud_invertedfbg_desc",
 						visible_reqs = {}, enabled_reqs = {},
