@@ -223,6 +223,7 @@ if not _G.VHUDPlus then
 					},
 				},
 				USE_REAL_AMMO 						= true,
+				ENABLED_ENHANCED_OBJECTIVE			= true,
 				ENABLE_IFBG							= false,
 				ENABLE_TIME_LEFT                    = true,
 				HEADSHOT                            = true,
