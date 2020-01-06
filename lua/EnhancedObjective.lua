@@ -6,7 +6,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudheisttimer" then
 
 -- Old
 
-elseif string.lower(RequiredScript) == "core/lib/managers/subtitle/coresubtitlepresenter" then
+elseif string.lower(RequiredScript) == "core/lib/managers/subtitle/coresubtitlepresenter" and VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "show_buffs"}, true) then
 	core:module("CoreSubtitlePresenter")
 	local _on_resolution_changed_original = OverlayPresenter._on_resolution_changed
 	function OverlayPresenter:_on_resolution_changed(...)
