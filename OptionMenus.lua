@@ -622,7 +622,10 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_panels_show_ping_title",
 								desc_id = "wolfhud_panels_show_ping_desc",
-								visible_reqs = {}, enabled_reqs = {},
+								visible_reqs = {}, 
+								enabled_reqs = {
+								    { setting = {"CustomHUD", "ENABLED"}, invert = false }
+								},
 								value = {"CustomHUD", "TEAMMATE", "LATENCY"},
 							},
 							{
