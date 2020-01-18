@@ -545,9 +545,12 @@ if VHUDPlus then
 								type = "slider",
 								name_id = "wolfhud_panels_hps_refresh_rate_title",
 								desc_id = "wolfhud_panels_hps_refresh_rate_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "PLAYER", "HPS_METER"}, invert = false }
+								},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "ENABLED"}, invert = false },
+									{ setting = {"CustomHUD", "PLAYER", "HPS_METER"}, invert = false }
 								},
 								value = {"CustomHUD", "PLAYER", "HPS_REFRESH_RATE"},
 								min_value = 0.1,
@@ -558,9 +561,12 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_panels_show_hps_current_title",
 								desc_id = "wolfhud_panels_show_hps_current_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "PLAYER", "HPS_METER"}, invert = false }
+								},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "ENABLED"}, invert = false },
+									{ setting = {"CustomHUD", "PLAYER", "HPS_METER"}, invert = false }
 								},
 								value = {"CustomHUD", "PLAYER", "SHOW_HPS_CURRENT"},
 							},
@@ -568,9 +574,12 @@ if VHUDPlus then
 								type = "slider",
 								name_id = "wolfhud_panels_current_hps_timeout_title",
 								desc_id = "wolfhud_panels_current_hps_timeout_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "PLAYER", "HPS_METER"}, invert = false }
+								},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "ENABLED"}, invert = false },
+									{ setting = {"CustomHUD", "PLAYER", "HPS_METER"}, invert = false }
 								},
 								value = {"CustomHUD", "PLAYER", "CURRENT_HPS_TIMEOUT"},
 								min_value = 1,
@@ -581,9 +590,12 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_panels_show_hps_total_title",
 								desc_id = "wolfhud_panels_show_hps_total_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "PLAYER", "HPS_METER"}, invert = false }
+								},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
+									{ setting = {"CustomHUD", "ENABLED"}, invert = false },
+									{ setting = {"CustomHUD", "PLAYER", "HPS_METER"}, invert = false }
 								},
 								value = {"CustomHUD", "PLAYER", "SHOW_HPS_TOTAL"},
 							},
@@ -680,7 +692,9 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_panels_show_interaction_number_title",
 								desc_id = "wolfhud_panels_show_interaction_number_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, invert = true },
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -691,7 +705,9 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_panels_show_interaction_text_title",
 								desc_id = "wolfhud_panels_show_interaction_text_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, invert = true },
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -702,7 +718,9 @@ if VHUDPlus then
 								type = "slider",
 								name_id = "wolfhud_panels_interaction_time_title",
 								desc_id = "wolfhud_panels_interaction_time_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, invert = true },
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "TEAMMATE", "INTERACTION", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -731,7 +749,9 @@ if VHUDPlus then
 								name_id = "wolfhud_panels_ai_color_title",
 								desc_id = "wolfhud_panels_ai_color_desc",
 								value = {"CustomHUD", "TEAMMATE", "AI_COLOR", "COLOR"},
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, invert = false },
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "TEAMMATE", "AI_COLOR", "USE"}, invert = false },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -767,7 +787,9 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_killcounter_player_show_special_title",
 								desc_id = "wolfhud_killcounter_player_show_special_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -778,7 +800,9 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_killcounter_player_show_head_title",
 								desc_id = "wolfhud_killcounter_player_show_head_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -790,7 +814,9 @@ if VHUDPlus then
 								name_id = "wolfhud_killcounter_player_color_title",
 								desc_id = "wolfhud_killcounter_player_color_desc",
 								value = {"CustomHUD", "PLAYER", "KILLCOUNTER", "COLOR"},
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -832,7 +858,9 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_killcounter_team_show_special_title",
 								desc_id = "wolfhud_killcounter_team_show_special_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -843,7 +871,9 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_killcounter_team_show_head_title",
 								desc_id = "wolfhud_killcounter_team_show_head_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -854,7 +884,9 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_killcounter_team_show_ai_title",
 								desc_id = "wolfhud_killcounter_team_show_ai_desc",
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -866,7 +898,9 @@ if VHUDPlus then
 								name_id = "wolfhud_killcounter_team_color_title",
 								desc_id = "wolfhud_killcounter_team_color_desc",
 								value = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "COLOR"},
-								visible_reqs = {},
+								visible_reqs = {
+								    { setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
 								enabled_reqs = {
 									{ setting = {"CustomHUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true },
 									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
@@ -998,6 +1032,16 @@ if VHUDPlus then
 								value = {"HUDChat", "COLORED_BG"},
 							},
 							{
+								type = "toggle",
+								name_id = "wolfhud_heist_timer_title",
+								desc_id = "wolfhud_heist_timer_desc",
+								visible_reqs = {}, 
+								enabled_reqs = {
+								    { setting = {"HUDChat", "ENABLED"}, invert = false }
+								},
+								value = {"HUDChat", "HEISTTIMER"},
+							},
+							{
 								type = "multi_choice",
 								name_id = "wolfhud_chat_scrollbar_align_title",
 								desc_id = "wolfhud_chat_scrollbar_align_desc",
@@ -1021,13 +1065,6 @@ if VHUDPlus then
 								desc_id = "wolfhud_spam_filter_desc",
 								visible_reqs = {}, enabled_reqs = {},
 								value = {"HUDChat", "SPAM_FILTER"},
-							},
-							{
-								type = "toggle",
-								name_id = "wolfhud_heist_timer_title",
-								desc_id = "wolfhud_heist_timer_desc",
-								visible_reqs = {}, enabled_reqs = {},
-								value = {"HUDChat", "HEISTTIMER"},
 							},
 						},
 					},
