@@ -19,7 +19,7 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 	HUDChat.WIDTH = VHUDPlus:getSetting({"HUDChat", "WIDTH"}, 380)						--Width of the chat window
 	HUDChat.MAX_OUTPUT_LINES = VHUDPlus:getSetting({"HUDChat", "MAX_OUTPUT_LINES"}, 8)	--Number of chat lines to show
 	HUDChat.MAX_INPUT_LINES = VHUDPlus:getSetting({"HUDChat", "MAX_INPUT_LINES"}, 5)		--Number of lines of text you can type
-	HUDChat.MOUSE_SUPPORT = false														--For scolling and stuff. Experimental, you have been warned
+	HUDChat.MOUSE_SUPPORT = true														--For scolling and stuff. Experimental, you have been warned
 	HUDChat.COLORED_BG = VHUDPlus:getSetting({"HUDChat", "COLORED_BG"}, true)			--Colorize the line bg based on the message source
 	HUDChat.SCROLLBAR_ALIGN = VHUDPlus:getSetting({"HUDChat", "SCROLLBAR_ALIGN"}, 2)		--Alignment of the scroll bar (1 = left, 2 = right)
 
