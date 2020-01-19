@@ -1400,7 +1400,8 @@ if VHUDPlus then
 								desc_id = "wolfhud_enemyhealthbar_enemy_health_size_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false }
+									{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
+									{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
 								},
 								value = {"EnemyHealthbar", "SCALE"},
 								min_value = 50,
@@ -1413,7 +1414,8 @@ if VHUDPlus then
 								desc_id = "wolfhud_enemyhealthbar_enemy_health_vertical_offset_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false }
+									{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
+									{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
 								},
 								value = {"EnemyHealthbar", "ENEMY_HEALTH_VERTICAL_OFFSET"},
 								min_value = 0,
@@ -1426,7 +1428,8 @@ if VHUDPlus then
 								desc_id = "wolfhud_enemyhealthbar_enemy_health_horizontal_offset_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false }
+									{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
+									{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
 								},
 								value = {"EnemyHealthbar", "ENEMY_HEALTH_HORIZONTAL_OFFSET"},
 								min_value = -400,
@@ -1439,7 +1442,8 @@ if VHUDPlus then
 								desc_id = "wolfhud_enemyhealthbar_enemy_text_size_desc",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false }
+									{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
+									{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
 								},
 								value = {"EnemyHealthbar", "ENEMY_TEXT_SIZE"},
 								min_value = 20,
