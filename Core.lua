@@ -323,7 +323,7 @@ if not _G.VHUDPlus then
 				ENABLED	 								= true,
 				right_list_height_offset				= 50,
 				left_list_height_offset					= 60,
-				buff_list_height_offset					= 90,
+				buff_list_height_offset					= 510,
 				mui_buff_fix							= false,
 				right_list_scale						= 1,
 				left_list_scale							= 1,
