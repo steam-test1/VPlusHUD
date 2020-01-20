@@ -3523,37 +3523,6 @@ if VHUDPlus then
 						size = 16,
 					},
 					{
-						type = "toggle",
-						name_id = "wolfhud_press2hold_show_circle_title",
-						desc_id = "wolfhud_press2hold_show_circle_desc",
-						value = {"INTERACTION", "SHOW_CIRCLE"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-					        type = "toggle",
-						name_id = "wolfhud_press2hold_show_reload_circle_title",
-						desc_id = "wolfhud_press2hold_show_reload_circle_desc",
-						value = {"INTERACTION", "SHOW_RELOAD"},
-						visible_reqs = {},
-						enabled_reqs = {
-							--{ setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true },
-						},
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_press2hold_show_melee_circle_title",
-						desc_id = "wolfhud_press2hold_show_melee_circle_desc",
-						value = {"INTERACTION", "SHOW_MELEE"},
-						visible_reqs = {},
-						enabled_reqs = {
-							--{ setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true },
-						},
-					},
-					{
-						type = "divider",
-						size = 16,
-					},
-					{
 						type = "slider",
 						name_id = "wolfhud_press2hold_circle_scale_title",
 						desc_id = "wolfhud_press2hold_circle_scale_desc",
@@ -3582,6 +3551,37 @@ if VHUDPlus then
 						min_value = 0.3,
 						max_value = 2,
 						step_size = 0.01,
+					},
+					{
+						type = "divider",
+						size = 16,
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_press2hold_show_circle_title",
+						desc_id = "wolfhud_press2hold_show_circle_desc",
+						value = {"INTERACTION", "SHOW_CIRCLE"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+					        type = "toggle",
+						name_id = "wolfhud_press2hold_show_reload_circle_title",
+						desc_id = "wolfhud_press2hold_show_reload_circle_desc",
+						value = {"INTERACTION", "SHOW_RELOAD"},
+						visible_reqs = {},
+						enabled_reqs = {
+							--{ setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true },
+						},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_press2hold_show_melee_circle_title",
+						desc_id = "wolfhud_press2hold_show_melee_circle_desc",
+						value = {"INTERACTION", "SHOW_MELEE"},
+						visible_reqs = {},
+						enabled_reqs = {
+							--{ setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true },
+						},
 					},
 					{
 						type = "divider",
