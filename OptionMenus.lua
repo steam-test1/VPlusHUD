@@ -1708,7 +1708,6 @@ if VHUDPlus then
 						max_value = 300,
 						step_size = 1,
 					},
-					--[[
 					{
 						type = "slider",
 						name_id = "wolfhud_hudlist_buff_list_height_offset_title",
@@ -1722,6 +1721,7 @@ if VHUDPlus then
 						max_value = 1000,
 						step_size = 1,
 					},
+					--[[
 					{
 						type = "toggle",
 						name_id = "wolfhud_mui_buff_fix_title",
