@@ -6454,7 +6454,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDList.TimedInteractionItem = HUDList.TimedInteractionItem or class(HUDList.TimedBuffItem)
 	HUDList.TimedInteractionItem.INTERACT_ID_TO_ICON = {
 		default 					= { texture = "guis/textures/pd2/skilltree/drillgui_icon_faster" 					},
-		mask_up 					= { texture = "guis/textures/contact_vlad", texture_rect = {1920, 256, 128, 130}	},
+		mask_up 					= { texture = "assets/guis/textures/contact_vlad", texture_rect = {1920, 256, 128, 130}	},
 		ammo_bag 					= { skills 		= {1, 0}				},
 		doc_bag 					= { skills 		= {2, 7}				},
 		first_aid_kit 				= { skills 		= {3, 10}, 				},
