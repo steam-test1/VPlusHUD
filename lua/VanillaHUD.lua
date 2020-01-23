@@ -181,7 +181,7 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		local teammate_name = name_panel:text()
 		name_panel:set_vertical("center")
 		name_panel:set_font_size(tweak_data.hud_players.name_size)
-		if not self._ai then
+		if not VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) or not self._ai then
 		name_panel:set_w(self._panel:w() - name_panel:x())
 		end
 		local _,_,w,h = name_panel:text_rect()
