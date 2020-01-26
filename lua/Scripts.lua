@@ -359,6 +359,20 @@ elseif string.lower(RequiredScript) == "lib/managers/moneymanager" then
 		local total = math.round(self:total_collected())
 		return managers.experience:cash_string(total)
 	end
+elseif string.lower(RequiredScript) == "lib/units/weapons/raycastweaponbase" then
+
+    local init_original = RaycastWeaponBase.init
+    local setup_original = RaycastWeaponBase.setup
+
+    function RaycastWeaponBase:init(...)
+	    init_original(self, ...)
+	    self._bullet_slotmask = self._bullet_slotmask - World:make_slot_mask(16)
+    end
+
+    function RaycastWeaponBase:setup(...)
+	    setup_original(self, ...)
+	    self._bullet_slotmask = self._bullet_slotmask - World:make_slot_mask(16)
+    end
 elseif string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" then
 	local init_original = ObjectInteractionManager.init
 
