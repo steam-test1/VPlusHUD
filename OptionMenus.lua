@@ -3444,7 +3444,9 @@ if VHUDPlus then
 						name_id = "wolfhud_waypoints_loot_icon_title",
 						desc_id = "wolfhud_waypoints_loot_icon_desc",
 						value = {"CustomWaypoints", "LOOT", "ICON"},
-						visible_reqs = {},
+						visible_reqs = {
+						    { setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false }
+						},
 						enabled_reqs = {
 							{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
 						},
@@ -3454,7 +3456,9 @@ if VHUDPlus then
 						name_id = "wolfhud_waypoints_loot_offset_title",
 						desc_id = "wolfhud_waypoints_loot_offset_desc",
 						value = {"CustomWaypoints", "LOOT", "OFFSET"},
-						visible_reqs = {},
+						visible_reqs = {
+						    { setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false }
+						},
 						enabled_reqs = {
 							{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
 						},
@@ -3467,7 +3471,9 @@ if VHUDPlus then
 						name_id = "wolfhud_waypoints_loot_bagged_offset_title",
 						desc_id = "wolfhud_waypoints_loot_bagged_offset_desc",
 						value = {"CustomWaypoints", "LOOT", "BAGGED_OFFSET"},
-						visible_reqs = {},
+						visible_reqs = {
+						    { setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false }
+						},
 						enabled_reqs = {
 							{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
 						},
@@ -3480,7 +3486,9 @@ if VHUDPlus then
 						name_id = "wolfhud_waypoints_loot_angle_title",
 						desc_id = "wolfhud_waypoints_loot_angle_desc",
 						value = {"CustomWaypoints", "LOOT", "ANGLE"},
-						visible_reqs = {},
+						visible_reqs = {
+						    { setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false }
+						},
 						enabled_reqs = {
 							{ setting = {"CustomWaypoints", "LOOT", "SHOW"}, invert = false },
 						},
