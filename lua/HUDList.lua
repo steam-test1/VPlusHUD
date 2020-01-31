@@ -1297,7 +1297,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local minion_list = self:list("left_side_list"):item("minions")
 
 		for name, item in pairs(minion_list:items()) do
-			item:set_active(not HUDListManager.ListOptions.show_own_minions_only or data.owner == managers.network:session():local_peer():id())
+			item:set_active(not HUDListManager.ListOptions.show_own_minions_only)
 		end
 	end
 
