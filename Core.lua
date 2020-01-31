@@ -1491,6 +1491,11 @@ if not _G.VHUDPlus then
 
 		local localized_strings = {}
 		localized_strings["cash_sign"] = VHUDPlus:getTweakEntry("CASH_SIGN", "string", "$")
+		localized_strings["hud_instruct_mask_on"] = ""
+		
+		if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PERCENTAGE"}, true) then
+		    localized_strings["hud_suspicion_detected"] = ""
+	        end
 
 		-- Hide Skip Message, when auto skip blackscreen is active
 		if VHUDPlus:getSetting({"SkipIt", "SKIP_BLACKSCREEN"}, false) then
