@@ -941,8 +941,8 @@ if VHUDPlus then
 					},
 					{
 						type = "toggle",
-						name_id = "VHUDPlus_enable_joker_contour_title",
-						desc_id = "VHUDPlus_enable_joker_contour_desc",
+						name_id = "wolfhud_enable_joker_contour_title",
+						desc_id = "wolfhud_enable_joker_contour_desc",
 						visible_reqs = {}, enabled_reqs = {},
 						value = {"CustomHUD", "JOKER_CONTOUR"},							
 					},
