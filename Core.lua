@@ -273,7 +273,7 @@ if not _G.VHUDPlus then
 				COLOR									= "yellow",
 				HEADSHOT_COLOR							= "red",
 				CRITICAL_COLOR 							= "light_purple",
-				SHOW_DAMAGE_POPUP_ALT					= true,
+				SHOW_DAMAGE_POPUP_ALT					= false,
 				GLOW_COLOR 								= "yellow",
 			},
 			AssaultBanner = {
