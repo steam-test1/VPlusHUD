@@ -462,6 +462,46 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 	end
 elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
 	local _add_string_macros_original = BaseInteractionExt._add_string_macros
+	local _interact_blocked_original = IntimitateInteractionExt._interact_blocked
+	local jokers = {}
+	
+	local function kill_joker()
+		while #jokers > 0 do
+			local data = table.remove(jokers, 1)
+			
+			if alive(data.unit) then
+				data.unit:character_damage():damage_mission({ damage = data.unit:character_damage()._HEALTH_INIT + 1 })
+				return true
+			end
+		end
+		
+		return false
+	end
+	
+	function IntimitateInteractionExt:_interact_blocked(...)
+		if self.tweak_data == "hostage_convert" and managers.player:chk_minion_limit_reached() then
+			if kill_joker() and not Network:is_server() then
+				return not managers.player:has_category_upgrade("player", "convert_enemies") or managers.groupai:state():whisper_mode()
+			end
+		end
+	    local function joker_event(event, key, data)
+			if data.owner == managers.network:session():local_peer():id() then
+				if event == "set_owner" then
+					table.insert(jokers, data)
+				else
+					for i, data in ipairs(jokers) do
+						if alive(data.unit) and tostring(data.unit:key()) == key then
+							table.remove(jokers, i)
+							break
+						end
+					end
+				end
+			end
+		end
+		managers.gameinfo:register_listener("replace_joker_listener", "minion", "set_owner", joker_event)
+		managers.gameinfo:register_listener("replace_joker_listener", "minion", "remove", joker_event)
+		return _interact_blocked_original(self, ...)
+	end	
 
 	function BaseInteractionExt:would_be_bonus_bag(carry_id)
 		if managers.loot:get_mandatory_bags_data().carry_id ~= "none" and carry_id and carry_id ~= managers.loot:get_mandatory_bags_data().carry_id then
