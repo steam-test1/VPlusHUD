@@ -398,30 +398,6 @@ elseif string.lower(RequiredScript) == "lib/units/contourext" then
 		    return result
 	    end
 	end
-elseif string.lower(RequiredScript) == "lib/units/contourext" then
-	local add_original = ContourExt.add
-
-	function ContourExt:add(type, ...)
-		local result = add_original(self, type, ...)
-		local default_friendly_color = ContourExt._types.friendly.color
-		ContourExt._types.friendly.color = nil
-		
-		if result and type == "friendly" then
-			self:change_color("friendly", default_friendly_color)
-		end
-		
-		local function joker_event(event, key, data)
-			if data.owner then
-				managers.gameinfo:add_scheduled_callback(key .. "_joker_contour", 0.01, function()
-					if alive(data.unit) and data.unit:contour() then
-						data.unit:contour():change_color("friendly", tweak_data.chat_colors[data.owner] or default_friendly_color)
-					end
-				end)
-			end
-		end
-		managers.gameinfo:register_listener("joker_contour_listener", "minion", "set_owner", joker_event)
-		return result
-	end	
 elseif string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" then
 	local init_original = ObjectInteractionManager.init
 
