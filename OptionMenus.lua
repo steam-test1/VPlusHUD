@@ -937,7 +937,14 @@ if VHUDPlus then
 						name_id = "wolfhud_enable_headshot_title",
 						desc_id = "wolfhud_enable_headshot_desc",
 						visible_reqs = {}, enabled_reqs = {},
-						value = {"CustomHUD", "HEADSHOT"},	
+						value = {"CustomHUD", "HEADSHOT"},
+					},
+					{
+						type = "toggle",
+						name_id = "VHUDPlus_enable_joker_contour_title",
+						desc_id = "VHUDPlus_enable_joker_contour_desc",
+						visible_reqs = {}, enabled_reqs = {},
+						value = {"CustomHUD", "JOKER_CONTOUR"},							
 					},
 					{
 						type = "divider",
