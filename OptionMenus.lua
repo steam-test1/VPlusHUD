@@ -4183,7 +4183,27 @@ if VHUDPlus then
 			},
 			{
 				type = "divider",
-				size = 32,
+				size = 16,
+			},
+			--Misc
+			{
+				type = "menu",
+				menu_id = "wolfhud_misc_options_menu",
+				name_id = "wolfhud_misc_options_name",
+				desc_id = "wolfhud_misc_options_help",
+				options = {
+					{
+						type = "toggle",
+						name_id = "wolfhud_shuffle_music_title",
+						desc_id = "wolfhud_shuffle_music_desc",
+						value = {"MISC", "SHUFFLE_MUSIC"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+				},
+			},
+			{
+				type = "divider",
+				size = 32,				
 			},
 			{
 				type = "button",
