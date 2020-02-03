@@ -115,6 +115,7 @@ if not _G.VHUDPlus then
 		["core/lib/managers/coreenvironmentcontrollermanager"] 		= { "Scripts.lua" },
 		["lib/managers/menu/preplanningmapgui"]						= { "PrePlanManager.lua" },
 		["lib/managers/hud/hudhitconfirm"] 							= { "Scripts.lua" },
+		["lib/tweak_data/levelstweakdata"]                          = { "Scripts.lua" },		
 
 		--Utils and custom classes...
 		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },
@@ -622,6 +623,9 @@ if not _G.VHUDPlus then
 				LOOT_SCREEN_DELAY 						= 3,		--Skip the loot screen after X seconds
 				NO_SLOWMOTION 							= true,		--Disable mask-up and downed slow motion
 			},
+			MISC = {
+			    SHUFFLE_MUSIC                           = false,
+			},				
 			LOBBY_SETTINGS = {
 				job_plan = -1,
 				kick_option = 1,
