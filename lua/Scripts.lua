@@ -373,6 +373,19 @@ elseif string.lower(RequiredScript) == "lib/units/weapons/raycastweaponbase" the
 	    setup_original(self, ...)
 	    self._bullet_slotmask = self._bullet_slotmask - World:make_slot_mask(16)
     end
+elseif string.lower(RequiredScript) == "lib/tweak_data/levelstweakdata" then
+    local _f_get_music_event = LevelsTweakData.get_music_event
+    function LevelsTweakData:get_music_event(stage)
+        local result = _f_get_music_event(self, stage)
+        if result and VHUDPlus:getSetting({"MISC", "SHUFFLE_MUSIC"}, true) and stage == "control" then
+            if self.can_change_music then
+                managers.music:check_music_switch()
+            else
+                self.can_change_music = true
+            end
+        end
+        return result
+    end	
 elseif string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" then
 	local init_original = ObjectInteractionManager.init
 
