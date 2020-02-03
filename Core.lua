@@ -225,7 +225,7 @@ if not _G.VHUDPlus then
 				USE_REAL_AMMO 						= true,
 				ENABLE_IFBG							= false,
 				ENABLE_TIME_LEFT                    = true,
-				MASK_INSTRUCT                       = false,				
+				MASK_INSTRUCT                       = true,				
 				HEADSHOT                            = true,
 			},
 			HUDChat = {
