@@ -225,6 +225,7 @@ if not _G.VHUDPlus then
 				USE_REAL_AMMO 						= true,
 				ENABLE_IFBG							= false,
 				ENABLE_TIME_LEFT                    = true,
+				MASK_INSTRUCT                       = false,				
 				HEADSHOT                            = true,
 			},
 			HUDChat = {
@@ -1491,7 +1492,10 @@ if not _G.VHUDPlus then
 
 		local localized_strings = {}
 		localized_strings["cash_sign"] = VHUDPlus:getTweakEntry("CASH_SIGN", "string", "$")
-		--localized_strings["hud_instruct_mask_on"] = ""
+
+		if VHUDPlus:getSetting({"CustomHUD", "MASK_INSTRUCT"}, true) then
+		    localized_strings["hud_instruct_mask_on"] = ""
+		end			
 		
 		if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PERCENTAGE"}, true) then
 		    localized_strings["hud_suspicion_detected"] = ""
