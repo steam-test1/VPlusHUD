@@ -266,7 +266,7 @@ if not _G.VHUDPlus then
 				FRIENDLY_FIRE_COLOR						= "orange",
 			},
 			DamagePopup = {
-				DISPLAY_MODE							= 2,
+				DISPLAY_MODE							= 0,
 				DURATION	 							= 3,
 				SCALE									= 1,
 				SKULL_SCALE								= 1.2,
@@ -291,7 +291,7 @@ if not _G.VHUDPlus then
 				SHOW_PERCENTAGE_OUTLINE					= true,
 				SHOW_BARS								= true,
 				SHOW_PACIFIED_CIVILIANS					= true,
-				SHOW_PACIFIED_CIVILIANS_ALT_ICON        = true,
+				SHOW_PACIFIED_CIVILIANS_ALT_ICON        = false,
 				REMOVE_ANSWERED_PAGER_CONTOUR 			= true,
 			},
 			DrivingHUD = {
