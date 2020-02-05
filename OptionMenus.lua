@@ -934,6 +934,14 @@ if VHUDPlus then
 					},
 					{
 						type = "toggle",
+						name_id = "wolfhud_enable_mask_instruct_title",
+						desc_id = "wolfhud_enable_mask_instruct_desc",
+						visible_reqs = {}, enabled_reqs = {},
+						value = {"CustomHUD", "MASK_INSTRUCT"},
+						invert_value = true,						
+					},
+					{
+						type = "toggle",
 						name_id = "wolfhud_enable_headshot_title",
 						desc_id = "wolfhud_enable_headshot_desc",
 						visible_reqs = {}, enabled_reqs = {},
