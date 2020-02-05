@@ -115,6 +115,7 @@ if not _G.VHUDPlus then
 		["core/lib/managers/coreenvironmentcontrollermanager"] 		= { "Scripts.lua" },
 		["lib/managers/menu/preplanningmapgui"]						= { "PrePlanManager.lua" },
 		["lib/managers/hud/hudhitconfirm"] 							= { "Scripts.lua" },
+		["lib/units/contourext"] 							        = { "Scripts.lua" },
 
 		--Utils and custom classes...
 		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },
@@ -226,6 +227,7 @@ if not _G.VHUDPlus then
 				ENABLE_IFBG							= false,
 				ENABLE_TIME_LEFT                    = true,
 				HEADSHOT                            = true,
+				JOKER_CONTOUR                       = true,				
 			},
 			HUDChat = {
 				ENABLED									= true,
