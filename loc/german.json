@@ -1082,5 +1082,9 @@
 	"wolfhud_pacified_civs_alt_icon_title" : "Alternative icon",
 	"wolfhud_pacified_civs_alt_icon_desc" : "An optional green icon for pacified civilians",
 	"wolfhud_enable_headshot_title" : "Head shot confirm circle",
-	"wolfhud_enable_headshot_desc" : "Adds a circle around hit marks when you perform a head shot"
+	"wolfhud_enable_headshot_desc" : "Adds a circle around hit marks when you perform a head shot",
+	"wolfhud_enable_mask_instruct_title" : "Mask Instruction",
+	"wolfhud_enable_mask_instruct_desc" : "Show the prompt to put your mask on when the game begins",
+	"wolfhud_enable_joker_contour_title" : "Colored Convert outlines",
+	"wolfhud_enable_joker_contour_desc" : "Make the outline of converted cops match their owner's color"
 }
