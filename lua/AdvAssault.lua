@@ -308,7 +308,7 @@ elseif string.lower(RequiredScript) == "lib/managers/localizationmanager" then
 					local spawns = get_value(gai_state, tweak.force_pool) * get_mult(gai_state, tweak.force_pool_balance_mul)
 					local spawns_left = self:text("wolfhud_advassault_spawns_title") .. "  " .. math.round(math.max(spawns - assault_data.force_spawned, 0))
 
-					local time_left = assault_data.phase_end_t - gai_state._t + 350
+					local time_left = assault_data.phase_end_t - gai_state._t --+ 350
 					if assault_data.phase == "build" then
 						local sustain_duration = math.lerp(get_value(gai_state, tweak.sustain_duration_min), get_value(gai_state, tweak.sustain_duration_max), 0.5) * get_mult(gai_state, tweak.sustain_duration_balance_mul)
 						time_left = time_left + sustain_duration + tweak.fade_duration
