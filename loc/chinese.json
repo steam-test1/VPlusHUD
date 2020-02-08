@@ -277,7 +277,7 @@
 	"wolfhud_panels_options_help" : "HUD的一般选项，如自定义HUD、可疑度、伤害指示器、驾驶HUD以及更多.",
 
 	"wolfhud_use_vanillahud_extras_title" : "Use VanillaHUD Extras",
-	"wolfhud_use_vanillahud_extra_desc" : "Adds enhabcements to the default HUD \n(A Map change is needed to apply...)",
+	"wolfhud_use_vanillahud_extra_desc" : "Adds enhancements to the default HUD \n(A Map change is needed to apply...)",
 	"wolfhud_adv_assault_title" : "高级突击横幅",
 	"wolfhud_adv_assault_desc" : "该功能与贴吧的“联合汉化”冲突！！！\n在突击进行时，显示突击阶段，时间和剩余突击时间。(仅房主)",
 	"wolfhud_assault_position_title": "Center assault banner",

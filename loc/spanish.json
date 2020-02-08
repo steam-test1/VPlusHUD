@@ -272,7 +272,7 @@
 	"wolfhud_panels_options_help" : "Opciones para todos los paneles generales de la HUD, como CustomHUD, Suspicion, Indicadores de Daño, DrivingHUD y mucho más.",
 
 	"wolfhud_use_vanillahud_extras_title" : "Use VanillaHUD Extras",
-	"wolfhud_use_vanillahud_extra_desc" : "Adds enhabcements to the default HUD \n(A Map change is needed to apply...)",
+	"wolfhud_use_vanillahud_extra_desc" : "Adds enhancements to the default HUD \n(A Map change is needed to apply...)",
 	"wolfhud_adv_assault_title" : "Banner de Asalto Avanzado",
 	"wolfhud_adv_assault_desc" : "Muestra la fase de asalto, tiempo y apariciones restantes durante el asalto.\n(Solo Host)",
 	

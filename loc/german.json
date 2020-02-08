@@ -279,7 +279,7 @@
 	"wolfhud_panels_options_help" : "Optionen für alle HUD Panels, wie CustomHUD, die Verdachts- oder Schadensanzeige, und viele mehr.",
 
 	"wolfhud_use_vanillahud_extras_title" : "Use VanillaHUD Extras",
-	"wolfhud_use_vanillahud_extra_desc" : "Adds enhabcements to the default HUD \n(A Map change is needed to apply...)",
+	"wolfhud_use_vanillahud_extra_desc" : "Adds enhancements to the default HUD \n(A Map change is needed to apply...)",
 	"wolfhud_customhud_healthbars_title" : "Färbe Lebensanzeigen",
 	"wolfhud_customhud_healthbars_desc" : "Färbe die Lebensanzeigen, grün ist langweilig!\n(Note: Wenn du STANDART nutzt, solltest du 'hud_health.texture' aus dem 'mod_override'-Ordner löschen.)",
 	"wolfhud_customhud_healthbars_mode_a" : "Standard",

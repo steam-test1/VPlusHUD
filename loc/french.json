@@ -276,7 +276,7 @@
 	"wolfhud_panels_options_help" : "Options for all the general HUD panels, as VanillaHUD Extras, Suspicion, Damage Indicator, DrivingHUD and many more.",
 
 	"wolfhud_use_vanillahud_extras_title" : "Use VanillaHUD Extras",
-	"wolfhud_use_vanillahud_extra_desc" : "Adds enhabcements to the default HUD \n(A Map change is needed to apply...)",
+	"wolfhud_use_vanillahud_extra_desc" : "Adds enhancements to the default HUD \n(A Map change is needed to apply...)",
 	"wolfhud_adv_assault_title" : "Bannière d'assaut améliorée",
 	"wolfhud_adv_assault_desc" : "Affiche la phase de l'assaut ainsi que le temps et les ennemis restantsdurant l'assaut.\n(Uniquement pour l'hôte)",
 	
