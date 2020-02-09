@@ -228,7 +228,9 @@ if not _G.VHUDPlus then
 				ENABLE_TIME_LEFT                    = true,
 				MASK_INSTRUCT                       = true,				
 				HEADSHOT                            = true,
-				JOKER_CONTOUR                       = true,				
+				JOKER_CONTOUR                       = true,
+                SCALE                               = 1,
+                SUB				                    = false,				
 			},
 			HUDChat = {
 				ENABLED									= true,
