@@ -42,7 +42,7 @@ elseif string.lower(RequiredScript) == "core/lib/managers/subtitle/coresubtitlep
 		shadow:set_font_size(self.__font_size * self._text_scale)
 		shadow:set_visible(text_shadow)
 	end
-	
+	if _G.VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "show_buffs"}, true) then
 	local _on_resolution_changed_original = OverlayPresenter._on_resolution_changed
 	function OverlayPresenter:_on_resolution_changed(...)
 		_on_resolution_changed_original(self, ...)
@@ -70,5 +70,6 @@ elseif string.lower(RequiredScript) == "core/lib/managers/subtitle/coresubtitlep
 				shadow:set_w(self.__subtitle_panel:w())
 			end
 		end
+	end
 	end
 end
