@@ -1090,5 +1090,8 @@
 	"wolfhud_enable_sub_title" : "Subtitle Dropshadow",
         "wolfhud_enable_sub_desc" : "Adds a shadow behind the subtitles",
         "wolfhud_sub_scale_title" : "Subtitle scale",
-        "wolfhud_sub_scale_desc" : "Change the subtitle text size"	
+    "wolfhud_sub_scale_desc" : "Change the subtitle text size",
+	"wolfhud_enable_inspire_hint_title" : "Inspire cooldown hint",
+    "wolfhud_enable_inspire_hint_desc" : "Adds a hint message displaying the remaining cooldown time for inspire",
+	"wolfhud_inspire_hint_text" : "Inspire still has a cooldown of %.f seconds"
 }
