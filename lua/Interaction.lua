@@ -235,6 +235,26 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 			self._interaction_locked = is_locked
 		end
 	end
+	
+	function PlayerDriving:_set_camera_limits(mode)
+		if mode == "driving" then
+			self._camera_unit:base():set_limits(180, 20)
+		elseif mode == "passenger" then
+			self._camera_unit:base():set_limits(100, 30)
+		elseif mode == "shooting" then
+			self._camera_unit:base():set_limits(180, 40)
+		end
+    end
+	
+	local _update_check_actions_driver = PlayerDriving._update_check_actions_driver
+    function PlayerDriving:_update_check_actions_driver(t, dt, input)
+	    local projectile_entry = managers.blackmarket:equipped_projectile()
+	    local projectile_tweak = tweak_data.blackmarket.projectiles[projectile_entry]
+	    _update_check_actions_driver(self, t, dt, input)
+	    if projectile_tweak.ability then
+		    self:_check_action_use_ability(t, input)
+	    end
+    end	
 
 elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 local custom_huds_support = VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false)
