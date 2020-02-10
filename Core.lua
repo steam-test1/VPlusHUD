@@ -229,6 +229,7 @@ if not _G.VHUDPlus then
 				MASK_INSTRUCT                       = true,				
 				HEADSHOT                            = true,
 				JOKER_CONTOUR                       = true,
+				INSPIRE_HINT                        = false,				
                 SCALE                               = 1,
                 SUB				                    = false,				
 			},
