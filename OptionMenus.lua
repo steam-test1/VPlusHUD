@@ -955,6 +955,13 @@ if VHUDPlus then
 						value = {"CustomHUD", "JOKER_CONTOUR"},
 					},
 					{
+						type = "toggle",
+						name_id = "wolfhud_enable_inspire_hint_title",
+						desc_id = "wolfhud_enable_inspire_hint_desc",
+						visible_reqs = {}, enabled_reqs = {},
+						value = {"CustomHUD", "INSPIRE_HINT"},						
+					},
+					{
 						type = "divider",
 						size = 16,
 					},
