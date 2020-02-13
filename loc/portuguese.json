@@ -1089,5 +1089,7 @@
     "wolfhud_sub_scale_desc" : "Change the subtitle text size",
 	"wolfhud_enable_inspire_hint_title" : "Inspire cooldown hint",
     "wolfhud_enable_inspire_hint_desc" : "Adds a hint message displaying the remaining cooldown time for inspire",
-	"wolfhud_inspire_hint_text" : "Inspire still has a cooldown of %.f seconds"
+	"wolfhud_inspire_hint_text" : "Inspire still has a cooldown of %.f seconds",
+	"wolfhud_create_empty_lobby_title" : "Create Empty Lobby",
+    "wolfhud_create_empty_lobby_desc" : "Create a contractless multiplayer lobby."
 }
