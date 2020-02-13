@@ -774,6 +774,44 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/contractboxgui" then
 				end
 			end
 		end
+		
+		local peer_label = self._peers[peer_id]
+		local x, y = peer_label:center_x(), peer_label:top()
+        local voice_icon, voice_texture_rect = tweak_data.hud_icons:get_icon_data('wp_talk')
+					
+		if is_local_peer and not managers.network.voice_chat._push_to_talk then
+		    talking = managers.network.voice_chat._enabled
+	    else
+		    talking = managers.network.voice_chat._users_talking[peer_id] and managers.network.voice_chat._users_talking[peer_id].active
+	    end
+		
+		local LPI_HOUR = LobbyPlayerInfo and (LobbyPlayerInfo.settings.show_play_time_mode or 0) > 1 and LobbyPlayerInfo:GetFontSizeForPlayTime() or 0
+		local LPI_offset = 15 + LPI_HOUR
+		
+		if VHUDPlus:getSetting({"CrewLoadout", "ENABLE_PEER_PING"}, true) and LobbyPlayerInfo then
+		    latency_offset = LPI_offset
+		elseif not VHUDPlus:getSetting({"CrewLoadout", "ENABLE_PEER_PING"}, true) and LobbyPlayerInfo then
+		    latency_offset = LPI_HOUR
+		elseif VHUDPlus:getSetting({"CrewLoadout", "ENABLE_PEER_PING"}, true) and not LobbyPlayerInfo then
+		    latency_offset = 20
+		else
+		    latency_offset = 0
+		end
+					
+		self._peers_talking = self._peers_talking or {}
+	    self._peers_talking[peer_id] = self._peers_talking[peer_id] or self._panel:bitmap({
+		    texture = voice_icon,
+		    layer = 0,
+	        texture_rect = voice_texture_rect,
+		    w = voice_texture_rect[3],
+		    h = voice_texture_rect[4],
+		    color = color,
+		    blend_mode = 'add',
+		    alpha = 1
+	    })
+	    self._peers_talking[peer_id]:set_center_x(x)
+	    self._peers_talking[peer_id]:set_bottom(y - latency_offset)
+	    self._peers_talking[peer_id]:set_visible(talking)		
 	end
 elseif string.lower(RequiredScript) == "lib/managers/menu/renderers/menunodeskillswitchgui" then
 	local _create_menu_item=MenuNodeSkillSwitchGui._create_menu_item
