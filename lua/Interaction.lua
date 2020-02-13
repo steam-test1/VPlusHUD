@@ -288,7 +288,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 		elseif mode == "shooting" then
 			self._camera_unit:base():set_limits(180, 40)
 		end
-    	end
+    end
 
 elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 local custom_huds_support = VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false)
