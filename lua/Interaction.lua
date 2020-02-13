@@ -235,6 +235,16 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 			self._interaction_locked = is_locked
 		end
 	end
+	
+	function PlayerDriving:_set_camera_limits(mode)
+		if mode == "driving" then
+			self._camera_unit:base():set_limits(180, 20)
+		elseif mode == "passenger" then
+			self._camera_unit:base():set_limits(100, 30)
+		elseif mode == "shooting" then
+			self._camera_unit:base():set_limits(180, 40)
+		end
+    	end
 
 elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 local custom_huds_support = VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false)
