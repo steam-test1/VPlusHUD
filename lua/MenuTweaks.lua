@@ -117,6 +117,57 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 		
 		return node, unpack(results or {})
 	end
+	
+	Hooks:Add("MenuManagerBuildCustomMenus", "CreateEmptyLobby_MenuManagerBuildCustomMenus", function(menu_manager, nodes)
+	local mainmenu = nodes.main
+	    if mainmenu == nil then
+		    return
+	    end
+	
+	local data = {
+		type = "CoreMenuItem.Item",
+	}
+	local params = {
+		name = "wolfhud_create_empty_lobby_btn",
+		text_id = "wolfhud_create_empty_lobby_title",
+		help_id = "wolfhud_create_empty_lobby_desc",
+		callback = "create_empty_lobby"
+	}
+	local new_item = mainmenu:create_item(data, params)
+	new_item.dirty_callback = callback(mainmenu, mainmenu, "item_dirty")
+	    if mainmenu.callback_handler then
+		    new_item:set_callback_handler(mainmenu.callback_handler)
+	    end
+
+	local position = 2
+	    for index, item in pairs(mainmenu._items) do
+		    if item:name() == "crimenet_offline" then
+			    position = index
+			    break
+		    end
+	    end
+	    table.insert(mainmenu._items, position, new_item)
+    end)
+
+    function MenuCallbackHandler:create_empty_lobby()
+	    if not self:is_online() then
+		    managers.menu:show_err_not_signed_in_dialog()
+		    return
+	    end
+
+	    Global.game_settings.permission = "friends_only"
+	    Global.game_settings.level_id = "safehouse"
+	    managers.job:deactivate_current_job()
+	    managers.gage_assignment:deactivate_assignments()
+	    Global.load_level = false
+	    Global.level_data.level = nil
+	    Global.level_data.mission = nil
+	    Global.level_data.world_setting = nil
+	    Global.level_data.level_class_name = nil
+	    Global.level_data.level_id = nil
+
+	    self:create_lobby()
+    end	
 elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 	--Always enable mod mini icons, put ghost icon behind silent weapon names
 	local populate_weapon_category_new_original = BlackMarketGui.populate_weapon_category_new
