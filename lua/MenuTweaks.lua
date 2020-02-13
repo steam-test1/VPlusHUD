@@ -509,7 +509,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/skilltreeguinew" then
 	local orig_newskilltreetieritem_refresh_tier_text = NewSkillTreeTierItem._refresh_tier_text
 	function NewSkillTreeTierItem:init(...)
 		local val = orig_newskilltreetieritem_init(self, ...)
-		if VHUDPlus:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
 			if self._tier_points_total and self._tier_points_total_zero and self._tier_points_total_curr then
 				local font_size = tweak_data.menu.pd2_small_font_size * 0.75
 				self._tier_points_total:set_font_size(font_size)
@@ -521,12 +520,10 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/skilltreeguinew" then
 				self._tier_points_total_curr:set_alpha(0.9)
 				self._tier_points_total_zero:set_alpha(0.6)
 			end
-		end
 		return val
 	end
 	function NewSkillTreeTierItem:refresh_points(selected, ...)
 		orig_newskilltreetieritem_refresh_points(self, selected, ...)
-		if VHUDPlus:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
 			if alive(self._tier_points_total) and alive(self._tier_points_total_zero) and alive(self._tier_points_total_curr) then
 				self._tier_points_total:set_y(self._text_space or 10)
 				self._tier_points_total_zero:set_y(self._text_space or 10)
@@ -536,11 +533,9 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/skilltreeguinew" then
 				self._tier_points:set_visible(not self._tier_points_needed:visible())
 				self._tier_points_0:set_visible(not self._tier_points_needed:visible())
 			end
-		end
 	end
 	function NewSkillTreeTierItem:_refresh_tier_text(selected, ...)
 		orig_newskilltreetieritem_refresh_tier_text(self, selected, ...)
-		if VHUDPlus:getSetting({"INVENTORY", "SHOW_SKILL_NAMES"}, true) then
 			if selected and alive(self._tier_points_needed) and alive(self._tier_points_needed_curr) and alive(self._tier_points_needed_zero) then
 				self._tier_points_needed_zero:set_left(self._tier_points_0:left())
 				self._tier_points_needed_curr:set_left(self._tier_points_needed_zero:right())
@@ -550,7 +545,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/skilltreeguinew" then
 				self._tier_points:set_visible(not self._tier_points_needed:visible())
 				self._tier_points_0:set_visible(not self._tier_points_needed:visible())
 			end
-		end
 	end
 elseif string.lower(RequiredScript) == "lib/tweak_data/tweakdata" then
 	if tweak_data then
