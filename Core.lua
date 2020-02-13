@@ -116,6 +116,7 @@ if not _G.VHUDPlus then
 		["lib/managers/menu/preplanningmapgui"]						= { "PrePlanManager.lua" },
 		["lib/managers/hud/hudhitconfirm"] 							= { "Scripts.lua" },
 		["lib/units/contourext"] 							        = { "Scripts.lua" },
+		["lib/managers/menu/items/contractbrokerheistitem"]			= { "MenuTweaks.lua" },
 
 		--Utils and custom classes...
 		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },
@@ -617,6 +618,11 @@ if not _G.VHUDPlus then
 					masks 								= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
 					melee_weapons 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
 				},
+				SHOW_HEAT 								= true,
+				crnt_colorize							= true,
+				crnt_align								= true,
+				crnt_size								= 0.7,
+				crnt_sort								= true,
 			},
 			SkipIt = {
 				SKIP_BLACKSCREEN 						= true,		--Skip the blackscreen on mission start

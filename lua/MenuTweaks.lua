@@ -603,10 +603,83 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 		return check_job_pressed(self, ...)
 	end
 
-	local _get_job_location_orig = CrimeNetGui._get_job_location
-	function CrimeNetGui:_get_job_location(data, ...)
-		-- Assign job pos per difficulty?
-		return _get_job_location_orig(self, data, ...)
+	local _create_locations_original = CrimeNetGui._create_locations
+	local _get_job_location_original = CrimeNetGui._get_job_location
+	local _create_job_gui_original = CrimeNetGui._create_job_gui
+	local colorizeCrNt = VHUDPlus:getSetting({"INVENTORY", "crnt_colorize"}, true)
+	
+	function CrimeNetGui:_create_locations()
+		_create_locations_original(self)
+		if VHUDPlus:getSetting({"INVENTORY", "crnt_align"}, true) then
+			local newDots = {}
+			local xx,yy = 12,10
+			for i=1,xx do -- 224~1666 1442
+				for j=1,yy do -- 165~945 780
+					--local newX = 150+ 1642*i/xx
+					--local newY = 150+ 680*(i % 2 == 0 and j or j - 0.5)/yy
+					local newX = 180+ 1642*i/xx
+					local newY = 180+ 680*(i % 2 == 0 and j or j - 0.5)/yy
+					if  (i >= 3) or ( j < 7 ) then
+						-- avoiding fixed points
+						table.insert(newDots,{ newX, newY })
+					end
+				end
+			end
+			self._locations[1][1].dots = newDots
+		end
+	end
+		
+		cl = {
+	LavenderBlush = Color(1,16/17,49/51), PaleGoldenrod = Color(14/15,232/255,2/3), PaleGreen = Color(152/255,251/255,152/255), Red = Color(1,0,0), Tomato = Color(1,33/85,71/255), Wheat = Color(49/51,74/85,179/255),
+	White = Color(1,1,1)
+	}
+		
+	function CrimeNetGui:_create_job_gui(data, type, fixed_x, fixed_y, fixed_location)
+		local sizeMulCrNt = VHUDPlus:getSetting({"INVENTORY", "crnt_size"}, 0.7)
+		
+		local size = tweak_data.menu.pd2_small_font_size
+		tweak_data.menu.pd2_small_font_size = size * sizeMulCrNt
+		local result = _create_job_gui_original(self, data, type, fixed_x, fixed_y, fixed_location)
+		tweak_data.menu.pd2_small_font_size = size
+		if colorizeCrNt and result.side_panel and result.side_panel:child('job_name') then
+			local colors = {cl.Red,cl.PaleGreen,cl.PaleGoldenrod,cl.LavenderBlush,cl.Wheat,cl.Tomato}
+			result.side_panel:child('job_name'):set_color(colors[data.difficulty_id] or cl.White)
+		end
+		if colorizeCrNt and result.heat_glow then
+			result.heat_glow:set_alpha(result.heat_glow:alpha()*0.5)
+		end
+		return result
+	end
+
+	function CrimeNetGui:_get_job_location(data)
+		if VHUDPlus:getSetting({"INVENTORY", "crnt_sort"}, true) then
+			_get_job_location_original(self, data)
+			local diff = (data and data.difficulty_id or 2) - 2
+			local diffX = 236 + ( 1700 / 7 ) * diff
+			local locations = self:_get_contact_locations()
+			local sorted = {}
+				for k,dot in pairs(locations[1].dots) do
+				if not dot[3] then
+					table.insert(sorted,dot)
+				end
+			end
+			if #sorted > 0 then
+				local abs = math.abs
+				table.sort(sorted,function(a,b)
+					return abs(diffX-a[1]) < abs(diffX-b[1])
+				end)
+				local dot = sorted[1]
+				local x,y = dot[1],dot[2]
+				local tw = math.max(self._map_panel:child("map"):texture_width(), 1)
+				local th = math.max(self._map_panel:child("map"):texture_height(), 1)
+				x = math.round(x / tw * self._map_size_w)
+				y = math.round(y / th * self._map_size_h)
+
+				return x,y,dot
+			end
+		else
+			return _get_job_location_original(self, data)
+		end
 	end
 elseif string.lower(RequiredScript) == "core/lib/managers/menu/items/coremenuitemslider" then
 	core:module("CoreMenuItemSlider")
@@ -910,7 +983,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menumanagerdialogs" then
 			local result = update_person_joining_original(self, id, progress_percentage, ...)
 			local time_left = (t / progress_percentage) * (100 - progress_percentage)
 			local dialog = managers.system_menu:get_dialog("user_dropin" .. id)
-			if dialog and time_left and VHUDPlus:getSetting({"CustomHUD", "ENABLE_TIME_LEFT"}, true) then
+			if dialog and time_left and VHUDPlus:getSetting({"MISCHUD", "ENABLE_TIME_LEFT"}, true) then
 				dialog:set_text(managers.localization:text("dialog_wait") .. string.format(" %d%% (%0.2fs)", progress_percentage, time_left))
 			end
 		end
@@ -977,4 +1050,51 @@ elseif string.lower(RequiredScript) == "lib/managers/menumanagerdialogs" then
 		]]
 		close_person_joining_original(self, id, ...)
 	end
+elseif string.lower(RequiredScript) == "lib/managers/menu/items/contractbrokerheistitem" then
+	local init_original = ContractBrokerHeistItem.init
+	function ContractBrokerHeistItem:init(...) -- parent_panel, job_data, idx
+
+		init_original(self, ...)
+
+		local heat_text, heat_color = self:get_job_heat_text(self._job_data.job_id)
+		local show_heat = VHUDPlus:getSetting({"INVENTORY", "SHOW_HEAT"}, true)
+
+		local heat = self._panel:text({
+			alpha = 1,
+			vertical = "top",
+			layer = 1,
+			align = "right",
+			halign = "right",
+			valign = "top",
+			text = heat_text,
+			font = tweak_data.menu.pd2_large_font,
+			font_size = tweak_data.menu.pd2_medium_font_size * 1,
+			color = heat_color
+		})
+		self:make_fine_text(heat)
+		heat:set_right(self._panel:right() - 10)
+		heat:set_top(10)
+		heat:set_visible(show_heat)
+	end
+
+	function ContractBrokerHeistItem:make_fine_text(text)
+		local x, y, w, h = text:text_rect()
+
+		text:set_size(w, h)
+		text:set_position(math.round(text:x()), math.round(text:y()))
+	end
+
+	function ContractBrokerHeistItem:get_job_heat_text(job_id)
+		local heat_text = ""
+		local heat_color = Color(1,0,1)
+		local multiplier = managers.job:get_job_heat(job_id)
+		local exp_multi  = managers.job:heat_to_experience_multiplier(multiplier)*20-20
+
+		if exp_multi ~= 0 then
+			heat_text = (exp_multi>0 and ("+"):rep(math.ceil(exp_multi)) or ("-"):rep(-math.floor(exp_multi)))
+			heat_color = (exp_multi > 0 and Color.yellow) or Color('E55858')
+		end
+
+		return heat_text, heat_color
+	end 
 end
