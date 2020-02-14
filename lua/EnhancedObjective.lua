@@ -10,8 +10,8 @@ elseif string.lower(RequiredScript) == "core/lib/managers/subtitle/coresubtitlep
 	core:module("CoreSubtitlePresenter")
 	function OverlayPresenter:show_text(text, duration)
 		self.__font_name = "fonts/font_medium_mf"
-		self._text_scale = _G.VHUDPlus:getSetting({"CustomHUD", "SCALE"}, 1)
-		local text_shadow = _G.VHUDPlus:getSetting({"CustomHUD", "SUB"}, true)
+		self._text_scale = _G.VHUDPlus:getSetting({"MISCHUD", "SCALE"}, 1)
+		local text_shadow = _G.VHUDPlus:getSetting({"MISCHUD", "SUB"}, true)
 		local label = self.__subtitle_panel:child("label") or self.__subtitle_panel:text({
 			name = "label",
 			font = self.__font_name,
