@@ -191,7 +191,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 
 					    if needs_revive and managers.player:has_disabled_cooldown_upgrade("cooldown", "long_dis_revive") then
                             local remaining_cooldown = managers.player:get_disabled_cooldown_time("cooldown", "long_dis_revive")
-						    if remaining_cooldown > 0 and VHUDPlus:getSetting({"CustomHUD", "INSPIRE_HINT"}, true)then
+						    if remaining_cooldown > 0 and VHUDPlus:getSetting({"MISCHUD", "INSPIRE_HINT"}, true)then
 							    remaining_cooldown = remaining_cooldown - Application:time()
 							    managers.hud:show_hint({ text = string.format(managers.localization:to_upper_text("wolfhud_inspire_hint_text"), remaining_cooldown) })						
 						    end				
