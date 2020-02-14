@@ -225,6 +225,8 @@ if not _G.VHUDPlus then
 					},
 				},
 				USE_REAL_AMMO 						= true,
+			},
+			MISCHUD = {
 				ENABLE_IFBG							= false,
 				ENABLE_TIME_LEFT                    = true,
 				MASK_INSTRUCT                       = true,				
@@ -232,7 +234,7 @@ if not _G.VHUDPlus then
 				JOKER_CONTOUR                       = true,
 				INSPIRE_HINT                        = false,				
                 SCALE                               = 1,
-                SUB				                    = false,				
+                SUB				                    = false,			
 			},
 			HUDChat = {
 				ENABLED									= true,
