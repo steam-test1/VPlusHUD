@@ -57,7 +57,7 @@ elseif string.lower(RequiredScript) == "core/lib/managers/subtitle/coresubtitlep
 	end
 
 	function OverlayPresenter:apply_bottom_offset()
-		if self.__subtitle_panel and self._bottom_off then
+		if self.__subtitle_panel and self._bottom_off and _G.VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "show_buffs"}, true) then
 			self.__subtitle_panel:set_height(self._bottom_off or self.__subtitle_panel:h())
 			local label = self.__subtitle_panel:child("label")
 			if label then
