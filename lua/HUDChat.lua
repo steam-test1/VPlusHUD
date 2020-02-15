@@ -487,11 +487,13 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 			    local clipboard = Application:get_clipboard() or ""
 			    text:replace_text(clipboard)
 			    local lbs = text:line_breaks()
-			    if #lbs > 1 then
-				    local s = lbs[2]
-				    local e = utf8.len(text:text())
-				    text:set_selection(s, e)
-				    text:replace_text("")
+			    if #lbs <= HUDChat.MAX_INPUT_LINES then
+			        self:_set_input_lines(#lbs)
+			    else					
+			        local s = lbs[HUDChat.MAX_INPUT_LINES + 1]
+			        local e = utf8.len(text:text())
+			        text:set_selection(s, e)
+			        text:replace_text("")
 			    end					
 			elseif self._key_pressed == Idstring("left") then
 				if s < e then
