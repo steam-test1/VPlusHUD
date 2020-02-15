@@ -1088,7 +1088,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/items/contractbrokerhe
 		local heat_text = ""
 		local heat_color = Color(1,0,1)
 		local multiplier = managers.job:get_job_heat(job_id)
-		local exp_multi  = managers.job:heat_to_experience_multiplier(multiplier)*20-20
+		local exp_multi  = managers.job:heat_to_experience_multiplier(multiplier)*8-8
 
 		if exp_multi ~= 0 then
 			heat_text = (exp_multi>0 and ("+"):rep(math.ceil(exp_multi)) or ("-"):rep(-math.floor(exp_multi)))
