@@ -1091,8 +1091,8 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/items/contractbrokerhe
 		local exp_multi  = managers.job:heat_to_experience_multiplier(multiplier)*20-20
 
 		if exp_multi ~= 0 then
-			heat_text = (exp_multi>0 and ("+"):rep(math.ceil(exp_multi)) or ("-"):rep(-math.floor(exp_multi)))
-			heat_color = (exp_multi > 0 and Color.yellow) or Color('E55858')
+			heat_text = ("-"):rep(-math.floor(exp_multi))
+			heat_color = Color('E55858')
 		end
 
 		return heat_text, heat_color
