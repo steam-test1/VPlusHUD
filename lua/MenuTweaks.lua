@@ -602,12 +602,21 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 
 		return check_job_pressed(self, ...)
 	end
+	CrimeNetGui.DIFF_COLORS = {
+		Color(0/6, 6/6, 0),	-- normal
+		Color(1/6, 5/6, 0),	-- hard
+		Color(2/6, 4/6, 0),	-- very hard
+		Color(3/6, 3/6, 0),	-- overkill
+		Color(4/6, 2/6, 0),	-- mayhem
+		Color(5/6, 1/6, 0),	-- death wish
+		Color(6/6, 0/6, 0),	-- death sentence
+	}
 
 	local _create_locations_original = CrimeNetGui._create_locations
 	local _get_job_location_original = CrimeNetGui._get_job_location
 	local _create_job_gui_original = CrimeNetGui._create_job_gui
 	local colorizeCrNt = VHUDPlus:getSetting({"INVENTORY", "crnt_colorize"}, true)
-	
+
 	function CrimeNetGui:_create_locations()
 		_create_locations_original(self)
 		if VHUDPlus:getSetting({"INVENTORY", "crnt_align"}, true) then
@@ -628,22 +637,26 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 			self._locations[1][1].dots = newDots
 		end
 	end
-		
+
 		cl = {
 	LavenderBlush = Color(1,16/17,49/51), PaleGoldenrod = Color(14/15,232/255,2/3), PaleGreen = Color(152/255,251/255,152/255), Red = Color(1,0,0), Tomato = Color(1,33/85,71/255), Wheat = Color(49/51,74/85,179/255),
 	White = Color(1,1,1)
 	}
-		
+
 	function CrimeNetGui:_create_job_gui(data, type, fixed_x, fixed_y, fixed_location)
 		local sizeMulCrNt = VHUDPlus:getSetting({"INVENTORY", "crnt_size"}, 0.7)
-		
+
 		local size = tweak_data.menu.pd2_small_font_size
 		tweak_data.menu.pd2_small_font_size = size * sizeMulCrNt
 		local result = _create_job_gui_original(self, data, type, fixed_x, fixed_y, fixed_location)
 		tweak_data.menu.pd2_small_font_size = size
-		if colorizeCrNt and result.side_panel and result.side_panel:child('job_name') then
-			local colors = {cl.Red,cl.PaleGreen,cl.PaleGoldenrod,cl.LavenderBlush,cl.Wheat,cl.Tomato}
-			result.side_panel:child('job_name'):set_color(colors[data.difficulty_id] or cl.White)
+		if colorizeCrNt and result.side_panel and result.side_panel:child('job_name') and not data.mutators and not data.is_crime_spree and type ~= "crime_spree" then
+			-- local colors = {cl.Red,cl.PaleGreen,cl.PaleGoldenrod,cl.LavenderBlush,cl.Wheat,cl.Tomato}
+			result.side_panel:child('job_name'):set_color(CrimeNetGui.DIFF_COLORS[(data.difficulty_id or 2) - 1] or Color.white)
+		end
+		if colorizeCrNt then
+			local map = self._map_panel:child("map")
+			map:set_color(Color( 171 / 255, 181 / 255, 130 / 255 ))
 		end
 		if colorizeCrNt and result.heat_glow then
 			result.heat_glow:set_alpha(result.heat_glow:alpha()*0.5)
@@ -651,8 +664,17 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 		return result
 	end
 
+	local _create_polylines_original = CrimeNetGui._create_polylines
+	function CrimeNetGui:_create_polylines()
+		if colorizeCrNt then
+			self._region_locations = {} -- used by _set_zoom()
+		else
+			_create_polylines_original(self)
+		end
+	end
+
 	function CrimeNetGui:_get_job_location(data)
-		if VHUDPlus:getSetting({"INVENTORY", "crnt_sort"}, true) then
+		if VHUDPlus:getSetting({"INVENTORY", "crnt_align"}, true) then
 			_get_job_location_original(self, data)
 			local diff = (data and data.difficulty_id or 2) - 2
 			local diffX = 236 + ( 1700 / 7 ) * diff
