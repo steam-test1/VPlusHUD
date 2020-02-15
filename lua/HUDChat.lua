@@ -370,7 +370,7 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 		end
 
 		self._total_message_lines = self._total_message_lines + no_lines
-		table.insert(self._messages, { panel = msg_panel, name = name, lines = no_lines })
+		table.insert(self._messages, { panel = msg_panel, name = name, message = message, lines = no_lines })
 
 		self:_layout_output_panel()
 		if not self._focus then
@@ -618,6 +618,15 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 			if scroll_bar_position:inside(x, y) then
 				self._mouse_state = y
 			end
+		elseif button == Idstring("1") then
+			for i = #self._messages, 1, -1 do
+				local panel = self._messages[i].panel
+				if panel:inside(x, y) then
+					local line = self._messages[i].message
+					Application:set_clipboard(line)
+					managers.hud:show_hint({text = managers.localization:text("wolfhud_chat_clipboard"), time = 1})
+				end
+			end				
 		end
 	end
 
