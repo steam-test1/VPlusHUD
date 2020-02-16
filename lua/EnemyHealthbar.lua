@@ -1,5 +1,3 @@
-if VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED_ALT"}, true) then return end
-
 if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 
 local _setup_player_info_hud_pd2_original = HUDManager._setup_player_info_hud_pd2
@@ -17,7 +15,7 @@ end
 
 function HUDManager:set_enemy_health_visible(visible)
 	if self._enemy_target then
-		self._enemy_target:set_visible(visible)
+		self._enemy_target:set_visible(visible and not VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED_ALT"}, true))
 	end
 end
 
