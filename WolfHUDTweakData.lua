@@ -83,7 +83,7 @@ function WolfHUDTweakData:init()
 									}
 	self.BRIEFING_LOADOUT_LAYOUT = 	{
 										{ "perk", "playtime" },
-										{ "skills" },	
+										{ "skills" },
 										{ "primary" },
 										{ "secondary" },
 										{ "melee_weapon", "grenade" },
