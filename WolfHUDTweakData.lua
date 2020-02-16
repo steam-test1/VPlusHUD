@@ -82,9 +82,8 @@ function WolfHUDTweakData:init()
 										{ "deployable", "secondary_deployable" }
 									}
 	self.BRIEFING_LOADOUT_LAYOUT = 	{
-										{ "perk" },
-										{ "skills" },
-										{ "playtime" },		
+										{ "perk", "playtime" },
+										{ "skills" },	
 										{ "primary" },
 										{ "secondary" },
 										{ "melee_weapon", "grenade" },
