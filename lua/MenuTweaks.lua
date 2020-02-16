@@ -927,6 +927,33 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/renderers/menunodeskil
 			end
 		end
 	end
+	
+    local item1=nil
+    local mouse_pressed=MenuNodeSkillSwitchGui.mouse_pressed
+    function MenuNodeSkillSwitchGui:mouse_pressed(...)
+	    item1=self._highlighted_item
+	    mouse_pressed(self, ...)
+	end
+
+    local mouse_released=MenuNodeSkillSwitchGui.mouse_released
+    function MenuNodeSkillSwitchGui:mouse_released(...)
+	    local item2=self._highlighted_item
+	    if item1 and item2 and item1~=item2 then
+		local x, y=
+			tonumber(item1:parameter("name")),
+			tonumber(item2:parameter("name"))
+		    if x and y and x~=y then
+			    item1._parameters.text_id, item2._parameters.text_id=
+			    item2._parameters.text_id, item1._parameters.text_id
+			    self:reload_item(item1)
+			    self:reload_item(item2)
+			    local sets=Global.skilltree_manager.skill_switches
+			    sets[x], sets[y]=sets[y], sets[x]
+			end
+		end
+	    item1=nil
+	mouse_released(self, ...)
+	end	
 elseif string.lower(RequiredScript) == "lib/managers/chatmanager" then
 	if not VHUDPlus:getSetting({"HUDChat", "SPAM_FILTER"}, true) then return end
 	ChatManager._SUB_TABLE = {
