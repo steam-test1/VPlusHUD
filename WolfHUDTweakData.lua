@@ -84,6 +84,7 @@ function WolfHUDTweakData:init()
 	self.BRIEFING_LOADOUT_LAYOUT = 	{
 										{ "perk" },
 										{ "skills" },
+										{ "playtime" },		
 										{ "primary" },
 										{ "secondary" },
 										{ "melee_weapon", "grenade" },
@@ -92,7 +93,7 @@ function WolfHUDTweakData:init()
 									}
 	self.TAB_LOADOUT_LAYOUT = 		{
 										{ "name", "ping" },
-										{ "skills", "perk" },
+										{ "skills", "perk", "playtime" },
 									}
 
 	-- Color table
