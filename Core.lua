@@ -620,12 +620,12 @@ if not _G.VHUDPlus then
 					masks 								= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
 					melee_weapons 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
 				},
-				SHOW_HEAT 								= true,
-				SHOW_REDUCTION                          = true,				
-				crnt_colorize							= true,
-				crnt_align								= true,
-				crnt_size								= 0.7,
-				crnt_sort								= true,
+				SHOW_HEAT 								= false,
+				SHOW_REDUCTION                          = false,				
+				crnt_colorize							= false,
+				crnt_align								= false,
+				crnt_size								= 1,
+				crnt_sort								= false,
 			},
 			SkipIt = {
 				SKIP_BLACKSCREEN 						= true,		--Skip the blackscreen on mission start
