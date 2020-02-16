@@ -638,11 +638,6 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 		end
 	end
 
-		cl = {
-	LavenderBlush = Color(1,16/17,49/51), PaleGoldenrod = Color(14/15,232/255,2/3), PaleGreen = Color(152/255,251/255,152/255), Red = Color(1,0,0), Tomato = Color(1,33/85,71/255), Wheat = Color(49/51,74/85,179/255),
-	White = Color(1,1,1)
-	}
-
 	function CrimeNetGui:_create_job_gui(data, type, fixed_x, fixed_y, fixed_location)
 		local sizeMulCrNt = VHUDPlus:getSetting({"INVENTORY", "crnt_size"}, 0.7)
 
@@ -651,7 +646,6 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 		local result = _create_job_gui_original(self, data, type, fixed_x, fixed_y, fixed_location)
 		tweak_data.menu.pd2_small_font_size = size
 		if colorizeCrNt and result.side_panel and result.side_panel:child('job_name') and not data.mutators and not data.is_crime_spree and type ~= "crime_spree" then
-			-- local colors = {cl.Red,cl.PaleGreen,cl.PaleGoldenrod,cl.LavenderBlush,cl.Wheat,cl.Tomato}
 			result.side_panel:child('job_name'):set_color(CrimeNetGui.DIFF_COLORS[(data.difficulty_id or 2) - 1] or Color.white)
 		end
 		if colorizeCrNt then
@@ -701,6 +695,20 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 			end
 		else
 			return _get_job_location_original(self, data)
+		end
+	end
+	
+	local update_server_job_original = CrimeNetGui.update_server_job
+	function CrimeNetGui:update_server_job(data, i, ...)
+		update_server_job_original(self, data, i, ...)
+
+		-- get job data
+		local job_index = data.id or i
+		local job = self._jobs[job_index]
+
+		-- colorize by difficulty
+		if job.side_panel and colorizeCrNt and not data.mutators and not data.is_crime_spree then
+			job.side_panel:child("job_name"):set_color(CrimeNetGui.DIFF_COLORS[(data.difficulty_id or 2) - 1] or Color.white)
 		end
 	end
 elseif string.lower(RequiredScript) == "core/lib/managers/menu/items/coremenuitemslider" then

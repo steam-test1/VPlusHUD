@@ -1092,9 +1092,11 @@
 	"wolfhud_crnt_size_title" : "CrimeNet Scale",
 	"wolfhud_crnt_size_desc" : "Resize Crimenet font size",
 	"wolfhud_crnt_sort_title" : "Sort CrimeNet",
-	"wolfhud_crnt_sort_desc" : "Sort Crimenet contracts by difficulty",
-	"wolfhud_crnt_align_title" : "Align and Sort CrimeNet",
-	"wolfhud_crnt_align_desc" : "Align crimenet contracts to into a grid and by difficulty",
+	"wolfhud_crnt_sort_desc" : "Sort Crimenet contracts by difficulty\nNote: requires Align Crimenet to work as expected",
+	"wolfhud_crnt_align_title" : "Align CrimeNet",
+	"wolfhud_crnt_align_desc" : "Align crimenet contracts to into a grid",
 	"wolfhud_crnt_colorize_title" : "Colorize CrimeNet",
-	"wolfhud_crnt_colorize_desc" : "Color-code Crimenet contracts by difficulty and tone down heat bonus glow"
+	"wolfhud_crnt_colorize_desc" : "Color-code Crimenet contracts by difficulty and tone down heat bonus glow",
+	"wolfhud_show_reduction_title" : "Show Experience Reduction",
+	"wolfhud_show_reduction_desc" : "Shows experience reduction icons in the contract broker"
 }
