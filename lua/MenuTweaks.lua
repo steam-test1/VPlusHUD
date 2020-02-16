@@ -674,7 +674,7 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 	end
 
 	function CrimeNetGui:_get_job_location(data)
-		if VHUDPlus:getSetting({"INVENTORY", "crnt_align"}, true) then
+		if VHUDPlus:getSetting({"INVENTORY", "crnt_align"}, true) or VHUDPlus:getSetting({"INVENTORY", "crnt_sort"}, true) then
 			_get_job_location_original(self, data)
 			local diff = (data and data.difficulty_id or 2) - 2
 			local diffX = 236 + ( 1700 / 7 ) * diff
