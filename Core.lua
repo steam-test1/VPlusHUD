@@ -4,7 +4,7 @@ if not _G.VHUDPlus then
 	VHUDPlus.save_path = SavePath
 	VHUDPlus.settings_path = VHUDPlus.save_path .. "VanillaHUD.json"
 	VHUDPlus.tweak_file = "WolfHUDTweakData.lua"
-	VHUDPlus.identifier = string.match(VHUDPlus.mod_path, "(%w+)[\\/]$") or "VanillaHUD Plus"
+	VHUDPlus.identifier = string.match(VHUDPlus.mod_path, "[\\/]([%w_-]+)[\\/]$") or "VanillaHUD Plus"
 
 	VHUDPlus.settings = {}
 	VHUDPlus.tweak_data = {}
