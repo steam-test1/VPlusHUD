@@ -4102,6 +4102,13 @@ if VHUDPlus then
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
+						type = "toggle",
+						name_id = "wolfhud_show_reduction_title",
+						desc_id = "wolfhud_show_reduction_desc",
+						value = {"INVENTORY", "SHOW_REDUCTION"},
+						visible_reqs = {}, enabled_reqs = {},						
+					},
+					{
 						type = "slider",
 						name_id = "wolfhud_crnt_size_title",
 						desc_id = "wolfhud_crnt_size_desc",
