@@ -1079,7 +1079,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/items/contractbrokerhe
 		init_original(self, ...)
 
 		local heat_text, heat_color = self:get_job_heat_text(self._job_data.job_id)
-		local show_heat = VHUDPlus:getSetting({"INVENTORY", "SHOW_HEAT"}, true)
 
 		local heat = self._panel:text({
 			alpha = 1,
@@ -1096,7 +1095,6 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/items/contractbrokerhe
 		self:make_fine_text(heat)
 		heat:set_right(self._panel:right() - 10)
 		heat:set_top(10)
-		heat:set_visible(show_heat)
 	end
 
 	function ContractBrokerHeistItem:make_fine_text(text)
@@ -1113,7 +1111,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/items/contractbrokerhe
 		local exp_multi  = managers.job:heat_to_experience_multiplier(multiplier)*8-8
 
 		if exp_multi ~= 0 then
-			heat_text = (exp_multi>0 and ("+"):rep(math.ceil(exp_multi)) or ("-"):rep(-math.floor(exp_multi)))
+			heat_text = (VHUDPlus:getSetting({"INVENTORY", "SHOW_HEAT"}, true) and exp_multi>0 and ("+"):rep(math.ceil(exp_multi)) or VHUDPlus:getSetting({"INVENTORY", "SHOW_REDUCTION"}, true) and ("-"):rep(-math.floor(exp_multi)))
 			heat_color = (exp_multi > 0 and Color.yellow) or Color('E55858')
 		end
 
