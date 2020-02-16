@@ -82,7 +82,7 @@ function WolfHUDTweakData:init()
 										{ "deployable", "secondary_deployable" }
 									}
 	self.BRIEFING_LOADOUT_LAYOUT = 	{
-										{ "perk" },
+										{ "perk", "playtime" },
 										{ "skills" },
 										{ "primary" },
 										{ "secondary" },
@@ -92,7 +92,7 @@ function WolfHUDTweakData:init()
 									}
 	self.TAB_LOADOUT_LAYOUT = 		{
 										{ "name", "ping" },
-										{ "skills", "perk" },
+										{ "skills", "perk", "playtime" },
 									}
 
 	-- Color table
