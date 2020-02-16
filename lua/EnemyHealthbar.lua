@@ -507,13 +507,13 @@ function PlayerStandard:_update_fwd_ray()
 					if not unit:character_damage():needs_repair() then
 						shield = true
 						managers.hud:set_enemy_health({
-							current = (unit:character_damage()._shield_health or 0) * (show_multiplied_enemy_health and 10 or 1),
-							total = (unit:character_damage()._SHIELD_HEALTH_INIT or 0) * (show_multiplied_enemy_health and 10 or 1)
+							current = (unit:character_damage()._shield_health or 0) * (show_multiplied_enemy_health and 1),
+							total = (unit:character_damage()._SHIELD_HEALTH_INIT or 0) * (show_multiplied_enemy_health and 1)
 						})
 					else
 						managers.hud:set_enemy_health({
-							current = (unit:character_damage()._health or 0) * (show_multiplied_enemy_health and 10 or 1),
-							total = (unit:character_damage()._HEALTH_INIT or 0) * (show_multiplied_enemy_health and 10 or 1)
+							current = (unit:character_damage()._health or 0) * (show_multiplied_enemy_health and 1),
+							total = (unit:character_damage()._HEALTH_INIT or 0) * (show_multiplied_enemy_health and 1)
 						})
 					end
 				elseif alive( unit ) and ( unit:in_slot( 12 ) or ( unit:in_slot( 21 ) or unit:in_slot( 22 ) ) or unit:in_slot( 16 ) and Network:is_server()) and not unit:character_damage():dead() then
