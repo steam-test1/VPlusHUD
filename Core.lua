@@ -621,6 +621,7 @@ if not _G.VHUDPlus then
 					melee_weapons 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
 				},
 				SHOW_HEAT 								= true,
+				SHOW_REDUCTION                          = true,				
 				crnt_colorize							= true,
 				crnt_align								= true,
 				crnt_size								= 0.7,
