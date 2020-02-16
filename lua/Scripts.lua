@@ -76,7 +76,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	local previous_value = 0
 
 	Hooks:PostHook( HUDManager , "update" , "HUDManagerUpdateBangFix" , function( self, t, dt, ... )
-		if VHUDPlus:getSetting({"CustomHUD", "ENABLE_IFBG"}, true) then
+		if VHUDPlus:getSetting({"MISCHUD", "ENABLE_IFBG"}, true) then
 			local managers = _G.managers
 			if managers.environment_controller == nil then
 				return
@@ -159,7 +159,7 @@ elseif string.lower(RequiredScript) == "core/lib/managers/coreenvironmentcontrol
 
 	local set_post_composite_actual = CoreEnvironmentControllerManager.set_post_composite
 	function CoreEnvironmentControllerManager:set_post_composite(t, dt)
-		if VHUDPlus:getSetting({"CustomHUD", "ENABLE_IFBG"}, true) then
+		if VHUDPlus:getSetting({"MISCHUD", "ENABLE_IFBG"}, true) then
 			local vp = managers.viewport:first_active_viewport()
 			if not vp then
 				return
@@ -301,7 +301,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudhitconfirm" then
 		self._headshot_confirm:set_center(self._hud_panel:w() / 2, self._hud_panel:h() / 2)
 	end
 	function HUDHitConfirm:on_headshot_confirmed()
-	if VHUDPlus:getSetting({"CustomHUD", "HEADSHOT"}, true) then
+	if VHUDPlus:getSetting({"MISCHUD", "HEADSHOT"}, true) then
 		self._headshot_confirm:stop()
 		self._headshot_confirm:animate(callback(self, self, "_animate_show"), callback(self, self, "show_done"), 0.25)
 	end
@@ -375,7 +375,7 @@ elseif string.lower(RequiredScript) == "lib/units/weapons/raycastweaponbase" the
     end
 elseif string.lower(RequiredScript) == "lib/units/contourext" then
 	local add_original = ContourExt.add
-    if VHUDPlus:getSetting({"CustomHUD", "JOKER_CONTOUR"}, true) then
+    if VHUDPlus:getSetting({"MISCHUD", "JOKER_CONTOUR"}, true) then
 	    function ContourExt:add(type, ...)
 		    local result = add_original(self, type, ...)
 		    local default_friendly_color = ContourExt._types.friendly.color
