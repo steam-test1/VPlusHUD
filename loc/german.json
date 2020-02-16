@@ -1109,5 +1109,7 @@
 	"wolfhud_crnt_colorize_title" : "Colorize CrimeNet",
 	"wolfhud_crnt_colorize_desc" : "Color-code Crimenet contracts by difficulty and tone down heat bonus glow",
 	"wolfhud_show_reduction_title" : "Show Experience Reduction",
-	"wolfhud_show_reduction_desc" : "Shows experience reduction icons in the contract broker"
+	"wolfhud_show_reduction_desc" : "Shows experience reduction icons in the contract broker",
+	"wolfhud_waypoints_color_enable_title" : "Allow Waypoint Coloring",
+	"wolfhud_waypoints_color_enable_desc" : "Allows Wolfhud to control mission waypoint colors"
 }

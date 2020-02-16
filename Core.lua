@@ -487,6 +487,7 @@ if not _G.VHUDPlus then
 				},
 			},
 			CustomWaypoints = {
+				WAYPOINTS_COLOR_ENABLE					= true,
 				WAYPOINTS_COLOR							= "white",
 				SHOW_AMMO_BAG 							= true,
 				SHOW_DOC_BAG		 					= true,
@@ -622,9 +623,9 @@ if not _G.VHUDPlus then
 				},
 				SHOW_HEAT 								= true,
 				SHOW_REDUCTION                          = true,				
-				crnt_colorize							= true,
-				crnt_align								= true,
-				crnt_size								= 0.7,
+				crnt_colorize							= false,
+				crnt_align								= false,
+				crnt_size								= 0.9,
 				crnt_sort								= true,
 			},
 			SkipIt = {
