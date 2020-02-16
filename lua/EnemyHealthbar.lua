@@ -528,8 +528,8 @@ function PlayerStandard:_update_fwd_ray()
 					self._last_unit = nil
 					visible = true
 					managers.hud:set_enemy_health({
-							current = (unit:character_damage()._health or 0) * (show_multiplied_enemy_health and 10 or 1),
-							total = (unit:character_damage()._HEALTH_INIT or 0) * (show_multiplied_enemy_health and 10 or 1)
+							current = (unit:character_damage()._health or 0) / (show_multiplied_enemy_health and 100),
+							total = (unit:character_damage()._HEALTH_INIT or 0) / (show_multiplied_enemy_health and 100)
 					})
 				else
 					visible = false
