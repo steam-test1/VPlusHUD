@@ -298,6 +298,7 @@ if not _G.VHUDPlus then
 				SHOW_PERCENTAGE_OUTLINE					= true,
 				SHOW_BARS								= true,
 				SHOW_PACIFIED_CIVILIANS					= true,
+				SHOW_PACIFIED_CIVILIANS_WOLFDEFAULT     = true,
 				SHOW_PACIFIED_CIVILIANS_ALT_ICON        = false,
 				REMOVE_ANSWERED_PAGER_CONTOUR 			= true,
 			},

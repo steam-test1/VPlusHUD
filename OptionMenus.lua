@@ -1209,15 +1209,28 @@ if VHUDPlus then
 							},
 							{
 								type = "toggle",
-								name_id = "wolfhud_pacified_civs_title",
-								desc_id = "wolfhud_pacified_civs_desc",
+								name_id = "wolfhud_wolfhud_pacified_civs_new_icons_title",
+								desc_id = "wolfhud_wolfhud_pacified_civs_new_icons_desc",
 								visible_reqs = {}, enabled_reqs = {},
 								value = {"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS"},
 							},
 							{
 								type = "toggle",
-								name_id = "wolfhud_pacified_civs_alt_icon_title",
-								desc_id = "wolfhud_pacified_civs_alt_icon_desc",
+								name_id = "wolfhud_pacified_civs_new_wolf_icon_title",
+								desc_id = "wolfhud_pacified_civs_new_wolf_icon_desc",
+								visible_reqs = {
+								    { setting = { "HUDSuspicion", "SHOW_PACIFIED_CIVILIANS" }, invert = false }
+								},
+								enabled_reqs = {
+									{ setting = { "HUDSuspicion", "SHOW_PACIFIED_CIVILIANS" }, invert = false },
+								},
+								value = {"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_WOLFDEFAULT"},
+							},
+							--[[
+							{
+								type = "toggle",
+								name_id = "wolfhud_pacified_civs_new_icon_title",
+								desc_id = "wolfhud_pacified_civs_new_icon_desc",
 								visible_reqs = {
 								    { setting = { "HUDSuspicion", "SHOW_PACIFIED_CIVILIANS" }, invert = false }
 								},
@@ -1226,6 +1239,7 @@ if VHUDPlus then
 								},
 								value = {"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"},
 							},
+							]]
 							{
 								type = "divider",
 								size = 24,
