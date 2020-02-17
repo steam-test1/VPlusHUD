@@ -117,6 +117,7 @@ if not _G.VHUDPlus then
 		["lib/managers/hud/hudhitconfirm"] 							= { "Scripts.lua" },
 		["lib/units/contourext"] 							        = { "Scripts.lua" },
 		["lib/managers/menu/items/contractbrokerheistitem"]			= { "MenuTweaks.lua" },
+		["lib/network/base/hostnetworksession"]			            = { "MenuTweaks.lua" },		
 
 		--Utils and custom classes...
 		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },

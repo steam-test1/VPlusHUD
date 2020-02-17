@@ -1080,6 +1080,15 @@ elseif string.lower(RequiredScript) == "lib/managers/menumanagerdialogs" then
 		]]
 		close_person_joining_original(self, id, ...)
 	end
+elseif string.lower(RequiredScript) == "lib/network/base/hostnetworksession" then	
+    local chk_server_joinable_state_actual = HostNetworkSession.chk_server_joinable_state
+    function HostNetworkSession:chk_server_joinable_state(...)
+	    chk_server_joinable_state_actual(self, ...)
+	    if Global.load_start_menu_lobby and MenuCallbackHandler ~= nil then
+		    MenuCallbackHandler:update_matchmake_attributes()
+		    MenuCallbackHandler:_on_host_setting_updated()
+	    end
+    end	
 elseif string.lower(RequiredScript) == "lib/managers/menu/items/contractbrokerheistitem" then
 	local init_original = ContractBrokerHeistItem.init
 	function ContractBrokerHeistItem:init(...) -- parent_panel, job_data, idx
