@@ -80,7 +80,7 @@ config.colors.curious = Color(0,0.65,1)
 -- OVERRIDES *******************************************************************
 local _upd_criminal_suspicion_progress_orig = GroupAIStateBase._upd_criminal_suspicion_progress
 function GroupAIStateBase:_upd_criminal_suspicion_progress(...)
-	if self._ai_enabled and VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"}, true) then
+	if self._ai_enabled and VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"}, true) and VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS"}, true) then
 		for obs_key, obs_susp_data in pairs(self._suspicion_hud_data or {}) do
 			local waypoint = managers.hud._hud.waypoints["susp1" .. tostring(obs_key)]
 
