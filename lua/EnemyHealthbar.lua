@@ -483,6 +483,9 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 local _update_fwd_ray_ori = PlayerStandard._update_fwd_ray
 
 function PlayerStandard:_update_fwd_ray()
+	if VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED_ALT"}, true) then
+		return _update_fwd_ray_ori(self)
+	end
 	_update_fwd_ray_ori(self)
 	if self._fwd_ray and self._fwd_ray.unit and type(self._fwd_ray.unit) == "userdata" then
 			local unit = self._fwd_ray.unit
