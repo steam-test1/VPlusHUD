@@ -113,10 +113,10 @@ function GroupAIStateBase:_upd_criminal_suspicion_progress(...)
 					    end
  				    end
 				
-				if color and arrow_color then
- 					waypoint.bitmap:set_color(color)
-					waypoint.arrow:set_color(arrow_color:with_alpha(0.75))
-				   end
+				    if color and arrow_color then
+ 					    waypoint.bitmap:set_color(color)
+					    waypoint.arrow:set_color(arrow_color:with_alpha(0.75))
+				    end
 			    end
  		    end
  	    end
