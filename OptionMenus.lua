@@ -1226,7 +1226,6 @@ if VHUDPlus then
 								},
 								value = {"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_WOLFDEFAULT"},
 							},
-							--[[
 							{
 								type = "toggle",
 								name_id = "wolfhud_pacified_civs_new_icon_title",
@@ -1239,7 +1238,6 @@ if VHUDPlus then
 								},
 								value = {"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"},
 							},
-							]]
 							{
 								type = "divider",
 								size = 24,
