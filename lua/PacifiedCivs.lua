@@ -1,7 +1,85 @@
 
- local _upd_criminal_suspicion_progress_original = GroupAIStateBase._upd_criminal_suspicion_progress
- function GroupAIStateBase:_upd_criminal_suspicion_progress(...)
- 	if self._ai_enabled and not VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"}, true) then
+-- local _upd_criminal_suspicion_progress_original = GroupAIStateBase._upd_criminal_suspicion_progress
+-- function GroupAIStateBase:_upd_criminal_suspicion_progress(...)
+-- 	if self._ai_enabled then
+-- 		for obs_key, obs_susp_data in pairs(self._suspicion_hud_data or {}) do
+-- 			local unit = obs_susp_data.u_observer
+-- 			if managers.enemy:is_civilian(unit) then
+-- 				local waypoint_id = "susp1" .. tostring(obs_key)
+-- 				local waypoint = managers.hud and managers.hud._hud.waypoints[waypoint_id]
+-- 				if waypoint then
+-- 					local color, arrow_color
+-- 					if unit:anim_data().drop and VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS"}, true) then
+-- 						if not obs_susp_data._subdued_civ then
+-- 							obs_susp_data._alerted_civ = nil
+-- 							obs_susp_data._subdued_civ = true
+-- 						if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"}, true) then	
+-- 							waypoint.bitmap:set_color(Color(0.0, 1.0, 0.0))
+-- 							waypoint.arrow:set_color(Color(0.75, 0, 0.3, 0))
+-- 						else
+-- 							color = Color(0, 0.71, 1)
+-- 							arrow_color = Color(0, 0.35, 0.5)
+-- 							waypoint.bitmap:set_image("guis/textures/menu_singletick")
+-- 					        end
+-- 						end
+-- 					elseif obs_susp_data.alerted then
+-- 						if not obs_susp_data._alerted_civ then
+-- 							obs_susp_data._subdued_civ = nil
+-- 							obs_susp_data._alerted_civ = true
+-- 							color = Color.white
+-- 							arrow_color = tweak_data.hud.detected_color
+-- 							waypoint.bitmap:set_image("guis/textures/hud_icons")
+-- 							waypoint.bitmap:set_texture_rect(479, 433, 32, 32)
+-- 						end
+-- 					end
+-- 					if color and arrow_color then
+-- 						waypoint.bitmap:set_color(color)
+-- 						waypoint.arrow:set_color(arrow_color:with_alpha(0.75))
+-- 					end
+-- 				end
+-- 			end
+-- 		end
+-- 	end
+-- 	return _upd_criminal_suspicion_progress_original(self, ...)
+-- end
+-- CONFIG **********************************************************************
+local config = {}
+
+config.icons = {}
+
+config.icons.civilian_alerted = "assets/guis/textures/civilian_alerted"
+config.icons.civilian_curious = "assets/guis/textures/civilian_curious"
+
+if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_WOLFDEFAULT"}, true) then
+	config.icons.civilian_subdued = "guis/textures/menu_singletick"
+else
+	config.icons.civilian_subdued = "assets/guis/textures/civilian_subdued"
+end
+
+config.icons.guard_alerted = "assets/guis/textures/guard_alerted"
+config.icons.guard_curious = "assets/guis/textures/guard_curious"
+
+config.icons.camera_alerted = "assets/guis/textures/camera_alerted"
+config.icons.camera_curious = "assets/guis/textures/camera_curious"
+
+config.colors = {}
+
+config.colors.called  = Color(1,0,0)
+config.colors.calling = Color(1,0,0)
+
+if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_WOLFDEFAULT"}, true) then
+	config.colors.subdued = Color(0,0.65,1)
+else
+	config.colors.subdued = Color('008000')
+end
+
+config.colors.alerted = Color(1,0.2,0)
+config.colors.curious = Color(0,0.65,1)
+
+-- OVERRIDES *******************************************************************
+local _upd_criminal_suspicion_progress_orig = GroupAIStateBase._upd_criminal_suspicion_progress
+function GroupAIStateBase:_upd_criminal_suspicion_progress(...)
+    if self._ai_enabled and not VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"}, true) then
  		for obs_key, obs_susp_data in pairs(self._suspicion_hud_data or {}) do
 			local unit = obs_susp_data.u_observer
 			if managers.enemy:is_civilian(unit) then
@@ -40,47 +118,7 @@
 				end
  			end
  		end
- 	end
- 	return _upd_criminal_suspicion_progress_original(self, ...)
- end
--- CONFIG **********************************************************************
-local config = {}
-
-config.icons = {}
-
-config.icons.civilian_alerted = "assets/guis/textures/civilian_alerted"
-config.icons.civilian_curious = "assets/guis/textures/civilian_curious"
-
-if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_WOLFDEFAULT"}, true) then
-	config.icons.civilian_subdued = "guis/textures/menu_singletick"
-else
-	config.icons.civilian_subdued = "assets/guis/textures/civilian_subdued"
-end
-
-config.icons.guard_alerted = "assets/guis/textures/guard_alerted"
-config.icons.guard_curious = "assets/guis/textures/guard_curious"
-
-config.icons.camera_alerted = "assets/guis/textures/camera_alerted"
-config.icons.camera_curious = "assets/guis/textures/camera_curious"
-
-config.colors = {}
-
-config.colors.called  = Color(1,0,0)
-config.colors.calling = Color(1,0,0)
-
-if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_WOLFDEFAULT"}, true) then
-	config.colors.subdued = Color(0,0.65,1)
-else
-	config.colors.subdued = Color('008000')
-end
-
-config.colors.alerted = Color(1,0.2,0)
-config.colors.curious = Color(0,0.65,1)
-
--- OVERRIDES *******************************************************************
-local _upd_criminal_suspicion_progress_orig = GroupAIStateBase._upd_criminal_suspicion_progress
-function GroupAIStateBase:_upd_criminal_suspicion_progress(...)
-	if self._ai_enabled and VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"}, true) and VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS"}, true) then
+	elseif self._ai_enabled and VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_ALT_ICON"}, true) and VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS"}, true) then
 		for obs_key, obs_susp_data in pairs(self._suspicion_hud_data or {}) do
 			local waypoint = managers.hud._hud.waypoints["susp1" .. tostring(obs_key)]
 
