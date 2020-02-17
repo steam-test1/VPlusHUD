@@ -91,8 +91,8 @@ function WolfHUDTweakData:init()
 										{ "deployable", "secondary_deployable" }
 									}
 	self.TAB_LOADOUT_LAYOUT = 		{
-										{ "name", "ping" },
-										{ "skills", "perk", "playtime" },
+										{ "name", "ping", "playtime" },
+										{ "skills", "perk" },
 									}
 
 	-- Color table
