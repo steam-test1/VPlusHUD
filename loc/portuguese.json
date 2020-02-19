@@ -1108,10 +1108,10 @@
 	"wolfhud_show_reduction_desc" : "Shows experience reduction icons in the contract broker",
 	"wolfhud_waypoints_color_enable_title" : "Allow Waypoint Coloring",
 	"wolfhud_waypoints_color_enable_desc" : "Allows Wolfhud to control mission waypoint colors",
-	"wolfhud_wolfhud_pacified_civs_new_icons_title" : "Show Better Suspicion Icons",
-	"wolfhud_wolfhud_pacified_civs_new_icons_desc" : "Changes default ? and ! to more informational guard / camera / civilian icons",
+	"wolfhud_wolfhud_pacified_civs_new_icons_title" : "Enable Suspicion Icons",
+	"wolfhud_wolfhud_pacified_civs_new_icons_desc" : "This option lets you tweak various suspicion icons",
 	"wolfhud_pacified_civs_new_wolf_icon_title" : "Subdued Civillian Blue Tick",
 	"wolfhud_pacified_civs_new_wolf_icon_desc" : "Changes the subdued civillian icon to a blue tick",
-	"wolfhud_pacified_civs_new_icon_title" : "New Style Icons only",
-	"wolfhud_pacified_civs_new_icon_desc" : ""
+	"wolfhud_pacified_civs_new_icon_title" : "Improved Suspicion Icons",
+	"wolfhud_pacified_civs_new_icon_desc" : "Changes default ? and ! to more informational guard / camera / civilian icons"
 }
