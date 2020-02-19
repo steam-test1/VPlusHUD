@@ -375,7 +375,7 @@ elseif string.lower(RequiredScript) == "lib/units/weapons/raycastweaponbase" the
     end
 elseif string.lower(RequiredScript) == "lib/units/contourext" then
 	local add_original = ContourExt.add
-    if VHUDPlus:getSetting({"MISCHUD", "JOKER_CONTOUR"}, true) then
+    if VHUDPlus:getSetting({"MISCHUD", "JOKER_CONTOUR"}, true) and not FadingContour then
 	    function ContourExt:add(type, ...)
 		    local result = add_original(self, type, ...)
 		    local default_friendly_color = ContourExt._types.friendly.color
