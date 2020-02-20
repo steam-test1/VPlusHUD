@@ -131,6 +131,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 				self._unit_health_panel:set_visible( false )
 			end )
 		end
+		
+		if VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED_ALT"}, true) then
+		    managers.hud:set_enemy_health_visible(false)
+		end		
 	end
 
 	function HUDManager:set_unit_health( current , total , tweak_table )
