@@ -575,4 +575,11 @@ elseif string.lower(RequiredScript) == "lib/states/ingamearrested" then
 			managers.hud:set_enemy_health_visible( false, false )
 		end
 	end )
+elseif string.lower(RequiredScript) == "lib/managers/statisticsmanager" then	
+	local in_custody_orig = StatisticsManager.in_custody
+    function StatisticsManager:in_custody(...)
+	    managers.hud:set_unit_health_visible(false)
+	    managers.hud:set_enemy_health_visible(false)
+	    return in_custody_orig(self, ...)
+    end	
 end

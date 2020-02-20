@@ -22,7 +22,7 @@ if not _G.VHUDPlus then
 		["lib/managers/crimespreemanager"]							= { "TabStats.lua" },
 		["lib/managers/hudmanager"] 								= { "EnemyHealthbar.lua", "CustomWaypoints.lua", "EnemyHealthbarAlt.lua" },
 		["lib/managers/hudmanagerpd2"] 								= {  "VanillaHUD.lua", "HUDChat.lua", "HUDList.lua", "KillCounter.lua", "DownCounter.lua", "DrivingHUD.lua", "DamageIndicator.lua", "WaypointsManager.lua", "Interaction.lua", "Scripts.lua", "BurstFire.lua", "AdvAssault.lua", "TabStats.lua" },
-		["lib/managers/statisticsmanager"] 							= { "KillCounter.lua", "TabStats.lua" },
+		["lib/managers/statisticsmanager"] 							= { "KillCounter.lua", "TabStats.lua", "EnemyHealthbar.lua" },
 		["lib/managers/playermanager"] 								= { "GameInfoManager.lua", "BurstFire.lua", "VanillaHUD.lua", "Scripts.lua" },
 		["lib/managers/preplanningmanager"] 						= { "PrePlanManager.lua" },
 		["lib/managers/hud/huddriving"] 							= { "DrivingHUD.lua" },
