@@ -1522,6 +1522,10 @@ if not _G.VHUDPlus then
 		if VHUDPlus:getSetting({"SkipIt", "SKIP_BLACKSCREEN"}, false) then
 			localized_strings["hud_skip_blackscreen"] = ""
 		end
+			
+		if LobbySettings then
+            localized_strings["menu_cn_premium_buy_fee_short"] = ""
+		end			
 
 		-- Add macro $VALUE to all interaction strings
 		for interact_id, data in pairs(tweak_data.interaction) do
