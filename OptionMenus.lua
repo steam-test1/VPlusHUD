@@ -3673,6 +3673,20 @@ if VHUDPlus then
 					},
 					{
 						type = "toggle",
+						name_id = "wolfhud_drill_icons_title",
+						desc_id = "wolfhud_drill_icons_desc",
+						value = {"INTERACTION", "DRILL_ICONS"},
+						visible_reqs = {
+						    { setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true }
+						},
+						enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 8,
+					},
+					{						
+						type = "toggle",
 						name_id = "wolfhud_press2hold_show_timer_title",
 						desc_id = "wolfhud_press2hold_show_timer_desc",
 						value = {"INTERACTION", "SHOW_TIME_REMAINING"},
