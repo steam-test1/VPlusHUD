@@ -530,6 +530,7 @@ if not _G.VHUDPlus then
 				SUPRESS_NADES_STEALTH					= true,
 				HOLD2PICK								= true,
 				CUSTOM_HUDS_SUPPORT						= false,
+				DRILL_ICONS                             = false,				
 			},
 			GADGETS = {
 				LASER_AUTO_ON 							= true,
