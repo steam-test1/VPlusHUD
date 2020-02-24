@@ -1117,5 +1117,7 @@
 	"wolfhud_pacified_civs_new_wolf_icon_title" : "Subdued Civillian Blue Tick",
 	"wolfhud_pacified_civs_new_wolf_icon_desc" : "Changes the subdued civillian icon to a blue tick",
 	"wolfhud_pacified_civs_new_icon_title" : "Improved Suspicion Icons",
-	"wolfhud_pacified_civs_new_icon_desc" : "Changes default ? and ! to more informational guard / camera / civilian icons"
+	"wolfhud_pacified_civs_new_icon_desc" : "Changes default ? and ! to more informational guard / camera / civilian icons",
+	"wolfhud_drill_icons_title" : "Show drill upgrade icons",
+	"wolfhud_drill_icons_desc" : "Display active drill skills when interacting with drills/saws"
 }
