@@ -847,6 +847,16 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			self._last_heist_time = (self._last_heist_time or 0) + time
 		end
 	end
+	
+	function HUDStatsScreen:_trade_delay_time(time)
+		time = math.max(math.floor(time), 0)
+		local minutes = math.floor(time / 60)
+		time = time - minutes * 60
+		local seconds = math.round(time)
+		local text = ""
+	
+		return text .. (minutes < 10 and "0" .. minutes or minutes) .. ":" .. (seconds < 10 and "0" .. seconds or seconds)
+	end	
 
 	function HUDStatsScreen:_update_stats_list(panel, item)
 		if not (self._use_tab_stats and panel) then return end
@@ -857,6 +867,8 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			local cleaner_costs			= (managers.money:get_civilian_deduction() or 0) * civilian_kills
 			local offshore_money 		= money_current_stage - math.round(money_current_stage * offshore_rate)
 			local spending_cash 		= money_current_stage * offshore_rate - cleaner_costs
+		    local trade_delay           = alive(managers.player:player_unit()) and managers.groupai:state():all_criminals()[managers.player:player_unit():key()] and managers.groupai:state():all_criminals()[managers.player:player_unit():key()].respawn_penalty
+			local delay                 = trade_delay and " | " ..managers.localization:text("hud_trade_delay", {TIME = tostring(self:_trade_delay_time(trade_delay))}) or ""			
 			panel:child("offshore_payout_text"):set_text(managers.experience:cash_string(offshore_money))
 			panel:child("spending_cash_text"):set_text(managers.experience:cash_string(spending_cash))
 			
@@ -868,7 +880,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 				else
 					panel:child("spending_cash_text"):set_color(tweak_data.screen_colors.heat_cold_color)
 				end
-				panel:child("cleaner_costs_text"):set_text(managers.experience:cash_string(cleaner_costs) .. " (" .. tostring(civilian_kills) .. ")")
+				panel:child("cleaner_costs_text"):set_text(tostring(civilian_kills) .. delay)
 			end
 
 			if panel:child("bag_amount_text") then
