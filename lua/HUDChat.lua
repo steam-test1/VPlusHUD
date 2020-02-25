@@ -60,6 +60,9 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 			if HUDManager.HAS_MINIMAP then
 				self._panel:move(0, -HUDMiniMap.SIZE[2])
 			end
+		elseif restoration then
+			self._panel:set_left(0)
+			self._panel:set_bottom(self._parent:h() - 200)			
 		else
 			--Default chat box position
 			self._panel:set_left(0)
