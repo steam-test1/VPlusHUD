@@ -67,16 +67,15 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 	    Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_lobby_permission" , "MenuCallbackHandlerPostSavePermission_WolfHUD" , function( self, ... )
 		    self:save_lobby_settings("permission")
 	    end)
+	    Hooks:PostHook( MenuCallbackHandler , "change_contract_difficulty" , "MenuCallbackHandlerPostSaveDifficulty_WolfHUD" , function( self, item, ... )
+		    self:save_lobby_settings("difficulty", tweak_data:index_to_difficulty(item:value()))
+	    end)
+	    Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_one_down" , "MenuCallbackHandlerPostSaveOneDownMod_WolfHUD" , function( self, item, ... )
+		    self:save_lobby_settings("one_down", item:value() == "on")
+	    end)		
 	end
 	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_auto_kick" , "MenuCallbackHandlerPostSaveAutoKick_WolfHUD" , function( self, ... )
 		self:save_lobby_settings("auto_kick")
-	end)
-	Hooks:PostHook( MenuCallbackHandler , "change_contract_difficulty" , "MenuCallbackHandlerPostSaveDifficulty_WolfHUD" , function( self, item, ... )
-		self:save_lobby_settings("difficulty", tweak_data:index_to_difficulty(item:value()))
-	end)
-
-	Hooks:PostHook( MenuCallbackHandler , "choice_crimenet_one_down" , "MenuCallbackHandlerPostSaveOneDownMod_WolfHUD" , function( self, item, ... )
-		self:save_lobby_settings("one_down", item:value() == "on")
 	end)
 
 	Hooks:PostHook( MenuCallbackHandler , "update_matchmake_attributes" , "MenuCallbackHandlerPostUpdateMatchmakeAttributes_WolfHUD" , function( self, item, ... )
