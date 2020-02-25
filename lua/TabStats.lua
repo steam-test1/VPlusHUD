@@ -20,6 +20,16 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 	local _create_mutators_list_original = HUDStatsScreen._create_mutators_list
 	local _create_tracked_list_original = HUDStatsScreen._create_tracked_list
 	local loot_value_updated_original = HUDStatsScreen.loot_value_updated
+	
+	function HUDStatsScreen:_trade_delay_time(time)
+		time = math.max(math.floor(time), 0)
+		local minutes = math.floor(time / 60)
+		time = time - minutes * 60
+		local seconds = math.round(time)
+		local text = ""
+
+		return text .. (minutes < 10 and "0" .. minutes or minutes) .. ":" .. (seconds < 10 and "0" .. seconds or seconds)
+	end	
 
 	function HUDStatsScreen:recreate_left(...)
 		
@@ -103,9 +113,11 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			}), 7)
 
 			placer:new_row(0, 8)
-
+		    local trade_delay = alive(managers.player:player_unit()) and managers.groupai:state():all_criminals()[managers.player:player_unit():key()] and managers.groupai:state():all_criminals()[managers.player:player_unit():key()].respawn_penalty
+			local delay = trade_delay and managers.localization:text("hud_trade_delay", {TIME = tostring(self:_trade_delay_time(trade_delay))}) or ""	
+		
 			local track_text = placer:add_bottom(ext_inv_panel:fine_text({
-				text = managers.localization:to_upper_text("menu_es_playing_track") .. " " .. managers.music:current_track_string(),
+				text = delay .. " " .. " | " .. " " .. managers.localization:to_upper_text("menu_es_playing_track") .. " " .. managers.music:current_track_string(),
 				font_size = small_font_size,
 				font = small_font,
 				color = tweak_data.screen_colors.text,
