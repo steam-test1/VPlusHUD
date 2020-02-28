@@ -484,7 +484,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 
 	    self._drill_skills_panel = self._hud_panel:panel({
 		    layer = 1,
-		    visible = true,
+		    visible = false,
 		    align = "center",
 		    y = self._hud_panel:child(self._child_name_text):bottom()
 	    })
