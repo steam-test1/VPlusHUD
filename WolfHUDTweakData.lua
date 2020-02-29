@@ -174,7 +174,7 @@ function WolfHUDTweakData:init()
 		[ "escort_undercover" ] 				= { default = "wolfhud_enemy_escort_undercover", run = "wolfhud_enemy_escort_heatstreet", rvd1 = "wolfhud_enemy_escort_reservoirdogs" },
 		[ "escort_chinese_prisoner" ]			= { default = "wolfhud_enemy_escort_chinese_prisoner" },
 		[ "escort_cfo" ]						= { default = "wolfhud_enemy_escort_cfo" },
-		[ "drunk_pilot" ] 						= { default = "wolfhud_enemy_drunk_pilot", bph = "wolfhud_enemy_escort_bain_locke" },
+		[ "drunk_pilot" ] 						= { default = "wolfhud_enemy_drunk_pilot", bph = "wolfhud_enemy_escort_bain_locke", bex = "wolfhud_enemy_escort_it_guy" },
 		[ "escort" ] 							= { default = "wolfhud_enemy_escort" },
 		[ "boris" ]								= { default = "wolfhud_enemy_boris" },
 		[ "spa_vip" ]							= { default = "wolfhud_enemy_spa_vip" },
