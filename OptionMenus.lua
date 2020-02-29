@@ -436,6 +436,23 @@ if VHUDPlus then
 						desc_id = "wolfhud_use_vanillahud_extra_desc",
 						value = {"CustomHUD", "ENABLED"},
 						visible_reqs = {}, enabled_reqs = {},
+	                                },
+					{
+						type = "divider",
+						size = 8,
+					},
+					{
+					    type = "slider",
+						name_id = "wolfhud_hud_scale_title",
+						desc_id = "wolfhud_hud_scale_desc",
+						visible_reqs = {},
+						enabled_reqs = {
+						    { setting = {"CustomHUD", "ENABLED"}, invert = false }
+						},
+						value = {"CustomHUD", "HUD_SCALE"},
+						min_value = 0.5,
+						max_value = 1,
+						step_size = 0.05,							
 					},
 					{
 						type = "divider",
