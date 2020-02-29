@@ -502,7 +502,7 @@ function PlayerStandard:_update_fwd_ray()
 			
 			local visible, name, name_id, health, max_health, shield
 			if alive( unit ) then
-				if unit:in_slot( 25 ) and not unit:character_damage():dead() and (table.contains(managers.groupai:state():turrets() or {}, unit) and Network:is_server()) then
+				if unit:in_slot( 25 ) and not unit:character_damage():dead() and (table.contains(managers.groupai:state():turrets() or {}, unit)) then
 					self._last_unit = nil
 					visible = true
 					if not unit:character_damage():needs_repair() then
@@ -517,7 +517,7 @@ function PlayerStandard:_update_fwd_ray()
 							total = (unit:character_damage()._HEALTH_INIT or 0) * (show_multiplied_enemy_health and 10 or 1)
 						})
 					end
-				elseif alive( unit ) and ( unit:in_slot( 12 ) or ( unit:in_slot( 21 ) or unit:in_slot( 22 ) ) or unit:in_slot( 16 ) and Network:is_server()) and not unit:character_damage():dead() then
+				elseif alive( unit ) and ( unit:in_slot( 12 ) or ( unit:in_slot( 21 ) or unit:in_slot( 22 ) ) or unit:in_slot( 16 )) and not unit:character_damage():dead() then
 					self._last_unit = unit
 					visible = true
 					managers.hud:set_enemy_health({
