@@ -134,6 +134,7 @@ function WolfHUDTweakData:init()
 		[ "security" ] 							= { default = "wolfhud_enemy_security" },
 		[ "security_undominatable" ] 			= { default = "wolfhud_enemy_security" },
 		[ "mute_security_undominatable" ]		= { default = "wolfhud_enemy_security" },
+		[ "security_mex" ] 			            = { default = "wolfhud_enemy_security" },		
 		[ "gensec" ] 							= { default = "wolfhud_enemy_gensec" },
 		[ "cop" ] 								= { default = "wolfhud_enemy_cop" },
 		[ "cop_female" ]						= { default = "wolfhud_enemy_cop" },
