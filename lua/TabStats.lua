@@ -119,8 +119,8 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 		
 			local track_text = placer:add_bottom(ext_inv_panel:fine_text({
 				text = managers.localization:to_upper_text("menu_es_playing_track") .. " " .. managers.music:current_track_string() .. delay,
-				font_size = small_font_size,
-				font = 15,
+				font_size = 15,
+				font = small_font,
 				color = tweak_data.screen_colors.text,
 				align = "left",
 				keep_w = true
