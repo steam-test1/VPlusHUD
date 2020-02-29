@@ -1110,5 +1110,6 @@
 	"wolfhud_pacified_civs_new_icon_title" : "Improved Suspicion Icons",
 	"wolfhud_pacified_civs_new_icon_desc" : "Changes default ? and ! to more informational guard / camera / civilian icons",
 	"wolfhud_drill_icons_title" : "Show drill upgrade icons",
-	"wolfhud_drill_icons_desc" : "Display active drill skills when interacting with drills/saws"
+	"wolfhud_drill_icons_desc" : "Display active drill skills when interacting with drills/saws",
+	"wolfhud_enemy_escort_it_guy" : "Bank IT Guy"
 }
