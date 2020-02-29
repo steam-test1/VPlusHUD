@@ -209,7 +209,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 			
 			local visible, name, name_id, health, max_health, shield
 			if alive( unit ) then
-				if unit:in_slot( 25 ) and not unit:character_damage():dead() and (table.contains(managers.groupai:state():turrets() or {}, unit) and Network:is_server()) then
+				if unit:in_slot( 25 ) and not unit:character_damage():dead() and (table.contains(managers.groupai:state():turrets() or {}, unit)) then
 					self._last_unit = nil
 					visible = true
 					name_id = unit:base():get_name_id() or "TURRET"
@@ -221,7 +221,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 						health = unit:character_damage()._health * 10 or 0
 						max_health = unit:character_damage()._HEALTH_INIT * 10 or 0
 					end
-				elseif alive( unit ) and ( unit:in_slot( 12 ) or ( unit:in_slot( 21 ) or unit:in_slot( 22 ) ) or unit:in_slot( 16 ) and Network:is_server()) and not unit:character_damage():dead() then
+				elseif alive( unit ) and ( unit:in_slot( 12 ) or ( unit:in_slot( 21 ) or unit:in_slot( 22 ) ) or unit:in_slot( 16 )) and not unit:character_damage():dead() then
 					self._last_unit = unit
 					visible = true
 					health = unit:character_damage()._health * 10 or 0
