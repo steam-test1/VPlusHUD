@@ -123,7 +123,7 @@ function WolfHUDTweakData:init()
 	self.CHARACTER_NAMES = {
 		[ "civilian" ] 							= { default = "wolfhud_enemy_civilian" },
 		[ "civilian_female" ] 					= { default = "wolfhud_enemy_civilian" },
-		[ "civilian_mariachi" ] 				= { default = "wolfhud_enemy_civilian" },		
+		[ "civilian_mariachi" ] 				= { default = "wolfhud_enemy_mariachi" },		
 		[ "captain" ] 							= { default = "wolfhud_enemy_civilian" },
 		[ "gangster" ] 							= { default = "wolfhud_enemy_gangster" },
 		[ "biker" ] 							= { default = "wolfhud_enemy_biker" },
