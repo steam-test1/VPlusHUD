@@ -145,11 +145,17 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 		self:_create_waiting_legend(hud)
 	end
 
+    if not  VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "show_subtitles"}, false) then
+        scale = VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1)
+    else
+        scale = 1
+    end	
+
 	core:module("CoreGuiDataManager")
 	function GuiDataManager:layout_scaled_fullscreen_workspace(ws)
 	    local base_res = {x = 1280, y = 720}
 	    local res = RenderSettings.resolution
-	    local sc = (2 - _G.VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1))
+	    local sc = (2 - _G.scale)
 	    local aspect_width = base_res.x / self:_aspect_ratio()
 	    local h = math.round(sc * math.max(base_res.y, aspect_width))
 	    local w = math.round(sc * math.max(base_res.x, aspect_width / h))
