@@ -61,6 +61,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		self._name = ""
 		self._markers = {}
 		local x_pos, y_pos
+		
 		if pdth_hud and pdth_hud.Options:GetValue("HUD/MainHud") then
 			y_pos = -90
 			x_pos = 500
@@ -68,42 +69,43 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			y_pos = -230
 			x_pos = 540
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 900
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 875
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 840		
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 800
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 775
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 740
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 700
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 675
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 640
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 600			
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) then
-			y_pos = -140
+			y_pos = -160
 			x_pos = 575
 		else 
 			y_pos = -140
 			x_pos = 540
 		end
+		
 		self._people = 0
 		self.drivingpanel = self._hud_panel:panel({
 			w = self._hud_panel:w(),
@@ -304,6 +306,44 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		local car_texture_rect = { 1024, 0, 512, 512}
 		local car_texture = "assets/guis/textures/contact_vlad"
 		
+		if VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
+			vy_pos = 920
+			vx_pos = 780
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
+			vy_pos = 890
+			vx_pos = 750
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
+			vy_pos = 850
+			vx_pos = 720
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
+			vy_pos = 820
+			vx_pos = 690
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
+			vy_pos = 780
+			vx_pos = 660
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
+			vy_pos = 750
+			vx_pos = 620
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
+			vy_pos = 720
+			vx_pos = 590
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
+			vy_pos = 680
+			vx_pos = 560
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
+			vy_pos = 640
+			vx_pos = 530
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
+			vy_pos = 600
+			vx_pos = 500				
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) then
+			vy_pos = 575
+			vx_pos = 465
+		else 
+			vy_pos = 530
+			vx_pos = 420
+		end		
+		
 		local vis = VHUDPlus:getSetting({"DrivingHUD", "SHOW_VEHICLE"}, true)
 		local vehicle_bitmap = self.drivingpanel:bitmap({
 			vertical = "bottom",
@@ -314,8 +354,8 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			layer = 1,
 			texture = car_texture,
 			texture_rect = car_texture_rect,
-			x = x_pos + 420,
-			y = y_pos + 530,
+			x = x_pos + vx_pos,
+			y = y_pos + vy_pos,
 			w = 180,
 			h = 180
 		})
