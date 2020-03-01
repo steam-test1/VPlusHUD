@@ -115,10 +115,15 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			placer:new_row(0, 8)
 			local space = string.rep(" ", 5)
 		    local trade_delay = alive(managers.player:player_unit()) and managers.groupai:state():all_criminals()[managers.player:player_unit():key()] and managers.groupai:state():all_criminals()[managers.player:player_unit():key()].respawn_penalty
-			local delay = trade_delay and space .. " | " .. space .. managers.localization:text("hud_trade_delay", {TIME = tostring(self:_trade_delay_time(trade_delay))}) or ""		
-		
+			local delay = trade_delay and space .. " | " .. space .. managers.localization:text("hud_trade_delay", {TIME = tostring(self:_trade_delay_time(trade_delay))}) or ""
+            local alesso_delay = trade_delay and managers.localization:text("hud_trade_delay", {TIME = tostring(self:_trade_delay_time(trade_delay))}) or ""				
+			if Global.game_settings.level_id == 'arena' then
+			    track_text = alesso_delay
+			else
+			    track_text = managers.localization:to_upper_text("menu_es_playing_track") .. " " .. managers.music:current_track_string() .. delay
+			end
 			local track_text = placer:add_bottom(ext_inv_panel:fine_text({
-				text = managers.localization:to_upper_text("menu_es_playing_track") .. " " .. managers.music:current_track_string() .. delay,
+				text = track_text,
 				font_size = 15,
 				font = small_font,
 				color = tweak_data.screen_colors.text,
