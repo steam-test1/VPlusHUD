@@ -447,7 +447,8 @@ if VHUDPlus then
 						desc_id = "wolfhud_hud_scale_desc",
 						visible_reqs = {},
 						enabled_reqs = {
-						    { setting = {"CustomHUD", "ENABLED"}, invert = false }
+						    { setting = {"CustomHUD", "ENABLED"}, invert = false },
+							{ setting = {"HUDList", "BUFF_LIST", "show_subtitles"}, invert = true },
 						},
 						value = {"CustomHUD", "HUD_SCALE"},
 						min_value = 0.5,
@@ -2475,6 +2476,21 @@ if VHUDPlus then
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+							},
+							{
+								type = "divider",
+								size = 8,
+							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_hudlist_show_subtitles_title",
+								desc_id = "wolfhud_hudlist_show_subtitles_desc",
+								value = {"HUDList", "BUFF_LIST", "show_subtitles"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
 								},
 							},
 							{
