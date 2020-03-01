@@ -69,40 +69,40 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			y_pos = -230
 			x_pos = 540
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 900
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 875
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 840		
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 800
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 775
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 740
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 700
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 675
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 640
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 600			
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 575
 		else 
-			y_pos = -140
+			y_pos = -180
 			x_pos = 540
 		end
 		
