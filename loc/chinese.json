@@ -1114,5 +1114,7 @@
 	"wolfhud_enemy_escort_it_guy" : "Bank IT Guy",
 	"wolfhud_hudlist_loot_egg" : "Egg",
 	"wolfhud_hudlist_loot_treasure" : "Treasure",
-	"wolfhud_enemy_mariachi" : "Mariachi Band Member"	
+	"wolfhud_enemy_mariachi" : "Mariachi Band Member",
+    "wolfhud_hud_scale_title" : "Hud Scale",
+    "wolfhud_hud_scale_desc" : "Change the size of the hud"	
 }

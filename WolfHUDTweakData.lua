@@ -61,7 +61,7 @@ function WolfHUDTweakData:init()
 		secondary_deployable 	-> The eqipped secondary deployable (in case of Jack of all trades)
 --]]
 	self.STD_LOBBY_LOADOUT_LAYOUT = {
-										{ "playtime", "ping" },
+										{ "playtime" },
 										{ "name" },
 										{ "character" },
 										{ "skills" },
@@ -73,7 +73,7 @@ function WolfHUDTweakData:init()
 										{ "deployable", "secondary_deployable" }
 									}
 	self.CS_LOBBY_LOADOUT_LAYOUT = {
-										{ "playtime", "ping" },
+										{ "playtime" },
 										{ "name" },
 										{ "skills" },
 										{ "perk" },
