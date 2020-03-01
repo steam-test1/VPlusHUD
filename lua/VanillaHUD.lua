@@ -900,4 +900,70 @@ elseif RequiredScript == "lib/managers/playermanager" then
 	
 	end )
 
+elseif RequiredScript == "lib/managers/hud/hudplayercustody" then
+
+    local set_negotiating_visible_orig  = HUDPlayerCustody.set_negotiating_visible
+	local set_can_be_trade_visible_orig = HUDPlayerCustody.set_can_be_trade_visible
+
+    function HUDPlayerCustody:set_negotiating_visible(...)
+    set_negotiating_visible_orig(self, ...)
+        local trade_text = self._hud.trade_text2
+
+        if VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
+            offset = 720
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
+            offset = 660
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
+            offset = 595
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
+            offset = 530
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
+            offset = 465
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
+            offset = 400
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
+            offset = 335
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
+            offset = 275
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
+            offset = 210
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
+            offset = 145
+        else
+            offset = 80 
+        end
+
+        trade_text:set_right(self._hud.trade_text2:w() + offset )
+    end
+
+    function HUDPlayerCustody:set_can_be_trade_visible(...)
+    set_can_be_trade_visible_orig(self, ...)
+	    local trade_text = self._hud.trade_text1
+		
+        if VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
+            offset = 720
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
+            offset = 660
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
+            offset = 595
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
+            offset = 530
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
+            offset = 465
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
+            offset = 400
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
+            offset = 335
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
+            offset = 275
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
+            offset = 210
+        elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
+            offset = 145
+        else
+            offset = 80 
+        end
+		
+	    trade_text:set_right(self._hud.trade_text1:w() + offset )
+    end
 end
