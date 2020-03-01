@@ -69,40 +69,40 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			y_pos = -230
 			x_pos = 540
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 900
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 875
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 840		
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 800
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 775
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 740
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 700
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 675
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 640
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 600			
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) then
-			y_pos = -160
+			y_pos = -180
 			x_pos = 575
 		else 
-			y_pos = -140
+			y_pos = -180
 			x_pos = 540
 		end
 		
@@ -308,40 +308,40 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		
 		if VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
 			vy_pos = 920
-			vx_pos = 780
+			vx_pos = 775
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
 			vy_pos = 890
-			vx_pos = 750
+			vx_pos = 735
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
 			vy_pos = 850
-			vx_pos = 720
+			vx_pos = 705
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
 			vy_pos = 820
-			vx_pos = 690
+			vx_pos = 675
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
 			vy_pos = 780
-			vx_pos = 660
+			vx_pos = 645
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
 			vy_pos = 750
-			vx_pos = 620
+			vx_pos = 605
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
 			vy_pos = 720
-			vx_pos = 590
+			vx_pos = 575
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
 			vy_pos = 680
-			vx_pos = 560
+			vx_pos = 545
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
 			vy_pos = 640
-			vx_pos = 530
+			vx_pos = 515
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
 			vy_pos = 600
-			vx_pos = 500				
+			vx_pos = 485				
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) then
 			vy_pos = 575
-			vx_pos = 465
+			vx_pos = 455
 		else 
 			vy_pos = 530
-			vx_pos = 420
+			vx_pos = 410
 		end		
 		
 		local vis = VHUDPlus:getSetting({"DrivingHUD", "SHOW_VEHICLE"}, true)
