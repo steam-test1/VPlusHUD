@@ -226,6 +226,7 @@ if not _G.VHUDPlus then
 					},
 				},
 				USE_REAL_AMMO 						= true,
+				HUD_SCALE 						    = 1,				
 			},
 			MISCHUD = {
 				ENABLE_IFBG							= false,
