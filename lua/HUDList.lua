@@ -764,7 +764,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
 		sub_offset = 100
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
-		sub_offset = 60
+		sub_offset = 65
 		else
 		sub_offset = 35
 		end
