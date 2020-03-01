@@ -745,10 +745,34 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			y = hud_panel:bottom() - ((HUDListManager.ListOptions.buff_list_height_offset or 90) + list_height)
 		end
 
+		if VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
+		sub_offset = 375
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
+		sub_offset = 330
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
+		sub_offset = 300
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
+		sub_offset = 275
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
+		sub_offset = 230
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
+		sub_offset = 200
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
+		sub_offset = 175
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
+		sub_offset = 130
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
+		sub_offset = 100
+		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
+		sub_offset = 60
+		else
+		sub_offset = 30
+		end
+
 		if managers.subtitle then
 			local sub_presenter = managers.subtitle:presenter()
 			if sub_presenter and sub_presenter.set_bottom then
-				sub_presenter:set_bottom(y - 30)
+				sub_presenter:set_bottom(y - sub_offset)
 			end
 		end
 
