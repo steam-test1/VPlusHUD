@@ -145,7 +145,7 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
 		self:_create_waiting_legend(hud)
 	end
 
-    if not  VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "show_subtitles"}, true) then
+    if not  VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "show_subtitles"}, false) then
         scale = VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1)
     else
         scale = 1
