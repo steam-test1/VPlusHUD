@@ -277,7 +277,7 @@ if RequiredScript == "lib/setups/setup" then
 		self._hide_on_uninteractable = data.hide_on_uninteractable
 		self._offset = data.offset or Vector3(0, 0, 0)
 		self._base_size = 16
-		self._base_scale = data.scale or 1
+		self._base_scale = VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) or 1
 		self._deleted = false
 		self._is_enabled = true	--For Minimap
 		self._state = "on_screen"
