@@ -237,7 +237,9 @@ if not _G.VHUDPlus then
 				JOKER_CONTOUR                       = true,
 				INSPIRE_HINT                        = false,				
                 SCALE                               = 1,
-                SUB				                    = false,			
+				SUB				                    = false,
+				ENABLE_JOKER_FLOATING_NAME			= true,
+				ENABLE_JOKER_FLOATING_HP			= true,	
 			},
 			HUDChat = {
 				ENABLED									= true,

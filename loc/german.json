@@ -1125,5 +1125,9 @@
 	"wolfhud_hudlist_loot_treasure" : "Treasure",
 	"wolfhud_enemy_mariachi" : "Mariachi Band Member",
     "wolfhud_hud_scale_title" : "Hud Scale",
-    "wolfhud_hud_scale_desc" : "Change the size of the hud"
+    "wolfhud_hud_scale_desc" : "Change the size of the hud",
+	"wolfhud_enable_joker_floating_name_title" : "Enable Joker Name",
+	"wolfhud_enable_joker_floating_name_desc" : "Shows joker name above them.",
+	"wolfhud_enable_joker_floating_hp_title" : "Enable Joker Health",
+	"wolfhud_enable_joker_floating_hp_desc" : "Shows joker health above them."
 }

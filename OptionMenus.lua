@@ -1008,6 +1008,20 @@ if VHUDPlus then
 								max_value = 1.2,
 								step_size = 0.05,						
 							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_enable_joker_floating_name_title",
+								desc_id = "wolfhud_enable_joker_floating_name_desc",
+								visible_reqs = {}, enabled_reqs = {},
+								value = {"MISCHUD", "ENABLE_JOKER_FLOATING_NAME"},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_enable_joker_floating_hp_title",
+								desc_id = "wolfhud_enable_joker_floating_hp_desc",
+								visible_reqs = {}, enabled_reqs = {},
+								value = {"MISCHUD", "ENABLE_JOKER_FLOATING_HP"},
+							},
 						},
 					},
 					{
@@ -1039,7 +1053,7 @@ if VHUDPlus then
 								},
 								value = {"HUDChat", "LINE_HEIGHT"},
 								min_value = 10,
-								max_value = 20,
+								max_value = 40,
 								step_size = 1,
 							},
 							{
