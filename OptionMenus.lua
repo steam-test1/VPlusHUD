@@ -3530,34 +3530,34 @@ if VHUDPlus then
 						type = "toggle",
 						name_id = "wolfhud_enable_joker_floating_name_title",
 						desc_id = "wolfhud_enable_joker_floating_name_desc",
+						value = {"CustomWaypoints", "ENABLE_JOKER_FLOATING_NAME"},						
 						visible_reqs = {
 						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },
 						}, enabled_reqs = {
 						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },						
 						},
-						value = {"MISCHUD", "ENABLE_JOKER_FLOATING_NAME"},
 					},
 					{
 						type = "toggle",
 						name_id = "wolfhud_enable_joker_floating_hp_title",
 						desc_id = "wolfhud_enable_joker_floating_hp_desc",
+						value = {"CustomWaypoints", "ENABLE_JOKER_FLOATING_HP"},						
 						visible_reqs = {
 						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },						
 						}, enabled_reqs = {
 						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },						
 						},
-						value = {"MISCHUD", "ENABLE_JOKER_FLOATING_HP"},
 					},
 					{
 						type = "toggle",
 						name_id = "wolfhud_enable_joker_floating_kills_title",
 						desc_id = "wolfhud_enable_joker_floating_kills_desc",
+						value = {"CustomWaypoints", "ENABLE_JOKER_FLOATING_KILLS"},						
 						visible_reqs = {
 						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },
 						}, enabled_reqs = {
 						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },						
-						},
-						value = {"CustomHUD", "ENABLE_JOKER_FLOATING_KILLS"},						
+						},						
 					},
 					{
 						type = "divider",
