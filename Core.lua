@@ -237,9 +237,7 @@ if not _G.VHUDPlus then
 				JOKER_CONTOUR                       = true,
 				INSPIRE_HINT                        = false,				
                 SCALE                               = 1,
-				SUB				                    = false,
-				ENABLE_JOKER_FLOATING_NAME			= true,
-				ENABLE_JOKER_FLOATING_HP			= true,	
+				SUB				                    = false,	
 			},
 			HUDChat = {
 				ENABLED									= true,
@@ -504,6 +502,9 @@ if not _G.VHUDPlus then
 				SHOW_ECMS								= false,
 				SHOW_TIMERS			 					= true,
 				SHOW_MINIONS							= true,
+				ENABLE_JOKER_FLOATING_NAME			    = true,
+				ENABLE_JOKER_FLOATING_HP			    = true,
+				ENABLE_JOKER_FLOATING_KILLS			    = true,				
 				SHOW_PAGER								= false,
 				SHOW_SPECIAL_EQUIPMENT					= false,
 				LOOT = {
