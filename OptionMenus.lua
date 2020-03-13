@@ -1008,20 +1008,6 @@ if VHUDPlus then
 								max_value = 1.2,
 								step_size = 0.05,						
 							},
-							{
-								type = "toggle",
-								name_id = "wolfhud_enable_joker_floating_name_title",
-								desc_id = "wolfhud_enable_joker_floating_name_desc",
-								visible_reqs = {}, enabled_reqs = {},
-								value = {"MISCHUD", "ENABLE_JOKER_FLOATING_NAME"},
-							},
-							{
-								type = "toggle",
-								name_id = "wolfhud_enable_joker_floating_hp_title",
-								desc_id = "wolfhud_enable_joker_floating_hp_desc",
-								visible_reqs = {}, enabled_reqs = {},
-								value = {"MISCHUD", "ENABLE_JOKER_FLOATING_HP"},
-							},
 						},
 					},
 					{
@@ -3529,11 +3515,38 @@ if VHUDPlus then
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
+						type = "divider",
+						size = 8,						
+					},
+					{
 						type = "toggle",
 						name_id = "wolfhud_waypoints_show_minions_title",
 						desc_id = "wolfhud_waypoints_show_minions_desc",
 						value = {"CustomWaypoints", "SHOW_MINIONS"},
 						visible_reqs = {}, enabled_reqs = {},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_enable_joker_floating_name_title",
+						desc_id = "wolfhud_enable_joker_floating_name_desc",
+						visible_reqs = {
+						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },
+						}, enabled_reqs = {
+						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },						
+						},
+						value = {"MISCHUD", "ENABLE_JOKER_FLOATING_NAME"},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_enable_joker_floating_hp_title",
+						desc_id = "wolfhud_enable_joker_floating_hp_desc",
+						visible_reqs = {
+						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },						
+						}, enabled_reqs = {
+						    { setting = {"CustomWaypoints", "SHOW_MINIONS"}, invert = false },						
+						},
+						value = {"MISCHUD", "ENABLE_JOKER_FLOATING_HP"},						
 					},
 					{
 						type = "divider",
