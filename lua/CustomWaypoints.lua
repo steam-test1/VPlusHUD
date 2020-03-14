@@ -525,7 +525,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				scale = 1.25,
 				health_bar = {
 					type = "icon",
-					show = true,
+					show = VHUDPlus:getSetting({"CustomWaypoints", "ENABLE_JOKER_FLOATING_HP"}),
 					scale = 1.65,
 					texture = "guis/textures/pd2/hud_health",
 					--texture_rect = {0, 0, 64, 64},
@@ -534,7 +534,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				},
 				health_shield = {
 					type = "icon",
-					show = true,
+					show = VHUDPlus:getSetting({"CustomWaypoints", "ENABLE_JOKER_FLOATING_HP"}),
 					scale = 1.65,
 					texture = "guis/textures/pd2/hud_shield",
 					--texture_rect = {0, 0, 64, 64},
@@ -543,14 +543,14 @@ if RequiredScript == "lib/managers/hudmanager" then
 				},
 				health_bg = {
 					type = "icon",
-					show = true,
+					show = VHUDPlus:getSetting({"CustomWaypoints", "ENABLE_JOKER_FLOATING_HP"}),
 					scale = 1.65,
 					texture = "guis/textures/pd2/hud_radialbg",
 					--texture_rect = {0, 0, 64, 64},
 				},
 				health_dmg = {
 					type = "icon",
-					show = true,
+					show = VHUDPlus:getSetting({"CustomWaypoints", "ENABLE_JOKER_FLOATING_HP"}),
 					scale = 1.65,
 					texture = "guis/textures/pd2/hud_radial_rim",
 					--texture_rect = {0, 0, 64, 64},
@@ -559,12 +559,12 @@ if RequiredScript == "lib/managers/hudmanager" then
 				},
 				name = {
 					type = "label",
-					show = true,
+					show = VHUDPlus:getSetting({"CustomWaypoints", "ENABLE_JOKER_FLOATING_NAME"}),
 					text = VHUDPlus:getCharacterName(unit_tweak, true)
 				},
 				kills = {
 					type = "label",
-					show = true,
+					show = VHUDPlus:getSetting({"CustomWaypoints", "ENABLE_JOKER_FLOATING_KILLS"}),
 					text = string.format("%s %d", utf8.char(57364), data.kills or 0),
 					color = Color.white,
 					alpha = 0.8,
