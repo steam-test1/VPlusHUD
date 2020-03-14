@@ -1,3 +1,17 @@
+local sync_contour_state_original = UnitNetworkHandler.sync_contour_state
+
+function UnitNetworkHandler:sync_contour_state(unit, u_id, type, state, multiplier, sender, ...)
+	if not self._verify_gamestate(self._gamestate_filter.any_ingame) or not self._verify_sender(sender) then
+		return
+	end
+	if (type == 7 or type == 11) and alive(unit) and unit:id() ~= -1 and (state and unit:slot() == 12 or unit:slot() == 16) and (managers.job:current_level_id() ~= "spa" or Network:is_server()) then
+		return
+	else
+		return sync_contour_state_original(self, unit, u_id, type, state, multiplier, sender, ...)
+	end
+end
+
+--[[
 do return end	-- Disabled cause: WiP
 VHUDPlus.Sync = VHUDPlus.Sync or {}
 VHUDPlus.Sync.peers = VHUDPlus.Sync.peers or {false, false, false, false}
@@ -132,3 +146,4 @@ Hooks:Add("BaseNetworkSessionOnLoadComplete", "BaseNetworkSessionOnLoadComplete_
 		end
 	end
 end)
+]]
