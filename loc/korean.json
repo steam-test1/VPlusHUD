@@ -1125,7 +1125,6 @@
 	"wolfhud_enable_joker_floating_hp_desc" : "Shows joker health above them.",
 	"wolfhud_enable_joker_floating_kills_title" : "Show Joker Kills",
 	"wolfhud_enable_joker_floating_kills_desc" : "Shows joker Kills above them."
-	"wolfhud_enable_joker_floating_kills_desc" : "Shows joker Kills above them.",
 	"wolfhud_enable_swan_song_effect_title" : "Swan Song Effect",
 	"wolfhud_enable_swan_song_effect_desc" : "The screen will flash blue when going into swan song.",
 	"wolfhud_enable_kingpin_effect_title" : "Kingpin Injector Effect",
