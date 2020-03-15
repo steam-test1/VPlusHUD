@@ -983,7 +983,11 @@ if VHUDPlus then
 								name_id = "wolfhud_enable_inspire_hint_title",
 								desc_id = "wolfhud_enable_inspire_hint_desc",
 								visible_reqs = {}, enabled_reqs = {},
-								value = {"MISCHUD", "INSPIRE_HINT"},	
+								value = {"MISCHUD", "INSPIRE_HINT"},
+							},
+							{
+								type = "divider",
+								size = 16,								
 							},
 							{
 								type = "toggle",
