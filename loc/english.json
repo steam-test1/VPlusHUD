@@ -1128,5 +1128,5 @@
 	"wolfhud_enable_swan_song_effect_title" : "Swan Song Effect",
 	"wolfhud_enable_swan_song_effect_desc" : "The screen will flash blue when going into swan song.",
 	"wolfhud_enable_kingpin_effect_title" : "Kingpin Injector Effect",
-	"wolfhud_enable_kingpin_effect_desc" : "The screen will flash orange when the kingpin injector is active.",
+	"wolfhud_enable_kingpin_effect_desc" : "The screen will flash orange when the kingpin injector is active."
 }
