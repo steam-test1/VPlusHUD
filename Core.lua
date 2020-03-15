@@ -237,7 +237,7 @@ if not _G.VHUDPlus then
 				JOKER_CONTOUR                       = true,
 				INSPIRE_HINT                        = false,
                 SWAN_SONG_EFFECT                    = true,
-                KINGPING_EFFECT                     = true,				
+                KINGPIN_EFFECT                      = true,			
                 SCALE                               = 1,
 				SUB				                    = false,	
 			},
