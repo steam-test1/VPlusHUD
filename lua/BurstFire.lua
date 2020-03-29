@@ -156,6 +156,7 @@ elseif string.lower(RequiredScript) == "lib/units/weapons/akimboweaponbase" then
 	local fire_rate_multiplier_original = AkimboWeaponBase.fire_rate_multiplier
 	local toggle_firemode_original = AkimboWeaponBase.toggle_firemode
 
+    if not MoreWeaponStats then
 	function AkimboWeaponBase:_update_stats_values(...)
 		_update_stats_values_original(self, ...)
 
@@ -166,6 +167,7 @@ elseif string.lower(RequiredScript) == "lib/units/weapons/akimboweaponbase" then
 				self:_set_burst_mode(not self._manual_fire_second_gun, true)
 			end
 		end
+	end			
 	end
 
 	function AkimboWeaponBase:fire(...)
