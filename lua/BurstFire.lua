@@ -274,10 +274,15 @@ end
 if RequiredScript == "lib/units/weapons/akimboshotgunbase" then
 
 	local fire_rate_multiplier_original = AkimboShotgunBase.fire_rate_multiplier
-	
+	local akimbo_shot_burst = false
 	function AkimboShotgunBase:fire_rate_multiplier(...)
-		local mult = self:in_burst_mode() and self._burst.fire_rate_multiplier or 2
-		return fire_rate_multiplier_original(self, ...) * mult
+		if akimbo_shot_burst then
+			local mult = self:in_burst_mode() and self._burst.fire_rate_multiplier or 2
+			return fire_rate_multiplier_original(self, ...) * mult
+		else 
+			fire_rate_multiplier_original(self, ...)
+		end
+				
 	end
 	
 end
