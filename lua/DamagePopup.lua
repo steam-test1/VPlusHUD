@@ -296,7 +296,7 @@ elseif RequiredScript == "lib/units/civilians/civiliandamage" then
 	
 	if attacker_unit and managers.network:session() and managers.network:session():peer_by_unit( attacker_unit ) then
 		local peer_id = managers.network:session():peer_by_unit( attacker_unit ):id()
-		local c = tweak_data.chat_colors[ peer_id ]
+		local c = VHUDPlus:getColorSetting({"DamagePopup", "COLOR"}, "yellow")
 		text:set_color( c )
 	end
 	
