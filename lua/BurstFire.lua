@@ -271,6 +271,22 @@ if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 	
 end
 
+if RequiredScript == "lib/units/weapons/akimboshotgunbase" then
+
+	local fire_rate_multiplier_original = AkimboShotgunBase.fire_rate_multiplier
+	local akimbo_shot_burst = false
+	function AkimboShotgunBase:fire_rate_multiplier(...)
+		if akimbo_shot_burst then
+			local mult = self:in_burst_mode() and self._burst.fire_rate_multiplier or 2
+			return fire_rate_multiplier_original(self, ...) * mult
+		else 
+			return fire_rate_multiplier_original(self, ...)
+		end
+				
+	end
+	
+end
+
 if RequiredScript == "lib/units/beings/player/states/playerstandard" then
 
 	local update_original = PlayerStandard.update
