@@ -1688,6 +1688,18 @@ if VHUDPlus then
 								value = {"DamagePopup", "SHOW_DAMAGE_POPUP_ALT"},
 							},
 							{
+								type = "toggle",
+								name_id = "wolfhud_dmg_popup_show_alt_civ_popup_title",
+								desc_id = "wolfhud_dmg_popup_show_alt_civ_popup_desc",
+								visible_reqs = {
+								    { setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false }
+								},
+								enabled_reqs = {
+									{ setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false },
+								},
+								value = {"DamagePopup", "SHOW_DAMAGE_POPUP_ALT_CIV"},								
+							},
+							{
 								type = "multi_choice",
 								name_id = "wolfhud_dmg_popup_headshot_glow_color_title",
 								desc_id = "wolfhud_dmg_popup_headshot_glow_color_desc",
