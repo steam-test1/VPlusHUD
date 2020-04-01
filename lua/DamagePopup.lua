@@ -61,7 +61,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 		h = 192,
 		blend_mode = "add",
 		alpha = 0.55,
-		color = VHUDPlus:getColorSetting({"DamagePopup", "GLOW_COLOR"}, "yellow"),
+		color = VHUDPlus:getColorSetting({"DamagePopup", "GLOW_COLOR"}, "red"),
 		--color = DmgPopUp.colors[(DmgPopUp.options.damage_popup_headshot_flash_color)],
 		x = -100,
 		y = -35,
