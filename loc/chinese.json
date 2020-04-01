@@ -1130,5 +1130,5 @@
 	"wolfhud_enemy_deathvox_light" : "ZEAL Unit",
 	"wolfhud_enemy_deathvox_heavy" : "Heavy ZEAL",
 	"wolfhud_dmg_popup_show_alt_civ_popup_title" : "Show Civillian Damage Popup",
-	"wolfhud_dmg_popup_show_alt_civ_popup_desc" : "Enables civillian damage popup."	
+	"wolfhud_dmg_popup_show_alt_civ_popup_desc" : "Enables civillian damage popup."
 }
