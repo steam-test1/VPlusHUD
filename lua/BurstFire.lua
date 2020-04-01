@@ -203,6 +203,10 @@ if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 	local fire_original = AkimboWeaponBase.fire
 	local fire_rate_multiplier_original = AkimboWeaponBase.fire_rate_multiplier
 	local toggle_firemode_original = AkimboWeaponBase.toggle_firemode
+
+	local IDSTRING_SINGLE = Idstring("single")
+	local IDSTRING_AUTO = Idstring("auto")
+	local IDSTRING_BURST = Idstring("burst")
 	
 	function AkimboWeaponBase:fire(...)
 		local results = fire_original(self, ...)
@@ -231,20 +235,20 @@ if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 	function AkimboWeaponBase:_setup_available_fire_modes(supports_single, has_single, supports_auto, has_auto)
 		local enabled = true
 
-		self._available_modes
+		-- self._available_modes = nil
 	
-		if enabled and has_single and self._available_modes == nil then
+		if enabled and has_single then
 			self._manual_fire_second_gun = self._manual_fire_second_gun or false
 			
 			self._available_modes = {}
 			
-			table.insert(self._available_modes, { id = "double", id_string = Idstring("single"), single = false })
+			table.insert(self._available_modes, { id = "double", id_string = IDSTRING_SINGLE, single = false })
 			
 			if has_auto then
-				table.insert(self._available_modes, { id = "auto", id_string = Idstring("auto"), single = false })
+				table.insert(self._available_modes, { id = "auto", id_string = IDSTRING_AUTO, single = false })
 			end
 			
-			table.insert(self._available_modes, { id = "single", id_string = Idstring("single"), single = true })
+			table.insert(self._available_modes, { id = "single", id_string = IDSTRING_SINGLE, single = true })
 			
 			for i, mode in ipairs(self._available_modes) do
 				if self._fire_mode == mode.id_string and mode.single == self._manual_fire_second_gun then
