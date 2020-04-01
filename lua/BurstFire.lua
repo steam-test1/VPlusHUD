@@ -230,10 +230,10 @@ if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 	
 	function AkimboWeaponBase:_setup_available_fire_modes(supports_single, has_single, supports_auto, has_auto)
 		local enabled = true
-		
-		self._available_modes = nil
+
+		self._available_modes
 	
-		if enabled and has_single then
+		if enabled and has_single and self._available_modes == nil then
 			self._manual_fire_second_gun = self._manual_fire_second_gun or false
 			
 			self._available_modes = {}
