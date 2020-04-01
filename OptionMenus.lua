@@ -1551,35 +1551,35 @@ if VHUDPlus then
 								max_value = 30,
 								step_size = 1,
 							},
-						},
-						{
-							type = "multi_choice",
-							name_id = "wolfhud_enemyhealthbarenemy_hurt_color_title",
-							desc_id = "wolfhud_enemyhealthbarenemy_hurt_color_desc",
-							value = {"EnemyHealthbar", "ENEMY_HURT_COLOR"},
-							visible_reqs = {},
-							enabled_reqs = {
-								{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
-								{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
-							},
-							options = {},
-							add_color_options = true,
-							add_rainbow = false,
-						},
-						{
-							type = "multi_choice",
-							name_id = "wolfhud_enemyhealthbarenemy_kill_color_title",
-							desc_id = "wolfhud_enemyhealthbarenemy_kill_color_desc",
-							value = {"EnemyHealthbar", "ENEMY_KILL_COLOR"},
-							visible_reqs = {},
-							enabled_reqs = {
-								{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
-								{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
-							},
-							options = {},
-							add_color_options = true,
-							add_rainbow = false,
-						},
+						    {
+							    type = "multi_choice",
+							    name_id = "wolfhud_enemyhealthbarenemy_hurt_color_title",
+							    desc_id = "wolfhud_enemyhealthbarenemy_hurt_color_desc",
+							    value = {"EnemyHealthbar", "ENEMY_HURT_COLOR"},
+							    visible_reqs = {},
+							    enabled_reqs = {
+								    { setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
+								    { setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
+							    },
+							    options = {},
+							    add_color_options = true,
+							    add_rainbow = false,
+						    },
+						    {
+							    type = "multi_choice",
+							    name_id = "wolfhud_enemyhealthbarenemy_kill_color_title",
+							    desc_id = "wolfhud_enemyhealthbarenemy_kill_color_desc",
+							    value = {"EnemyHealthbar", "ENEMY_KILL_COLOR"},
+							    visible_reqs = {},
+							    enabled_reqs = {
+								    { setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
+								    { setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
+							    },
+							    options = {},
+							    add_color_options = true,
+							    add_rainbow = false,
+						    },
+						},							
 					},
 					{ -- Damagepopup
 						type = "menu",
