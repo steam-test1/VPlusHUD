@@ -265,6 +265,8 @@ if not _G.VHUDPlus then
 				IGNORE_CIVILIAN_HEALTH					= true,
 				IGNORE_TEAM_AI_HEALTH					= true,
 				ENABLED_ALT								= false,
+				ENEMY_KILL_COLOR						= "red",
+				ENEMY_HURT_COLOR						= "orange",
 			},
 			DamageIndicator = {
 				ENABLED									= true,
@@ -289,7 +291,8 @@ if not _G.VHUDPlus then
 				HEADSHOT_COLOR							= "orange",
 				CRITICAL_COLOR 							= "light_purple",
 				SHOW_DAMAGE_POPUP_ALT					= true,
-				SHOW_DAMAGE_POPUP_ALT_CIV               = false,				
+				SHOW_DAMAGE_POPUP_ALT_CIV               = false,	
+				DURATION_ALT	 						= 2.2,
 				GLOW_COLOR 								= "red",
 			},
 			AssaultBanner = {

@@ -1552,6 +1552,34 @@ if VHUDPlus then
 								step_size = 1,
 							},
 						},
+						{
+							type = "multi_choice",
+							name_id = "wolfhud_enemyhealthbarenemy_hurt_color_title",
+							desc_id = "wolfhud_enemyhealthbarenemy_hurt_color_desc",
+							value = {"EnemyHealthbar", "ENEMY_HURT_COLOR"},
+							visible_reqs = {},
+							enabled_reqs = {
+								{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
+								{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
+							},
+							options = {},
+							add_color_options = true,
+							add_rainbow = false,
+						},
+						{
+							type = "multi_choice",
+							name_id = "wolfhud_enemyhealthbarenemy_kill_color_title",
+							desc_id = "wolfhud_enemyhealthbarenemy_kill_color_desc",
+							value = {"EnemyHealthbar", "ENEMY_KILL_COLOR"},
+							visible_reqs = {},
+							enabled_reqs = {
+								{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
+								{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
+							},
+							options = {},
+							add_color_options = true,
+							add_rainbow = false,
+						},
 					},
 					{ -- Damagepopup
 						type = "menu",
@@ -1570,6 +1598,25 @@ if VHUDPlus then
 									"wolfhud_dmg_popup_player",
 									"wolfhud_dmg_popup_all"
 								},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_dmg_popup_show_alt_popup_title",
+								desc_id = "wolfhud_dmg_popup_show_alt_popup_desc",
+								visible_reqs = {}, enabled_reqs = {},
+								value = {"DamagePopup", "SHOW_DAMAGE_POPUP_ALT"},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_dmg_popup_show_alt_civ_popup_title",
+								desc_id = "wolfhud_dmg_popup_show_alt_civ_popup_desc",
+								visible_reqs = {
+								    { setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false }
+								},
+								enabled_reqs = {
+									{ setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false },
+								},
+								value = {"DamagePopup", "SHOW_DAMAGE_POPUP_ALT_CIV"},								
 							},
 							{
 								type = "slider",
@@ -1651,6 +1698,21 @@ if VHUDPlus then
 								step_size = 0.05,
 							},
 							{
+								type = "slider",
+								name_id = "wolfhud_dmg_popup_time_alt_title",
+								desc_id = "wolfhud_dmg_popup_time_alt_desc",
+								visible_reqs = {
+								    { setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false }
+								},
+								enabled_reqs = {
+									{ setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false },
+								},
+								value = {"DamagePopup", "DURATION_ALT"},
+								min_value = 2.2,
+								max_value = 8,
+								step_size = 0.1,
+							},
+							{
 								type = "multi_choice",
 								name_id = "wolfhud_dmg_popup_color_title",
 								desc_id = "wolfhud_dmg_popup_color_desc",
@@ -1681,25 +1743,6 @@ if VHUDPlus then
 								add_rainbow = false,
 							},
 							{
-								type = "toggle",
-								name_id = "wolfhud_dmg_popup_show_alt_popup_title",
-								desc_id = "wolfhud_dmg_popup_show_alt_popup_desc",
-								visible_reqs = {}, enabled_reqs = {},
-								value = {"DamagePopup", "SHOW_DAMAGE_POPUP_ALT"},
-							},
-							{
-								type = "toggle",
-								name_id = "wolfhud_dmg_popup_show_alt_civ_popup_title",
-								desc_id = "wolfhud_dmg_popup_show_alt_civ_popup_desc",
-								visible_reqs = {
-								    { setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false }
-								},
-								enabled_reqs = {
-									{ setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false },
-								},
-								value = {"DamagePopup", "SHOW_DAMAGE_POPUP_ALT_CIV"},								
-							},
-							{
 								type = "multi_choice",
 								name_id = "wolfhud_dmg_popup_headshot_glow_color_title",
 								desc_id = "wolfhud_dmg_popup_headshot_glow_color_desc",
@@ -1712,7 +1755,7 @@ if VHUDPlus then
 								},
 								options = {},
 								add_color_options = true,
-								add_rainbow = false,
+								add_rainbow = true,
 							},
 						},
 					},

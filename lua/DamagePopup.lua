@@ -51,7 +51,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 	    glow_w = 330
 	else
 	    glow_w = 300
-	end			
+	end	
 	
 	local glow_panel = panel:bitmap({
 		name = "glow_panel",
@@ -77,22 +77,22 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 		layer 		= 1,
 		align 		= "left",
 		vertical 	= "bottom",
-		font 		= tweak_data.menu.pd2_large_font,
-		font_size 	= 70,
+		font 		= tweak_data.menu.pd2_medium_font,
+		font_size 	= 60,
 		color 		= VHUDPlus:getColorSetting({"DamagePopup", "COLOR"}, "yellow")
 	})
 	
-	--local attacker_unit = damage_info and damage_info.attacker_unit
+	-- local attacker_unit = damage_info and damage_info.attacker_unit
 	
-	--if alive( attacker_unit ) and attacker_unit:base() and attacker_unit:base().thrower_unit then
-		--attacker_unit = attacker_unit:base():thrower_unit()
-	--end
+	-- if alive( attacker_unit ) and attacker_unit:base() and attacker_unit:base().thrower_unit then
+	-- 	attacker_unit = attacker_unit:base():thrower_unit()
+	-- end
 	
-	--if attacker_unit and managers.network:session() and managers.network:session():peer_by_unit( attacker_unit ) then
-		--local peer_id = managers.network:session():peer_by_unit( attacker_unit ):id()
-		--local c = tweak_data.chat_colors[ peer_id ]
-		--text:set_color( c )
-	--end
+	-- if attacker_unit and managers.network:session() and managers.network:session():peer_by_unit( attacker_unit ) then
+	-- 	local peer_id = managers.network:session():peer_by_unit( attacker_unit ):id()
+	-- 	local c = tweak_data.chat_colors[ peer_id ]
+	-- 	text:set_color( c )
+	-- end
 	
 	local body = damage_info.col_ray and damage_info.col_ray.body or self._sync_ibody_popup and self._unit:body(self._sync_ibody_popup)
 	local headshot = body and self.is_head and self:is_head(body) or false
@@ -102,7 +102,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 	end
 	
 	panel:animate( function( p )
-		over( 5 , function( o )
+		over( VHUDPlus:getSetting({"DamagePopup", "DURATION_ALT"}, 2.2) , function( o )
 			self._uws:set_world( 165 , 100 , self._unit:movement():m_head_pos() + Vector3( 0 , 0 , 70 ) + Vector3( 0 , 0 , math.lerp( 0 , 50 , o ) ) , Vector3( 50 , 0 , 0 ) , Vector3( 0 , 0 , -50 ) )
 			text:set_color( text:color():with_alpha( 0.5 + ( math.sin( o * 750 ) + 0.5 ) / 4 ) )
 			panel:set_alpha( math.lerp( 1 , 0 , o ) )
@@ -291,22 +291,22 @@ elseif RequiredScript == "lib/units/civilians/civiliandamage" then
 		layer 		= 1,
 		align 		= "left",
 		vertical 	= "bottom",
-		font 		= tweak_data.menu.pd2_large_font,
-		font_size 	= 70,
+		font 		= tweak_data.menu.pd2_medium_font,
+		font_size 	= 60,
 		color 		= VHUDPlus:getColorSetting({"DamagePopup", "COLOR"}, "yellow")
 	})
 	
-	--local attacker_unit = damage_info and damage_info.attacker_unit
+	-- local attacker_unit = damage_info and damage_info.attacker_unit
 	
-	--if alive( attacker_unit ) and attacker_unit:base() and attacker_unit:base().thrower_unit then
-		--attacker_unit = attacker_unit:base():thrower_unit()
-	--end
+	-- if alive( attacker_unit ) and attacker_unit:base() and attacker_unit:base().thrower_unit then
+	-- 	attacker_unit = attacker_unit:base():thrower_unit()
+	-- end
 	
-	--if attacker_unit and managers.network:session() and managers.network:session():peer_by_unit( attacker_unit ) then
-		--local peer_id = managers.network:session():peer_by_unit( attacker_unit ):id()
-		--local c = tweak_data.chat_colors[ peer_id ]
-		--text:set_color( c )
-	--end
+	-- if attacker_unit and managers.network:session() and managers.network:session():peer_by_unit( attacker_unit ) then
+	-- 	local peer_id = managers.network:session():peer_by_unit( attacker_unit ):id()
+	-- 	local c = tweak_data.chat_colors[ peer_id ]
+	-- 	text:set_color( c )
+	-- end
 	
 	if damage_info.result.type == "death" then
 		text:set_text( managers.localization:get_default_macro( "BTN_SKULL" ) .. text:text() )
@@ -314,7 +314,7 @@ elseif RequiredScript == "lib/units/civilians/civiliandamage" then
 	end
 	
 	panel:animate( function( p )
-		over( 5 , function( o )
+		over( VHUDPlus:getSetting({"DamagePopup", "DURATION_ALT"}, 2.2) , function( o )
 			self._uws:set_world( 165 , 100 , self._unit:movement():m_head_pos() + Vector3( 0 , 0 , 70 ) + Vector3( 0 , 0 , math.lerp( 0 , 50 , o ) ) , Vector3( 50 , 0 , 0 ) , Vector3( 0 , 0 , -50 ) )
 			text:set_color( text:color():with_alpha( 0.5 + ( math.sin( o * 750 ) + 0.5 ) / 4 ) )
 			panel:set_alpha( math.lerp( 1 , 0 , o ) )

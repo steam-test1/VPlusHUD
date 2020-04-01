@@ -1134,6 +1134,12 @@
 	"wolfhud_enable_kingpin_effect_desc" : "The screen will flash orange when the kingpin injector is active.",
 	"wolfhud_enemy_deathvox_light" : "ZEAL Unit",
 	"wolfhud_enemy_deathvox_heavy" : "Heavy ZEAL",
+	"wolfhud_enemyhealthbarenemy_hurt_color_title" : "Enemy damage color",
+	"wolfhud_enemyhealthbarenemy_hurt_color_desc" : "Set the color for the health indicator to flash when you deal some damage to the enemy.",
+	"wolfhud_enemyhealthbarenemy_kill_color_title" : "Enemy kill color",
+	"wolfhud_enemyhealthbarenemy_kill_color_desc" : "Set the color for the health indicator to flash when you kill an enemy.",
 	"wolfhud_dmg_popup_show_alt_civ_popup_title" : "Show Civillian Damage Popup",
-	"wolfhud_dmg_popup_show_alt_civ_popup_desc" : "Enables civillian damage popup."
+	"wolfhud_dmg_popup_show_alt_civ_popup_desc" : "Enables civillian damage popup.",
+	"wolfhud_dmg_popup_time_alt_title" : "Popup Alt Time",
+	"wolfhud_dmg_popup_time_alt_desc" : "Determines how long the popup will stay."
 }
