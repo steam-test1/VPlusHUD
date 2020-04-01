@@ -1125,6 +1125,8 @@
 	"wolfhud_enable_swan_song_effect_desc" : "The screen will flash blue when going into swan song.",
 	"wolfhud_enable_kingpin_effect_title" : "Kingpin Injector Effect",
 	"wolfhud_enable_kingpin_effect_desc" : "The screen will flash orange when the kingpin injector is active.",
-	"wolfhud_enemy_deathvox_light" : "ZEAL Unit",
-	"wolfhud_enemy_deathvox_heavy" : "Heavy ZEAL"
+	"wolfhud_enemy_deathvox_light" : "ZEAL Unit",	
+	"wolfhud_enemy_deathvox_heavy" : "Heavy ZEAL",
+	"wolfhud_dmg_popup_show_alt_civ_popup_title" : "Show Civillian Damage Popup",
+	"wolfhud_dmg_popup_show_alt_civ_popup_desc" : "Enables civillian damage popup."
 }

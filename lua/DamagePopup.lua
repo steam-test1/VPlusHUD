@@ -71,20 +71,20 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 		vertical 	= "bottom",
 		font 		= tweak_data.menu.pd2_large_font,
 		font_size 	= 70,
-		color 		= Color.white
+		color 		= VHUDPlus:getColorSetting({"DamagePopup", "COLOR"}, "yellow")
 	})
 	
-	local attacker_unit = damage_info and damage_info.attacker_unit
+	--local attacker_unit = damage_info and damage_info.attacker_unit
 	
-	if alive( attacker_unit ) and attacker_unit:base() and attacker_unit:base().thrower_unit then
-		attacker_unit = attacker_unit:base():thrower_unit()
-	end
+	--if alive( attacker_unit ) and attacker_unit:base() and attacker_unit:base().thrower_unit then
+		--attacker_unit = attacker_unit:base():thrower_unit()
+	--end
 	
-	if attacker_unit and managers.network:session() and managers.network:session():peer_by_unit( attacker_unit ) then
-		local peer_id = managers.network:session():peer_by_unit( attacker_unit ):id()
-		local c = tweak_data.chat_colors[ peer_id ]
-		text:set_color( c )
-	end
+	--if attacker_unit and managers.network:session() and managers.network:session():peer_by_unit( attacker_unit ) then
+		--local peer_id = managers.network:session():peer_by_unit( attacker_unit ):id()
+		--local c = tweak_data.chat_colors[ peer_id ]
+		--text:set_color( c )
+	--end
 	
 	local body = damage_info.col_ray and damage_info.col_ray.body or self._sync_ibody_popup and self._unit:body(self._sync_ibody_popup)
 	local headshot = body and self.is_head and self:is_head(body) or false
@@ -272,7 +272,7 @@ elseif RequiredScript == "lib/units/civilians/civiliandamage" then
 	self._uws:set_billboard( self._uws.BILLBOARD_BOTH )
 	
 	local panel = self._uws:panel():panel({
-		visible =  VHUDPlus:getSetting({"DamagePopup", "SHOW_DAMAGE_POPUP_ALT"}, true),
+		visible = VHUDPlus:getSetting({"DamagePopup", "SHOW_DAMAGE_POPUP_ALT"}, true) and VHUDPlus:getSetting({"DamagePopup", "SHOW_DAMAGE_POPUP_ALT_CIV"}, true),
 		name 	= "damage_panel",
 		layer = 0,
 		alpha = 0
@@ -285,20 +285,20 @@ elseif RequiredScript == "lib/units/civilians/civiliandamage" then
 		vertical 	= "bottom",
 		font 		= tweak_data.menu.pd2_large_font,
 		font_size 	= 70,
-		color 		= Color.white
+		color 		= VHUDPlus:getColorSetting({"DamagePopup", "COLOR"}, "yellow")
 	})
 	
-	local attacker_unit = damage_info and damage_info.attacker_unit
+	--local attacker_unit = damage_info and damage_info.attacker_unit
 	
-	if alive( attacker_unit ) and attacker_unit:base() and attacker_unit:base().thrower_unit then
-		attacker_unit = attacker_unit:base():thrower_unit()
-	end
+	--if alive( attacker_unit ) and attacker_unit:base() and attacker_unit:base().thrower_unit then
+		--attacker_unit = attacker_unit:base():thrower_unit()
+	--end
 	
-	if attacker_unit and managers.network:session() and managers.network:session():peer_by_unit( attacker_unit ) then
-		local peer_id = managers.network:session():peer_by_unit( attacker_unit ):id()
-		local c = tweak_data.chat_colors[ peer_id ]
-		text:set_color( c )
-	end
+	--if attacker_unit and managers.network:session() and managers.network:session():peer_by_unit( attacker_unit ) then
+		--local peer_id = managers.network:session():peer_by_unit( attacker_unit ):id()
+		--local c = tweak_data.chat_colors[ peer_id ]
+		--text:set_color( c )
+	--end
 	
 	if damage_info.result.type == "death" then
 		text:set_text( managers.localization:get_default_macro( "BTN_SKULL" ) .. text:text() )
