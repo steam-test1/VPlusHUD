@@ -263,6 +263,7 @@ end
 	BURST_FIRE_RATE_MUL - Fire rate multiplier when a weapon is fired in burst mode, (default 1, standard fire rate)
 	BURST_FIRE_DELAY_RECOIL - Delays recoil until after the burst has ended. Recommended only for short, high rate burst weapons (default false)
 
+
 if not VHUDPlus:getSetting({"EQUIPMENT", "ENABLE_BURSTMODE"}, true) then
 	return
 end
@@ -453,22 +454,6 @@ if RequiredScript == "lib/units/weapons/shotgun/shotgunbase" then
 	
 end
 
-if RequiredScript == "lib/units/weapons/akimboshotgunbase" then
-
-	local fire_rate_multiplier_original = AkimboShotgunBase.fire_rate_multiplier
-	local akimbo_shot_burst = true
-	function AkimboShotgunBase:fire_rate_multiplier(...)
-		if akimbo_shot_burst then
-			local mult = self:in_burst_mode() and self._burst.fire_rate_multiplier or 2
-			return fire_rate_multiplier_original(self, ...) * mult
-		else 
-			return fire_rate_multiplier_original(self, ...)
-		end
-
-	end
-
-end
-
 if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 
 	local fire_original = AkimboWeaponBase.fire
@@ -512,7 +497,7 @@ if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 			table.insert(self._available_modes, { id = "double", id_string = Idstring("single"), single = false })
 			
 			if has_auto then
-				table.insert(self._available_modes, { id = "auto", id_string = Idstring("auto"), single = true })
+				table.insert(self._available_modes, { id = "auto", id_string = Idstring("auto"), single = false })
 			end
 			
 			table.insert(self._available_modes, { id = "single", id_string = Idstring("single"), single = true })
@@ -538,6 +523,22 @@ if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 			
 			return true
 		end
+	end
+	
+end
+
+if RequiredScript == "lib/units/weapons/akimboshotgunbase" then
+
+	local fire_rate_multiplier_original = AkimboShotgunBase.fire_rate_multiplier
+	local akimbo_shot_burst = false
+	function AkimboShotgunBase:fire_rate_multiplier(...)
+		if akimbo_shot_burst then
+			local mult = self:in_burst_mode() and self._burst.fire_rate_multiplier or 2
+			return fire_rate_multiplier_original(self, ...) * mult
+		else 
+			return fire_rate_multiplier_original(self, ...)
+		end
+				
 	end
 	
 end
