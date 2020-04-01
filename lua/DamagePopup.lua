@@ -272,7 +272,7 @@ elseif RequiredScript == "lib/units/civilians/civiliandamage" then
 	self._uws:set_billboard( self._uws.BILLBOARD_BOTH )
 	
 	local panel = self._uws:panel():panel({
-		visible =  VHUDPlus:getSetting({"DamagePopup", "SHOW_DAMAGE_POPUP_ALT"}, true),
+		visible = VHUDPlus:getSetting({"DamagePopup", "SHOW_DAMAGE_POPUP_ALT"}, true) and VHUDPlus:getSetting({"DamagePopup", "SHOW_DAMAGE_POPUP_ALT_CIV"}, true),
 		name 	= "damage_panel",
 		layer = 0,
 		alpha = 0
