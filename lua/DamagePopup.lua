@@ -44,6 +44,14 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 		layer = 0,
 		alpha = 0
 	})
+
+	if damage_info.damage * 10 > 999 then
+	    glow_w = 375
+	elseif damage_info.damage * 10 > 99 then
+	    glow_w = 330
+	else
+	    glow_w = 300
+	end			
 	
 	local glow_panel = panel:bitmap({
 		name = "glow_panel",
@@ -58,7 +66,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 		x = -100,
 		y = -35,
 		h = 200,
-		w = 300,
+		w = glow_w,
 		rotation = 360,
 		align = "left",
 		layer = 1
