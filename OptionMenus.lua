@@ -1777,7 +1777,6 @@ if VHUDPlus then
 								value = {"DrivingHUD", "ENABLED"},
 							},
 							{
-								--[[
 								type = "slider",
 								name_id = "wolfhud_drivinghud_scale_title",
 								desc_id = "wolfhud_drivinghud_scale_desc",
@@ -1791,7 +1790,6 @@ if VHUDPlus then
 								step_size = 0.01,
 							},
 							{
-								]]
 								type = "divider",
 								size = 16,
 							},
