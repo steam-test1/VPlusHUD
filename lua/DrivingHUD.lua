@@ -421,14 +421,15 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 							icon:set_color(tweak_data.chat_colors[color_id])
 						end
 						if character_data then
-							local mask_id = character_data.mask_id
-							if tweak_data.blackmarket.masks[mask_id].inaccessible then mask_id = string.match(mask_id, "%w+")
+							local tweak_entry = tweak_data.blackmarket.masks
+							local mask_id = character_data.mask_id or "alienware"
+							if tweak_entry[mask_id].inaccessible then mask_id = string.match(mask_id, "%w+")
 							end
 							self._mask_id = mask_id
 							
-							local tweak_entry = tweak_data.blackmarket.masks
-							local texture = tweak_entry and tweak_entry[self._mask_id].custom_texture
-							if tweak_entry and not texture then
+							
+							local texture
+							if tweak_entry then
 								local bundle_folder = tweak_entry[self._mask_id] and tweak_entry[self._mask_id].texture_bundle_folder
 								local guis_catalog = string.format("guis/%s", bundle_folder and string.format("dlcs/%s/", tostring(bundle_folder)) or "")
 								local texture_name = tweak_entry[self._mask_id] and tweak_entry[self._mask_id].texture_name or tostring(self._mask_id)
