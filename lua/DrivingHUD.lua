@@ -424,16 +424,18 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 							local mask_id = character_data.mask_id
 							if tweak_data.blackmarket.masks[mask_id].inaccessible then mask_id = string.match(mask_id, "%w+")
 							end
-
+							self._mask_id = mask_id
 							
-							local guis_catalog = "guis/"
-							local bundle_folder = tweak_data.blackmarket.masks[mask_id] and tweak_data.blackmarket.masks[mask_id].texture_bundle_folder
-							if bundle_folder then
-								guis_catalog = guis_catalog .. "dlcs/" .. tostring(bundle_folder) .. "/"
+							local tweak_entry = tweak_data.blackmarket.masks
+							local texture = tweak_entry and tweak_entry[self._mask_id].custom_texture
+							if tweak_entry and not texture then
+								local bundle_folder = tweak_entry[self._mask_id] and tweak_entry[self._mask_id].texture_bundle_folder
+								local guis_catalog = string.format("guis/%s", bundle_folder and string.format("dlcs/%s/", tostring(bundle_folder)) or "")
+								local texture_name = tweak_entry[self._mask_id] and tweak_entry[self._mask_id].texture_name or tostring(self._mask_id)
+								texture = string.format("%s%s%s", guis_catalog, "textures/pd2/blackmarket/icons/masks/", texture_name)
 							end
-							local mask_texture = tweak_data.blackmarket.masks[mask_id].custom_texture or guis_catalog .. "textures/pd2/blackmarket/icons/masks/" .. mask_id
 							
-							icon:set_image(mask_texture)
+							icon:set_image(texture)
 						end
 					end
 				elseif self.drivingpanel:child(seat.name) then
