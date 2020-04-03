@@ -39,7 +39,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 	self._uws:set_billboard( self._uws.BILLBOARD_BOTH )
 	
 	local panel = self._uws:panel():panel({
-		visible =  VHUDPlus:getSetting({"DamagePopup", "SHOW_DAMAGE_POPUP_ALT"}, true) and damage_info.damage * 10 > 0.9,
+		visible =  VHUDPlus:getSetting({"DamagePopup", "SHOW_DAMAGE_POPUP_ALT"}, true) and damage_info.damage * 10 > 0.99,
 		name 	= "damage_panel",
 		layer = 0,
 		alpha = 0
