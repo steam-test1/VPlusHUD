@@ -292,7 +292,7 @@ if not _G.VHUDPlus then
 				CRITICAL_COLOR 							= "light_purple",
 				SHOW_DAMAGE_POPUP_ALT					= true,
 				SHOW_DAMAGE_POPUP_ALT_CIV               = false,	
-				DURATION_ALT	 						= 2.2,
+				DURATION_ALT	 						= 4,
 				GLOW_COLOR 								= "red",
 			},
 			AssaultBanner = {

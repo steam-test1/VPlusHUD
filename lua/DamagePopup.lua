@@ -102,7 +102,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 	end
 	
 	panel:animate( function( p )
-		over( VHUDPlus:getSetting({"DamagePopup", "DURATION_ALT"}, 2.2) , function( o )
+		over( VHUDPlus:getSetting({"DamagePopup", "DURATION_ALT"}, 4) , function( o )
 			self._uws:set_world( 165 , 100 , self._unit:movement():m_head_pos() + Vector3( 0 , 0 , 70 ) + Vector3( 0 , 0 , math.lerp( 0 , 50 , o ) ) , Vector3( 50 , 0 , 0 ) , Vector3( 0 , 0 , -50 ) )
 			text:set_color( text:color():with_alpha( 0.5 + ( math.sin( o * 750 ) + 0.5 ) / 4 ) )
 			panel:set_alpha( math.lerp( 1 , 0 , o ) )
@@ -314,7 +314,7 @@ elseif RequiredScript == "lib/units/civilians/civiliandamage" then
 	end
 	
 	panel:animate( function( p )
-		over( VHUDPlus:getSetting({"DamagePopup", "DURATION_ALT"}, 2.2) , function( o )
+		over( VHUDPlus:getSetting({"DamagePopup", "DURATION_ALT"}, 4) , function( o )
 			self._uws:set_world( 165 , 100 , self._unit:movement():m_head_pos() + Vector3( 0 , 0 , 70 ) + Vector3( 0 , 0 , math.lerp( 0 , 50 , o ) ) , Vector3( 50 , 0 , 0 ) , Vector3( 0 , 0 , -50 ) )
 			text:set_color( text:color():with_alpha( 0.5 + ( math.sin( o * 750 ) + 0.5 ) / 4 ) )
 			panel:set_alpha( math.lerp( 1 , 0 , o ) )
