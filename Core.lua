@@ -267,6 +267,7 @@ if not _G.VHUDPlus then
 				ENABLED_ALT								= false,
 				ENEMY_KILL_COLOR						= "red",
 				ENEMY_HURT_COLOR						= "orange",
+				SHOW_MULTIPLIED_ENEMY_HEALTH			= true,
 			},
 			DamageIndicator = {
 				ENABLED									= true,

@@ -1459,6 +1459,15 @@ if VHUDPlus then
 							},
 							{
 								type = "toggle",
+								name_id = "wolfhud_enemyhealthbar_show_multiplied_enemy_health",
+								desc_id = "wolfhud_enemyhealthbar_show_multiplied_enemy_health_desc",
+								visible_reqs = {}, enabled_reqs = {
+								    { setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true },
+								},
+								value = {"EnemyHealthbar", "SHOW_MULTIPLIED_ENEMY_HEALTH"},
+							},
+							{
+								type = "toggle",
 								name_id = "wolfhud_show_enemyhealthbar_title",
 								desc_id = "wolfhud_show_enemyhealthbar_desc",
 								visible_reqs = {}, enabled_reqs = {},
