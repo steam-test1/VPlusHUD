@@ -1546,20 +1546,20 @@ if VHUDPlus then
 								max_value = 400,
 								step_size = 1,
 							},
-							{
-								type = "slider",
-								name_id = "wolfhud_enemyhealthbar_enemy_text_size",
-								desc_id = "wolfhud_enemyhealthbar_enemy_text_size_desc",
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
-									{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
-								},
-								value = {"EnemyHealthbar", "ENEMY_TEXT_SIZE"},
-								min_value = 20,
-								max_value = 30,
-								step_size = 1,
-							},
+							--{
+							--	type = "slider",
+							--	name_id = "wolfhud_enemyhealthbar_enemy_text_size",
+							--	desc_id = "wolfhud_enemyhealthbar_enemy_text_size_desc",
+							--	visible_reqs = {},
+							--	enabled_reqs = {
+							--		{ setting = { "EnemyHealthbar", "ENABLED" }, invert = false },
+							--		{ setting = { "EnemyHealthbar", "ENABLED_ALT" }, invert = true }
+							--	},
+							--	value = {"EnemyHealthbar", "ENEMY_TEXT_SIZE"},
+							--	min_value = 20,
+							--	max_value = 30,
+							--	step_size = 1,
+							--},
 						    {
 							    type = "multi_choice",
 							    name_id = "wolfhud_enemyhealthbarenemy_hurt_color_title",
