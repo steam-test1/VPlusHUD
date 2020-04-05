@@ -462,6 +462,14 @@ elseif string.lower(RequiredScript) == "lib/units/contourext" then
 		    return result
 	    end
 	end
+elseif string.lower(RequiredScript) == "lib/tweak_data/weapontweakdata" then
+    local old_init = WeaponTweakData.init
+
+    function WeaponTweakData:init(tweak_data)
+        old_init(self, tweak_data)
+        self.basset_crew.rays = 6
+        self.x_basset_crew.rays = 6
+    end	
 elseif string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" then
 	local init_original = ObjectInteractionManager.init
 
