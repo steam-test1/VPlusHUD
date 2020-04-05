@@ -1140,7 +1140,6 @@
 	"wolfhud_dmg_popup_time_alt_title" : "Popup Alt Time",
 	"wolfhud_dmg_popup_time_alt_desc" : "Determines how long the popup will stay.",
 	"wolfhud_enemyhealthbar_show_multiplied_enemy_health" : "Show enemy health x10",
-	"wolfhud_enemyhealthbar_show_multiplied_enemy_health_desc" : "Shows the enemy health x10. This makes the health values consistent with weapon damage stats."
 	"wolfhud_enemyhealthbar_show_multiplied_enemy_health_desc" : "Shows the enemy health x10. This makes the health values consistent with weapon damage stats.",
 	"wolfhud_dmg_popup_body_glow_color_title" : "Bodyshot Glow Popup Color",
 	"wolfhud_dmg_popup_body_glow_color_desc" : "Configure the bodyshot glow color."	
