@@ -463,10 +463,10 @@ elseif string.lower(RequiredScript) == "lib/units/contourext" then
 	    end
 	end
 elseif string.lower(RequiredScript) == "lib/tweak_data/weapontweakdata" then
-    local old_init = WeaponTweakData.init
+    local init_original = WeaponTweakData.init
 
     function WeaponTweakData:init(tweak_data)
-        old_init(self, tweak_data)
+        init_original(self, tweak_data)
         self.basset_crew.rays = 6
         self.x_basset_crew.rays = 6
     end	
