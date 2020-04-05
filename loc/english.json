@@ -731,7 +731,7 @@
 	"wolfhud_hudlist_crew_chief_teambuff_desc" : "Part of Composite Buffs.",
 	"wolfhud_hudlist_forced_friendship_teambuff_title" : "Forced Friendship Teambuff",
 	"wolfhud_hudlist_forced_friendship_teambuff_desc" : "",
-	"wolfhud_hudlist_life_steal_gage_debuff_title" : "Life Steal",
+	"wolfhud_hudlist_life_steal_gage_debuff_title" : "Self Healer",
 	"wolfhud_hudlist_life_steal_gage_debuff_desc" : "",
 	"wolfhud_hudlist_invulnerable_gage_buff_title" : "Invulnerability",
 	"wolfhud_hudlist_invulnerable_gage_buff_desc" : "",
