@@ -3012,17 +3012,17 @@ if VHUDPlus then
 											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
 										},
 									},
-									{
-										type = "toggle",
-										name_id = "wolfhud_hudlist_unseen_strike_buff_title",
-										desc_id = "wolfhud_hudlist_unseen_strike_buff_desc",
-										value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "unseen_strike"},
-										visible_reqs = {},
-										enabled_reqs = {
-											{ setting = { "HUDList", "ENABLED" }, invert = false },
-											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
-										},
-									},
+									--{
+									--	type = "toggle",
+									--	name_id = "wolfhud_hudlist_unseen_strike_buff_title",
+									--	desc_id = "wolfhud_hudlist_unseen_strike_buff_desc",
+									--	value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "unseen_strike"},
+									--	visible_reqs = {},
+									--	enabled_reqs = {
+									--		{ setting = { "HUDList", "ENABLED" }, invert = false },
+									--		{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+									--	},
+									--},
 								},
 							},
 							{
