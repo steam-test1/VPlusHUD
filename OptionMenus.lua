@@ -1766,6 +1766,21 @@ if VHUDPlus then
 								add_color_options = true,
 								add_rainbow = true,
 							},
+							{
+								type = "multi_choice",
+								name_id = "wolfhud_dmg_popup_body_glow_color_title",
+								desc_id = "wolfhud_dmg_popup_body_glow_color_desc",
+								value = {"DamagePopup", "GLOW_COLOR_BODY"},
+								visible_reqs = {
+								    { setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false }
+								},
+								enabled_reqs = {
+									{ setting = { "DamagePopup", "SHOW_DAMAGE_POPUP_ALT" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = true,								
+							},
 						},
 					},
 					{
