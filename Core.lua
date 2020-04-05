@@ -119,7 +119,8 @@ if not _G.VHUDPlus then
 		["lib/managers/menu/items/contractbrokerheistitem"]			= { "MenuTweaks.lua" },
 		["lib/network/base/hostnetworksession"]			            = { "MenuTweaks.lua" },
 		["lib/managers/hud/hudplayercustody"]			            = { "VanillaHUD.lua" },
-		["lib/units/weapons/shotgun/shotgunbase"] 					= { "BurstFire.lua" },		
+		["lib/units/weapons/shotgun/shotgunbase"] 					= { "BurstFire.lua" },
+		["lib/tweak_data/weapontweakdata"] 							= { "Scripts.lua" },		
 
 		--Utils and custom classes...
 		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },
