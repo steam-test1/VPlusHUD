@@ -51,17 +51,26 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 	    glow_w = 330
 	else
 	    glow_w = 300
-	end	
+	end
+			
+	local body = damage_info.col_ray and damage_info.col_ray.body or self._sync_ibody_popup and self._unit:body(self._sync_ibody_popup)
+	local headshot = body and self.is_head and self:is_head(body) or false
+	
+	if damage_info.result.type == "death" and headshot then
+	    glow_color = VHUDPlus:getColorSetting({"DamagePopup", "GLOW_COLOR"}, "red")
+	else
+	    glow_color = VHUDPlus:getColorSetting({"DamagePopup", "GLOW_COLOR_BODY"}, "red")
+	end
 	
 	local glow_panel = panel:bitmap({
 		name = "glow_panel",
 		texture = "guis/textures/pd2/crimenet_marker_glow",
-		visible = damage_info.result.type == "death" and headshot,
+		visible = damage_info.result.type == "death",
 		w = 192,
 		h = 192,
 		blend_mode = "add",
 		alpha = 0.55,
-		color = VHUDPlus:getColorSetting({"DamagePopup", "GLOW_COLOR"}, "red"),
+		color = glow_color,
 		--color = DmgPopUp.colors[(DmgPopUp.options.damage_popup_headshot_flash_color)],
 		x = -100,
 		y = -35,
