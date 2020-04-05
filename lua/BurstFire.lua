@@ -364,14 +364,10 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 	
 	--Default function for vanilla HUD. If using a custom HUD that alters fire mode HUD components, make sure to implement this function in it
 	HUDTeammate.set_weapon_firemode_custom = HUDTeammate.set_weapon_firemode_custom or function(self, id)
-		local weapon_selection
-		
-		if id == 1 then
-			weapon_selection = self._player_panel:child("weapons_panel"):child("secondary_weapon_panel"):child("weapon_selection")
-		else
-			weapon_selection = self._player_panel:child("weapons_panel"):child("primary_weapon_panel"):child("weapon_selection")
-		end
-
+		local is_secondary = id == 1
+		local secondary_weapon_panel = self._player_panel:child("weapons_panel"):child("secondary_weapon_panel")
+		local primary_weapon_panel = self._player_panel:child("weapons_panel"):child("primary_weapon_panel")
+		local weapon_selection = is_secondary and secondary_weapon_panel:child("weapon_selection") or primary_weapon_panel:child("weapon_selection")
 		if alive(weapon_selection) then
 			local firemode_single = weapon_selection:child("firemode_single")
 			local firemode_auto = weapon_selection:child("firemode_auto")
