@@ -295,6 +295,7 @@ if not _G.VHUDPlus then
 				SHOW_DAMAGE_POPUP_ALT_CIV               = false,	
 				DURATION_ALT	 						= 4,
 				GLOW_COLOR 								= "red",
+				GLOW_COLOR_BODY                         = "red",				
 			},
 			AssaultBanner = {
 				USE_CENTER_ASSAULT						= true,
