@@ -5003,7 +5003,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "ammo_efficiency"}, true)
+			ignore = true,
 		},
 		armor_break_invulnerable = {
 			perks = {6, 1},
@@ -5320,7 +5320,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "unseen_strike"}, true),
+			ignore = true,
 		},
 		up_you_go = {
 			skills_new = tweak_data.skilltree.skills.up_you_go.icon_xy,
