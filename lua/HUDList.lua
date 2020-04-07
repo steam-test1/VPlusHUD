@@ -176,7 +176,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--General settings (Offsets get updated by Objective/Assault or CustomHUD)
 		right_list_height_offset = VHUDPlus:getSetting({"AssaultBanner", "USE_CENTER_ASSAULT"}, true) and 0 or VHUDPlus:getSetting({"HUDList", "right_list_height_offset"}, 50), --Margin from top for the right list
 		left_list_height_offset = VHUDPlus:getSetting({"HUDList", "left_list_height_offset"}, 60),   										--Margin from top for the left list
-		buff_list_height_offset = 90 or NobleHUD and 50,  										--Margin from bottom for the buff list
+		buff_list_height_offset = 90 and MUISubtitle or NobleHUD and 50 or VHUDPlus:getSetting({"HUDList", "buff_list_height_offset"}, 90),  										--Margin from bottom for the buff list
 		right_list_scale 				= VHUDPlus:getSetting({"HUDList", "right_list_scale"}, 1),   	--Size scale of right list
 		left_list_scale 				= VHUDPlus:getSetting({"HUDList", "left_list_scale"}, 1),    	--Size scale of left list
 		buff_list_scale 				= VHUDPlus:getSetting({"HUDList", "buff_list_scale"}, 1),    	--Size scale of buff list
