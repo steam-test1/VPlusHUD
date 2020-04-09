@@ -764,33 +764,44 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		end
 
 		if VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
-		sub_offset = 375
+		    sub_offset = 375
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 260
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
-		sub_offset = 330
+		    sub_offset = 330
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 250
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
-		sub_offset = 300
+		    sub_offset = 300
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 240
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
-		sub_offset = 275
+		    sub_offset = 275
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 230
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
-		sub_offset = 230
+		    sub_offset = 230
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 220
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
-		sub_offset = 200
+		    sub_offset = 200
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 210
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
-		sub_offset = 175
+		    sub_offset = 175
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 200
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
-		sub_offset = 130
+		    sub_offset = 130
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 190
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
-		sub_offset = 100
+		    sub_offset = 100
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 180
 		elseif VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) and VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
-		sub_offset = 65
+		    sub_offset = 65
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 170
 		else
-		sub_offset = 35
+		    sub_offset = 35
+			buff_offset = HUDListManager.ListOptions.buff_list_height_offset < 160
 		end
-
-		if managers.subtitle then
+		
+		if managers.subtitle and buff_offset then
 			local sub_presenter = managers.subtitle:presenter()
 			if sub_presenter and sub_presenter.set_bottom then
-				sub_presenter:set_bottom(y - sub_offset)
+				sub_presenter:set_bottom(y - sub_offset )
 			end
 		end
 
