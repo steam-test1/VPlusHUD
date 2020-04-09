@@ -1177,7 +1177,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	function HUDListManager:_set_buff_list_height_offset()
 		local list = self:list("buff_list")
 		if list then
-			list:move(list:panel():x(), HUDListManager.ListOptions.buff_list_height_offset or 90, false)
+		--	list:move(list:panel():x(), HUDListManager.ListOptions.buff_list_height_offset or 90, false)
 		end
 	end
 
