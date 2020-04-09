@@ -495,7 +495,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudassaultcorner" then
 	function HUDAssaultCorner:init(...)
 		HUDAssaultCorner_init(self, ...)
 		local hostages_panel = self._hud_panel:child("hostages_panel")
-		if alive(hostages_panel) and VHUDPlus:getSetting({"HUDList", "ENABLED"}, true) then
+		if alive(hostages_panel) and not VHUDPlus:getSetting({"HUDList", "ORIGNIAL_HOSTAGE_BOX"}, false) then
 			hostages_panel:set_alpha(0)
 		end
 	end
