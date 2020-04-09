@@ -1149,5 +1149,7 @@
 	"wolfhud_enemyhealthbar_show_multiplied_enemy_health" : "Show enemy health x10",
 	"wolfhud_enemyhealthbar_show_multiplied_enemy_health_desc" : "Shows the enemy health x10. This makes the health values consistent with weapon damage stats.",
 	"wolfhud_dmg_popup_body_glow_color_title" : "Bodyshot Glow Popup Color",
-	"wolfhud_dmg_popup_body_glow_color_desc" : "Configure the bodyshot glow color."
+	"wolfhud_dmg_popup_body_glow_color_desc" : "Configure the bodyshot glow color.",
+	"wolfhud_original_hostage_box_title" : "Show Original Hostage Box",
+	"wolfhud_original_hostage_box_desc" : "Shows the original hostage box on the hud."
 }
