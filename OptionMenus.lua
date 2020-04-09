@@ -1920,6 +1920,16 @@ if VHUDPlus then
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
+						type = "toggle",
+						name_id = "wolfhud_original_hostage_box_title",
+						desc_id = "wolfhud_original_hostage_box_desc",
+						value = {"HUDList", "ORIGNIAL_HOSTAGE_BOX"},
+						visible_reqs = {}, 
+						enabled_reqs = {
+						    { setting = { "HUDList", "ENABLED" }, invert = false },
+						},						
+					},
+					{
 						type ="divider",
 						size = 16,
 					},

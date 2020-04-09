@@ -404,6 +404,7 @@ if not _G.VHUDPlus then
 				},
 				BUFF_LIST = {
 					show_buffs 								= true,     --Active effects (buffs/debuffs). Also see HUDList.BuffItemBase.IGNORED_BUFFS table to ignore specific buffs that you don't want listed, or enable some of those not shown by default
+				ORIGNIAL_HOSTAGE_BOX                    = false,					
 					damage_increase							= true,
 					damage_reduction						= true,
 					melee_damage_increase					= true,
