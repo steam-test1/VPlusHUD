@@ -1030,7 +1030,7 @@ if VHUDPlus then
 								type = "toggle",
 								name_id = "wolfhud_shuffle_music_title",
 								desc_id = "wolfhud_shuffle_music_desc",
-								value = {"MISC", "SHUFFLE_MUSIC"},
+								value = {"MISCHUD", "SHUFFLE_MUSIC"},
 								visible_reqs = {}, enabled_reqs = {},
 							},
 						},
