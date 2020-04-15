@@ -120,7 +120,8 @@ if not _G.VHUDPlus then
 		["lib/network/base/hostnetworksession"]			            = { "MenuTweaks.lua" },
 		["lib/managers/hud/hudplayercustody"]			            = { "VanillaHUD.lua" },
 		["lib/units/weapons/shotgun/shotgunbase"] 					= { "BurstFire.lua" },
-		["lib/tweak_data/weapontweakdata"] 							= { "Scripts.lua" },		
+		["lib/tweak_data/weapontweakdata"] 							= { "Scripts.lua" },	
+		["lib/tweak_data/levelstweakdata"]                          = { "Scripts.lua" },	
 
 		--Utils and custom classes...
 		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },
@@ -242,6 +243,7 @@ if not _G.VHUDPlus then
                 KINGPIN_EFFECT                      = true,			
                 SCALE                               = 1,
 				SUB				                    = false,	
+				SHUFFLE_MUSIC                       = false,
 			},
 			HUDChat = {
 				ENABLED									= true,

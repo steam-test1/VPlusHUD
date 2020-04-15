@@ -1140,5 +1140,7 @@
 	"wolfhud_dmg_popup_body_glow_color_title" : "Bodyshot Glow Popup Color",
 	"wolfhud_dmg_popup_body_glow_color_desc" : "Configure the bodyshot glow color.",
 	"wolfhud_original_hostage_box_title" : "Show Original Hostage Box",
-	"wolfhud_original_hostage_box_desc" : "Shows the original hostage box on the hud."
+	"wolfhud_original_hostage_box_desc" : "Shows the original hostage box on the hud.",
+	"wolfhud_shuffle_music_title" : "Shuffle music",
+	"wolfhud_shuffle_music_desc" : "Music will shuffle between assault waves"
 }

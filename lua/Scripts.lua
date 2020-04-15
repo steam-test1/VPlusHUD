@@ -499,4 +499,17 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudassaultcorner" then
 			hostages_panel:set_alpha(0)
 		end
 	end
+elseif string.lower(RequiredScript) == "lib/tweak_data/levelstweakdata" then
+    local _get_music_event_orig = LevelsTweakData.get_music_event
+    function LevelsTweakData:get_music_event(stage)
+        local result = _get_music_event_orig(self, stage)
+        if result and VHUDPlus:getSetting({"MISC", "SHUFFLE_MUSIC"}, true) and stage == "control" then
+            if self.can_change_music then
+                managers.music:check_music_switch()
+            else
+                self.can_change_music = true
+            end
+        end
+        return result
+    end	
 end

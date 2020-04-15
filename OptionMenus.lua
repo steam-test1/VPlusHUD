@@ -1026,6 +1026,13 @@ if VHUDPlus then
 								max_value = 1.2,
 								step_size = 0.05,						
 							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_shuffle_music_title",
+								desc_id = "wolfhud_shuffle_music_desc",
+								value = {"MISC", "SHUFFLE_MUSIC"},
+								visible_reqs = {}, enabled_reqs = {},
+							},
 						},
 					},
 					{
