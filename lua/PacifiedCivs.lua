@@ -91,7 +91,6 @@ function GroupAIStateBase:_upd_criminal_suspicion_progress(...)
  					    if not obs_susp_data._subdued_civ then
  						    obs_susp_data._alerted_civ = nil
  						    obs_susp_data._subdued_civ = true
-						    local alt = true
 						
 						    if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_WOLFDEFAULT"}, true) then	
  							    color = Color(0, 0.71, 1)
