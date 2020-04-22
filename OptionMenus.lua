@@ -1315,6 +1315,13 @@ if VHUDPlus then
 							},
 							{
 								type = "toggle",
+								name_id = "wolfhud_wave_counter_title",
+								desc_id = "wolfhud_wave_counter_desc",
+								visible_reqs = {}, enabled_reqs = {},
+								value = {"AssaultBanner", "WAVE_COUNTER"},								
+							},
+							{
+								type = "toggle",
 								name_id = "wolfhud_mui_assault_fix_title",
 								desc_id = "wolfhud_mui_assault_fix_desc",
 								visible_reqs = {}, enabled_reqs = {},
