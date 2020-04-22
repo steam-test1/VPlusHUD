@@ -50,7 +50,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudassaultcorner" then
 		end
 		
 		-- Waves completed are visible in Objective and overlapping with HUDList.
-		if self:should_display_waves() then
+		if self:should_display_waves() and VHUDPlus:getSetting({"AssaultBanner", "WAVE_COUNTER"}, true) then
 			local wave_panel = self._hud_panel:child("wave_panel")
 			if alive(wave_panel) then
 				wave_panel:set_alpha(0)
