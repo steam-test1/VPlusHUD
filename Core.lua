@@ -303,6 +303,7 @@ if not _G.VHUDPlus then
 			AssaultBanner = {
 				USE_CENTER_ASSAULT						= true,
 				USE_ADV_ASSAULT							= true,
+				WAVE_COUNTER                            = true,				
 				MUI_ASSAULT_FIX							= false,
 			},
 			HUDSuspicion = {
