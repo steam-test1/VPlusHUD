@@ -127,6 +127,27 @@ if RequiredScript == "lib/managers/hudmanagerpd2" then
     	managers.gui_data:layout_scaled_fullscreen_workspace(managers.hud._saferect)
 	end)
 
+	function HUDManager:_update_temporary_upgrades()
+		local underactivated = managers.player:has_activate_temporary_upgrade("temporary", "dmg_dampener_outnumbered")
+		if underactivated == true then
+			managers.hud:show_underdog()
+		else
+			managers.hud:hide_underdog()
+		end
+		
+		if not underactivated then
+			self:remove_updator("_update_temporary_upgrades")
+			self._temp_upgrades_updator_active = false
+		end
+	end
+
+	function HUDManager:activate_temp_upgrades_updator()
+		if not self._temp_upgrades_updator_active then
+			self._temp_upgrades_updator_active = true
+			self:add_updator("_update_temporary_upgrades", callback(self, self, "_update_temporary_upgrades"))
+		end
+	end
+
 	function HUDManager:recreate_player_info_hud_pd2()
 		if not self:alive(PlayerBase.PLAYER_INFO_HUD_PD2) then return end
 		local hud = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2)
@@ -841,40 +862,47 @@ elseif RequiredScript == "lib/managers/enemymanager" then
 
 elseif RequiredScript == "lib/units/beings/player/playermovement" then
 	
-	Hooks:PostHook( PlayerMovement , "_upd_underdog_skill" , "uHUDPostPlayerMovementUpdUnderdogSkill" , function( self , t )
+	-- Hooks:PostHook( PlayerMovement , "_upd_underdog_skill" , "uHUDPostPlayerMovementUpdUnderdogSkill" , function( self , t )
 
-		if not self._underdog_skill_data.has_dmg_dampener then return end
+	-- 	if not self._underdog_skill_data.has_dmg_dampener then return end
 
-		if not self._attackers or self:downed() then
-			managers.hud:hide_underdog()
-			return
-		end
+	-- 	if not self._attackers or self:downed() then
+	-- 		managers.hud:hide_underdog()
+	-- 		return
+	-- 	end
 
-		local my_pos = self._m_pos
-		local nr_guys = 0
-		local activated
-		for u_key, attacker_unit in pairs(self._attackers) do
-			if not alive(attacker_unit) then
-				self._attackers[u_key] = nil
-				managers.hud:hide_underdog()
-				return
-			end
-			local attacker_pos = attacker_unit:movement():m_pos()
-			local dis_sq = mvector3.distance_sq(attacker_pos, my_pos)
-			if dis_sq < self._underdog_skill_data.max_dis_sq and math.abs(attacker_pos.z - my_pos.z) < 250 then
-				nr_guys = nr_guys + 1
-				if nr_guys >= self._underdog_skill_data.nr_enemies then
-					activated = true
-					managers.hud:show_underdog()
-				end
-			else
-			return
-			end
-		end
+	-- 	local my_pos = self._m_pos
+	-- 	local nr_guys = 0
+	-- 	local activated
+	-- 	for u_key, attacker_unit in pairs(self._attackers) do
+	-- 		if not alive(attacker_unit) then
+	-- 			self._attackers[u_key] = nil
+	-- 			managers.hud:hide_underdog()
+	-- 			return
+	-- 		end
+	-- 		local attacker_pos = attacker_unit:movement():m_pos()
+	-- 		local dis_sq = mvector3.distance_sq(attacker_pos, my_pos)
+	-- 		if dis_sq < self._underdog_skill_data.max_dis_sq and math.abs(attacker_pos.z - my_pos.z) < 250 then
+	-- 			nr_guys = nr_guys + 1
+	-- 			if nr_guys >= self._underdog_skill_data.nr_enemies then
+	-- 				activated = true
+	-- 				managers.hud:show_underdog()
+	-- 			end
+	-- 		else
+	-- 		return
+	-- 		end
+	-- 	end
 
-	end )
+	-- end )
 
 elseif RequiredScript == "lib/managers/playermanager" then
+
+
+	local _update_temporary_upgrades_orig2 = PlayerManager.activate_temporary_upgrade
+	function PlayerManager:activate_temporary_upgrade(...)
+		_update_temporary_upgrades_orig2(self, ...)
+		managers.hud:activate_temp_upgrades_updator()
+	end
 
 	function PlayerManager:_clbk_bulletstorm_expire()
 
