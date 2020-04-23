@@ -511,17 +511,20 @@ elseif RequiredScript == "lib/managers/hud/hudteammate" then
 		local underdog_glow = radial_health_panel:bitmap({
 			valign 			= "center",
 			halign 			= "center",
-			w 				= 50,
-			h 				= 50,
+			w 				= 70,
+			h 				= 70,
+			--w 				= 50,
+			--h 				= 50,				
 			name 			= "underdog_glow",
 			visible 		= false,
-			texture 		= "guis/textures/pd2/crimenet_marker_glow",
-			texture_rect 	= {
-								0,
-								0,
-								64,
-								64
-							},
+			texture 		= "guis/textures/pd2/hot_cold_glow",
+			--texture 		= "guis/textures/pd2/crimenet_marker_glow",
+			--texture_rect 	= {
+			--					0,
+			--					0,
+			--					64,
+			--					64
+			--				},				
 			color 			= Color.yellow,
 			layer 			= 2,
 			blend_mode 		= "add"
