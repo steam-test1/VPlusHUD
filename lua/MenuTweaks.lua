@@ -380,10 +380,10 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 	function BlackMarketGui:mouse_clicked(...)
 		BlackMarketGui_mouse_clicked_original(self, ...)
 
-		if not self._enabled then
+		if not self._enabled or not self._mouse_click or not self._mouse_click[0] or not self._mouse_click[1] then
 			return
 		end
-
+		
 		self._mouse_click[self._mouse_click_index].selected_tab = self._selected
 	end
 
