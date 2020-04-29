@@ -143,6 +143,80 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 				h = self._left:h() - y - ext_inv_panel:h() - 2 * self._leftpos[2]
 			})
 
+			local new_panel = ExtendedPanel:new(self._left, {
+				y = y + self._leftpos[2] + 500,
+				w = self._left:w(),
+				h = self._left:h() - y - ext_inv_panel:h() - 2 * self._leftpos[2]
+			})
+
+			local is_whisper_mode = managers.groupai and managers.groupai:state():whisper_mode()
+
+			if not is_whisper_mode and managers.player:has_category_upgrade("player", "convert_enemies") then
+				local minion_text = placer:add_bottom(new_panel:fine_text({
+					keep_w = true,
+					text = managers.localization:text("hud_stats_enemies_converted"),
+					font = medium_font,
+					font_size = medium_font_size
+				}))
+
+				placer:add_right(nil, 0)
+
+				local minion_texture, minion_rect = tweak_data.hud_icons:get_icon_data("minions_converted")
+				local minion_icon = placer:add_left(new_panel:fit_bitmap({
+					w = 17,
+					h = 17,
+					texture = minion_texture,
+					texture_rect = minion_rect
+				}))
+
+				minion_icon:set_center_y(minion_text:center_y())
+				placer:add_left(new_panel:fine_text({
+					text = tostring(managers.player:num_local_minions()),
+					font = medium_font,
+					font_size = medium_font_size
+				}), 7)
+				placer:new_row()
+			end
+
+			if is_whisper_mode then
+				local pagers_used = managers.groupai:state():get_nr_successful_alarm_pager_bluffs()
+				local max_pagers_data = managers.player:has_category_upgrade("player", "corpse_alarm_pager_bluff") and tweak_data.player.alarm_pager.bluff_success_chance_w_skill or tweak_data.player.alarm_pager.bluff_success_chance
+				local max_num_pagers = #max_pagers_data
+
+				for i, chance in ipairs(max_pagers_data) do
+					if chance == 0 then
+						max_num_pagers = i - 1
+
+						break
+					end
+				end
+
+				local pagers_text = placer:add_bottom(new_panel:fine_text({
+					keep_w = true,
+					text = managers.localization:text("hud_stats_pagers_used"),
+					font = medium_font,
+					font_size = medium_font_size
+				}))
+
+				placer:add_right(nil, 0)
+
+				local pagers_texture, pagers_rect = tweak_data.hud_icons:get_icon_data("pagers_used")
+				local pagers_icon = placer:add_left(new_panel:fit_bitmap({
+					w = 17,
+					h = 17,
+					texture = pagers_texture,
+					texture_rect = pagers_rect
+				}))
+
+				pagers_icon:set_center_y(pagers_text:center_y())
+				placer:add_left(new_panel:fine_text({
+					text = tostring(pagers_used) .. "/" .. tostring(max_num_pagers),
+					font = medium_font,
+					font_size = medium_font_size
+				}), 7)
+				placer:new_row()
+			end
+
 			if managers.mutators:are_mutators_active() then
 				self:_create_mutators_list(list_panel)
 			elseif table.size(managers.achievment:get_tracked_fill()) > 0 then
