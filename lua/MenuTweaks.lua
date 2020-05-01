@@ -1127,8 +1127,9 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/items/contractbrokerhe
 		local heat_color = Color(1,0,1)
 		local multiplier = managers.job:get_job_heat(job_id)
 		local exp_multi  = managers.job:heat_to_experience_multiplier(multiplier)*8-8
+		local job_tweak = tweak_data.narrative:job_data(self._job_data.job_id)
 
-		if exp_multi ~= 0 then
+		if exp_multi ~= 0 and job_tweak and job_tweak.contact ~= "skirmish" then
 			heat_text = (VHUDPlus:getSetting({"INVENTORY", "SHOW_HEAT"}, true) and exp_multi>0 and ("+"):rep(math.ceil(exp_multi)) or VHUDPlus:getSetting({"INVENTORY", "SHOW_REDUCTION"}, true) and ("-"):rep(-math.floor(exp_multi)))
 			heat_color = (exp_multi > 0 and Color.yellow) or Color('E55858')
 		end
