@@ -129,15 +129,15 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			}))
 
 			local list_panel = ExtendedPanel:new(self._left, {
-			        x = self._leftpos[2],
-				y = self._left:h() - self._leftpos[2] - 70 * 2 - 10,
-				w = self._left:w() - 2 * self._leftpos[2],
+				y = y + self._leftpos[2],
+				w = self._left:w(),
 				h = self._left:h() - y - ext_inv_panel:h() - 2 * self._leftpos[2]
 			})
 
 			local new_panel = ExtendedPanel:new(self._left, {
-
-				w = self._left:w(),
+			    x = self._leftpos[2],
+				y = self._left:h() - self._leftpos[2] - 70 * 2 - 10,
+				w = self._left:w() - 2 * self._leftpos[2],
 				h = self._left:h() - y - ext_inv_panel:h() - 2 * self._leftpos[2]
 			})
 
