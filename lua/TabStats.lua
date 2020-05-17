@@ -57,6 +57,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			local row_w = self._left:w() - placer:current_left() * 2
 			local y = 0
 
+		    --[[		
 			for i, data in pairs(managers.objectives:get_active_objectives()) do
 				placer:add_bottom(self._left:fine_text({
 					word_wrap = true,
@@ -79,6 +80,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 				}), 0)
 				y = math.max(y, item:bottom())
 			end
+			]]		
 
 			local placer = UiPlacer:new(0, 0)
 			local ext_inv_panel = ExtendedPanel:new(self._left, {
