@@ -631,6 +631,7 @@ if not _G.VHUDPlus then
 				SHAPED_CHARGE_STEALTH_DISABLED			= true,
 				KEYCARD_DOORS_DISABLED					= true,
 				ENABLE_BURSTMODE						= true,
+				REPLACE_JOKER                           = true,				
 			},
 			INVENTORY = {
 				SHOW_WEAPON_NAMES 						= true,
