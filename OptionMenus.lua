@@ -4388,6 +4388,13 @@ if VHUDPlus then
 						value = {"EQUIPMENT", "KEYCARD_DOORS_DISABLED"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_replace_joker_title",
+						desc_id = "wolfhud_replace_joker_desc",
+						value = {"EQUIPMENT", "REPLACE_JOKER"},
+						visible_reqs = {}, enabled_reqs = {},	
+					},
 				},
 			},
 			{

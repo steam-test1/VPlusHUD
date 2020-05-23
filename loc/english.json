@@ -1148,5 +1148,7 @@
 	"wolfhud_shuffle_music_title" : "Shuffle music",
 	"wolfhud_shuffle_music_desc" : "Music will shuffle between assault waves",
 	"wolfhud_wave_counter_title" : "Wave counter",
-	"wolfhud_wave_counter_desc" : "Enables custom wave counter"
+	"wolfhud_wave_counter_desc" : "Enables custom wave counter",
+	"wolfhud_replace_joker_title" : "Replace Jokers",
+	"wolfhud_replace_joker_desc" : "Enables the ability to replace jokers before they die"	
 }

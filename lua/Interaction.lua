@@ -627,7 +627,7 @@ elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" t
 	end
 	
 	function IntimitateInteractionExt:_interact_blocked(...)
-		if self.tweak_data == "hostage_convert" and managers.player:chk_minion_limit_reached() then
+		if self.tweak_data == "hostage_convert" and managers.player:chk_minion_limit_reached() and VHUDPlus:getSetting({"EQUIPMENT", "REPLACE_JOKER"}, true) then
 			if kill_joker() and not Network:is_server() then
 				return not managers.player:has_category_upgrade("player", "convert_enemies") or managers.groupai:state():whisper_mode()
 			end
