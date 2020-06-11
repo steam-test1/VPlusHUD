@@ -792,7 +792,8 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/stageendscreengui" the
 		if not self._button_not_clickable and SKIP_STAT_SCREEN_DELAY > 0 then
 			self._auto_continue_t = self._auto_continue_t or (t + SKIP_STAT_SCREEN_DELAY)
 			local gsm = game_state_machine:current_state()
-			if gsm and gsm._continue_cb and not (gsm._continue_blocked and gsm:_continue_blocked()) and t >= self._auto_continue_t then
+			if gsm and gsm._continue_cb and not (gsm._continue_blocked and gsm:_continue_blocked()) and not
+TheFixesPreventer.end_screen_continue_button and t >= self._auto_continue_t then
 				managers.menu_component:post_event("menu_enter")
 				gsm._continue_cb()
 			end
