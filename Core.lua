@@ -650,6 +650,8 @@ if not _G.VHUDPlus then
 				crnt_align								= false,
 				crnt_size								= 0.9,
 				crnt_sort								= true,
+				CONFIRM_DIALOGS                     	= false,
+				SAVE_FILTERS							= true,
 			},
 			SkipIt = {
 				SKIP_BLACKSCREEN 						= true,		--Skip the blackscreen on mission start

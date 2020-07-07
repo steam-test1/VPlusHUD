@@ -4350,6 +4350,20 @@ if VHUDPlus then
 						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
+						type = "toggle",
+						name_id = "wolfhud_confirn_dialogs_title",
+						desc_id = "wolfhud_confirn_dialogs_desc",
+						value = {"INVENTORY", "CONFIRM_DIALOGS"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_save_filters_title",
+						desc_id = "wolfhud_save_filters_desc",
+						value = {"INVENTORY", "SAVE_FILTERS"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
 						type = "divider",
 						size = 24,
 					},

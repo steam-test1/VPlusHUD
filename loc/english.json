@@ -1150,5 +1150,9 @@
 	"wolfhud_wave_counter_title" : "Wave counter",
 	"wolfhud_wave_counter_desc" : "Enables custom wave counter",
 	"wolfhud_replace_joker_title" : "Replace Jokers",
-	"wolfhud_replace_joker_desc" : "Enables the ability to replace jokers before they die"	
+	"wolfhud_replace_joker_desc" : "Enables the ability to replace jokers before they die",
+	"wolfhud_confirn_dialogs_title" : "Enable Confirm Dialogs",
+	"wolfhud_confirn_dialogs_desc" : "Enables confirm dialogs for certain actions",
+	"wolfhud_save_filters_title" : "Save Lobby Settings",
+	"wolfhud_save_filters_desc" : "This enables save of your lobby settings"
 }

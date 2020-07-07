@@ -85,6 +85,11 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 	local WOLFHUD_LOBBY_SETTINGS_LOADED = false
 	local MenuCrimeNetContractInitiator_modify_node_orig = MenuCrimeNetContractInitiator.modify_node
 	function MenuCrimeNetContractInitiator:modify_node(original_node, data, ...)
+		
+		if not VHUDPlus:getSetting({"INVENTORY", "SAVE_FILTERS"}, true) then
+			return MenuCrimeNetContractInitiator_modify_node_orig(self, original_node, data, ...)
+		end
+		
 		if not WOLFHUD_LOBBY_SETTINGS_LOADED then
 			local lobby_settings = VHUDPlus:getSetting({"LOBBY_SETTINGS"}, {})
 			for id, value in pairs(lobby_settings) do
@@ -986,12 +991,14 @@ elseif string.lower(RequiredScript) == "lib/managers/chatmanager" then
 		return _receive_message_original(self, channel_id, name, message, ...)
 	end
 elseif string.lower(RequiredScript) == "lib/managers/menumanagerdialogs" then
-	local function expect_yes(self, params) params.yes_func() end
-	MenuManager.show_confirm_buy_premium_contract = expect_yes
-	MenuManager.show_confirm_blackmarket_buy_mask_slot = expect_yes
-	MenuManager.show_confirm_blackmarket_buy_weapon_slot = expect_yes
-	MenuManager.show_confirm_mission_asset_buy = expect_yes
-	MenuManager.show_confirm_pay_casino_fee = expect_yes
+	if VHUDPlus:getSetting({"INVENTORY", "CONFIRM_DIALOGS"}, false) then
+		local function expect_yes(self, params) params.yes_func() end
+		MenuManager.show_confirm_buy_premium_contract = expect_yes
+		MenuManager.show_confirm_blackmarket_buy_mask_slot = expect_yes
+		MenuManager.show_confirm_blackmarket_buy_weapon_slot = expect_yes
+		MenuManager.show_confirm_mission_asset_buy = expect_yes
+		MenuManager.show_confirm_pay_casino_fee = expect_yes
+	end
 
 	local show_person_joining_original = MenuManager.show_person_joining
 	local update_person_joining_original = MenuManager.update_person_joining
