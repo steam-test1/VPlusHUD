@@ -397,6 +397,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		press_pick_up =						"secret_item",
 		hold_pick_up_turtle = 				"secret_item",
 		diamond_single_pickup_axis = 		"secret_item",
+		federali_medal = 					"secret_item",
+		pex_medal = 						"secret_item",
 		ring_band = 						"rings",
 		glc_hold_take_handcuffs = 			"handcuffs",
 		hold_take_missing_animal_poster = 	"poster",
