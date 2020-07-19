@@ -355,7 +355,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 	function HUDInteraction:set_interaction_bar_width(current, total)
 		set_interaction_bar_width_original(self, current, total)
 
-		if HUDInteraction.SHOW_TIME_REMAINING then
+		if HUDInteraction.SHOW_TIME_REMAINING and not VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false) then
 			local text = string.format("%.1fs", math.max(total - current, 0))
 			self._interact_time:set_text(text)
 			local perc = current/total
@@ -386,7 +386,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 		HUDInteraction.GRADIENT_COLOR_NAME = VHUDPlus:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "light_green")
 		HUDInteraction.GRADIENT_COLOR_START = VHUDPlus:getColorSetting({"INTERACTION", "GRADIENT_COLOR_START"}, "white")
 		if HUDInteraction.SHOW_CIRCLE then
-			if HUDInteraction.LOCK_MODE > 1 and HUDInteraction.SHOW_LOCK_INDICATOR then
+			if HUDInteraction.LOCK_MODE > 1 and HUDInteraction.SHOW_LOCK_INDICATOR and not VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false) then
 				self._interact_circle_locked = CircleBitmapGuiObject:new(self._hud_panel, {
 					radius = self._circle_radius,
 					color = self._old_text and Color.green or Color.red,
@@ -401,7 +401,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 			self._interact_circle:set_visible(false)
 		end
 
-		if HUDInteraction.SHOW_TIME_REMAINING then
+		if HUDInteraction.SHOW_TIME_REMAINING and not VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false) then
 			local fontSize = 32 * (self._circle_scale or 1) * VHUDPlus:getSetting({"INTERACTION", "TIMER_SCALE"}, 1)
 			if not self._interact_time then
 				self._interact_time = OutlinedText:new(self._hud_panel, {
