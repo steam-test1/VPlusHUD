@@ -386,7 +386,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 		HUDInteraction.GRADIENT_COLOR_NAME = VHUDPlus:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "light_green")
 		HUDInteraction.GRADIENT_COLOR_START = VHUDPlus:getColorSetting({"INTERACTION", "GRADIENT_COLOR_START"}, "white")
 		if HUDInteraction.SHOW_CIRCLE then
-			if HUDInteraction.LOCK_MODE > 1 and HUDInteraction.SHOW_LOCK_INDICATOR then
+			if HUDInteraction.LOCK_MODE > 1 and HUDInteraction.SHOW_LOCK_INDICATOR and not VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false) then
 				self._interact_circle_locked = CircleBitmapGuiObject:new(self._hud_panel, {
 					radius = self._circle_radius,
 					color = self._old_text and Color.green or Color.red,

@@ -3876,6 +3876,7 @@ if VHUDPlus then
 						value = {"INTERACTION", "TIMER_SCALE"},
 						visible_reqs = {
 						    { setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+						    { setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true },
 						},
 						enabled_reqs = {
 							{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
@@ -3907,7 +3908,7 @@ if VHUDPlus then
 						desc_id = "wolfhud_press2hold_timer_color_desc",
 						value = {"INTERACTION", "GRADIENT_COLOR"},
 						visible_reqs = {
-						    { setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+						    { setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },							
 						},
 						enabled_reqs = {
 							{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
