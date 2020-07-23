@@ -355,7 +355,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 	function HUDInteraction:set_interaction_bar_width(current, total)
 		set_interaction_bar_width_original(self, current, total)
 
-		if HUDInteraction.SHOW_TIME_REMAINING and not VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false) then
+		if HUDInteraction.SHOW_TIME_REMAINING then
 			local text = string.format("%.1fs", math.max(total - current, 0))
 			self._interact_time:set_text(text)
 			local perc = current/total
@@ -401,7 +401,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 			self._interact_circle:set_visible(false)
 		end
 
-		if HUDInteraction.SHOW_TIME_REMAINING and not VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false) then
+		if HUDInteraction.SHOW_TIME_REMAINING then
 			local fontSize = 32 * (self._circle_scale or 1) * VHUDPlus:getSetting({"INTERACTION", "TIMER_SCALE"}, 1)
 			if not self._interact_time then
 				self._interact_time = OutlinedText:new(self._hud_panel, {
