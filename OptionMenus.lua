@@ -3876,7 +3876,7 @@ if VHUDPlus then
 						value = {"INTERACTION", "TIMER_SCALE"},
 						visible_reqs = {
 						    { setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
-						    { setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true },
+						    --{ setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true },
 						},
 						enabled_reqs = {
 							{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
