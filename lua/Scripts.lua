@@ -427,14 +427,20 @@ elseif string.lower(RequiredScript) == "lib/units/weapons/raycastweaponbase" the
 
     local init_original = RaycastWeaponBase.init
     local setup_original = RaycastWeaponBase.setup
-
-    function RaycastWeaponBase:init(...)
-	    init_original(self, ...)
+	
+	function RaycastWeaponBase:init(...)
+		if not VHUDPlus:getSetting({"MISCHUD", "SHOOT_THROUGH_BOTS"}, true) then
+			return init_original(self, ...)
+		end
+		init_original(self, ...)
 	    self._bullet_slotmask = self._bullet_slotmask - World:make_slot_mask(16)
     end
 
     function RaycastWeaponBase:setup(...)
-	    setup_original(self, ...)
+		if not VHUDPlus:getSetting({"MISCHUD", "SHOOT_THROUGH_BOTS"}, true) then
+			return setup_original(self, ...)
+		end
+		setup_original(self, ...)
 	    self._bullet_slotmask = self._bullet_slotmask - World:make_slot_mask(16)
     end
 elseif string.lower(RequiredScript) == "lib/units/contourext" then
