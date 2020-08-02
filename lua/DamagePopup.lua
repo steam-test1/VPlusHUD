@@ -1,5 +1,6 @@
-if false then return end
+
 if RequiredScript == "lib/units/enemies/cop/copdamage" then
+	if false then return end
 	local _on_damage_received_original = CopDamage._on_damage_received
 	--Workaround for Teammate Headshots, since col_ray doesn't get forwarded...  (self._sync_ibody_popup)
 	local sync_damage_bullet_original = CopDamage.sync_damage_bullet
@@ -272,6 +273,7 @@ end )
 	end
 
 elseif RequiredScript == "lib/units/civilians/civiliandamage" then
+	if false then return end
 	local _on_damage_received_original = CivilianDamage._on_damage_received
 	function CivilianDamage:_on_damage_received(data, ...)
 		CivilianDamage.super._process_popup_damage(self, data)
