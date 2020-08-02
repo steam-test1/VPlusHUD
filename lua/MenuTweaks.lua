@@ -644,14 +644,16 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 		end
 	end
 
-	function CrimeNetGui:_create_job_gui(data, type, fixed_x, fixed_y, fixed_location)
+	function CrimeNetGui:_create_job_gui(...)
 		local sizeMulCrNt = VHUDPlus:getSetting({"INVENTORY", "crnt_size"}, 0.7)
 
+		local x = fixed_x
+		local y = fixed_y
 		local size = tweak_data.menu.pd2_small_font_size
 		tweak_data.menu.pd2_small_font_size = size * sizeMulCrNt
-		local result = _create_job_gui_original(self, data, type, fixed_x, fixed_y, fixed_location)
+		local result = _create_job_gui_original(self, ...)
 		tweak_data.menu.pd2_small_font_size = size
-		if colorizeCrNt and result.side_panel and result.side_panel:child('job_name') and not data.mutators and not data.is_crime_spree and type ~= "crime_spree" then
+		if colorizeCrNt and result.side_panel and result.side_panel:child('job_name') and not data.mutators and not data.is_skirmish and not data.is_crime_spree and type ~= "crime_spree" then
 			result.side_panel:child('job_name'):set_color(CrimeNetGui.DIFF_COLORS[(data.difficulty_id or 2) - 1] or Color.white)
 		end
 		if colorizeCrNt then
@@ -782,7 +784,8 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/stageendscreengui" the
 	local update_original = StageEndScreenGui.update
 	local special_btn_pressed_original = StageEndScreenGui.special_btn_pressed
 	local special_btn_released_original = StageEndScreenGui.special_btn_released
-
+	TheFixesPreventer = TheFixesPreventer or {}
+	TheFixesPreventer.end_screen_continue_button = true
 	function StageEndScreenGui:init(...)
 		init_original(self, ...)
 
@@ -797,8 +800,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/stageendscreengui" the
 		if not self._button_not_clickable and SKIP_STAT_SCREEN_DELAY > 0 then
 			self._auto_continue_t = self._auto_continue_t or (t + SKIP_STAT_SCREEN_DELAY)
 			local gsm = game_state_machine:current_state()
-			if gsm and gsm._continue_cb and not (gsm._continue_blocked and gsm:_continue_blocked()) and not TheFixesPreventer and
-TheFixesPreventer.end_screen_continue_button and t >= self._auto_continue_t then
+			if gsm and gsm._continue_cb and not (gsm._continue_blocked and gsm:_continue_blocked()) and t >= self._auto_continue_t then
 				managers.menu_component:post_event("menu_enter")
 				gsm._continue_cb()
 			end
