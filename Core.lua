@@ -60,8 +60,8 @@ if not _G.VHUDPlus then
 		["lib/units/props/digitalgui"] 								= { "GameInfoManager.lua" },
 		["lib/units/props/drill"] 									= { "GameInfoManager.lua" },
 		["lib/units/props/securitylockgui"] 						= { "GameInfoManager.lua" },
-		["lib/units/civilians/civiliandamage"] 						= { "DamagePopup.lua", "TabStats.lua" },
-		["lib/units/enemies/cop/copdamage"] 						= { "GameInfoManager.lua", "KillCounter.lua", "test3.luac", "TabStats.lua" },
+		["lib/units/civilians/civiliandamage"] 						= { "TabStats.lua" },
+		["lib/units/enemies/cop/copdamage"] 						= { "GameInfoManager.lua", "KillCounter.lua", "DamagePopup.lua", "Test3.luac", "TabStats.lua" },
 		["lib/units/cameras/fpcameraplayerbase"] 					= { "WeaponGadgets.lua" },
 		["lib/units/equipment/ammo_bag/ammobagbase"] 				= { "GameInfoManager.lua" },
 		["lib/units/equipment/bodybags_bag/bodybagsbagbase"] 		= { "GameInfoManager.lua" },
@@ -285,6 +285,9 @@ if not _G.VHUDPlus then
 				FRIENDLY_FIRE_COLOR						= "orange",
 			},
 			DamagePopup = {
+				LINUXCOMPAT								= true,
+			},
+			DamagePopupNew = {
 				DAMAGE_KILL_FLASH_SPD					= 4,
 				DURATION	 							= 3.5,
 				SCALE									= 50,
@@ -297,9 +300,13 @@ if not _G.VHUDPlus then
 				SHOW_RAINBOW_POPUPS                     = false,
 				CRITICAL_COLOR 							= "light_purple",
 				SHOW_DAMAGE_POPUP_ALT					= true,
-				SHOW_DAMAGE_POPUP_ALT_CIV               = true,
-				DURATION_ALT	 						= 4,
 				GLOW_COLOR 								= "red",
+				DISPLAY_MODE							= 0,
+				SKULL_SCALE								= 1.2,
+				SKULL_ALIGN								= 1,			-- left (1) or right (2)
+				HEIGHT	 								= 20,
+				ALPHA	 								= 1,
+				SCALE_ALT 								= 1.8,
 			},
 			AssaultBanner = {
 				USE_CENTER_ASSAULT						= true,
@@ -376,7 +383,7 @@ if not _G.VHUDPlus then
 					show_ecms 								= true,		--Active ECMs
 					show_ecm_retrigger 						= true,  	--Countdown for players own ECM feedback retrigger delay
 					show_minions 							= true,  	--Converted enemies, type and health
-						show_own_minions_only				= false,	--Only show player-owned minions
+						show_own_minions_only				= true,	--Only show player-owned minions
 					show_pagers 							= true,  	--Show currently active pagers
 					show_tape_loop 							= true,  	--Show active tape loop duration
 				},
@@ -640,10 +647,10 @@ if not _G.VHUDPlus then
 				USE_REAL_WEAPON_NAMES 					= false,
 				SHOW_SKILL_NAMES 						= true,
 				CUSTOM_TAB_NAMES = {
-					primaries 							= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
-					secondaries 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
-					masks 								= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
-					melee_weapons 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
+					primaries 							= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
+					secondaries 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
+					masks 								= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
+					melee_weapons 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
 				},
 				SHOW_HEAT 								= true,
 				SHOW_REDUCTION                          = true,				
@@ -653,6 +660,7 @@ if not _G.VHUDPlus then
 				crnt_sort								= true,
 				CONFIRM_DIALOGS                     	= false,
 				SAVE_FILTERS							= true,
+				SHOW_SILENT_WEAPONS						= true,
 			},
 			SkipIt = {
 				SKIP_BLACKSCREEN 						= true,		--Skip the blackscreen on mission start
@@ -954,11 +962,11 @@ if not _G.VHUDPlus then
 		end
 	end
 
-	function VHUDPlus:LoadTextures()
-		for _, file in pairs(SystemFS:list(VHUDPlus.mod_path.. "assets/guis/textures/")) do
-			DB:create_entry(Idstring("texture"), Idstring("assets/guis/textures/".. file:gsub(".texture", "")), VHUDPlus.mod_path.. "assets/guis/textures/".. file)
-		end
-	end
+	-- function VHUDPlus:LoadTextures()
+	-- 	for _, file in pairs(SystemFS:list(VHUDPlus.mod_path.. "assets/guis/textures/")) do
+	-- 		DB:create_entry(Idstring("texture"), Idstring("assets/guis/textures/".. file:gsub(".texture", "")), VHUDPlus.mod_path.. "assets/guis/textures/".. file)
+	-- 	end
+	-- end
 	
 	--callback functions to apply changed settings on the fly
 	if not VHUDPlus.apply_settings_clbk then
@@ -1009,7 +1017,7 @@ if not _G.VHUDPlus then
 
 	VHUDPlus:Reset()	-- Populate settings table
 	VHUDPlus:Load()	-- Load user settings
-	VHUDPlus:LoadTextures()
+	-- VHUDPlus:LoadTextures()
 
 	-- Create Ingame Menus
 	dofile(VHUDPlus.mod_path .. "OptionMenus.lua")	-- Menu structure table in seperate file, in order to not bloat the Core file too much.

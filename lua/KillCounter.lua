@@ -63,6 +63,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 	]]
 
 	local _on_damage_received_original = CopDamage._on_damage_received
+	local _update_debug_ws_original = CopDamage._update_debug_ws
 	--Workaround for Teammate Headshots, since col_ray doesn't get forwarded...  (self._sync_ibody_killcount)
 	local sync_damage_bullet_original = CopDamage.sync_damage_bullet
 	local sync_damage_melee_original = CopDamage.sync_damage_melee
@@ -127,12 +128,21 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" then
 		end
 	end
 
-	function CopDamage:_on_damage_received(data, ...)
-		if self._dead then
+	if restoration and restoration.Options:GetValue("OTHER/ResModChallenges") then
+		function CopDamage:_update_debug_ws(data, ...)
 			self:_process_kill(data)
+		
+			self._sync_ibody_killcount = nil
+			return _update_debug_ws_original(self, data, ...)
 		end
-		self._sync_ibody_killcount = nil
-		return _on_damage_received_original(self, data, ...)
+	else
+		function CopDamage:_on_damage_received(data, ...)
+			if self._dead then
+				self:_process_kill(data)
+			end
+			self._sync_ibody_killcount = nil
+			return _on_damage_received_original(self, data, ...)
+		end
 	end
 
 	function CopDamage:sync_damage_bullet(attacker_unit, damage_percent, i_body, ...)

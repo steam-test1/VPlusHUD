@@ -6,19 +6,19 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			["passenger_back_left"] = 	{ scale_x = -0.2, 	scale_y = 0.25, 	is_seat = true },
 			["passenger_back_right"] = 	{ scale_x = 0.2, 	scale_y = 0.25, 	is_seat = true },
 			texture_rect = { 1024, 0, 512, 512},
-			texture = "assets/guis/textures/contact_vlad"
+			texture = "guis/textures/drivinghud"
 		},
 		["Falcogini"] = {
 			["driver"] = 				{ scale_x = -0.2, 	scale_y = 0, 		is_seat = true },
 			["passenger_front"] = 		{ scale_x = 0.2, 	scale_y = 0, 		is_seat = true },
 			texture_rect = { 0, 0, 512, 512},
-			texture = "assets/guis/textures/contact_vlad"
+			texture = "guis/textures/drivinghud"
 		},
 		["Forklift"] = {
 			["driver"] = 				{ scale_x = 0, 		scale_y = 0.3, 		is_seat = true },
 			["passenger_front"] = 		{ scale_x = 0, 		scale_y = 0.9, 		is_seat = true },
 			texture_rect = { 512, 0, 512, 512},
-			texture = "assets/guis/textures/contact_vlad"
+			texture = "guis/textures/drivinghud"
 		},
 		["Truck"] = {
 			["driver"] = 				{ scale_x = -0.15, 	scale_y = -0.4,		is_seat = true },
@@ -26,7 +26,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			["passenger_back_left"] = 	{ scale_x = -0.15, 	scale_y = 1, 		is_seat = true },
 			["passenger_back_right"] = 	{ scale_x = 0.2, 	scale_y = 1, 		is_seat = true },
 			texture_rect = { 0, 512, 512, 512},
-			texture = "assets/guis/textures/contact_vlad"
+			texture = "guis/textures/drivinghud"
 		},
 		["Rib Boat"] = {
 			["driver"] = 				{ scale_x = 0, 		scale_y = 1, 		is_seat = true },
@@ -34,7 +34,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			["passenger_back_left"] = 	{ scale_x = -0.2, 	scale_y = -0.1, 	is_seat = true },
 			["passenger_back_right"] = 	{ scale_x = 0.2, 	scale_y = 0.3, 		is_seat = true },
 			texture_rect = { 512, 512, 512, 512},
-			texture = "assets/guis/textures/contact_vlad"
+			texture = "guis/textures/drivinghud"
 		},
 		["Blackhawk"] = {
 			["driver"] = 				{ scale_x = -0.25, 	scale_y = -0.2, 	is_seat = true },
@@ -42,12 +42,12 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 			["passenger_back_left"] = 	{ scale_x = -0.25, 	scale_y = 0.2, 		is_seat = true },
 			["passenger_back_right"] = 	{ scale_x = 0.25, 	scale_y = 0.2, 		is_seat = true },
 			texture_rect = { 1024, 512, 512, 512},
-			texture = "assets/guis/textures/contact_vlad"
+			texture = "guis/textures/drivinghud"
 		},
 		["Bike"] = {
 			["driver"] = 				{ scale_x = -0.02, 	scale_y = 0.35, 	is_seat = true },
 			texture_rect = { 1536, 512, 512, 512},
-			texture = "assets/guis/textures/contact_vlad"
+			texture = "guis/textures/drivinghud"
 		}
 	}
 
@@ -76,8 +76,8 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		self._legend 			= HUDDriving.VerticalListItem:new(self._data:panel(), self._data, "legend_panel", HUDDriving._WIDTH / 2, HUDDriving._WIDTH / 2, {})
 
 		self._legend_health 	= HUDDriving.LegendHealthItem:new(self._legend:panel(), self._legend, "legend_health", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { suffix = "HP", show_decimal_marks = true })
-		self._legend_loot 		= HUDDriving.LegendImageItem:new(self._legend:panel(), self._legend, "legend_loot", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { texture = "assets/guis/textures/contact_vlad", text_rect = {1840, 63, 160, 137}, show_max = true })
-		self._legend_passengers = HUDDriving.LegendImageItem:new(self._legend:panel(), self._legend, "legend_passengers", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { texture = "assets/guis/textures/contact_vlad", text_rect = {1920, 256, 128, 130}, show_max = true })
+		self._legend_loot 		= HUDDriving.LegendImageItem:new(self._legend:panel(), self._legend, "legend_loot", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { texture = "guis/textures/drivinghud", text_rect = {1840, 63, 160, 137}, show_max = true })
+		self._legend_passengers = HUDDriving.LegendImageItem:new(self._legend:panel(), self._legend, "legend_passengers", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { texture = "guis/textures/drivinghud", text_rect = {1920, 256, 128, 130}, show_max = true })
 		self._legend_gear 		= HUDDriving.LegendItem:new(self._legend:panel(), self._legend, "legend_gear", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, {})
 		self._legend_speed 		= HUDDriving.LegendItem:new(self._legend:panel(), self._legend, "legend_speed", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { suffix = "km/h"})
 		self._legend_rpm 		= HUDDriving.LegendItem:new(self._legend:panel(), self._legend, "legend_rpm", HUDDriving._WIDTH / 2, HUDDriving._FONT_SIZE, { suffix = "rpm"})
@@ -472,7 +472,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
 		HUDDriving.VehicleImageItem.super.init(self, base_panel, owner, name, width, height, params)
 
 		self._passengers = {}
-		self._texture = params.texture or "assets/guis/textures/contact_vlad"
+		self._texture = params.texture or "guis/textures/drivinghud"
 		self._texture_rect = params.text_rect or { 1024, 0, 512, 512}
 
 		self._image = self._panel:bitmap({

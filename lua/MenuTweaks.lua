@@ -196,7 +196,11 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 					end
 				end
 				local silent = has_silencer and not has_explosive
-				w_data.name_localized = tostring(w_data.name_localized) .. (not is_saw and (" " .. (silent and utf8.char(57363) or "")) or "")
+				if VHUDPlus:getSetting({"INVENTORY", "SHOW_SILENT_WEAPONS"}, true) then
+					w_data.name_localized = tostring(w_data.name_localized) .. (not is_saw and (" " .. (silent and utf8.char(57363) or "")) or "")
+				else
+					w_data.name_localized = tostring(w_data.name_localized)
+				end
 				w_data.hide_unselected_mini_icons = show_icons
 			end
 		end
@@ -206,7 +210,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/blackmarketgui" then
 	-- Remove free Buckshot ammo, if you own Gage Shotty DLC
 	local populate_mods_original = BlackMarketGui.populate_mods
 	function BlackMarketGui:populate_mods(data, ...)
-		if managers.dlc:has_dlc("gage_pack_shotgun") then
+		if managers.dlc:has_dlc("gage_pack_shotgun") and not InFmenu then
 			for index, mod_t in ipairs(data.on_create_data or {}) do
 				if mod_t[1] == "wpn_fps_upg_a_custom_free"  then
 					table.remove(data.on_create_data, index)
@@ -644,14 +648,14 @@ elseif string.lower(RequiredScript) == "lib/managers/crimenetmanager" then
 		end
 	end
 
-	function CrimeNetGui:_create_job_gui(...)
+	function CrimeNetGui:_create_job_gui(data, ...)
 		local sizeMulCrNt = VHUDPlus:getSetting({"INVENTORY", "crnt_size"}, 0.7)
 
 		local x = fixed_x
 		local y = fixed_y
 		local size = tweak_data.menu.pd2_small_font_size
 		tweak_data.menu.pd2_small_font_size = size * sizeMulCrNt
-		local result = _create_job_gui_original(self, ...)
+		local result = _create_job_gui_original(self, data, ...)
 		tweak_data.menu.pd2_small_font_size = size
 		if colorizeCrNt and result.side_panel and result.side_panel:child('job_name') and not data.mutators and not data.is_skirmish and not data.is_crime_spree and type ~= "crime_spree" then
 			result.side_panel:child('job_name'):set_color(CrimeNetGui.DIFF_COLORS[(data.difficulty_id or 2) - 1] or Color.white)
@@ -1000,6 +1004,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menumanagerdialogs" then
 		MenuManager.show_confirm_blackmarket_buy_weapon_slot = expect_yes
 		MenuManager.show_confirm_mission_asset_buy = expect_yes
 		MenuManager.show_confirm_pay_casino_fee = expect_yes
+		MenuManager.show_confirm_mission_asset_buy_all = expect_yes
 	end
 
 	local show_person_joining_original = MenuManager.show_person_joining

@@ -174,9 +174,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDListManager = HUDListManager or class()
 	HUDListManager.ListOptions = {
 		--General settings (Offsets get updated by Objective/Assault or CustomHUD)
-		right_list_height_offset = VHUDPlus:getSetting({"AssaultBanner", "USE_CENTER_ASSAULT"}, true) and 0 or VHUDPlus:getSetting({"HUDList", "right_list_height_offset"}, 50), --Margin from top for the right list
+		right_list_height_offset = VHUDPlus:getSetting({"HUDList", "right_list_height_offset"}, 50), --Margin from top for the right list
 		left_list_height_offset = VHUDPlus:getSetting({"HUDList", "left_list_height_offset"}, 60),   										--Margin from top for the left list
-		buff_list_height_offset = 90 and MUISubtitle or NobleHUD and 50 or VHUDPlus:getSetting({"HUDList", "buff_list_height_offset"}, 90),  										--Margin from bottom for the buff list
+		buff_list_height_offset = VHUDPlus:getSetting({"HUDList", "buff_list_height_offset"}, 90),  										--Margin from bottom for the buff list
 		right_list_scale 				= VHUDPlus:getSetting({"HUDList", "right_list_scale"}, 1),   	--Size scale of right list
 		left_list_scale 				= VHUDPlus:getSetting({"HUDList", "left_list_scale"}, 1),    	--Size scale of left list
 		buff_list_scale 				= VHUDPlus:getSetting({"HUDList", "buff_list_scale"}, 1),    	--Size scale of buff list
@@ -4363,6 +4363,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		return self._owner
 	end
 
+	function HUDList.MinionItem:is_player_owner()
+		return self._owner == managers.network:session():local_peer():id()
+	end
+
 	function HUDList.MinionItem:_set_health_ratio(data, skip_animate)
 		self._health_bar:set_color(Color(1, data.health_ratio, 1, 1))
 		if not skip_animate then
@@ -4377,7 +4381,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			self._unit_type:set_color(tweak_data.chat_colors[data.owner]:with_alpha(1) or Color(1, 1, 1, 1))
 
 			if HUDListManager.ListOptions.show_own_minions_only then
-				self:set_active(data.owner == managers.network:session():local_peer():id())
+				self:set_active(self:is_player_owner())
 			end
 		end
 	end
@@ -4479,9 +4483,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local enabled, size_mult = HUDList.PagerItem.super.rescale(self, new_scale)
 
 		if enabled then
-			self._timer_text:sei_size(self._panel:w(), self._panel:h() * 0.6)
+			self._timer_text:set_size(self._panel:w(), self._panel:h() * 0.6)
 
-			self._distance_text:sei_size(self._panel:w() * 0.65, self._panel:h() * 0.4)
+			self._distance_text:set_size(self._panel:w() * 0.65, self._panel:h() * 0.4)
 			self._distance_text:set_y(self._timer_text:bottom())
 
 			self._direction_icon:set_size(self._panel:h() * 0.3, self._panel:h() * 0.2)
@@ -5333,7 +5337,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			class = "TimedBuffItem",
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = true,
+			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "unseen_strike"}, true),
 		},
 		up_you_go = {
 			skills_new = tweak_data.skilltree.skills.up_you_go.icon_xy,
@@ -5664,7 +5668,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			ignore = not VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "PLAYER_ACTIONS", "standard_armor_regeneration"}, true),
 		},
 		weapon_charge = {
-			texture = "assets/guis/textures/contact_vlad",
+			texture = "guis/textures/drivinghud",
 			texture_rect = {1984, 0, 64, 64},
 			class = "TimedBuffItem",
 			priority = 15,
@@ -6552,7 +6556,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDList.TimedInteractionItem = HUDList.TimedInteractionItem or class(HUDList.TimedBuffItem)
 	HUDList.TimedInteractionItem.INTERACT_ID_TO_ICON = {
 		default 					= { texture = "guis/textures/pd2/skilltree/drillgui_icon_faster" 					},
-		mask_up 					= { texture = "assets/guis/textures/contact_vlad", texture_rect = {1920, 256, 128, 130}	},
+		mask_up 					= { texture = "guis/textures/drivinghud", texture_rect = {1920, 256, 128, 130}	},
 		ammo_bag 					= { skills 		= {1, 0}				},
 		doc_bag 					= { skills 		= {2, 7}				},
 		first_aid_kit 				= { skills 		= {3, 10}, 				},

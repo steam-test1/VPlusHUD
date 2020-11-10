@@ -96,8 +96,8 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 		_update_reload_timers_original(self, t, ...)
 		if PlayerStandard.SHOW_RELOAD then
 			if self._state_data.show_reload and hide_int_state[managers.player:current_state()] then
-				managers.hud:hide_interaction_bar(false)
-				self._state_data.show_reload = false
+				-- managers.hud:hide_interaction_bar(false)
+				-- self._state_data.show_reload = false
 			elseif not self._state_data.reload_expire_t and self._state_data.show_reload then
 				managers.hud:hide_interaction_bar(true)
 				self._state_data.show_reload = false
@@ -134,12 +134,12 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 		if PlayerStandard.SHOW_MELEE and self._state_data.meleeing and self._state_data.show_melee then
 			local melee_lerp = self:_get_melee_charge_lerp_value(t)
 			if hide_int_state[managers.player:current_state()] then
-				managers.hud:hide_interaction_bar(false)
+				managers.hud:hide_interaction_bar()
 				self._state_data.show_melee = false
 			elseif melee_lerp < 1 then
 				managers.hud:set_interaction_bar_width(self._state_data.melee_charge_duration * melee_lerp, self._state_data.melee_charge_duration)
 			elseif self._state_data.show_melee then
-				managers.hud:hide_interaction_bar(true)
+				managers.hud:hide_interaction_bar()
 				self._state_data.show_melee = false
 			end
 		end
@@ -147,7 +147,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 	end
 
 	function PlayerStandard:_do_melee_damage(...)
-		managers.hud:hide_interaction_bar(false)
+		managers.hud:hide_interaction_bar()
 		self._state_data.show_melee = false
 		return _do_melee_damage_original(self, ...)
 	end

@@ -80,7 +80,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		    local chico_injector_left = hud.panel:bitmap({
 			    name = "chico_injector_left",
 			    visible = false,
-			    texture = "assets/guis/textures/custom_effect",
+			    texture = "guis/textures/custom_effect",
 			    layer = 0,
 			    color = Color(1, 0.6, 0),
 			    blend_mode = "add",
@@ -112,7 +112,7 @@ local custom_radial = HUDManager.set_teammate_custom_radial
 		    local swan_song_left = hud.panel:bitmap({
 			    name = "swan_song_left",
 			    visible = false,
-			    texture = "assets/guis/textures/custom_effect",
+			    texture = "guis/textures/custom_effect",
 			    layer = 0,
 			    color = Color(0, 0.7, 1),
 			    blend_mode = "add",

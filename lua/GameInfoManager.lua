@@ -3734,6 +3734,37 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 	local _update_delayed_damage_original = PlayerDamage._update_delayed_damage
 	local delay_damage_original = PlayerDamage.delay_damage
 	local clear_delayed_damage_original = PlayerDamage.clear_delayed_damage
+	local init_original = PlayerDamage.init
+
+	local CALM_COOLDOWN = false
+	local CALM_HEALING = false
+	local DELAYED_DAMAGE_BUFFER_SIZE = 16
+	
+	function PlayerDamage:init(...)
+		init_original(self, ...)
+		
+		CALM_COOLDOWN = managers.player:has_category_upgrade("player", "damage_control_auto_shrug") and managers.player:upgrade_value("player", "damage_control_auto_shrug") or false
+		CALM_HEALING = managers.player:has_category_upgrade("player", "damage_control_healing") and (managers.player:upgrade_value("player", "damage_control_healing") * 0.01) or false
+		DELAYED_DAMAGE_BUFFER_SIZE = math.round(1 / (tweak_data.upgrades.values.player.damage_control_passive[1][2] * 0.01))
+		
+		if managers.player:has_category_upgrade("player", "damage_to_armor") then
+			CopDamage.register_listener("anarchist_debuff_listener", {"on_damage"}, function(dmg_info)
+				local attacker = dmg_info and dmg_info.attacker_unit
+				if alive(attacker) and attacker:base() and attacker:base().thrower_unit then
+					attacker = attacker:base():thrower_unit()
+				end
+			
+				if self._unit == attacker then
+					local t = Application:time()
+					local data = self._damage_to_armor
+					if (data.elapsed == t) or (t - data.elapsed > data.target_tick) then
+						managers.gameinfo:event("buff", "activate", "anarchist_armor_recovery_debuff")
+						managers.gameinfo:event("buff", "set_duration", "anarchist_armor_recovery_debuff", { t = t, duration = data.target_tick })
+					end
+				end
+			end)
+		end
+	end
 
 	local HEALTH_RATIO_BONUSES = {
 		melee_damage_health_ratio_multiplier 			= { category = "melee", buff_id = "berserker" },
@@ -4038,11 +4069,14 @@ if string.lower(RequiredScript) == "lib/player_actions/skills/playeractionunseen
 	local unseenstrike_original = PlayerAction.UnseenStrike.Function
 
 	function PlayerAction.UnseenStrike.Function(player_manager, min_time, ...)
-		local function on_damage_taken()
-			managers.gameinfo:event("timed_buff", "activate", "unseen_strike_debuff", { duration = min_time })
+		local function on_player_damage()
+			if not player_manager:has_activate_temporary_upgrade("temporary", "unseen_strike") then
+				managers.gameinfo:event("timed_buff", "deactivate", "unseen_strike_debuff")
+				managers.gameinfo:event("timed_buff", "activate", "unseen_strike_debuff", { duration = min_time })
+			end
 		end
 
-		player_manager:register_message(Message.OnPlayerDamage, "unseen_strike_debuff_listener", on_damage_taken)
+		player_manager:register_message(Message.OnPlayerDamage, "unseen_strike_debuff_listener", on_player_damage)
 		unseenstrike_original(player_manager, min_time, ...)
 		player_manager:unregister_message(Message.OnPlayerDamage, "unseen_strike_debuff_listener")
 	end
@@ -4138,6 +4172,7 @@ if string.lower(RequiredScript) == "lib/player_actions/skills/playeractiontagtea
 		if tagged == managers.player:local_player() then
 			local tagged_name = GetUnitName(owner)
 			local base_values = managers.player:upgrade_value("player", "tag_team_base")
+			local kill_health_gain = base_values.kill_health_gain * base_values.tagged_health_gain_ratio
 			local duration = base_values.duration or 0
 			managers.gameinfo:event("timed_buff", "activate", "tag_team", { duration = duration })
 			managers.gameinfo:event("buff", "set_value", "tag_team", { value = tagged_name })
@@ -4148,6 +4183,7 @@ if string.lower(RequiredScript) == "lib/player_actions/skills/playeractiontagtea
 
 				if was_killed and valid_player then
 					managers.gameinfo:event("timed_buff", "change_expire", "tag_team", { difference = base_values.kill_extension })
+					tagged:character_damage():restore_health(kill_health_gain, true)
 				end
 			end)
 		end

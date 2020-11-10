@@ -1,0 +1,11 @@
+<table directory="assets">
+	<texture path="guis/textures/camera_alerted"/>
+	<texture path="guis/textures/camera_curious"/>
+	<texture path="guis/textures/civilian_alerted"/>
+    <texture path="guis/textures/civilian_curious"/>
+	<texture path="guis/textures/civilian_subdued"/>
+	<texture path="guis/textures/drivinghud"/>
+    <texture path="guis/textures/custom_effect"/>
+	<texture path="guis/textures/guard_alerted"/>
+	<texture path="guis/textures/guard_curious"/>	
+</table>

@@ -47,20 +47,20 @@ local config = {}
 
 config.icons = {}
 
-config.icons.civilian_alerted = "assets/guis/textures/civilian_alerted"
-config.icons.civilian_curious = "assets/guis/textures/civilian_curious"
+config.icons.civilian_alerted = "guis/textures/civilian_alerted"
+config.icons.civilian_curious = "guis/textures/civilian_curious"
 
 if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PACIFIED_CIVILIANS_WOLFDEFAULT"}, true) then
 	config.icons.civilian_subdued = "guis/textures/menu_singletick"
 else
-	config.icons.civilian_subdued = "assets/guis/textures/civilian_subdued"
+	config.icons.civilian_subdued = "guis/textures/civilian_subdued"
 end
 
-config.icons.guard_alerted = "assets/guis/textures/guard_alerted"
-config.icons.guard_curious = "assets/guis/textures/guard_curious"
+config.icons.guard_alerted = "guis/textures/guard_alerted"
+config.icons.guard_curious = "guis/textures/guard_curious"
 
-config.icons.camera_alerted = "assets/guis/textures/camera_alerted"
-config.icons.camera_curious = "assets/guis/textures/camera_curious"
+config.icons.camera_alerted = "guis/textures/camera_alerted"
+config.icons.camera_curious = "guis/textures/camera_curious"
 
 config.colors = {}
 
