@@ -280,12 +280,12 @@
 	"wolfhud_use_vanillahud_extra_desc" : "Adds enhancements to the default HUD \n(A Map change is needed to apply...)",
 	"wolfhud_adv_assault_title" : "Advanced Assault Banner",
 	"wolfhud_adv_assault_desc" : "Show assault phase, time and spawns left during assault.\n(Host Only)",
-	
+
 	"wolfhud_assault_position_title": "Center assault banner",
 	"wolfhud_assault_position_desc": "Place assault banner to center",
 	"wolfhud_mui_assault_fix_title": "MUI Assault Fix",
 	"wolfhud_mui_assault_fix_desc": "MUI Assault Fix",
-	
+
 	"wolfhud_pacified_civs_title" : "Show Pacified Civilians",
 	"wolfhud_pacified_civs_desc" : "Change the waypoint of untied civilians, while they are pacified.",
 	"wolfhud_use_realammo_title" : "Use Real Ammo",
@@ -315,7 +315,7 @@
 	"wolfhud_panels_current_hps_timeout_desc" : "The time between heals to be added to current measuring (seconds)",
 	"wolfhud_panels_show_hps_total_title" : "Show total HPS",
 	"wolfhud_panels_show_hps_total_desc" : "Shows your heal per second of the heist day",
-	
+
 	"wolfhud_panels_position_title" : "Position",
 	"wolfhud_panels_position_desc" : "Horizontal position of the HUD panel.",
 	"wolfhud_panels_scale_title" : "Scale",
@@ -385,7 +385,7 @@
 
 	"wolfhud_chat_enabled_title" : "Enable Custom Chat",
 	"wolfhud_chat_enabled_desc" : "Replaces the default chat with an enhanced and customized version",
-	
+
 	"wolfhud_chat_waittime_title" : "Chat Fade Time",
 	"wolfhud_chat_waittime_desc" : "The time after which the chat fades out\n(0 = Never)",
 	"wolfhud_chat_fontsize_title" : "Chat Font Size",
@@ -408,7 +408,7 @@
 
 	"wolfhud_susp_enabled_title" : "Enable Suspicion Options",
 	"wolfhud_susp_enabled_desc" : "Enables extra suspicion options.",
-	
+
 	"wolfhud_suspicion_scale_title" : "Suspicion Scale",
 	"wolfhud_suspicion_scale_desc" : "Scaling factor for the suspicion panel elements.",
 	"wolfhud_susp_eye_title" : "Display Suspicion Eye",
@@ -479,7 +479,7 @@
 	"wolfhud_hudlist_buff_list_height_offset_desc" : "Position offset from top of the buff list items.",
 	"wolfhud_mui_buff_fix_title" : "MUI Buff List Fix",
 	"wolfhud_mui_buff_fix_desc" : "Stops the buff list overlapping with subtitles.",
-	
+
 	"wolfhud_use_hudlist_title" : "Use HUDList",
 	"wolfhud_use_hudlist_desc" : "HUDList can display many useful things, incl. Drill timers, enemy or loot count, assets on the map, etc. (A Map change is needed to apply...)",
 	"wolfhud_hudlist_scale_right_title" : "Right List Scale",
@@ -868,7 +868,7 @@
 
 	"wolfhud_enemyhealthbar_options_name": "Enemy Health Indicator Options",
 	"wolfhud_enemyhealthbar_options_help": "Options for the Enemy health indicator.",
-	
+
 	"wolfhud_enemyhealthbar_enable_enemy_health_circle" : "Show Enemy Health Circle",
 	"wolfhud_enemyhealthbar_enable_enemy_health_circle_desc" : "Show enemy health indicator on the main HUD when you are actively targeting a unit",
 	"wolfhud_show_enemyhealthbar_title" : "Show Enemy Healthbar",
@@ -895,7 +895,7 @@
 
 	"wolfhud_press2hold_custom_huds_support_title" : "Custom Huds Support",
 	"wolfhud_press2hold_custom_huds_support_desc" : "MUI, PDTH HUD Fix",
-	
+
 	"wolfhud_press2hold_lock_mode_title" : "Lock Mode",
 	"wolfhud_press2hold_lock_mode_desc" : "Lock, when already interaction for more than X seconds. (Progress)\nLock, when total Interaction Time is more than X seconds. (Total)",
 	"wolfhud_press2hold_lock_mode_a" : "Progress",
@@ -1043,7 +1043,7 @@
 	"wolfhud_invertedfbg_title" : "Enable Inverted Flashbang Glare",
 	"wolfhud_invertedfbg_desc" : "This changes the flashbang glare from white to black",
 	"wolfhud_enemy_bolivian_security_mex" : "Coyopa Security",
-	
+
     "wolfhud_infopanels_buff_player_actions_options_name" : "Player Action Options",
 	"wolfhud_infopanels_buff_player_actions_options_help" : "Enable/disable specific actions",
 	"wolfhud_hudlist_anarchist_armor_regeneration_action_title" : "Anarchist Armor Regeneration",
@@ -1165,8 +1165,8 @@
 	"wolfhud_dmg_popup_damage_vert_offset_desc" : "Change the vertical offset for the damage popup",
 	"wolfhud_dmg_popup_damage_kill_flash_spd" : "Damage popup flashing speed",
 	"wolfhud_dmg_popup_damage_kill_flash_spd_desc" : "Change the speed of how fast the damage popup flashes",
-	"wolfhud_confirn_dialogs_title" : "Disable Confirm Dialogs",
-	"wolfhud_confirn_dialogs_desc" : "Disables confirm dialogs for certain actions",
+	"wolfhud_confirn_dialogs_title" : "Enable Confirm Dialogs",
+	"wolfhud_confirn_dialogs_desc" : "Enables confirm dialogs for certain actions",
 	"wolfhud_save_filters_title" : "Save Lobby Settings",
 	"wolfhud_save_filters_desc" : "This enables save of your lobby settings",
 	"wolfhud_shoot_through_bots_title" : "Shoot Through Bots/Jokers",
@@ -1178,5 +1178,32 @@
 	"wolfhud_dmg_popup_scale_alt_title" : "Popup Scale WolfHUD",
 	"wolfhud_dmg_popup_scale_alt_desc" : "Changes the size of the WolfHUD damage popups.",
 	"wolfhud_show_silent_weapons_title" : "Show Silent Weapons",
-	"wolfhud_show_silent_weapons_desc" : "Shows a ghost symbol next to silent weapons in the inventory"
+	"wolfhud_show_silent_weapons_desc" : "Shows a ghost symbol next to silent weapons in the inventory",
+	"wolfhud_chat_y_pos_title" : "Set Position From Bottom",
+	"wolfhud_chat_y_pos_desc" : "Moves the custom chat box up or down",
+	"wolfhud_panels_health_armor_num_title" : "Show Health and Armor As Numbers",
+	"wolfhud_panels_health_armor_num_desc" : "Shows health and armor as a number",
+	"wolfhud_panels_hide_health_armor_title" : "Hide Health and Armor Circles",
+	"wolfhud_panels_hide_health_armor_desc" : "Hides the health and armor circles",
+	"fastnet_sa" : "FAST.Net",
+	"state_filter" : "State",
+	"menu_state_filter" : "State Filter",
+	"menu_lobby_days_title" : "DAYS:",
+	"menu_state_lobby" : "Lobby",
+	"menu_state_loading" : "Loading",
+	"menu_state_ingame" : "Ingame",
+	"menu_state_filter_help" : "Change the filter for the current lobby state",
+	"menu_servers_filter" : "Maximum Servers",
+	"menu_servers_filter_help" : "Select the maximum amount of servers that can appear on screen at once",
+	"menu_lobby_job_plan_title" : "Job Plan:",
+	"menu_job_plan_-1" : "N/A",
+	"menu_job_plan_1" : "Loud",
+	"menu_job_plan_2" : "Silent",
+	"menu_stat_job_completed_new" : "$stat",
+	"menu_stat_job_new" : "Contracts completed: ",
+	"menu_fastnet_help" : "Payday 2 Server Browser: This maskes it easier to find games",
+	"FastNETMenuSortAlphabeticallyHeistsTitleID" : "Sort Heist Filter",
+	"FastNETMenuSortAlphabeticallyHeistsDescID" : "Sorts the heists filter alphabetically",
+	"wolfhud_show_custom_inv_names_title" : "Show Custom Inventory Names",
+	"wolfhud_show_custom_inv_names_desc" : "Shows custom inventory names. Disable if you're using TdLQ's version"
 }
