@@ -1087,7 +1087,7 @@
 	"wolfhud_enemyhealthbarenemy_kill_color_title" : "Cor de matar inimigo",
 	"wolfhud_enemyhealthbarenemy_kill_color_desc" : "Edite a cor quando o indicador de vida do inmigo piscar quand você matar alguém.",
 	"wolfhud_dmg_popup_show_alt_civ_popup_title" : "Mostrar popup de dano no civil",
-	"wolfhud_dmg_popup_show_alt_civ_popup_desc" : "Enables civillian damage popup.",
+	"wolfhud_dmg_popup_show_alt_civ_popup_desc" : "Ativa o popup de dano no civil.",
 	"wolfhud_dmg_popup_time_alt_title" : "Tempo do Popup Alt.",
 	"wolfhud_dmg_popup_time_alt_desc" : "Detemine por quanto tempo o popup vai ficar ativo.",
 	"wolfhud_enemyhealthbar_show_multiplied_enemy_health" : "Mostrar a vida do inimigo x10",
