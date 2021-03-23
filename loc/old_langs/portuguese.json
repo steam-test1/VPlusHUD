@@ -81,7 +81,7 @@
 	"wolfhud_advassault_phase_sustain" : "Sustain",
 	"wolfhud_advassault_phase_fade" : "Fade",
 	"wolfhud_advassault_time_overdue" : "ATRASADO",
-	"wolfhud_locked_assault" : "Operação Policial Infinito!!! É melhor correr!!!",
+	"wolfhud_locked_assault" : "Assault Infinito!!! É melhor correr!!!",
 
 	"wolfhud_customhud_interaction_done" : "COMPLETO",
 	"wolfhud_customhud_interaction_aborted" : "ABORTADO",
