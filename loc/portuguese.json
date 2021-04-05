@@ -1206,5 +1206,10 @@
 	"FastNETMenuSortAlphabeticallyHeistsTitleID" : "Filtro de Heist",
 	"FastNETMenuSortAlphabeticallyHeistsDescID" : "Organiza as Heists pelo alfabeto",
 	"wolfhud_show_custom_inv_names_title" : "Mostrar os nomes personalizados do inventário",
-	"wolfhud_show_custom_inv_names_desc" : "Mostra os nomes personalizados inventário. Desative caso você estiver usando a versão de TdlQ"
+	"wolfhud_show_custom_inv_names_desc" : "Mostra os nomes personalizados inventário. Desative caso você estiver usando a versão de TdlQ",
+	"wolfhud_enemy_triad" : "Triads",
+	"FastNETENABLEDTitleID" : "Hide Fast.Net in the main menu",
+	"FastNETENABLEDDescID" : "Hides Fast.Net in the main menu",
+	"wolfhud_hide_intewraction_text_title" : "Show Interaction Instructions",
+	"wolfhud_hide_intewraction_text_desc" : "Shows the hold [key] to interact text"
 }
