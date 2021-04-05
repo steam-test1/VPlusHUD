@@ -1210,5 +1210,6 @@
 	"FastNETENABLEDTitleID" : "Hide Fast.Net in the main menu",
 	"FastNETENABLEDDescID" : "Hides Fast.Net in the main menu",
 	"wolfhud_hide_intewraction_text_title" : "Show Interaction Instructions",
-	"wolfhud_hide_intewraction_text_desc" : "Shows the hold [key] to interact text"
+	"wolfhud_hide_intewraction_text_desc" : "Shows the hold [key] to interact text",
+	"wolfhud_languages_japanese" : "Japanese"
 }
