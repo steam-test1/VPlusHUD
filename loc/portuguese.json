@@ -1207,10 +1207,10 @@
 	"FastNETMenuSortAlphabeticallyHeistsDescID" : "Organiza as Heists pelo alfabeto",
 	"wolfhud_show_custom_inv_names_title" : "Mostrar os nomes personalizados do inventário",
 	"wolfhud_show_custom_inv_names_desc" : "Mostra os nomes personalizados inventário. Desative caso você estiver usando a versão de TdlQ",
-	"wolfhud_enemy_triad" : "Triads",
-	"FastNETENABLEDTitleID" : "Hide Fast.Net in the main menu",
-	"FastNETENABLEDDescID" : "Hides Fast.Net in the main menu",
-	"wolfhud_hide_intewraction_text_title" : "Show Interaction Instructions",
-	"wolfhud_hide_intewraction_text_desc" : "Shows the hold [key] to interact text",
-	"wolfhud_languages_japanese" : "Japanese"
+	"wolfhud_enemy_triad" : "Tríades",
+	"FastNETENABLEDTitleID" : "Esconder Fast.Net no menu principal",
+	"FastNETENABLEDDescID" : "Esconde Fast.Net no menu principal",
+	"wolfhud_hide_intewraction_text_title" : "Mostrar o Texto de Instrução de Interação",
+	"wolfhud_hide_intewraction_text_desc" : "Mostra o 'Segure [tecla] para interagir'",
+	"wolfhud_languages_japanese" : "Japonês"
 }
