@@ -1212,5 +1212,9 @@
 	"FastNETENABLEDDescID" : "Esconde Fast.Net no menu principal",
 	"wolfhud_hide_intewraction_text_title" : "Mostrar o Texto de Instrução de Interação",
 	"wolfhud_hide_intewraction_text_desc" : "Mostra o 'Segure [tecla] para interagir'",
-	"wolfhud_languages_japanese" : "Japonês"
+	"wolfhud_languages_japanese" : "Japonês",
+	"wolfhud_hudlist_show_jokers_health_bar_title" : "Show Jokers Health",
+	"wolfhud_hudlist_show_jokers_health_bar_desc" : "Shows jokers health bar",
+	"wolfhud_hudlist_show_jokers_kill_counter_title" : "Show Jokers Kills",
+	"wolfhud_hudlist_show_jokers_kill_counter_desc" : "Shows jokers kills bar"
 }

@@ -1212,5 +1212,9 @@
 	"FastNETENABLEDTitleID" : "Hide Fast.Net in the main menu",
 	"FastNETENABLEDDescID" : "Hides Fast.Net in the main menu",
 	"wolfhud_hide_intewraction_text_title" : "Show Interaction Instructions",
-	"wolfhud_hide_intewraction_text_desc" : "Shows the hold [key] to interact text"
+	"wolfhud_hide_intewraction_text_desc" : "Shows the hold [key] to interact text",
+	"wolfhud_hudlist_show_jokers_health_bar_title" : "Show Jokers Health",
+	"wolfhud_hudlist_show_jokers_health_bar_desc" : "Shows jokers health bar",
+	"wolfhud_hudlist_show_jokers_kill_counter_title" : "Show Jokers Kills",
+	"wolfhud_hudlist_show_jokers_kill_counter_desc" : "Shows jokers kills bar"
 }
