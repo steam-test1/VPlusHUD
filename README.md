@@ -1,1 +1,1 @@
-# VPlusHUD
+# VPlusHUD Localizations
