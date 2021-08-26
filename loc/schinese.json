@@ -276,7 +276,7 @@
 	"wolfhud_panels_options_name" : "HUD选项",
 	"wolfhud_panels_options_help" : "HUD的一般选项，如自定义HUD、可疑度、伤害指示器、驾驶HUD以及更多.",
 
-	"wolfhud_use_vanillahud_extras_title" : "使用VanillaHUD附加功能",
+	"wolfhud_use_vanillahud_extras_title" : "VanillaHUD Extras",
 	"wolfhud_use_vanillahud_extra_desc" : "为默认HUD添加增强功能\n需要切换地图生效",
 	"wolfhud_adv_assault_title" : "高级突击横幅",
 	"wolfhud_adv_assault_desc" : "该功能与贴吧的“联合汉化”冲突！！！\n在突击进行时，显示突击阶段，时间和剩余突击时间。(仅房主)",
@@ -1212,5 +1212,24 @@
 	"wolfhud_hudlist_show_jokers_health_bar_title" : "Show Jokers Health",
 	"wolfhud_hudlist_show_jokers_health_bar_desc" : "Shows jokers health bar",
 	"wolfhud_hudlist_show_jokers_kill_counter_title" : "Show Jokers Kills",
-	"wolfhud_hudlist_show_jokers_kill_counter_desc" : "Shows jokers kills bar"
+	"wolfhud_hudlist_show_jokers_kill_counter_desc" : "Shows jokers kills bar",
+
+	"wolfhud_disable_blend_mode_title" : "Disable Blend Mode For CustomHUD",
+	"wolfhud_disable_blend_mode_desc" : "Disables the blend mode for CustomHUD",
+	"wolfhud_pd2stylebox_title" : "Payday 2 Style Boxes",
+	"wolfhud_pd2stylebox_desc" : "Switches the HUDList boxes to use the Payday 2 style",
+
+	"wolfhud_use_enhanced_objective_title" : "Enable Enhanced Objectives Panel",
+	"wolfhud_use_enhanced_objective_desc" : "Replaces the default objectives panel with a customized version",
+	"wolfhud_use_customhud_title" : "CustomHUD",
+	"wolfhud_use_customhud_desc" : "Replace the default HUD with the advanced CustomHUD, made by Se7en.\n(A Map change is needed to apply...)",
+	"wolfhud_use_vanilla" : "Vanilla",
+
+	"wolfhud_menu_options_name" : "Menu Tweaks",
+	"wolfhud_menu_options_help" : "Change menu and inventory options",
+	"wolfhud_equipment_options_name" : "Equipment Tweaks",
+	"wolfhud_equipment_options_help" : "Change equipment options",
+
+	"wolfhud_hud_type_title" : "HUD Type",
+	"wolfhud_hud_type_desc" : "Select the type of HUD you want\n(A Map change is needed to apply...)"
 }

@@ -271,7 +271,7 @@
 	"wolfhud_panels_options_name" : "Opções gerais do painel do HUD",
 	"wolfhud_panels_options_help" : "Opções para todos paineis da HUD, como VanillaHUD Extras, Suspeito, Indicador de Dano, DrivingHUD e muito mais.",
 
-	"wolfhud_use_vanillahud_extras_title" : "Usar VanillaHUD Extras",
+	"wolfhud_use_vanillahud_extras_title" : "VanillaHUD Extras",
 	"wolfhud_use_vanillahud_extra_desc" : "Adiciona melhorias na HUD \n(Mudança da mapa é preciso para aplicar...)",
 	"wolfhud_adv_assault_title" : "Banner do Assault Avançado",
 	"wolfhud_adv_assault_desc" : "Mostra a etapa do assault, o tempo e os spawns restantes durante o assault.\n(Apenas o Host)",
@@ -1216,5 +1216,24 @@
 	"wolfhud_hudlist_show_jokers_health_bar_title" : "Mostrar a Vida dos Convertidos",
 	"wolfhud_hudlist_show_jokers_health_bar_desc" : "Mostra a barra de vida dos convertidos",
 	"wolfhud_hudlist_show_jokers_kill_counter_title" : "Mostrar as Kills dos Convertidos",
-	"wolfhud_hudlist_show_jokers_kill_counter_desc" : "Mostra as kills dos convertidos"
+	"wolfhud_hudlist_show_jokers_kill_counter_desc" : "Mostra as kills dos convertidos",
+
+	"wolfhud_disable_blend_mode_title" : "Disable Blend Mode For CustomHUD",
+	"wolfhud_disable_blend_mode_desc" : "Disables the blend mode for CustomHUD",
+	"wolfhud_pd2stylebox_title" : "Payday 2 Style Boxes",
+	"wolfhud_pd2stylebox_desc" : "Switches the HUDList boxes to use the Payday 2 style",
+
+	"wolfhud_use_enhanced_objective_title" : "Enable Enhanced Objectives Panel",
+	"wolfhud_use_enhanced_objective_desc" : "Replaces the default objectives panel with a customized version",
+	"wolfhud_use_customhud_title" : "CustomHUD",
+	"wolfhud_use_customhud_desc" : "Replace the default HUD with the advanced CustomHUD, made by Se7en.\n(A Map change is needed to apply...)",
+	"wolfhud_use_vanilla" : "Vanilla",
+
+	"wolfhud_menu_options_name" : "Menu Tweaks",
+	"wolfhud_menu_options_help" : "Change menu and inventory options",
+	"wolfhud_equipment_options_name" : "Equipment Tweaks",
+	"wolfhud_equipment_options_help" : "Change equipment options",
+
+	"wolfhud_hud_type_title" : "HUD Type",
+	"wolfhud_hud_type_desc" : "Select the type of HUD you want\n(A Map change is needed to apply...)"
 }

@@ -271,7 +271,7 @@
 	"wolfhud_panels_options_name" : "Общие настройки HUD панелей",
 	"wolfhud_panels_options_help" : "Настройки для всех основных HUD панелей, таких как VanillaHUD Extras, Подозрительность, Индикатор урона, DrivingHUD и многиз других.",
 
-	"wolfhud_use_vanillahud_extras_title" : "Use VanillaHUD Extras",
+	"wolfhud_use_vanillahud_extras_title" : "VanillaHUD Extras",
 	"wolfhud_use_vanillahud_extra_desc" : "Adds enhancements to the default HUD \n(A Map change is needed to apply...)",
 	"wolfhud_adv_assault_title" : "Расширенный баннер штурма",
 	"wolfhud_adv_assault_desc" : "Отображает фазу штурма, время и оставшиеся спауны во время штурма.\n(Только хост)",
@@ -831,7 +831,7 @@
 	"wolfhud_dmgpopup_options_name" : "Всплывающий урон врага",
 	"wolfhud_dmgpopup_options_help" : "Всплывающий урон появляется возле головы врага.",
 
-	"wolfhud_show_dmg_popup_title" : "Show WolfHUD Damage Popups",
+	"wolfhud_show_dmg_popup_title" : "WolfHUD Popups",
 	"wolfhud_show_dmg_popup_desc" : "Enable the WolfHUD damage popup.",
 	"wolfhud_dmg_popup_player" : "Игрок",
 	"wolfhud_dmg_popup_all" : "Все",
@@ -1215,5 +1215,24 @@
 	"wolfhud_hudlist_show_jokers_health_bar_title" : "Show Jokers Health",
 	"wolfhud_hudlist_show_jokers_health_bar_desc" : "Shows jokers health bar",
 	"wolfhud_hudlist_show_jokers_kill_counter_title" : "Show Jokers Kills",
-	"wolfhud_hudlist_show_jokers_kill_counter_desc" : "Shows jokers kills bar"
+	"wolfhud_hudlist_show_jokers_kill_counter_desc" : "Shows jokers kills bar",
+
+	"wolfhud_disable_blend_mode_title" : "Disable Blend Mode For CustomHUD",
+	"wolfhud_disable_blend_mode_desc" : "Disables the blend mode for CustomHUD",
+	"wolfhud_pd2stylebox_title" : "Payday 2 Style Boxes",
+	"wolfhud_pd2stylebox_desc" : "Switches the HUDList boxes to use the Payday 2 style",
+
+	"wolfhud_use_enhanced_objective_title" : "Enable Enhanced Objectives Panel",
+	"wolfhud_use_enhanced_objective_desc" : "Replaces the default objectives panel with a customized version",
+	"wolfhud_use_customhud_title" : "CustomHUD",
+	"wolfhud_use_customhud_desc" : "Replace the default HUD with the advanced CustomHUD, made by Se7en.\n(A Map change is needed to apply...)",
+	"wolfhud_use_vanilla" : "Vanilla",
+
+	"wolfhud_menu_options_name" : "Menu Tweaks",
+	"wolfhud_menu_options_help" : "Change menu and inventory options",
+	"wolfhud_equipment_options_name" : "Equipment Tweaks",
+	"wolfhud_equipment_options_help" : "Change equipment options",
+
+	"wolfhud_hud_type_title" : "HUD Type",
+	"wolfhud_hud_type_desc" : "Select the type of HUD you want\n(A Map change is needed to apply...)"
 }
