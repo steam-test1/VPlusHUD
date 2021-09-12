@@ -1235,5 +1235,7 @@
 	"wolfhud_equipment_options_help" : "Mude algumas opções de equipamento",
 
 	"wolfhud_hud_type_title" : "Tipo de HUD",
-	"wolfhud_hud_type_desc" : "Selecione o tipo de HUD que você quer.\n(Uma mudança de mapa é necessário.)"
+	"wolfhud_hud_type_desc" : "Selecione o tipo de HUD que você quer.\n(Uma mudança de mapa é necessário.)",
+	"wolfhud_waypoint_scale_title" : "Custom Waypoints Scale",
+	"wolfhud_waypoint_scale_desc" : "Set the scale of custom waypoints"
 }
