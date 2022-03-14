@@ -593,7 +593,7 @@
 	"wolfhud_infopanels_buff_fugitive_options_name" : "Flüchtling Fähigkeiten",
 	"wolfhud_infopanels_buff_fugitive_options_help" : "Aktiviere oder Deaktiviere Indikatoren für Flüchtling Fähigkeiten.",
 	"wolfhud_infopanels_buff_perkdecks_options_name" : "Perk-Decks",
-	"wolfhud_infopanels_buff_perkdecks_options_help" : "Aktiviere oder Deaktiviere Indikatoren für Perk-Decks."",
+	"wolfhud_infopanels_buff_perkdecks_options_help" : "Aktiviere oder Deaktiviere Indikatoren für Perk-Decks.",
 	"wolfhud_infopanels_buff_gageboosts_options_name" : "Gage Boosts",
 	"wolfhud_infopanels_buff_gageboosts_options_help" : "Aktiviere oder Deaktiviere Indikatoren für Gage Boosts.",
 	"wolfhud_infopanels_buff_henchmen_options_name" : "Bot Fähigkeiten (Henchmen)",
@@ -953,7 +953,7 @@
 	"wolfhud_gadget_options_help" : "Wähle Laserfarben",
 
 	"wolfhud_laser_autoon_title" : "Auto-Laser An",
-	"wolfhud_laser_autoon_desc" : "Schaltet die Laser beim Missionsstart automatisch ein, wenn die Waffe einen Laser besitzt.,
+	"wolfhud_laser_autoon_desc" : "Schaltet die Laser beim Missionsstart automatisch ein, wenn die Waffe einen Laser besitzt.",
 	"wolfhud_show_angeled_sight_title" : "Zeige Winkel-Visier",
 	"wolfhud_show_angeled_sight_desc" : "Neige die Waffe in deiner Hand, während das Winkel-Visier benutzt wird.",
 
