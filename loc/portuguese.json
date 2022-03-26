@@ -342,7 +342,7 @@
 	"wolfhud_panels_show_stamina_title" : "Mostrar Stamina",
 	"wolfhud_panels_show_stamina_desc" : "Mostra um círculo de Stamina dentro da barra de vida.",
 	"wolfhud_panels_show_downcounter_title" : "Mostrar o Contador de Quedas",
-	"wolfhud_panels_show_downcounter_desc" : "Mostra um contador de quedas de cada jogador não-AI. \nO contador mostra a sua contagem de quedas e da sua equipe.",
+	"wolfhud_panels_show_downcounter_desc" : "Mostra um contador de quedas para cada jogador.\nO contador mostra a sua contagem de quedas e da sua equipe.",
 	"wolfhud_panels_show_carry_title" : "Mostrar a Bolsa Carregada",
 	"wolfhud_panels_show_carry_desc" : "Mostra as informações da bolsa sendo carregada.",
 	"wolfhud_panels_build_show_title" : "Mostrar Build",
