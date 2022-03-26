@@ -260,16 +260,16 @@
 
 
 
-	"wolfhud_skip_blackscreen_title" : "Saltar Pantalla Negra",
-	"wolfhud_skip_blackscreen_desc" : "Saltar automáticamente la pantalla negra al iniciar la misión.\n(Solo Host)",
+	"wolfhud_skip_blackscreen_title" : "Omitir Pantalla Negra",
+	"wolfhud_skip_blackscreen_desc" : "Omite automáticamente la pantalla negra al iniciar la misión.\n(Solo Host)",
 	"wolfhud_instant_restart_title" : "Reinicio Instántaneo",
 	"wolfhud_instant_restart_desc" : "Saltar automáticamente la cuenta regresiva de 5 segundos antes de reiniciar la partida.\n(Solo Host)",
 	"wolfhud_stat_screen_speedup_title" : "Aumento de la Velocidad de las Estadísticas",
 	"wolfhud_stat_screen_speedup_desc" : "Aumentar automáticamente la velocidad del contador de experiencia, sin tener que mantener presionado espacio.",
 	"wolfhud_stat_screen_delay_title" : "Retraso de la pantalla de Estadísticas",
 	"wolfhud_stat_screen_delay_desc" : "Procede X segundos, despues de que tu experiencia sea contada.\n(Solo Host, 0 = desactivado) ",
-	"wolfhud_loot_screen_pick_card_title" : "Automáticamente elegir una carta",
-	"wolfhud_loot_screen_pick_card_desc" : "Elige Automáticamente una carta, cuando la pantalla de selección se muestra.",
+	"wolfhud_loot_screen_pick_card_title" : "Escoger automáticamente una carta",
+	"wolfhud_loot_screen_pick_card_desc" : "Elige Automáticamente una carta cuando la pantalla de selección se muestra.",
 	"wolfhud_loot_screen_pick_specific_card_title" : "Carta a elegir",
 	"wolfhud_loot_screen_pick_specific_card_desc" : "Especifique qué carta elegir automáticamente.",
 	"wolfhud_loot_screen_delay_title" : "Retraso al seleccionar la carta",
@@ -837,7 +837,7 @@
 	"wolfhud_crewloadout_briefing_title" : "Reemplazar las instrucciones",
 	"wolfhud_crewloadout_briefing_desc" : "Reemplaza el panel de equipamiento de tu equipo por instrucciones de la misión.",
 	"wolfhud_crewloadout_tabscreen_title" : "Mostrar en la pantalla (Presionar Tab)",
-	"wolfhud_crewloadout_tabscreen_desc" : "Muestra las habilidades, talentos y ping de los jugadores en el lobby. \n(Deshabilita si ya usas esta característica del LobbyPlayerInfo)",
+	"wolfhud_crewloadout_tabscreen_desc" : "Muestra las habilidades, talentos y ping de los jugadores en la sala de preparacion \n(Deshabilita si ya usas esta característica del LobbyPlayerInfo)",
         "wolfhud_profilemenu_replace_title" : "Reemplazar el menú del perfil",
         "wolfhud_profilemenu_replace_desc" : "Reemplaza el menú del perfil básico por uno avanzado de VHUDPlus",
 
@@ -949,9 +949,9 @@
 	"wolfhud_press2hold_timer_scale_desc" : "Factor de escala del contador (Toma en cuenta la escala del círculo de interacción).",
 	"wolfhud_press2hold_text_scale_title" : "Escala del texto",
 	"wolfhud_press2hold_text_scale_desc" : "Muestra el factor de escala del texto debajo del círculo de interacción.",
-	"wolfhud_press2hold_show_reload_circle_title" : "Mostrar contador de recarga",
+	"wolfhud_press2hold_show_reload_circle_title" : "Mostrar tiempo de recarga",
 	"wolfhud_press2hold_show_reload_circle_desc" : "Determina si se cuenta la recarga como una interacción.",
-	"wolfhud_press2hold_show_melee_circle_title" : "Mostrar carga de ataque CaC",
+	"wolfhud_press2hold_show_melee_circle_title" : "Mostrar ataque cargado",
 	"wolfhud_press2hold_show_melee_circle_desc" : "Determina si se cuenta la carga Cuerpo a Cuerpo como una interacción.",
 	"wolfhud_press2hold_timer_color_start_title" : "Color del contador (Inicio)",
 	"wolfhud_press2hold_timer_color_start_desc" : "Color con que empieza el contador.",
@@ -1066,8 +1066,8 @@
 	"wolfhud_gadgets_pulse_frequency_title" : "Frecuencia de Pulso",
 	"wolfhud_gadgets_pulse_frequency_desc" : "Detemina el tiempo que toma desde el Mínimo al máximo del multiplicador de opacidad.",
 
-	"wolfhud_skipit_options_name" : "Opciones de salto ",
-	"wolfhud_skipit_options_help" : "Opciones para saltar los menús innecesarios automáticamente.",
+	"wolfhud_skipit_options_name" : "Opciones de omisión ",
+	"wolfhud_skipit_options_help" : "Ajustes para omitir los menús innecesarios automáticamente.",
 	"wolfhud_assaultbanner_options_name" : "Opciones del Banner de Asalto",
 	"wolfhud_assaultbanner_options_help" : "Opciones para cambiar el banner que muestra el estado del asalto.",
 
@@ -1102,8 +1102,8 @@
 	"wolfhud_hudlist_show_planks_desc" : "",
 	"wolfhud_hudlist_show_keycard_title" : "Mostrar Tarjetas",
 	"wolfhud_hudlist_show_keycard_desc" : "",
-	"wolfhud_enable_peer_ping_title" : "Mostrar ping en el lobby",
-	"wolfhud_enable_peer_ping_desc" : "Muestra cuanta latencia tiene cada jugador en el lobby.",
+	"wolfhud_enable_peer_ping_title" : "Mostrar ping en el sala de preparacion",
+	"wolfhud_enable_peer_ping_desc" : "Muestra cuanta latencia tiene cada jugador en la sala.",
 	"wolfhud_pacified_civs_alt_icon_title" : "Icono Alternativo",
 	"wolfhud_pacified_civs_alt_icon_desc" : "Un icono verde opcional para los civiles pacificados.",
 	"wolfhud_enable_headshot_title" : "Circulo de confirmación al dar a la cabeza.",
@@ -1119,8 +1119,9 @@
 	"wolfhud_enable_inspire_hint_title" : "Enfriamiento de inspiración",
         "wolfhud_enable_inspire_hint_desc" : "Añade un mensaje en la pantalla del tiempo restante para volver a usar la habilidad de inspiración",
 	"wolfhud_inspire_hint_text" : "inspiración se encuentra en un enfriamiento de  %.f segundos",
-	"wolfhud_create_empty_lobby_title" : "Crear Lobby vacío",
-	"wolfhud_create_empty_lobby_desc" : "Crea un lobby multijugador sin contrato.",
+
+	"wolfhud_create_empty_lobby_title" : "Crear sala de preparacion vacia",
+	"wolfhud_create_empty_lobby_desc" : "Crea una sala de preparacion sin contrato.",
 	"wolfhud_mischud_options_name" : "Otras Opciones de HUD",
 	"wolfhud_mischud_options_help" : "Contiene otras opciones del HUD",
 	"wolfhud_show_heat_title" : "Mostrar Bonos del contrato",
@@ -1129,8 +1130,8 @@
 	"wolfhud_crnt_size_desc" : "Cambia el tamaño del fondo de crimenet",
 	"wolfhud_crnt_sort_title" : "Clasificar CrimeNet",
 	"wolfhud_crnt_sort_desc" : "Clasifica los contratos de crimeNet por dificultad.\nNota:Requiere [alinear Crimenet] para funcionar correctamente",
-	"wolfhud_crnt_align_title" : "Alinea CrimeNet",
-	"wolfhud_crnt_align_desc" : "Alinea los contratos de CrimeNet en una cuadricula",
+	"wolfhud_crnt_align_title" : "Alinear CrimeNet",
+	"wolfhud_crnt_align_desc" : "Ordena los contratos de CrimeNet en una cuadricula",
 	"wolfhud_crnt_colorize_title" : "Colorear CrimeNet",
 	"wolfhud_crnt_colorize_desc" : "Añade color a los contratos de Crimenet por dificultad, y añade un tono brillante al tener bonificación o penalización de experiencia",
 	"wolfhud_show_reduction_title" : "Mostrar reducción de experiencia",
@@ -1148,7 +1149,7 @@
 
 
 
-        "wolfhud_hud_scale_title" : "Escalado del Hud",
+        "wolfhud_hud_scale_title" : "Escala del Hud",
         "wolfhud_hud_scale_desc" : "Cambia el tamaño del Hud",
 	"wolfhud_enable_joker_floating_name_title" : "Mostrar nombre del Convertido",
 	"wolfhud_enable_joker_floating_name_desc" : "Muestra el nombre del convertido sobre él.",
@@ -1210,8 +1211,8 @@
 	"wolfhud_confirn_dialogs_title" : "Habilitar diálogos de confirmación",
 	"wolfhud_confirn_dialogs_desc" : "Activa los diálogos de confirmación para acciones específicas",
 
-	"wolfhud_save_filters_title" : "Guardar  Configuraciones del lobby",
-	"wolfhud_save_filters_desc" : "Cuando esto está activo guarda tus configuraciones de tu lobby",
+	"wolfhud_save_filters_title" : "Guardar Configuraciones de la sala de preparacion",
+	"wolfhud_save_filters_desc" : "Cuando esta opcion está activa se guardaran tus configuraciones de sala al salir",
 	"wolfhud_shoot_through_bots_title" : "Disparar a través de los bots/Convertidos",
 	"wolfhud_shoot_through_bots_desc" : "Cuando dispares, tus balas atravesaran a los bots/convertidos",
 	"wolfhud_replace_joker_title" : "Reemplazar Convertidos",
@@ -1239,7 +1240,7 @@
 	"menu_job_plan_2" : "Sigilo",
 	"menu_stat_job_completed_new" : "$stat",
 	"menu_stat_job_new" : "Contratos Completados: ",
-	"menu_fastnet_help" : "Buscador de servidores de Payday 2: Esto hará más fácil encontrar partidas",
+	"menu_fastnet_help" : "Buscador de servidores de Payday 2 avanzado: Esto hará más fácil encontrar partidas",
 	"FastNETMenuSortAlphabeticallyHeistsTitleID" : "Filtro de clasificación de trabajos",
 	"FastNETMenuSortAlphabeticallyHeistsDescID" : "Clasificar trabajos en orden alfabético",
 	"FastNETENABLEDTitleID" : "Mostrar Fast.Net en el menú principal",
@@ -1256,24 +1257,44 @@
 	"wolfhud_hudlist_show_jokers_kill_counter_title" : "Mostrar asesinatos de los convertidos",
 	"wolfhud_hudlist_show_jokers_kill_counter_desc" : "Muestra la cantidad de asesinatos de los convertidos",
 
-	"wolfhud_disable_blend_mode_title" : "Disable Blend Mode For CustomHUD",
-	"wolfhud_disable_blend_mode_desc" : "Disables the blend mode for CustomHUD",
-	"wolfhud_pd2stylebox_title" : "Payday 2 Style Boxes",
-	"wolfhud_pd2stylebox_desc" : "Switches the HUDList boxes to use the Payday 2 style",
+	"wolfhud_disable_blend_mode_title" : "Desabilitar el modo fusion",
+	"wolfhud_disable_blend_mode_desc" : "En terminos simples, desactiva la trasperencia de lo que muestre el HUD Personalizado.",
+	"wolfhud_pd2stylebox_title" : "Recuadros con estilo vanilla",
+	"wolfhud_pd2stylebox_desc" : "Intercambia los recuadros por defecto de la lista de HUD por unos con el estilo original de Payday 2",
 
-	"wolfhud_use_enhanced_objective_title" : "Enable Enhanced Objectives Panel",
-	"wolfhud_use_enhanced_objective_desc" : "Replaces the default objectives panel with a customized version",
-	"wolfhud_use_customhud_title" : "CustomHUD",
-	"wolfhud_use_customhud_desc" : "Replace the default HUD with the advanced CustomHUD, made by Se7en.\n(A Map change is needed to apply...)",
+	"wolfhud_use_enhanced_objective_title" : "Habilitar panel de objetivo mejorado",
+	"wolfhud_use_enhanced_objective_desc" : "Reemplaza el panel de objetivo por defecto a una version personalizada",
+	"wolfhud_use_customhud_title" : "HUD Personalizado",
+	"wolfhud_use_customhud_desc" : "Reemplaza el HUD por defecto a una version avanzada, hecha por Se7en.\n[Se necesita un cambio de mapa para aplicar]",
 	"wolfhud_use_vanilla" : "Vanilla",
 
-	"wolfhud_menu_options_name" : "Menu Tweaks",
-	"wolfhud_menu_options_help" : "Change menu and inventory options",
-	"wolfhud_equipment_options_name" : "Equipment Tweaks",
-	"wolfhud_equipment_options_help" : "Change equipment options",
+	"wolfhud_menu_options_name" : "Opciones de menú",
+	"wolfhud_menu_options_help" : "Cambia las opciones del menú e inventario",
+	"wolfhud_equipment_options_name" : "Opciones de equipamiento",
+	"wolfhud_equipment_options_help" : "Cambia las opciones de equipamiento",
 
-	"wolfhud_hud_type_title" : "HUD Type",
-	"wolfhud_hud_type_desc" : "Select the type of HUD you want\n(A Map change is needed to apply...)",
-	"wolfhud_waypoint_scale_title" : "Custom Waypoints Scale",
-	"wolfhud_waypoint_scale_desc" : "Set the scale of custom waypoints"
+	"wolfhud_hud_type_title" : "Tipo de HUD",
+	"wolfhud_hud_type_desc" : "Selecciona el tipo de HUD que quieras usar\n[Se necesita un cambio de mapa para aplicar]",
+	"wolfhud_waypoint_scale_title" : "Escala de Waypoints personalizados",
+	"wolfhud_waypoint_scale_desc" : "Establece el escalado para los waypoints personalizados",
+
+	"wolfhud_show_empty_lobby_title" : "Desabilitar, crear sala de preparacion vacia",
+	"wolfhud_show_empty_lobby_desc" : "Desactiva la creacion de una sala de preparacion vacia en el menu principal",
+
+	"wolfhud_panels_show_new_downcounter_title" : "Show Vanilla Downcounter",
+	"wolfhud_panels_show_new_downcounter_desc" : "Shows the vanilla downcounter for each non AI.",
+
+	"wolfhud_hudlist_copr_buff_title" : "Ampule (Leech)",
+	"wolfhud_hudlist_copr_buff_desc" : "",
+	"wolfhud_dialog_force_start_msg" : "The game was forced to start",
+
+	"wolfhud_chat_x_pos_title" : "Set Position From Left",
+	"wolfhud_chat_x_pos_desc" : "Moves the custom chat box left or right",
+
+	"wolfhud_enemy_yufuwang_armored_boss" : "Armored Yufu Wang",
+	"wolfhud_enemy_yufuwang_no_armor_boss" : "Yufu Wang",
+
+	"wolfhud_enable_bg_title" : "Enable Background HUDList Box",
+	"wolfhud_enable_bg_desc" : "Adds a background to HUDList boxes, allowing you to change the colors"
+
 }

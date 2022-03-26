@@ -1236,5 +1236,24 @@
 	"wolfhud_hud_type_title" : "HUD Type",
 	"wolfhud_hud_type_desc" : "Select the type of HUD you want\n(A Map change is needed to apply...)",
 	"wolfhud_waypoint_scale_title" : "Custom Waypoints Scale",
-	"wolfhud_waypoint_scale_desc" : "Set the scale of custom waypoints"
+	"wolfhud_waypoint_scale_desc" : "Set the scale of custom waypoints",
+
+	"wolfhud_show_empty_lobby_title" : "Disable Create Empty Lobby",
+	"wolfhud_show_empty_lobby_desc" : "Disables create empty lobbu item on the main menu",
+
+	"wolfhud_panels_show_new_downcounter_title" : "Show Vanilla Downcounter",
+	"wolfhud_panels_show_new_downcounter_desc" : "Shows the vanilla downcounter for each non AI.",
+
+	"wolfhud_hudlist_copr_buff_title" : "Ampule (Leech)",
+	"wolfhud_hudlist_copr_buff_desc" : "",
+	"wolfhud_dialog_force_start_msg" : "The game was forced to start",
+
+	"wolfhud_chat_x_pos_title" : "Set Position From Left",
+	"wolfhud_chat_x_pos_desc" : "Moves the custom chat box left or right",
+
+	"wolfhud_enemy_yufuwang_armored_boss" : "Armored Yufu Wang",
+	"wolfhud_enemy_yufuwang_no_armor_boss" : "Yufu Wang",
+
+	"wolfhud_enable_bg_title" : "Enable Background HUDList Box",
+	"wolfhud_enable_bg_desc" : "Adds a background to HUDList boxes, allowing you to change the colors"
 }
