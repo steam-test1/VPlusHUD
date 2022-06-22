@@ -1256,5 +1256,19 @@
 	"wolfhud_enemy_yufuwang_no_armor_boss": "Yufu Wang",
 	
 	"wolfhud_enable_bg_title": "Activer l'arrière-plan de la boite HUDList",
-	"wolfhud_enable_bg_desc": "Ajoute un arrière-plan aux boîtes HUDList, vous permettant de changer les couleurs"
+	"wolfhud_enable_bg_desc": "Ajoute un arrière-plan aux boîtes HUDList, vous permettant de changer les couleurs",
+
+	"wolfhud_hide_bag_value_text_title" : "Hide Bag Value",
+	"wolfhud_hide_bag_value_text_desc" : "Hides the bag value when looking at a bag",
+
+	"wolfhud_hide_casing_title" : "Hide Casing Panel",
+	"wolfhud_hide_casing_desc" : "Hides the casing panel",
+
+	"wolfhud_hudlist_armor_break_invulnerable_debuff_title" : "Armor Break Invulnerability Debuff",
+	"wolfhud_hudlist_armor_break_invulnerable_debuff_desc" : "",
+
+	"wolfhud_fastnet_update" : "$BTN_X; Update",
+	"wolfhud_fastnet_filters" : "$BTN_Y; Filters",
+
+	"wolfhud_enemy_marshal_marksman" : "Marshal Marksman"
 }

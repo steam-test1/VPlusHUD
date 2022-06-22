@@ -1201,7 +1201,7 @@
 	"menu_job_plan_2" : "Silent",
 	"menu_stat_job_completed_new" : "$stat",
 	"menu_stat_job_new" : "Contracts completed: ",
-	"menu_fastnet_help" : "Payday 2 Server Browser: This maskes it easier to find games",
+	"menu_fastnet_help" : "Payday 2 Server Browser: This makes it easier to find games",
 	"FastNETMenuSortAlphabeticallyHeistsTitleID" : "Sort Heist Filter",
 	"FastNETMenuSortAlphabeticallyHeistsDescID" : "Sorts the heists filter alphabetically",
 	"xp_amount" : "Levels Gain: $XP",
@@ -1256,5 +1256,19 @@
 	"wolfhud_enemy_yufuwang_no_armor_boss" : "Yufu Wang",
 
 	"wolfhud_enable_bg_title" : "Enable Background HUDList Box",
-	"wolfhud_enable_bg_desc" : "Adds a background to HUDList boxes, allowing you to change the colors"
+	"wolfhud_enable_bg_desc" : "Adds a background to HUDList boxes, allowing you to change the colors",
+
+	"wolfhud_hide_bag_value_text_title" : "Hide Bag Value",
+	"wolfhud_hide_bag_value_text_desc" : "Hides the bag value when looking at a bag",
+
+	"wolfhud_hide_casing_title" : "Hide Casing Panel",
+	"wolfhud_hide_casing_desc" : "Hides the casing panel",
+
+	"wolfhud_hudlist_armor_break_invulnerable_debuff_title" : "Armor Break Invulnerability Debuff",
+	"wolfhud_hudlist_armor_break_invulnerable_debuff_desc" : "",
+
+	"wolfhud_fastnet_update" : "$BTN_X; Update",
+	"wolfhud_fastnet_filters" : "$BTN_Y; Filters",
+
+	"wolfhud_enemy_marshal_marksman" : "Marshal Marksman"
 }
