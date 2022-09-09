@@ -276,8 +276,8 @@
 	"wolfhud_adv_assault_title" : "Banner do Assault Avançado",
 	"wolfhud_adv_assault_desc" : "Mostra a etapa do assault, o tempo e os spawns restantes durante o assault.\n(Apenas o Host)",
 	
-	"wolfhud_mui_assault_fix_title": "MUI Assault Fix",
-	"wolfhud_mui_assault_fix_desc": "MUI Assault Fix",
+	"wolfhud_mui_assault_fix_title": "Disable Game Clock In the Assault Or Casing Box",
+	"wolfhud_mui_assault_fix_desc": "This should be used with HUDs like MUI, BL2HUD, WarFrame etc that modify the games clock",
 		
 	"wolfhud_assault_position_title": "Banner de Assault",
 	"wolfhud_assault_position_desc" : "Posição horizontal do Banner de Assault.",
@@ -1270,5 +1270,14 @@
 	"wolfhud_fastnet_update" : "$BTN_X; Update",
 	"wolfhud_fastnet_filters" : "$BTN_Y; Filters",
 
-	"wolfhud_enemy_marshal_marksman" : "Marshal Marksman"
+	"wolfhud_enemy_marshal_marksman" : "Marshal Marksman",
+
+	"wolfhud_sub_height_title" : "Set Subtitles Position",
+	"wolfhud_sub_height_desc" : "Sets subtitles position starting from 0 is at the top and 800 at the bottom",
+
+	"wolfhud_hudlist_buff_list_x_offset_title" : "Buff List Horizontal Offset",
+	"wolfhud_hudlist_buff_list_x_offset_desc" : "Sets the horizontal offset for the buffs list",
+
+	"wolfhud_hudlist_loot_tea" : "Tea",
+    "wolfhud_hudlist_loot_dragon" : "Dragon"
 }
