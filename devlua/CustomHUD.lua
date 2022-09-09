@@ -2127,9 +2127,6 @@ end
 			self._health_radial:stop()
 			self._health_radial:animate(callback(self, self, "_animate_set_health"), self._stored_health_radial, ratio)
 
-			local red_ratio = current / total
-			local red = self._health_radial:color().red
-
 			if managers.player:has_activate_temporary_upgrade("temporary", "copr_ability") then
 				local static_damage_ratio = managers.player:upgrade_value_nil("player", "copr_static_damage_ratio")
 		
