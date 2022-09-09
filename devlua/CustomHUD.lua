@@ -2130,11 +2130,11 @@ end
 			local red_ratio = current / total
 			local red = self._health_radial:color().red
 
-			if managers.player:has_activate_temporary_upgrade("temporary", "copr_ability") and self._id == HUDManager.PLAYER_PANEL then
+			if managers.player:has_activate_temporary_upgrade("temporary", "copr_ability") then
 				local static_damage_ratio = managers.player:upgrade_value_nil("player", "copr_static_damage_ratio")
 		
 				if static_damage_ratio then
-					red = math.floor((red + 0.01) / static_damage_ratio) * static_damage_ratio
+					red = math.floor((ratio + 0.01) / static_damage_ratio) * static_damage_ratio
 				end
 		
 				if alive(self._copr_overlay_panel) then
@@ -2144,7 +2144,7 @@ end
 				end
 			end
 
-			if managers.player:has_activate_temporary_upgrade("temporary", "copr_ability") and self._id == HUDManager.PLAYER_PANEL then
+			if managers.player:has_activate_temporary_upgrade("temporary", "copr_ability") then
 				self._health_radial:animate(function (o)
 					local s = self._health_radial:color().r
 					local e = red
@@ -2362,7 +2362,7 @@ end
 					local v3 = Vector3()
 					local mset = mvector3.set_static
 					local x, y = nil
-					local w = 5
+					local w = (math.min(self._copr_overlay_panel:w(), self._copr_overlay_panel:h()) / 7 - 0.2) * 0.6
 					local h = math.min(self._copr_overlay_panel:w(), self._copr_overlay_panel:h()) / 7
 
 					for i = 0, num_notches - 1 do
@@ -2385,7 +2385,7 @@ end
 								v3
 							},
 							w = w,
-							h = h
+							h = (h - 7.7) * 5.5
 						})
 						notch:script().red = 1 - i / num_notches
 
