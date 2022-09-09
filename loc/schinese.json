@@ -282,8 +282,8 @@
 	"wolfhud_adv_assault_desc" : "该功能与贴吧的“联合汉化”冲突！！！\n在突击进行时，显示突击阶段，时间和剩余突击时间。(仅房主)",
 	"wolfhud_assault_position_title": "居中突击横幅",
 	"wolfhud_assault_position_desc": "把突击横幅放在中心",
-	"wolfhud_mui_assault_fix_title": "MUI突击修复",
-	"wolfhud_mui_assault_fix_desc": "MUI突击修复",
+	"wolfhud_mui_assault_fix_title": "Disable Game Clock In the Assault Or Casing Box",
+	"wolfhud_mui_assault_fix_desc": "This should be used with HUDs like MUI, BL2HUD, WarFrame etc that modify the games clock",
 	"wolfhud_pacified_civs_title" : "显示控制平民",
 	"wolfhud_pacified_civs_desc" : "将倒在地上的平民用“√”表示.",
 	"wolfhud_use_realammo_title" : "使用真实弹药",
@@ -1266,5 +1266,14 @@
 	"wolfhud_fastnet_update" : "$BTN_X; Update",
 	"wolfhud_fastnet_filters" : "$BTN_Y; Filters",
 
-	"wolfhud_enemy_marshal_marksman" : "Marshal Marksman"
+	"wolfhud_enemy_marshal_marksman" : "Marshal Marksman",
+
+	"wolfhud_sub_height_title" : "Set Subtitles Position",
+	"wolfhud_sub_height_desc" : "Sets subtitles position starting from 0 is at the top and 800 at the bottom",
+
+	"wolfhud_hudlist_buff_list_x_offset_title" : "Buff List Horizontal Offset",
+	"wolfhud_hudlist_buff_list_x_offset_desc" : "Sets the horizontal offset for the buffs list",
+
+	"wolfhud_hudlist_loot_tea" : "Tea",
+    "wolfhud_hudlist_loot_dragon" : "Dragon"
 }

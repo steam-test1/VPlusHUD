@@ -283,8 +283,8 @@
 	
 	"wolfhud_assault_position_title": "Centrer la bannière d'assaut",
 	"wolfhud_assault_position_desc": "Placer la bannière d'assaut au centre",
-	"wolfhud_mui_assault_fix_title": "Correction de l'Assaut MUI",
-	"wolfhud_mui_assault_fix_desc": "Correction de l'Assaut MUI",
+	"wolfhud_mui_assault_fix_title": "Disable Game Clock In the Assault Or Casing Box",
+	"wolfhud_mui_assault_fix_desc": "This should be used with HUDs like MUI, BL2HUD, WarFrame that modify the games clock",
 	
 	"wolfhud_pacified_civs_title": "Montrer les civils maîtrisés",
 	"wolfhud_pacified_civs_desc": "Change le curseur des civils qui ne sont pas attachés, jusqu'à ce qu'ils le soient.",
@@ -1270,5 +1270,14 @@
 	"wolfhud_fastnet_update" : "$BTN_X; Mise à jour",
 	"wolfhud_fastnet_filters" : "$BTN_Y; Filtres",
 
-	"wolfhud_enemy_marshal_marksman" : "Marshal Tireur d'élite"
+	"wolfhud_enemy_marshal_marksman" : "Marshal Tireur d'élite",
+
+	"wolfhud_sub_height_title" : "Set Subtitles Position",
+	"wolfhud_sub_height_desc" : "Sets subtitles position starting from 0 is at the top and 800 at the bottom",
+
+	"wolfhud_hudlist_buff_list_x_offset_title" : "Buff List Horizontal Offset",
+	"wolfhud_hudlist_buff_list_x_offset_desc" : "Sets the horizontal offset for the buffs list",
+
+	"wolfhud_hudlist_loot_tea" : "Tea",
+    "wolfhud_hudlist_loot_dragon" : "Dragon"
 }
