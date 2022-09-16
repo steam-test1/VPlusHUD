@@ -1273,11 +1273,11 @@
 	"wolfhud_enemy_marshal_marksman" : "Marshal Tireur d'élite",
 
 	"wolfhud_sub_height_title" : "Position des sous-titres",
-	"wolfhud_sub_height_desc" : "Sélectionné la position des sous-titres commençant à 0 du haut et jusqu'a 800 en bas.",
+	"wolfhud_sub_height_desc" : "Sélectionner la position des sous-titres commençant à 0 du haut et jusqu'a 800 en bas.",
 
-	"wolfhud_hudlist_buff_list_x_offset_title" : "Buff List Horizontal Offset",
-	"wolfhud_hudlist_buff_list_x_offset_desc" : "Sets the horizontal offset for the buffs list",
+	"wolfhud_hudlist_buff_list_x_offset_title" : "Décalage de la liste horizontale des Bonus",
+	"wolfhud_hudlist_buff_list_x_offset_desc" : "Sélectionner le décalage horizontal de la liste de BonusSets the horizontal offset for the buffs list",
 
-	"wolfhud_hudlist_loot_tea" : "Tea",
+	"wolfhud_hudlist_loot_tea" : "Thé",
     "wolfhud_hudlist_loot_dragon" : "Dragon"
 }
