@@ -1223,7 +1223,7 @@
 	"wolfhud_use_enhanced_objective_desc" : "将原版目标显示替换为增强任务目标显示",
 	"wolfhud_use_customhud_title" : "CustomHUD",
 	"wolfhud_use_customhud_desc" : "以Se7en制作的CUSTOM HUD替换原版的HUD.\n(更换地图以应用更改)",
-	"wolfhud_use_vanilla" : "",
+	"wolfhud_use_vanilla" : "Vanilla",
 
 	"wolfhud_menu_options_name" : "菜单调整",
 	"wolfhud_menu_options_help" : "更改菜单与装备库界面选项",
