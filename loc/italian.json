@@ -247,11 +247,11 @@
     "wolfhud_colors_black" : "Nero",
     "wolfhud_colors_rainbow" : "Arcobaleno",
 
-    "wolfhud_options_name" : "Impostazioni di WolfHUD",
-    "wolfhud_options_help" : "Personalizza WolfHUD in base alle tue preferenze.",
+    "wolfhud_options_name" : "Impostazioni di VanillaHUD Plus",
+    "wolfhud_options_help" : "Personalizza VanillaHUD Plus in base alle tue preferenze.",
 
     "wolfhud_language_title" : "Lingua",
-    "wolfhud_language_desc" : "Seleziona una localizzazione per WolfHUD.\n(Richiesto un riavvio della mappa per applicare i cambiamenti...)",
+    "wolfhud_language_desc" : "Seleziona una localizzazione per VHUDPlus.\n(Richiesto un riavvio della mappa per applicare i cambiamenti...)",
 
     "wolfhud_languages_english" : "English",
     "wolfhud_languages_german" : "German",
@@ -305,8 +305,8 @@
     "wolfhud_use_customhud_desc" : "Sostituisce l'HUD vanilla con CustomHUD, creato da Se7en.\n(Un riavvio della mappa è necessario per applicare le modifiche...)",
     "wolfhud_adv_assault_title" : "Barra d'Assalto Avanzata",
     "wolfhud_adv_assault_desc" : "Mostra la fase d'assalto, il tempo e gli spawn rimanenti durante l'assalto.\n(Solo host)",
-    "wolfhud_assault_position_title": "Posizione d'Assalto",
-    "wolfhud_assault_position_desc" : "Posizione orizzontale per la barra d'assalto.",
+    "wolfhud_assault_position_title": "Center assault banner",
+	"wolfhud_assault_position_desc": "Place assault banner to center",
     "wolfhud_pacified_civs_title" : "Mostra Civili Tranquillizzati",
     "wolfhud_pacified_civs_desc" : "Cambia il segnalino dei civili che non sono stati legati, mentre sono tranquilli.",
     "wolfhud_use_realammo_title" : "Usa Munizioni Reali",
@@ -863,8 +863,8 @@
     "wolfhud_dmgpopup_options_name" : "Popup Danno Nemici",
     "wolfhud_dmgpopup_options_help" : "Spunta un Popup vicino alla testa del nemico, mostrando il danno subito.",
 
-    "wolfhud_show_dmg_popup_title" : "Mostra Popup Danno",
-    "wolfhud_show_dmg_popup_desc" : "Abilita il popup del danno.",
+    "wolfhud_show_dmg_popup_title" : "WolfHUD Popups",
+	"wolfhud_show_dmg_popup_desc" : "Enable the WolfHUD damage popup.",
     "wolfhud_dmg_popup_player" : "Giocatore",
     "wolfhud_dmg_popup_all" : "Tutti",
     "wolfhud_dmg_popup_scale_title" : "Dimensione Popup",
