@@ -1,4 +1,4 @@
 # VPlusHUD Only For Pull Requests
 For the working version use
 
-https://github.com/steam-test1/PD2Updates/raw/master/update/vanhudplus.zip
+https://gitlab.com/steam-test1/alternative-updates/-/raw/main/update/vanhudplus.zip
