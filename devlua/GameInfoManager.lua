@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 --TODO: Fix Client Minion Damage upgrade sync (line: 1919)
 local print_debug = function(text, ...)
 	text = string.format("(GameInfo) %s", tostring(text))

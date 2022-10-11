@@ -1889,16 +1889,15 @@ end
 
 			self._detection_counter = self._panel:text({
 				name = "detection",
-				text = utf8.char(57363),
 				color = Color.red,
 				align = "center",
 				vertical = "center",
 				h = self._size * 0.25,
 				w = self._size * 0.25,
 				font_size = self._size * 0.2,
-				font = "fonts/font_small_mf",
+				font = "fonts/font_small_shadow_mf",
 				layer = self._health_radial:layer() + 1,
-				visible = HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER or false,
+				visible = HUDManager.DETECT_COUNTER_PLUGIN and self._settings.DETECTIONCOUNTER or false,
 			})
 			self._detection_counter:set_center(self._size / 2, self._size / 2)
 
@@ -2069,9 +2068,10 @@ end
 			self._stamina_radial:set_visible(self._is_local_player and self._settings.STAMINA)
 			self._condition_icon:set_color(self._settings.CONDITION_ICON_COLOR)
 
-			local disabled = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
-			self._downs_counter:set_visible(not disabled and not managers.groupai:state():whisper_mode())
-			self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+			local vis_down = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
+			local vis_detect = self._condition_icon:visible() or not (HUDManager.DETECT_COUNTER_PLUGIN and self._settings.DETECTIONCOUNTER)
+			self._downs_counter:set_visible(not vis_down and not managers.groupai:state():whisper_mode())
+			self._detection_counter:set_visible(not vis_detect and not self._downs_counter:visible() and managers.groupai:state():whisper_mode())
 
 			if self:set_enabled("setting", self._settings.STATUS) then
 				self._owner:arrange()
@@ -2127,6 +2127,8 @@ end
 			self._health_radial:stop()
 			self._health_radial:animate(callback(self, self, "_animate_set_health"), self._stored_health_radial, ratio)
 
+			local red = self._health_radial:color().red
+
 			if managers.player:has_activate_temporary_upgrade("temporary", "copr_ability") then
 				local static_damage_ratio = managers.player:upgrade_value_nil("player", "copr_static_damage_ratio")
 		
@@ -2177,9 +2179,9 @@ end
 			if revive_amount then
 				self._downs = amount
 				self._downs_counter:set_text(tostring(math.max(revive_amount - 1, 0)))
-				local disabled = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
-				self._downs_counter:set_visible(not disabled and not managers.groupai:state():whisper_mode())
-				self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+				local vis_down = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
+				self._downs_counter:set_visible(not vis_down and not managers.groupai:state():whisper_mode())
+				self._detection_counter:set_visible(not self._downs_counter:visible())
 			end
 		end
 
@@ -2212,19 +2214,21 @@ end
 				self._risk = risk
 
 				local color = self._risk < 50 and Color(1, 0, 0.8, 1) or Color(1, 1, 0.2, 0)
-				self._detection_counter:set_text(utf8.char(57363) .. tostring(self._risk))
+				self._detection_counter:set_text(tostring(self._risk))
 				self._detection_counter:set_color(color)
 
-				local disabled = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
-				self._downs_counter:set_visible(not disabled and not managers.groupai:state():whisper_mode())
-				self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+				local vis_detect = self._condition_icon:visible() or not (HUDManager.DETECT_COUNTER_PLUGIN and self._settings.DETECTIONCOUNTER)
+				local vis_down = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
+				self._downs_counter:set_visible(not vis_down and not managers.groupai:state():whisper_mode())
+				self._detection_counter:set_visible(not vis_detect and not self._downs_counter:visible() and managers.groupai:state():whisper_mode())
 			end
 		end
 
 		function PlayerInfoComponent.PlayerStatus:_whisper_mode_change(event, key, status)
-			local disabled = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
-			self._downs_counter:set_visible(not disabled and not status)
-			self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+			local vis_detect = self._condition_icon:visible() or not (HUDManager.DETECT_COUNTER_PLUGIN and self._settings.DETECTIONCOUNTER)
+			local vis_down = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
+			self._downs_counter:set_visible(not vis_down and not status)
+			self._detection_counter:set_visible(not vis_detect and not self._downs_counter:visible() and managers.groupai:state():whisper_mode())
 		end
 
 		function PlayerInfoComponent.PlayerStatus:set_armor(current, total)
@@ -2267,10 +2271,13 @@ end
 			self._condition_icon:set_visible(visible)
 
 			self._stamina_radial:set_visible(not visible and self._is_local_player and self._settings.STAMINA)
-			if HUDManager.DOWNS_COUNTER_PLUGIN and self._downs_counter and self._detection_counter then
-				local disabled = visible or not self._settings.DOWNCOUNTER
-				self._downs_counter:set_visible(not disabled and not managers.groupai:state():whisper_mode())
-				self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+			if HUDManager.DOWNS_COUNTER_PLUGIN and self._downs_counter then
+				local vis_down_d = visible or not self._settings.DOWNCOUNTER
+				self._downs_counter:set_visible(not vis_down_d and not managers.groupai:state():whisper_mode())
+			end
+			if HUDManager.DETECT_COUNTER_PLUGIN and self._detection_counter then
+				local vis_detect_d = visible or not self._settings.DETECTIONCOUNTER
+				self._detection_counter:set_visible(not vis_detect_d and not self._downs_counter:visible() and managers.groupai:state():whisper_mode())
 			end
 		end
 
@@ -4280,12 +4287,14 @@ end
 			if wbase:fire_mode() == "single" or (wbase:can_toggle_firemode() and not wbase._locked_fire_mode) then
 				table.insert(fire_modes, { "single", "S" })
 			end
-			if wbase.can_use_burst_mode and wbase:can_use_burst_mode() and not wbase._locked_fire_mode then
-				active_mode = wbase:in_burst_mode() and "burst" or active_mode
+			if wbase:fire_mode() == "burst" or (wbase:can_toggle_firemode() and not wbase._locked_fire_mode) then
 				table.insert(fire_modes, { "burst", "B" })
 			end
 			if wbase:fire_mode() == "auto" or (wbase:can_toggle_firemode() and not wbase._locked_fire_mode) then
 				table.insert(fire_modes, { "auto", "A" })
+			end
+			if wbase:fire_mode() == "volley" or (wbase:can_toggle_firemode() and not wbase._locked_fire_mode) then
+				table.insert(fire_modes, { "volley", "V" })
 			end
 
 			self:set_teammate_available_fire_modes(HUDManager.PLAYER_PANEL, data.inventory_index, fire_modes)

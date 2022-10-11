@@ -321,12 +321,14 @@ end
 			end
 	
 			function HUDTeammate:set_accuracy(value)
-				self._accuracy_text:set_text(tostring(value) .. "%")
-				local _, _, w, _ = self._accuracy_text:text_rect()
-				self._accuracy_icon:set_right(self._accuracy_panel:w() - w - self._accuracy_icon:w() * 0.15)
-				if VHUDPlus:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false) and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true) then
-					self._max_name_panel_width = (self._accuracy_panel:x() + self._accuracy_icon:x() - 4)
-					self:_truncate_name()
+				if self._accuracy_text then
+					self._accuracy_text:set_text(tostring(value) .. "%")
+					local _, _, w, _ = self._accuracy_text:text_rect()
+					self._accuracy_icon:set_right(self._accuracy_panel:w() - w - self._accuracy_icon:w() * 0.15)
+					if VHUDPlus:getSetting({"CustomHUD", "PLAYER", "KILLCOUNTER", "HIDE"}, false) and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "SHOW_ACCURACY"}, true) then
+						self._max_name_panel_width = (self._accuracy_panel:x() + self._accuracy_icon:x() - 4)
+						self:_truncate_name()
+					end
 				end
 			end
 	

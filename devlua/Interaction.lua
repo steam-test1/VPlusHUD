@@ -164,7 +164,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 
 		return _check_action_throw_grenade_original(self, t, input, ...)
 	end
-	
+
 	local mvec3_dist_sq = mvector3.distance_sq
     local ignored_states = { arrested = 1, bleed_out = 1, fatal = 1, incapacitated = 1 }
     local PS_get_intimidation_action_orig = PlayerStandard._get_intimidation_action
@@ -173,7 +173,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 	    if voice_type == "revive" or secondary or detect_only then
 		    return voice_type, plural, prime_target
 	    end
-	
+
 	    local unit_type_enemy = 0
 	    local unit_type_teammate = 2
 	    if prime_target then
@@ -195,19 +195,19 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
                             local remaining_cooldown = managers.player:get_disabled_cooldown_time("cooldown", "long_dis_revive")
 						    if remaining_cooldown > 0 and VHUDPlus:getSetting({"MISCHUD", "INSPIRE_HINT"}, true)then
 							    remaining_cooldown = remaining_cooldown - Application:time()
-							    managers.hud:show_hint({ text = string.format(managers.localization:to_upper_text("wolfhud_inspire_hint_text"), remaining_cooldown) })						
-						    end				
-					    end			
-				    end			
+							    managers.hud:show_hint({ text = string.format(managers.localization:to_upper_text("wolfhud_inspire_hint_text"), remaining_cooldown) })
+						    end
+					    end
+				    end
 			    end
 		    else
 			    if prime_target.unit_type == unit_type_enemy then
 				    plural = false
-			    end			
+			    end
 		    end
 	    end
 	    return voice_type, plural, prime_target
-    end	
+    end
 
 elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playercivilian" then
 
@@ -220,6 +220,22 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerciv
 	end
 
 	function PlayerCivilian:_check_action_interact(t, input, ...)
+		if not self:_check_interact_toggle(t, input) then
+			return _check_action_interact_original(self, t, input, ...)
+		end
+	end
+
+elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playermaskoff" then
+
+	local _update_interaction_timers_original = PlayerMaskOff._update_interaction_timers
+	local _check_action_interact_original = PlayerMaskOff._check_action_interact
+
+	function PlayerMaskOff:_update_interaction_timers(t, ...)
+		self:_check_interaction_locked(t)
+		return _update_interaction_timers_original(self, t, ...)
+	end
+
+	function PlayerMaskOff:_check_action_interact(t, input, ...)
 		if not self:_check_interact_toggle(t, input) then
 			return _check_action_interact_original(self, t, input, ...)
 		end
@@ -281,7 +297,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 			self._interaction_locked = is_locked
 		end
 	end
-	
+
 	function PlayerDriving:_set_camera_limits(mode)
 		if mode == "driving" then
 			self._camera_unit:base():set_limits(180, 20)
@@ -299,7 +315,7 @@ local custom_huds_support = VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUP
 			self._hud_interaction:set_locked(status, tweak_entry)
 		end
 	end
-	
+
 	local show_interact_original = HUDManager.show_interact
 	local remove_interact_original = HUDManager.remove_interact
 
@@ -324,7 +340,7 @@ local custom_huds_support = VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUP
 		self._interact_visible = nil
 		return remove_interact_original(self)
 	end
-	
+
 	function HUDManager:show_drill_interact(...)
 	    self._hud_interaction:show_drill_interact(...)
     end
@@ -351,7 +367,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 		if not VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false) then
 			self:_rescale()
 		end
-		
+
 	end
 
 	function HUDInteraction:set_interaction_bar_width(current, total)
@@ -477,12 +493,16 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 	end
 
 	function HUDInteraction:show_interact(data)
-	    local SCALE = VHUDPlus:getSetting({"INTERACTION", "TEXT_SCALE"}, 0.8)
+	    local SCALE = VHUDPlus:getSetting({"INTERACTION", "DRILL_ICONS_SCALE"}, 0.8)
+		local X_POSITION = VHUDPlus:getSetting({"INTERACTION", "DRILL_ICONS_X_POS"}, 0)
+		local Y_POSITION = VHUDPlus:getSetting({"INTERACTION", "DRILL_ICONS_Y_POS"}, 90)
+		local offset_speed, offset_auto
+
 	    if 0 < managers.player:upgrade_level("player", "drill_speed_multiplier", 0) then
             offset_speed = 2.25
             offset_auto  = 1.82
         else
-            offset_speed = 1.82		
+            offset_speed = 1.82
             offset_auto  = 2.25
         end
 
@@ -490,11 +510,12 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 		    layer = 1,
 		    visible = false,
 		    align = "center",
-		    y = self._hud_panel:child(self._child_name_text):bottom()
+		    y = self._hud_panel:child(self._child_name_text):bottom(),
+			x = X_POSITION
 	    })
 
 	    self._drill_skills_panel:bitmap({
-		    y = 10,
+		    y = Y_POSITION,
 		    visible = 0 < managers.player:upgrade_level("player", "drill_speed_multiplier", 0),
 		    texture = "guis/textures/pd2/skilltree_2/icons_atlas_2",
             texture_rect = { 3 * 80, 6 * 80, 80, 80 },
@@ -506,7 +527,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 	    }):set_center_x(self._drill_skills_panel:w() / offset_speed)
 
 	    self._drill_skills_panel:bitmap({
-		    y = 10,
+		    y = Y_POSITION,
 		    visible = 0 < managers.player:upgrade_level("player", "drill_autorepair_2", 0),
 		    texture = "guis/textures/pd2/skilltree_2/icons_atlas_2",
             texture_rect = { 5 * 80, 5 * 80, 80, 80 },
@@ -518,7 +539,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 	    }):set_center_x(self._drill_skills_panel:w() / offset_auto)
 
 	    self._drill_skills_panel:bitmap({
-		    y = 10,
+		    y = Y_POSITION,
 		    visible = 0 < managers.player:upgrade_level("player", "silent_drill", 0),
 		    texture = "guis/textures/pd2/skilltree_2/icons_atlas_2",
 		    texture_rect = { 9 * 80, 6 * 80, 80, 80 },
@@ -531,6 +552,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 
 	    if managers.player:upgrade_level("player", "silent_drill", 0) and managers.player:upgrade_level("player", "drill_autorepair_1", 0) == 1 then
 		    self._drill_skills_panel:bitmap({
+				y = Y_POSITION,
 			    texture = "guis/textures/pd2/skilltree_2/ace_symbol",
 			    h = 100 * SCALE,
 			    w = 100 * SCALE,
@@ -543,6 +565,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 
 	    if managers.player:upgrade_level("player", "drill_speed_multiplier", 0) == 2 then
 		    self._drill_skills_panel:bitmap({
+				y = Y_POSITION,
 			    texture = "guis/textures/pd2/skilltree_2/ace_symbol",
 			    h = 100 * SCALE,
 			    w = 100 * SCALE,
@@ -550,9 +573,9 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 			    blend_mode = "add",
 			    color = Color.white,
 			    layer = 1
-		    }):set_center_x(self._drill_skills_panel:w() / offset_speed)	
+		    }):set_center_x(self._drill_skills_panel:w() / offset_speed)
 	    end
-		
+
 		if not VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false) then
 			self:_rescale()
 		end
@@ -560,18 +583,18 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 			return show_interact_original(self, data)
 		end
 	end
-	
+
 	function HUDInteraction:show_drill_interact()
 	    self._drill_skills_panel:set_visible(true)
     end
-	
+
 	function HUDInteraction:remove_interact(...)
 	    if alive(self._drill_skills_panel) then
 		    self._drill_skills_panel:set_visible(false)
         end
-		
+
 	    return remove_interact_original(self, ...)
-    end	
+    end
 
 	function HUDInteraction:destroy()
 		if self._interact_time and self._hud_panel then
@@ -614,22 +637,22 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
 	local _add_string_macros_original = BaseInteractionExt._add_string_macros
 	local _interact_blocked_original = IntimitateInteractionExt._interact_blocked
-	local selected_original          = BaseInteractionExt.selected	
+	local selected_original          = BaseInteractionExt.selected
 	local jokers = {}
-	
+
 	local function kill_joker()
 		while #jokers > 0 do
 			local data = table.remove(jokers, 1)
-			
+
 			if alive(data.unit) then
 				data.unit:character_damage():damage_mission({ damage = data.unit:character_damage()._HEALTH_INIT + 1 })
 				return true
 			end
 		end
-		
+
 		return false
 	end
-	
+
 	function IntimitateInteractionExt:_interact_blocked(...)
 		if self.tweak_data == "hostage_convert" and managers.player:chk_minion_limit_reached() and VHUDPlus:getSetting({"EQUIPMENT", "REPLACE_JOKER"}, true) then
 			if kill_joker() and not Network:is_server() then
@@ -653,7 +676,7 @@ elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" t
 		managers.gameinfo:register_listener("replace_joker_listener", "minion", "set_owner", joker_event)
 		managers.gameinfo:register_listener("replace_joker_listener", "minion", "remove", joker_event)
 		return _interact_blocked_original(self, ...)
-	end	
+	end
 
 	function BaseInteractionExt:would_be_bonus_bag(carry_id)
 		if managers.loot:get_mandatory_bags_data().carry_id ~= "none" and carry_id and carry_id ~= managers.loot:get_mandatory_bags_data().carry_id then
@@ -698,7 +721,7 @@ elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" t
 			macros.VALUE = ""
 		end
 	end
-	
+
 	function BaseInteractionExt:selected(...)
 	    if selected_original(self, ...) and self._unit:base() and self._unit:base().is_drill and VHUDPlus:getSetting({"INTERACTION", "DRILL_ICONS"}, true) and not VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUPPORT"}, false) then
 		    managers.hud:show_drill_interact()
@@ -706,7 +729,7 @@ elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" t
 	        managers.hud:show_drill_interact()
 	    end
 	    return selected_original(self, ...)
-    end	
+    end
 
 elseif string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" then
 	ObjectInteractionManager.AUTO_PICKUP_DELAY = VHUDPlus:getTweakEntry("AUTO_PICKUP_DELAY", "number", 0.2)	 --Delay in seconds between auto-pickup procs (0 -> as fast as possible)

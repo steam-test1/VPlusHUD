@@ -1030,6 +1030,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/contractboxgui" then
 		local peer_label = self._peers[peer_id]
 		local x, y = peer_label:center_x(), peer_label:top()
         local voice_icon, voice_texture_rect = tweak_data.hud_icons:get_icon_data('wp_talk')
+		local talking, latency_offset
 					
 		if is_local_peer and not managers.network.voice_chat._push_to_talk then
 		    talking = managers.network.voice_chat._enabled

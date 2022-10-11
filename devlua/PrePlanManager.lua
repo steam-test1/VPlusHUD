@@ -3,7 +3,7 @@
 -- 	Include Hint for taging plans as stealth/loud to input dialog
 -- Remove Save_ID from saved_plans node display.
 
-requiredScript = string.lower(RequiredScript)
+local requiredScript = string.lower(RequiredScript)
 if requiredScript == "lib/managers/menumanager" then
 	local modifiy_node_preplanning_original = MenuPrePlanningInitiator.modifiy_node_preplanning
 

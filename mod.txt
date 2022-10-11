@@ -2,7 +2,7 @@
 	"name" : "VanillaHUDPlus",
 	"description" : "This is a Mod Collection of HUD altering scripts, as well as quality of life changes to the game and its menus",
 	"author" : "Kamikaze94, BangL, Test1, LT71 (Bunnie( 2))",
-	"version" : "3.2.12",
+	"version" : "3.2.16",
 	"priority" : 1,
 	"blt_version" : 2,
 	"updates": [

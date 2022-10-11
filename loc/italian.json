@@ -150,7 +150,6 @@
     "wolfhud_enemy_bolivian_security" : "Sicurezza di Sosa",
     "wolfhud_enemy_bolivian_thug" : "Tirapiedi di Sosa",
     "wolfhud_enemy_mobster" : "Mafioso Russo",
-    "wolfhud_enemy_triad" : "Triade",
     "wolfhud_enemy_triad_boss" : "Capo della Triade",
     "wolfhud_enemy_ranchmanager" : "Esteban",
     "wolfhud_enemy_security" : "Guardia di Sicurezza",
@@ -218,9 +217,6 @@
     "wolfhud_enemy_spring" : "Capitano Spring",
     "wolfhud_enemy_fbi_vet" : "Poliziotto Veterano",
 
-    "wolfhud_enemy_deathvox_light" : "Unità ZEAL",
-    "wolfhud_enemy_deathvox_heavy" : "ZEAL Pesante",
- 
     "wolfhud_multiselect_all" : "Tutto",
     "wolfhud_multiselect_none" : "Nessuno",
     "wolfhud_multiselect_disabled" : "Disabilitato",
@@ -301,8 +297,6 @@
 
     "wolfhud_use_vanillahud_extras_title" : "VanillaHUD Extra",
     "wolfhud_use_vanillahud_extra_desc" : "Aggiunge migliorie alla HUD di base \n(È necessario un cambio di Mappa per l'applicazione...)",
-    "wolfhud_use_customhud_title" : "Usa CustomHUD",
-    "wolfhud_use_customhud_desc" : "Sostituisce l'HUD vanilla con CustomHUD, creato da Se7en.\n(Un riavvio della mappa è necessario per applicare le modifiche...)",
     "wolfhud_adv_assault_title" : "Barra d'Assalto Avanzata",
     "wolfhud_adv_assault_desc" : "Mostra la fase d'assalto, il tempo e gli spawn rimanenti durante l'assalto.\n(Solo host)",
     "wolfhud_assault_position_title": "Centra banner di assalto",
@@ -896,8 +890,6 @@
 
     "wolfhud_enemyhealthbar_enable_enemy_health_circle" : "Mostra il cerchio della salute nemica",
     "wolfhud_enemyhealthbar_enable_enemy_health_circle_desc" : "Mostra l'indicatore della salute nemica sulla HUD principale quando stai affrontando direttamente un'unità",
-    "wolfhud_show_enemyhealthbar_title" : "Mostra la barra della salute nemica",
-    "wolfhud_show_enemyhealthbar_desc" : "Mostra la Barra della Salute nemica in alto al centro quando miri verso un nemico.\n(A Map change is needed to apply...)",
     "wolfhud_enemyhealthbar_ignore_civilian_health" : "Ignora la salute dei Civili",
     "wolfhud_enemyhealthbar_ignore_civilian_health_desc" : "Ignora la salute di un civile quando miri verso di lui.",
     "wolfhud_enemyhealthbar_enemy_health_size" : "Dimensione Barra della Salute nemica",
@@ -914,7 +906,7 @@
     "wolfhud_ignore_carhealthbar_desc" : "Mostra la Salute per i veicoli guidabili.",
 
     "wolfhud_show_enemyhealthbar_title" : "Mostra Barra della Salute nemica",
-    "wolfhud_show_enemyhealthbar_desc" : "Mostra barra della salute nemica in alto al centro, quando miri ad un nemico.\n(Riavvio della mappa necessario per applicare le modifiche...)",
+    "wolfhud_show_enemyhealthbar_desc" : "Mostra la Barra della Salute nemica in alto al centro quando miri verso un nemico.\n(Riavvio della mappa necessario per applicare le modifiche...)",
     "wolfhud_show_civhealthbar_title" : "Barra della Salute Civili",
     "wolfhud_show_civhealthbar_desc" : "Mostra la barra della salute anche per i Civili e la IA di squadra.",
     "wolfhud_show_carhealthbar_title" : "Mostra barra della Salute Veicolo",
@@ -1306,5 +1298,15 @@
     "wolfhud_sub_height_desc" : "Imposta la posizione dei sottotitoli a partire da 0 in cima e 800 in fondo",
 
     "wolfhud_hudlist_buff_list_x_offset_title" : "Offset Orizzontale Lista Buff",
-    "wolfhud_hudlist_buff_list_x_offset_desc" : "Imposta l'offset orizzontale della lista dei buff"
+    "wolfhud_hudlist_buff_list_x_offset_desc" : "Imposta l'offset orizzontale della lista dei buff",
+	
+	"wolfhud_panels_show_detectioncounter_title" : "Show Detection Risk",
+	"wolfhud_panels_show_detectioncounter_desc" : "Shows the current detection risk for each non AI. \nThe counter shows either your detection risk or your teammates detection risk or both.",
+
+	"wolfhud_drill_icons_x_pos_title" : "Drill Upgrades Icons Horizontal Position",
+	"wolfhud_drill_icons_x_pos_desc" : "Sets the horizontal position of the drill upgrades icons",
+	"wolfhud_drill_icons_y_pos_title" : "Drill Upgrades Icons Vertical Position",
+	"wolfhud_drill_icons_y_pos_desc" : "Sets the vertical position of the drill upgrades icons",
+	"wolfhud_drill_icons_scale_title" : "Drill Upgrades Icons Scale",
+	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons"
 }

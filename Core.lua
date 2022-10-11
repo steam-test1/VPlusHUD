@@ -96,7 +96,7 @@ if not _G.VHUDPlus then
 		["lib/units/beings/player/states/playercivilian"] 			= { "Interaction.lua" },
 		["lib/units/beings/player/states/playerdriving"]			= { "Interaction.lua", "WeaponGadgets.lua" },
 		["lib/units/beings/player/states/playerstandard"] 			= { "GameInfoManager.lua", "EnemyHealthCircle.lua", "Interaction.lua", "BurstFire.lua", "WeaponGadgets.lua", "VanillaHUD.lua", "EnemyHealthbarAlt.lua" },
-		["lib/units/beings/player/states/playermaskoff"] 			= { "GameInfoManager.lua", "WeaponGadgets.lua" },
+		["lib/units/beings/player/states/playermaskoff"] 			= { "GameInfoManager.lua", "WeaponGadgets.lua", "Interaction.lua" },
 		["lib/units/beings/player/states/playerbleedout"] 			= { "DownCounter.lua" },
 		["lib/units/vehicles/vehicledamage"] 						= { "DamageIndicator.lua" },
 		["lib/units/vehicles/vehicledrivingext"] 					= { "CustomWaypoints.lua" },
@@ -176,6 +176,7 @@ if not _G.VHUDPlus then
 					STAMINA							= true,
 					DOWNCOUNTER						= true,
 					NEWDOWNCOUNTER					= false,
+					DETECTIONCOUNTER				= true,
 					CARRY							= true,
 					CONDITION_ICON_COLOR			= "white",
 					ARMOR							= true,
@@ -220,6 +221,7 @@ if not _G.VHUDPlus then
 					CALLSIGN						= false,
 					DOWNCOUNTER						= true,
 					NEWDOWNCOUNTER					= false,
+					DETECTIONCOUNTER				= true,
 					CARRY							= true,
 					CONDITION_ICON_COLOR			= "white",
 					BUILD = {
@@ -597,7 +599,10 @@ if not _G.VHUDPlus then
 				CUSTOM_HUDS_SUPPORT						= false,
 				DRILL_ICONS                             = false,
 				HIDEINTERACTIONINSTRUCTIONS				= true,	
-				HIDEBAGVALUE							= false,			
+				HIDEBAGVALUE							= false,
+				DRILL_ICONS_X_POS						= 0,
+				DRILL_ICONS_Y_POS						= 90,
+				DRILL_ICONS_SCALE						= 0.8,
 			},
 			GADGETS = {
 				LASER_AUTO_ON 							= true,
@@ -679,7 +684,7 @@ if not _G.VHUDPlus then
 				SHAPED_CHARGE_STEALTH_DISABLED			= true,
 				KEYCARD_DOORS_DISABLED					= true,
 				ENABLE_BURSTMODE						= true,
-				REPLACE_JOKER                           = true,				
+				REPLACE_JOKER                           = true,
 			},
 			INVENTORY = {
 				SHOW_WEAPON_NAMES 						= true,
@@ -1658,6 +1663,7 @@ if not _G.VHUDPlus then
 
 		nodes[VHUDPlus.fast_net_core] = MenuHelper:BuildMenu(VHUDPlus.fast_net_core)
 		local node_main = nodes.main
+		local node_class = CoreMenuNode.MenuNode
 		if VHUDPlus:getSetting({"INVENTORY", "FastNETENABLED"}, true) and node_main then
 			MenuHelper:AddMenuItem(node_main, VHUDPlus.fast_net_core, "fastnet_sa", "menu_fastnet_help", "crimenet", "before")
 		end

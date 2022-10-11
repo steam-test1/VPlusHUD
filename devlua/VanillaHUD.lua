@@ -378,14 +378,18 @@ end
 
 		function HUDTeammate:set_condition(icon_data, ...)
 			local visible = icon_data ~= "mugshot_normal"
+			local vis_down = visible or not VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) or self._ai
+			local vis_detect = visible or not VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DETECTIONCOUNTER"}, true) or self._ai
 			self:set_stamina_meter_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true))
 			self:set_armor_timer_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "ARMOR"}, true))
 			self:set_inspire_timer_visibility(not visible and VHUDPlus:getSetting({"CustomHUD", "PLAYER", "INSPIRE"}, true))
 			
-			if HUDManager.DOWNS_COUNTER_PLUGIN and self._downs_counter and self._detection_counter then
-				local disabled = visible or not VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) or self._ai
-				self._downs_counter:set_visible(not disabled and not managers.groupai:state():whisper_mode())
-				self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+			if HUDManager.DOWNS_COUNTER_PLUGIN and self._downs_counter then
+				self._downs_counter:set_visible(not vis_down and not managers.groupai:state():whisper_mode())
+			end
+
+			if HUDManager.DETECT_COUNTER_PLUGIN and self._detection_counter then
+				self._detection_counter:set_visible(not vis_detect and not self._downs_counter:visible())
 			end
 			set_condition_original(self, icon_data, ...)
 		end

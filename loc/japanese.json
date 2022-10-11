@@ -1280,5 +1280,15 @@
 	"wolfhud_hudlist_buff_list_x_offset_desc" : "Sets the horizontal offset for the buffs list",
 
 	"wolfhud_hudlist_loot_tea" : "Tea",
-    "wolfhud_hudlist_loot_dragon" : "Dragon"
+    "wolfhud_hudlist_loot_dragon" : "Dragon",
+	
+	"wolfhud_panels_show_detectioncounter_title" : "Show Detection Risk",
+	"wolfhud_panels_show_detectioncounter_desc" : "Shows the current detection risk for each non AI. \nThe counter shows either your detection risk or your teammates detection risk or both.",
+
+	"wolfhud_drill_icons_x_pos_title" : "Drill Upgrades Icons Horizontal Position",
+	"wolfhud_drill_icons_x_pos_desc" : "Sets the horizontal position of the drill upgrades icons",
+	"wolfhud_drill_icons_y_pos_title" : "Drill Upgrades Icons Vertical Position",
+	"wolfhud_drill_icons_y_pos_desc" : "Sets the vertical position of the drill upgrades icons",
+	"wolfhud_drill_icons_scale_title" : "Drill Upgrades Icons Scale",
+	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons"
 }

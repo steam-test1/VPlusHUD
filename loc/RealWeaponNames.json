@@ -202,5 +202,11 @@
 
 	"bm_w_hk51b"				: "Vollmer HK51B",
 	"bm_w_scout"				: "Steyr Scout",
-	"bm_w_ms3gl"				: "Metal Storm 3GL"
+	"bm_w_ms3gl"				: "Metal Storm 3GL",
+
+	"bm_w_x_korth"				: "Akimbo Korth NXA/NXS",
+	"bm_w_x_sko12"				: "Akimbo SKO-12",
+	"bm_w_korth"				: "Korth NXA/NXS",
+	"bm_w_sko12"				: "SKO-12",
+	"bm_w_hailstorm"			: "Metal Storm Based Fictional Gun"
 }

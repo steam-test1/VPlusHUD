@@ -31,6 +31,7 @@ end
 	elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		HUDManager.DOWNS_COUNTER_PLUGIN = true
+		HUDManager.DETECT_COUNTER_PLUGIN = true
 
 		-- local set_player_health_original = HUDManager.set_player_health
 		-- local set_mugshot_custody_original = HUDManager.set_mugshot_custody
@@ -76,6 +77,10 @@ end
 			self._health_panel = self._health_panel or self._player_panel:child("radial_health_panel")
 			self._condition_icon = self._condition_icon or self._panel:child("condition_icon")
 			self._setting_prefix = self._main_player and "PLAYER" or "TEAMMATE"
+			self._down_counter = HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)
+			self._detection_risk = HUDManager.DETECT_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DETECTIONCOUNTER"}, true)
+			self.vis_down = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
+			self.vis_detect = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DETECT_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DETECTIONCOUNTER"}, true)) or self._ai
 
 			self._health_panel:bitmap({
 				name = "risk_indicator_bg",
@@ -87,7 +92,7 @@ end
 				w = self._health_panel:w(),
 				h = self._health_panel:h(),
 				layer = 1,
-				visible = HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) or false,
+				visible = HUDManager.DETECT_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DETECTIONCOUNTER"}, true) and not self._ai or false
 			})
 
 			self._downs_counter = self._health_panel:text({
@@ -100,12 +105,11 @@ end
 				font_size = self._main_player and 16 or 13,
 				font = tweak_data.menu.pd2_medium_font,
 				layer = 2,
-				visible = HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) and not self._ai or false,
+				visible = HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) and not self._ai or false
 			})
 
 			self._detection_counter = self._health_panel:text({
 				name = "detection",
-				text = utf8.char(57363),
 				color = Color.red,
 				align = "center",
 				vertical = "center",
@@ -114,7 +118,7 @@ end
 				font_size = self._main_player and 16 or 13,
 				font = tweak_data.menu.pd2_medium_font,
 				layer = 2,
-				visible = HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) and not self._ai or false,
+				visible = HUDManager.DETECT_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DETECTIONCOUNTER"}, true) and not self._ai or false
 			})
 
 			self:set_detection()
@@ -154,15 +158,13 @@ end
 		end
 
 		function HUDTeammate:_whisper_mode_change(status)
-			local disabled = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
-			self._downs_counter:set_visible(not disabled and not status)
-			self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+			self._downs_counter:set_visible(not self.vis_down and not status)
+			self._detection_counter:set_visible(not self.vis_detect and managers.groupai:state():whisper_mode())
 		end
 
 		HUDTeammate.set_downs = HUDTeammate.set_downs or function(self, amount)
-			local disabled = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
-			self._downs_counter:set_visible(not disabled and not managers.groupai:state():whisper_mode())
-			self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+			self._downs_counter:set_visible(not self.vis_down and not managers.groupai:state():whisper_mode())
+			self._detection_counter:set_visible(not self.vis_detect and managers.groupai:state():whisper_mode())
 		end
 
 		HUDTeammate.set_detection = HUDTeammate.set_detection or function(self, risk)
@@ -180,12 +182,12 @@ end
 					self._detection_counter:set_text(tostring(self._risk))
 					self._detection_counter:set_color(color)
 				end
-				local disabled = self._condition_icon and self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true)) or self._ai
+
 				if self._downs_counter then
-					self._downs_counter:set_visible(not disabled and not managers.groupai:state():whisper_mode())
+					self._downs_counter:set_visible(not self.vis_down and not managers.groupai:state():whisper_mode())
 				end
 				if self._detection_counter then
-					self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+					self._detection_counter:set_visible(not self.vis_detect and managers.groupai:state():whisper_mode())
 				end
 			end
 		end

@@ -43,7 +43,6 @@ if VHUDPlus then
 				desc_id = "wolfhud_gadgets_pulse_enabled_desc",
 				value = {"GADGETS", gadget_type, theme, "pulse", "enabled"},
 				visible_reqs = {}, enabled_reqs = {},
-				enabled_reqs = {},
 			},
 			{
 				type = "slider",
@@ -407,14 +406,13 @@ if VHUDPlus then
 				options = {
 					["english"] = "wolfhud_languages_english",
 					["german"] = "wolfhud_languages_german",
-					-- ["dutch"] = "wolfhud_languages_dutch",
 					["french"] = "wolfhud_languages_french",
-					-- ["italian"] = "wolfhud_languages_italian",
+					["italian"] = "wolfhud_languages_italian",
 					["spanish"] = "wolfhud_languages_spanish",
 					["portuguese"] = "wolfhud_languages_portuguese",
 					["russian"] = "wolfhud_languages_russian",
 					["schinese"] = "wolfhud_languages_chinese",
-					-- ["korean"] = "wolfhud_languages_korean",
+					["korean"] = "wolfhud_languages_korean",
 					["japanese"] = "wolfhud_languages_japanese"
 				},
 				visible_reqs = {},
@@ -635,6 +633,18 @@ if VHUDPlus then
 									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
 								},
 								value = {"CustomHUD", "PLAYER", "NEWDOWNCOUNTER"},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_panels_show_detectioncounter_title",
+								desc_id = "wolfhud_panels_show_detectioncounter_desc",
+								visible_reqs = {
+									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
+								},
+								enabled_reqs = {
+									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
+								},
+								value = {"CustomHUD", "PLAYER", "DETECTIONCOUNTER"},
 							},
 							{
 								type = "toggle",
@@ -1104,6 +1114,18 @@ if VHUDPlus then
 									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
 								},
 								value = {"CustomHUD", "TEAMMATE", "NEWDOWNCOUNTER"},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_panels_show_detectioncounter_title",
+								desc_id = "wolfhud_panels_show_detectioncounter_desc",
+								visible_reqs = {
+									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
+								},
+								enabled_reqs = {
+									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
+								},
+								value = {"CustomHUD", "TEAMMATE", "DETECTIONCOUNTER"},
 							},
 							{
 								type = "toggle",
@@ -4445,7 +4467,6 @@ if VHUDPlus then
 						desc_id = "wolfhud_waypoints_show_minions_desc",
 						value = {"CustomWaypoints", "SHOW_MINIONS"},
 						visible_reqs = {}, enabled_reqs = {},
-						visible_reqs = {}, enabled_reqs = {},
 					},
 					{
 						type = "toggle",
@@ -4656,6 +4677,51 @@ if VHUDPlus then
 						    { setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true }
 						},
 						enabled_reqs = {},
+					},
+					{
+						type = "slider",
+						name_id = "wolfhud_drill_icons_x_pos_title",
+						desc_id = "wolfhud_drill_icons_x_pos_desc",
+						value = {"INTERACTION", "DRILL_ICONS_X_POS"},
+						visible_reqs = {
+						    { setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true }
+						},
+						enabled_reqs = {
+							{ setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true }
+						},
+						min_value = -500,
+						max_value = 500,
+						step_size = 1,
+					},
+					{
+						type = "slider",
+						name_id = "wolfhud_drill_icons_y_pos_title",
+						desc_id = "wolfhud_drill_icons_y_pos_desc",
+						value = {"INTERACTION", "DRILL_ICONS_Y_POS"},
+						visible_reqs = {
+						    { setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true }
+						},
+						enabled_reqs = {
+							{ setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true }
+						},
+						min_value = -10,
+						max_value = 90,
+						step_size = 1,
+					},
+					{
+						type = "slider",
+						name_id = "wolfhud_drill_icons_scale_title",
+						desc_id = "wolfhud_drill_icons_scale_desc",
+						value = {"INTERACTION", "DRILL_ICONS_SCALE"},
+						visible_reqs = {
+						    { setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true }
+						},
+						enabled_reqs = {
+							{ setting = { "INTERACTION", "CUSTOM_HUDS_SUPPORT" }, invert = true }
+						},
+						min_value = 0.2,
+						max_value = 1,
+						step_size = 0.1,
 					},
 					{
 						type = "divider",
