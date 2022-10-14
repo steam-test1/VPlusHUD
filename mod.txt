@@ -2,14 +2,14 @@
 	"name" : "VanillaHUDPlus",
 	"description" : "This is a Mod Collection of HUD altering scripts, as well as quality of life changes to the game and its menus",
 	"author" : "Kamikaze94, BangL, Test1, LT71 (Bunnie( 2))",
-	"version" : "3.2.16",
+	"version" : "3.2.16.1",
 	"priority" : 1,
 	"blt_version" : 2,
 	"updates": [
         {
             "identifier": "vanhudplus",
             "host": {
-				"meta": "https://raw.githubusercontent.com/steam-test1/PD2Updates/master/updates_metas/meta_vanhudplus.json"
+				"meta": "https://gitlab.com/steam-test1/alternative-updates/-/raw/main/updates_metas/meta_vanhudplus.json"
 			}
         }
     ],

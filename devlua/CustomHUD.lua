@@ -1,8 +1,9 @@
-if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
--- if VHUDPlus:getSetting({"CustomHUD", "WolfENABLED"}, false) and not VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) then
 if _G.IS_VR then
 	return
 end
+if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
+-- if VHUDPlus:getSetting({"CustomHUD", "WolfENABLED"}, false) and not VHUDPlus:getSetting({"CustomHUD", "ENABLED"}, true) then
+
 	local print_info = function(...)
 		local params = {...}
 		table.insert(params, #params + 1, "info")

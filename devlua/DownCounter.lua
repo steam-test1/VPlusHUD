@@ -1,7 +1,8 @@
-if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 or VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 if _G.IS_VR then
 	return
 end
+if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 or VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
+
 	if string.lower(RequiredScript) == "lib/units/beings/player/huskplayermovement" then
 
 		-- local _perform_movement_action_enter_bleedout_original = HuskPlayerMovement._perform_movement_action_enter_bleedout

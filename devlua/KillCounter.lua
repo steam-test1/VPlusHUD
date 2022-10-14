@@ -1,7 +1,8 @@
-if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 or VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 or VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 4 then
 if _G.IS_VR then
 	return
 end
+if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 or VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 or VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 4 then
+
 	if RequiredScript == "lib/units/enemies/cop/copdamage" and not VHUDPlus.kill_fix then
 		VHUDPlus.kill_fix = true
 	

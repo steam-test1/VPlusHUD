@@ -1,7 +1,8 @@
-if not VHUDPlus:getSetting({"DamageIndicator", "ENABLED"}, true) then return end
 if _G.IS_VR then
 	return
 end
+if not VHUDPlus:getSetting({"DamageIndicator", "ENABLED"}, true) then return end
+
 if string.lower(RequiredScript) == "lib/managers/hud/hudhitdirection" then
 	HUDHitDirection.indicator_count = 0
 	HUDHitDirection.DAMAGE_TYPES = {}

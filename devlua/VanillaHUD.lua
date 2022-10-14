@@ -1,7 +1,8 @@
-if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 then
 if _G.IS_VR then
 	return
 end
+if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 then
+
 	if RequiredScript == "lib/managers/hudmanagerpd2" then
 
 		local set_stamina_value_original = HUDManager.set_stamina_value
