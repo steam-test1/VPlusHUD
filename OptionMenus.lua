@@ -5262,6 +5262,13 @@ if VHUDPlus then
 					},
 					{
 						type = "toggle",
+						name_id = "wolfhud_use_standard_scene_title",
+						desc_id = "wolfhud_use_standard_scene_desc",
+						value = {"INVENTORY", "FASTNETSTANDARDSCENE"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
 						name_id = "wolfhud_confirn_dialogs_title",
 						desc_id = "wolfhud_confirn_dialogs_desc",
 						value = {"INVENTORY", "CONFIRM_DIALOGS"},

@@ -1221,7 +1221,7 @@
 
 	"wolfhud_use_enhanced_objective_title" : "启用增强任务目标显示",
 	"wolfhud_use_enhanced_objective_desc" : "将原版目标显示替换为增强任务目标显示",
-	"wolfhud_use_customhud_title" : "CustomHUD",
+	"wolfhud_use_customhud_title" : "WolfHUD's CustomHUD",
 	"wolfhud_use_customhud_desc" : "以Se7en制作的CUSTOM HUD替换原版的HUD.\n(更换地图以应用更改)",
 	"wolfhud_use_vanilla" : "Vanilla",
 
@@ -1285,5 +1285,8 @@
 	"wolfhud_drill_icons_y_pos_title" : "Drill Upgrades Icons Vertical Position",
 	"wolfhud_drill_icons_y_pos_desc" : "Sets the vertical position of the drill upgrades icons",
 	"wolfhud_drill_icons_scale_title" : "Drill Upgrades Icons Scale",
-	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons"
+	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons",
+
+	"wolfhud_use_standard_scene_title" : "FAST.NET Use Standard Scene",
+	"wolfhud_use_standard_scene_desc" : "Uses the main menu scene for FAST.NET"
 }

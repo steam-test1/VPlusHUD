@@ -706,6 +706,7 @@ if not _G.VHUDPlus then
 				crnt_sort								= true,
 				FastNetSortHeistsA						= false,
 				FastNETENABLED							= true,
+				FASTNETSTANDARDSCENE					= false,
 				SHOW_EMPTY_LOBBY						= false,
 				CONFIRM_DIALOGS                     	= false,
 				SAVE_FILTERS							= true,

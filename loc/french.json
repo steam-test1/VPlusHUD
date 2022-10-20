@@ -1225,7 +1225,7 @@
 	
 	"wolfhud_use_enhanced_objective_title": "Activer le panneau des objectifs améliorés",
 	"wolfhud_use_enhanced_objective_desc": "Remplace le panneau d'objectifs par défaut par une version personnalisée",
-	"wolfhud_use_customhud_title": "HUD personnalisé",
+	"wolfhud_use_customhud_title": "WolfHUD's HUD personnalisé",
 	"wolfhud_use_customhud_desc": "Remplacer le HUD par défaut par le CustomHUD avancé, fait par Se7en.\n(Un changement de carte est nécessaire pour s'appliquer...)",
 	"wolfhud_use_vanilla": "Vanilla",
 	
@@ -1289,5 +1289,8 @@
 	"wolfhud_drill_icons_y_pos_title" : "Drill Upgrades Icons Vertical Position",
 	"wolfhud_drill_icons_y_pos_desc" : "Sets the vertical position of the drill upgrades icons",
 	"wolfhud_drill_icons_scale_title" : "Drill Upgrades Icons Scale",
-	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons"
+	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons",
+
+	"wolfhud_use_standard_scene_title" : "FAST.NET Use Standard Scene",
+	"wolfhud_use_standard_scene_desc" : "Uses the main menu scene for FAST.NET"
 }

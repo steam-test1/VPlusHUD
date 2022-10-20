@@ -1242,7 +1242,7 @@
 
 	"wolfhud_use_enhanced_objective_title" : "Habilitar panel de objetivo mejorado",
 	"wolfhud_use_enhanced_objective_desc" : "Reemplaza el panel de objetivo por defecto a una version personalizada",
-	"wolfhud_use_customhud_title" : "HUD Personalizado",
+	"wolfhud_use_customhud_title" : "WolfHUD's HUD Personalizado",
 	"wolfhud_use_customhud_desc" : "Reemplaza el HUD por defecto a una version avanzada, hecha por Se7en.\n[Se necesita un cambio de mapa para aplicar]",
 	"wolfhud_use_vanilla" : "Vanilla",
 
@@ -1306,6 +1306,9 @@
 	"wolfhud_drill_icons_y_pos_title" : "Posicion Vertical de los iconos de taladro mejorado",
 	"wolfhud_drill_icons_y_pos_desc" : "Estable la pocision vertical de los iconos de taladro mejorado",
 	"wolfhud_drill_icons_scale_title" : "Escala de los iconos de taladro mejorado",
-	"wolfhud_drill_icons_scale_desc" : "Establece el escalado de los iconos de taladro mejorado"
+	"wolfhud_drill_icons_scale_desc" : "Establece el escalado de los iconos de taladro mejorado",
+
+	"wolfhud_use_standard_scene_title" : "FAST.NET Use Standard Scene",
+	"wolfhud_use_standard_scene_desc" : "Uses the main menu scene for FAST.NET"
 
 }

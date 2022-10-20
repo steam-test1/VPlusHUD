@@ -288,7 +288,7 @@
 
 	"wolfhud_use_vanillahud_extras_title" : "Use VanillaHUD Extras",
 	"wolfhud_use_vanillahud_extra_desc" : "Adds enhancements to the default HUD \n(A Map change is needed to apply...)",
-	"wolfhud_use_customhud_title" : "CustomHUD",
+	"wolfhud_use_customhud_title" : "WolfHUD's CustomHUD",
 	"wolfhud_use_customhud_desc" : "Se7en 님이 만든 고급 CustomHUD 를 사용합니다.\n(맵을 바꿔야 적용됩니다...)",
 	"wolfhud_adv_assault_title" : "자세한 어설트 배너",
 	"wolfhud_adv_assault_desc" : "어설트 상태, 남은 스폰 등을 표시합니다.\n(방장 전용)",
@@ -1301,6 +1301,9 @@
 	"wolfhud_drill_icons_y_pos_title" : "Drill Upgrades Icons Vertical Position",
 	"wolfhud_drill_icons_y_pos_desc" : "Sets the vertical position of the drill upgrades icons",
 	"wolfhud_drill_icons_scale_title" : "Drill Upgrades Icons Scale",
-	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons"
+	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons",
+
+	"wolfhud_use_standard_scene_title" : "FAST.NET Use Standard Scene",
+	"wolfhud_use_standard_scene_desc" : "Uses the main menu scene for FAST.NET"
 
 }

@@ -1226,7 +1226,7 @@
 
     "wolfhud_use_enhanced_objective_title": "改良型オブジェクティブパネルの有効化",
     "wolfhud_use_enhanced_objective_desc": "ミッション目標のパネルをカスタム版に置き換えます",
-    "wolfhud_use_customhud_title": "CustomHUD",
+    "wolfhud_use_customhud_title": "WolfHUD's CustomHUD",
     "wolfhud_use_customhud_desc": "HUDの表示をSe7en氏作のCustomHUDへと変更します。\n(反映にはマップの再読込が必要です)",
     "wolfhud_use_vanilla": "バニラ",
 
@@ -1290,5 +1290,8 @@
 	"wolfhud_drill_icons_y_pos_title" : "Drill Upgrades Icons Vertical Position",
 	"wolfhud_drill_icons_y_pos_desc" : "Sets the vertical position of the drill upgrades icons",
 	"wolfhud_drill_icons_scale_title" : "Drill Upgrades Icons Scale",
-	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons"
+	"wolfhud_drill_icons_scale_desc" : "Sets the scale of the drill upgrade icons",
+
+	"wolfhud_use_standard_scene_title" : "FAST.NET Use Standard Scene",
+	"wolfhud_use_standard_scene_desc" : "Uses the main menu scene for FAST.NET"
 }
