@@ -1674,6 +1674,18 @@ if not _G.VHUDPlus then
 		
 		nodes[VHUDPlus.fast_net_friends] = MenuHelper:BuildMenu(VHUDPlus.fast_net_friends)
 		VHUDPlus.fast_net_friends_node = nodes[VHUDPlus.fast_net_friends]
+
+		local isWin32 = blt.blt_info().platform == "mswindows"
+        local use_standard = VHUDPlus:getSetting({"INVENTORY", "FASTNETSTANDARDSCENE"}, false)
+        local scene_background
+
+        if use_standard and isWin32 then
+            scene_background = "standard"
+        elseif isWin32 then
+            scene_background = "safe"
+        else
+            scene_background = "standard"
+        end
 		
 		local arguments = {
 			_meta = "node",
@@ -1717,7 +1729,7 @@ if not _G.VHUDPlus then
 			topic_id = "menu_play_online",
 			type = "MenuNodeServerList",
 			update = "MenuSTEAMHostBrowser",
-			scene_state = "safe"
+			scene_state = scene_background
 		}
 		local type = "MenuNodeServerList"
 		if type then
@@ -1763,7 +1775,7 @@ if not _G.VHUDPlus then
 			topic_id = "menu_play_online",
 			type = "MenuNodeServerList",
 			update = "MenuSTEAMHostBrowser",
-			scene_state = "safe"
+			scene_state = scene_background
 		}
 		local type = "MenuNodeServerList"
 		if type then

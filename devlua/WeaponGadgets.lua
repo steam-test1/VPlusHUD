@@ -348,13 +348,13 @@ if string.lower(RequiredScript) == "lib/units/weapons/newraycastweaponbase" then
     local on_enabled_original = NewRaycastWeaponBase.on_enabled
 
     function NewRaycastWeaponBase:on_enabled(...)
-        on_enabled_original(self, ...)
+		on_enabled_original(self, ...)
 
-        if not self._init_laser_state and self._assembly_complete and managers.player:current_state() == managers.player._DEFAULT_STATE then
-            self:on_equip(managers.player:player_unit())
-            self._init_laser_state = true
-        end
-    end
+		if not self._init_laser_state and not self:is_npc() and self._assembly_complete and managers.player:current_state() == "standard" and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
+			self:_setup_laser()
+			self._init_laser_state = true
+		end
+	end
 
     function NewRaycastWeaponBase:on_equip(user_unit, ...)
         if not self._init_laser_state and self._assembly_complete then
@@ -366,11 +366,6 @@ if string.lower(RequiredScript) == "lib/units/weapons/newraycastweaponbase" then
     end
 
     function NewRaycastWeaponBase:_setup_laser(user_unit)
-        --if user_unit:network():id() ~= managers.network:session():local_peer():id() then
-        if self:is_npc() or not VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
-            return
-        end
-
         if self:has_gadget() then
             for i, part_id in ipairs(self._gadgets) do
                 local unit = self._parts[part_id] and self._parts[part_id].unit
@@ -387,7 +382,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playermas
 		_enter_original(self, ...)
 		for _, selection in ipairs(self._unit:inventory():available_selections()) do
 			local weapon_unit = selection.unit
-	
+
 			if weapon_unit and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
 				weapon_unit:base():set_gadget_on(1, true)
 			end
@@ -399,7 +394,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 		_enter_drive_original(self, ...)
 		for _, selection in ipairs(self._unit:inventory():available_selections()) do
 			local weapon_unit = selection.unit
-	
+
 			if weapon_unit and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
 				weapon_unit:base():set_gadget_on(1, true)
 			end
@@ -410,7 +405,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 		_exit_drive_original(self, ...)
 		for _, selection in ipairs(self._unit:inventory():available_selections()) do
 			local weapon_unit = selection.unit
-	
+
 			if weapon_unit and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
 				weapon_unit:base():set_gadget_on(1, true)
 			end

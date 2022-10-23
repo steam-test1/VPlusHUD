@@ -342,6 +342,9 @@ local custom_huds_support = VHUDPlus:getSetting({"INTERACTION", "CUSTOM_HUDS_SUP
 	end
 
 	function HUDManager:show_drill_interact(...)
+		if VoidUI and VoidUI.options.enable_interact then
+			return
+		end
 	    self._hud_interaction:show_drill_interact(...)
     end
 
