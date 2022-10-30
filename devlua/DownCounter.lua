@@ -92,8 +92,7 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 or VHUDPlus:getSetting(
 				alpha = 0.6,
 				w = self._health_panel:w(),
 				h = self._health_panel:h(),
-				layer = 1,
-				visible = HUDManager.DETECT_COUNTER_PLUGIN and VHUDPlus:getSetting({"CustomHUD", self._setting_prefix, "DETECTIONCOUNTER"}, true) and not self._ai or false
+				layer = 1
 			})
 
 			self._downs_counter = self._health_panel:text({

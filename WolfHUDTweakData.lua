@@ -116,6 +116,8 @@ function WolfHUDTweakData:init()
 		{ color = '0000FF', name = "blue" 			},
 		{ color = '808080', name = "gray" 			},
 		{ color = '000000', name = "black" 			},
+		{ color = 'FF7575', name = "debuff" 		},
+		{ color = '75FF75', name = "team" 			},
 		{ color = nil, name = "rainbow" 			},
 	}
 	
@@ -188,7 +190,10 @@ function WolfHUDTweakData:init()
 		[ "hector_boss_no_armor" ] 				= { default = "wolfhud_enemy_hector_boss_no_armor" },
 		[ "triad_boss" ] 						= { default = "wolfhud_enemy_yufuwang_armored_boss" },
 		[ "triad_boss_no_armor" ] 				= { default = "wolfhud_enemy_yufuwang_no_armor_boss" },
+		[ "ranchmanager" ] 						= { default = "wolfhud_enemy_ranchmanager" },
 		[ "marshal_marksman" ] 					= { default = "wolfhud_enemy_marshal_marksman" },
+		[ "marshal_shield" ] 					= { default = "wolfhud_enemy_marshal_shield" },
+		[ "marshal_shield_break" ] 				= { default = "wolfhud_enemy_marshal_shield_break" },
 		[ "robbers_safehouse" ]					= { default = "wolfhud_enemy_crew", bph = "wolfhud_enemy_kento" },
 		[ "butler" ]							= { default = "wolfhud_enemy_butler" },
 		[ "vlad" ]								= { default = "wolfhud_enemy_vlad" },

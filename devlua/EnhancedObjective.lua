@@ -269,9 +269,8 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudobjectives" then
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudheisttimer" then
 	local init_original_time = HUDHeistTimer.init
 	function HUDHeistTimer:init(hud, tweak_hud)
-		
+		init_original_time(self, hud, tweak_hud)
 		if VHUDPlus:getSetting({"CustomHUD", "ENABLED_ENHANCED_OBJECTIVE"}, false) then
-			
 			self._hud_panel = hud.panel
 			self._enabled = not (tweak_hud and tweak_hud.no_timer)
 			if self._hud_panel:child("heist_timer_panel") then
@@ -300,8 +299,6 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudheisttimer" then
 			})
 
 			self._last_time = 0
-		else
-			return init_original_time(self, hud, tweak_hud)
 		end
 	end
 

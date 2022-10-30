@@ -208,7 +208,6 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	local mui_fix = VHUDPlus:getSetting({"AssaultBanner", "MUI_ASSAULT_FIX"}, false)
 	local enhanced_obj = VHUDPlus:getSetting({"CustomHUD", "ENABLED_ENHANCED_OBJECTIVE"}, false)
 	local center_assault = VHUDPlus:getSetting({"AssaultBanner", "USE_CENTER_ASSAULT"}, true)
-	local HIDE_CASING_MODE_PANEL = VHUDPlus:getSetting({"AssaultBanner", "HIDE_CASING_MODE_PANEL"}, false)
 	
 	function HUDManager:_locked_assault(status)
 		status = Network:is_server() and (managers.groupai:state():get_hunt_mode() or false) or status
@@ -223,8 +222,12 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 	
 	function HUDManager:show_casing(...)
-		if not mui_fix then
-			self._hud_heist_timer._heist_timer_panel:set_visible(not VHUDPlus:getSetting({"AssaultBanner", "USE_CENTER_ASSAULT"}, true))
+		if enhanced_obj and not mui_fix then
+			self._hud_heist_timer._heist_timer_panel:set_visible(true)
+		elseif not center_assault and not mui_fix then
+			self._hud_heist_timer._heist_timer_panel:set_visible(true)
+		elseif not enhanced_obj and not mui_fix then
+			self._hud_heist_timer._heist_timer_panel:set_visible(false)
 		end
 		if self:alive("guis/mask_off_hud") and center_assault then
 			self:script("guis/mask_off_hud").mask_on_text:set_y(50)
@@ -234,13 +237,13 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDManager:hide_casing(...)
 		hide_casing_original(self, ...)
-		if not mui_fix then
+		if not mui_fix and not enhanced_obj then
 			self._hud_heist_timer._heist_timer_panel:set_visible(true)
 		end
 	end
 	
 	function HUDManager:sync_start_assault(...)
-		if enhanced_obj then
+		if enhanced_obj and not mui_fix then
 			self._hud_heist_timer._heist_timer_panel:set_visible(true)
 		elseif not center_assault and not mui_fix then
 			self._hud_heist_timer._heist_timer_panel:set_visible(true)
@@ -259,8 +262,12 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDManager:show_point_of_no_return_timer(...)
-		if not mui_fix then
-			self._hud_heist_timer._heist_timer_panel:set_visible(false )
+		if enhanced_obj and not mui_fix then
+			self._hud_heist_timer._heist_timer_panel:set_visible(true)
+		elseif not center_assault and not mui_fix then
+			self._hud_heist_timer._heist_timer_panel:set_visible(true)
+		elseif not enhanced_obj and not mui_fix then
+			self._hud_heist_timer._heist_timer_panel:set_visible(false)
 		end
 		show_point_of_no_return_timer_original(self, ...)
 	end

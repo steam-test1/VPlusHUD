@@ -921,7 +921,7 @@ elseif string.lower(RequiredScript) == "lib/states/ingamewaitingforplayers" then
 	function IngameWaitingForPlayersState:update(...)
 		update_original(self, ...)
 
-		if self._skip_promt_shown and SKIP_BLACKSCREEN then
+		if self._skip_promt_shown and SKIP_BLACKSCREEN and not IntroCinematics then
 			self:_skip()
 		end
 	end

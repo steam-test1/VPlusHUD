@@ -26,6 +26,7 @@ if RequiredScript == "lib/units/weapons/newraycastweaponbase" then
 	local IDSTRING_SINGLE = Idstring("single")
 	local IDSTRING_AUTO = Idstring("auto")
 	local IDSTRING_BURST = Idstring("burst")
+	local IDSTRING_VOLLEY = Idstring("volley")
 	
 	function NewRaycastWeaponBase:_update_stats_values(...)
 		_update_stats_values_original(self, ...)
@@ -105,16 +106,18 @@ if RequiredScript == "lib/units/weapons/newraycastweaponbase" then
 	function NewRaycastWeaponBase:_init_custom_firemodes()
 		local supports_single = self:weapon_tweak_data().FIRE_MODE == "single" or self:can_toggle_firemode()
 		local supports_auto = self:weapon_tweak_data().FIRE_MODE == "auto" or self:can_toggle_firemode()
-		local supports_burst = supports_single or self:weapon_tweak_data().BURST_FIRE_FORCE_SUPPORT
+		local supports_volley = self:weapon_tweak_data().FIRE_MODE == "volley" or self:can_toggle_firemode()
+		local supports_burst = self:weapon_tweak_data().FIRE_MODE == "burst" or self:can_toggle_firemode()
 	
 		local has_single = supports_single and (not self._locked_fire_mode or (self._locked_fire_mode == IDSTRING_SINGLE))
 		local has_auto = supports_auto and (not self._locked_fire_mode or (self._locked_fire_mode == IDSTRING_AUTO))
-		local has_burst = supports_burst and (not self._locked_fire_mode or (self._locked_fire_mode == IDSTRING_BURST))
+		local has_burst = supports_single and (not self._locked_fire_mode or (self._locked_fire_mode == IDSTRING_BURST))
+		local has_volley = supports_volley and (not self._locked_fire_mode or (self._locked_fire_mode == IDSTRING_VOLLEY))
 		
-		self:_setup_available_fire_modes(supports_single, has_single, supports_auto, has_auto, supports_burst, has_burst)
+		self:_setup_available_fire_modes(supports_single, has_single, supports_auto, has_auto, supports_burst, has_burst, supports_volley, has_volley)
 	end
 	
-	function NewRaycastWeaponBase:_setup_available_fire_modes(supports_single, has_single, supports_auto, has_auto, supports_burst, has_burst)
+	function NewRaycastWeaponBase:_setup_available_fire_modes(supports_single, has_single, supports_auto, has_auto, supports_burst, has_burst, supports_volley, has_volley)
 		local enabled = true
 		
 		self._burst = nil
@@ -137,11 +140,17 @@ if RequiredScript == "lib/units/weapons/newraycastweaponbase" then
 			if has_single then
 				table.insert(self._available_modes, { id = "single", id_string = IDSTRING_SINGLE, burst = false })
 			end
-			
-			table.insert(self._available_modes, { id = "burst", id_string = IDSTRING_SINGLE, burst = true })
+
+			if has_burst and (not has_volley) then
+				table.insert(self._available_modes, { id = "burst", id_string = IDSTRING_BURST, burst = true })
+			end
 			
 			if has_auto then
 				table.insert(self._available_modes, { id = "auto", id_string = IDSTRING_AUTO, burst = false })
+			end
+
+			if has_volley then
+				table.insert(self._available_modes, { id = "volley", id_string = IDSTRING_VOLLEY, burst = false })
 			end
 			
 			for i, mode in ipairs(self._available_modes) do
@@ -197,6 +206,7 @@ if RequiredScript == "lib/units/weapons/akimboweaponbase" then
 	local IDSTRING_SINGLE = Idstring("single")
 	local IDSTRING_AUTO = Idstring("auto")
 	local IDSTRING_BURST = Idstring("burst")
+	local IDSTRING_VOLLEY = Idstring("volley")
 	
 	function AkimboWeaponBase:fire(...)
 		local results = fire_original(self, ...)

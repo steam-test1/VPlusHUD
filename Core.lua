@@ -28,7 +28,7 @@ if not _G.VHUDPlus then
 		["lib/managers/crimespreemanager"]							= { "TabStats.lua" },
 		["lib/managers/hudmanager"] 								= { "EnemyHealthCircle.lua", "CustomWaypoints.lua", "EnemyHealthbarAlt.lua" },
 		["lib/managers/hudmanagerpd2"] 								= {  "VanillaHUD.lua", "HUDChat.lua", "HUDList.lua", "KillCounter.lua", "DownCounter.lua", "DrivingHUD.lua", "DamageIndicator.lua", "WaypointsManager.lua", "Interaction.lua", "Scripts.lua", "BurstFire.lua", "AdvAssault.lua", "TabStats.lua", "CustomHUD.lua" },
-		["lib/managers/statisticsmanager"] 							= { "KillCounter.lua", "TabStats.lua", "EnemyHealthCircle.lua" },
+		["lib/managers/statisticsmanager"] 							= { "KillCounter.lua", "Scripts.lua", "EnemyHealthCircle.lua" },
 		["lib/managers/playermanager"] 								= { "GameInfoManager.lua", "BurstFire.lua", "VanillaHUD.lua", "Scripts.lua" },
 		["lib/managers/preplanningmanager"] 						= { "PrePlanManager.lua" },
 		["lib/managers/hud/huddriving"] 							= { "DrivingHUD.lua" },
@@ -52,7 +52,7 @@ if not _G.VHUDPlus then
 		["lib/managers/menu/crimespreedetailsmenucomponent"]		= { "EnhancedCrewLoadout.lua" },
 		["lib/managers/menu/missionbriefinggui"]					= { "BuyAllAsset.lua", "EnhancedCrewLoadout.lua", "ProfileMenu.lua" },
 		["lib/managers/menu/multiprofileitemgui"]					= { "ProfileMenu.lua" },
-		["lib/managers/menu/stageendscreengui"] 					= { "MenuTweaks.lua", "TabStats.lua" },
+		["lib/managers/menu/stageendscreengui"] 					= { "MenuTweaks.lua", "Scripts.lua" },
 		["lib/managers/menu/lootdropscreengui"] 					= { "MenuTweaks.lua" },
 		["lib/managers/menu/skilltreeguinew"] 						= { "MenuTweaks.lua" },
 		["lib/managers/menu/playerinventorygui"]					= { "ProfileMenu.lua" },
@@ -66,8 +66,8 @@ if not _G.VHUDPlus then
 		["lib/units/props/digitalgui"] 								= { "GameInfoManager.lua" },
 		["lib/units/props/drill"] 									= { "GameInfoManager.lua" },
 		["lib/units/props/securitylockgui"] 						= { "GameInfoManager.lua" },
-		["lib/units/civilians/civiliandamage"] 						= { "TabStats.lua", "DamagePopupWolf.lua" },
-		["lib/units/enemies/cop/copdamage"] 						= { "GameInfoManager.lua", "KillCounter.lua", "DamagePopup.lua", "DamagePopupWolf.lua", "Test8.lua", "TabStats.lua" },
+		["lib/units/civilians/civiliandamage"] 						= { "Scripts.lua", "DamagePopupWolf.lua" },
+		["lib/units/enemies/cop/copdamage"] 						= { "GameInfoManager.lua", "KillCounter.lua", "DamagePopup.lua", "DamagePopupWolf.lua", "Test8.lua", "Scripts.lua" },
 		["lib/units/cameras/fpcameraplayerbase"] 					= { "WeaponGadgets.lua" },
 		["lib/units/equipment/ammo_bag/ammobagbase"] 				= { "GameInfoManager.lua" },
 		["lib/units/equipment/bodybags_bag/bodybagsbagbase"] 		= { "GameInfoManager.lua" },
@@ -126,7 +126,7 @@ if not _G.VHUDPlus then
 		["lib/network/base/hostnetworksession"]			            = { "MenuTweaks.lua" },
 		["lib/managers/hud/hudplayercustody"]			            = { "VanillaHUD.lua" },
 		["lib/units/weapons/shotgun/shotgunbase"] 					= { "BurstFire.lua" },
-		["lib/tweak_data/weapontweakdata"] 							= { "Scripts.lua" },	
+		["lib/tweak_data/weapontweakdata"] 							= { "Scripts.lua", "BurstFire.lua" },
 		["lib/tweak_data/levelstweakdata"]                          = { "Scripts.lua" },
 		["lib/network/matchmaking/networkmatchmakingsteam"] 		= { "FastNet.lua" },
 		["lib/managers/menu/nodes/menunodeserverlist"]				= { "FastNet.lua" },
@@ -150,7 +150,7 @@ if not _G.VHUDPlus then
 				break
 			end
 		end
-		
+
 		VHUDPlus.settings = {
 			LANGUAGE 								= default_lang,
 			CustomHUD = {
@@ -261,15 +261,15 @@ if not _G.VHUDPlus then
 			MISCHUD = {
 				ENABLE_IFBG							= false,
 				ENABLE_TIME_LEFT                    = true,
-				MASK_INSTRUCT                       = true,				
+				MASK_INSTRUCT                       = true,
 				HEADSHOT                            = true,
 				JOKER_CONTOUR_NEW                   = false,
 				INSPIRE_HINT                        = false,
                 SWAN_SONG_EFFECT                    = true,
                 KINGPIN_EFFECT                      = true,
-				SUB_HEIGHT							= 600,			
+				SUB_HEIGHT							= 600,
                 SCALE                               = 1,
-				SUB				                    = false,	
+				SUB				                    = false,
 				SHUFFLE_MUSIC                       = false,
 				SHOOT_THROUGH_BOTS                  = true,
 			},
@@ -342,7 +342,7 @@ if not _G.VHUDPlus then
 			AssaultBanner = {
 				USE_CENTER_ASSAULT						= true,
 				USE_ADV_ASSAULT							= true,
-				WAVE_COUNTER                            = true,				
+				WAVE_COUNTER                            = true,
 				MUI_ASSAULT_FIX							= false,
 				HIDE_CASING_MODE_PANEL					= false,
 			},
@@ -389,7 +389,7 @@ if not _G.VHUDPlus then
 				ENABLED	 								= true,
 				PD2StyleBox								= false,
 				ORIGNIAL_HOSTAGE_BOX                    = false,
-				ENABLE_BG								= false,		
+				ENABLE_BG								= false,
 				right_list_height_offset				= 50,
 				left_list_height_offset					= 60,
 				buff_list_height_offset					= 90,
@@ -401,12 +401,28 @@ if not _G.VHUDPlus then
 				right_list_progress_alpha 				= 0.4,
 				left_list_progress_alpha 				= 0.4,
 				buff_list_progress_alpha 				= 1.0,
+				right_list_bg_alpha						= 1.0,
+				left_list_bg_alpha						= 1.0,
 				list_color	 							= "white",		--Left and Right List font color
 				list_color_bg	 						= "black",		--Left and Right List BG color
 				civilian_color 							= "white", 		--EnemyCounter Civillian and Hostage icon color
 				thug_color 								= "white",		--EnemyCounter Thug and Mobster icon color
 				enemy_color 							= "white",		--EnemyCounter Cop and Specials icon color
 				special_color 							= "white",
+				turret_color							= "white",
+				shield_color							= "white",
+				tank_color								= "white",
+				sniper_color							= "white",
+				spooc_color								= "white",
+				taser_color								= "white",
+				medic_color								= "white",
+				phalanx_color							= "white",
+				buff_icon_color_standard				= "white",
+				buff_icon_color_buff					= "white",
+				buff_icon_color_debuff_fix				= "debuff",
+				buff_icon_color_team_fix				= "team",
+				left_list_color							= "white",
+				left_list_color_bg						= "black",
 				LEFT_LIST = {
 					show_timers 							= true,     --Drills, time locks, hacking etc.
 					show_ammo_bags							= true,  	--Deployables (ammo)

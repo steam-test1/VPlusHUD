@@ -55,6 +55,7 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 				CALLSIGN = VHUDPlus:getSetting({"CustomHUD", "PLAYER", "CALLSIGN"}, false),	--Show the callsign and voice chat icon
 				STAMINA = VHUDPlus:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true),
 				DOWNCOUNTER = VHUDPlus:getSetting({"CustomHUD", "PLAYER", "DOWNCOUNTER"}, true),
+				DETECTIONCOUNTER = VHUDPlus:getSetting({"CustomHUD", "PLAYER", "DETECTIONCOUNTER"}, true),
 				CARRY = VHUDPlus:getSetting({"CustomHUD", "PLAYER", "CARRY"}, true),	--Show currently carried bag
 				BUILD = {	--Show perk deck and number of skills acquired in each tree (not used by player)
 					--Pick max one
@@ -119,6 +120,7 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 				CALLSIGN = VHUDPlus:getSetting({"CustomHUD", "TEAMMATE", "CALLSIGN"}, false),	--Show the callsign and voice chat icon
 				STAMINA = false,
 				DOWNCOUNTER = VHUDPlus:getSetting({"CustomHUD", "TEAMMATE", "DOWNCOUNTER"}, true),
+				DETECTIONCOUNTER = VHUDPlus:getSetting({"CustomHUD", "TEAMMATE", "DETECTIONCOUNTER"}, true),
 				CARRY = VHUDPlus:getSetting({"CustomHUD", "TEAMMATE", "CARRY"}, true),	--Show currently carried bag
 				BUILD = {	--Show perk deck and number of skills acquired in each tree (not used by player)
 					--Pick max one

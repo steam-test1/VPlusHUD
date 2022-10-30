@@ -231,6 +231,11 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
             ranc_hold_take_stock = 				"_special_equipment_interaction_handler",
             ranc_hold_take_receiver = 			"_special_equipment_interaction_handler",
             ranc_hold_take_barrel = 			"_special_equipment_interaction_handler",
+			pda9_collective_1 =					"_special_equipment_interaction_handler",
+			pda9_collective_2 =					"_special_equipment_interaction_handler",
+			pda9_collective_3 =					"_special_equipment_interaction_handler",
+			pda9_collective_4 =					"_special_equipment_interaction_handler",
+			trai_usb_key = 						"_special_equipment_interaction_handler",
             hold_take_vault_blueprint =         "_special_equipment_interaction_handler",
 			firstaid_box =						"_deployable_interaction_handler",
 			ammo_bag =							"_deployable_interaction_handler",
@@ -2344,9 +2349,9 @@ if string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammerbase
 		end
 		managers.gameinfo:event("ecm", "set_feedback_active", self._ecm_unit_key, { feedback_active = state })
 		local val = _set_feedback_active_original(self, state, ...)
-		-- if Network:is_server() then
-		-- 	managers.gameinfo:event("ecm", "set_feedback_duration", self._ecm_unit_key, { feedback_duration = self._feedback_duration, feedback_expire_t = self._feedback_expire_t })
-		-- end
+		if Network:is_server() then
+			managers.gameinfo:event("ecm", "set_feedback_duration", self._ecm_unit_key, { feedback_duration = self._feedback_duration, feedback_expire_t = self._feedback_expire_t })
+		end
 		return val
 	end
 
@@ -3429,10 +3434,11 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerinventory" the
 	local get_jammer_time_original = PlayerInventory.get_jammer_time
 
 	function PlayerInventory:_start_jammer_effect(end_time, ...)
+		_start_jammer_effect_original(self, end_time, ...)
 		managers.gameinfo:event("buff", "activate", "pocket_ecm_jammer")
 		managers.gameinfo:event("buff", "set_duration", "pocket_ecm_jammer", { expire_t = end_time or ((self:get_jammer_time() or 0) + (TimerManager:game():time() or 0)) })
 
-		return _start_jammer_effect_original(self, end_time, ...)
+		return true
 	end
 
 	function PlayerInventory:_stop_jammer_effect(...)
@@ -3444,10 +3450,11 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerinventory" the
 	end
 
 	function PlayerInventory:_start_feedback_effect(end_time, ...)
+		_start_feedback_effect_original(self, end_time, ...)
 		managers.gameinfo:event("buff", "activate", "pocket_ecm_jammer")
 		managers.gameinfo:event("buff", "set_duration", "pocket_ecm_jammer", { expire_t = end_time or ((self:get_jammer_time() or 0) + (TimerManager:game():time() or 0)) })
 
-		return _start_feedback_effect_original(self, end_time, ...)
+		return true
 	end
 
 	function PlayerInventory:_stop_feedback_effect(...)
