@@ -409,6 +409,7 @@ if VHUDPlus then
 					["french"] = "wolfhud_languages_french",
 					["italian"] = "wolfhud_languages_italian",
 					["spanish"] = "wolfhud_languages_spanish",
+					["polish"] = "wolfhud_languages_polish",
 					["portuguese"] = "wolfhud_languages_portuguese",
 					["russian"] = "wolfhud_languages_russian",
 					["schinese"] = "wolfhud_languages_chinese",
