@@ -238,6 +238,7 @@
 	"wolfhud_languages_french" : "法文 - French",
 	"wolfhud_languages_italian" : "意大利语 - Italian",
 	"wolfhud_languages_spanish" : "西班牙语 - Spanish",
+	"wolfhud_languages_polish" : "波兰语 - Polish",
 	"wolfhud_languages_portuguese" : "葡萄牙语 - Portugese",
 	"wolfhud_languages_russian" : "俄文 - Russian",
 	"wolfhud_languages_chinese" : "中文 - Chinese",
@@ -1329,5 +1330,7 @@
 	"wolfhud_hudlist_left_list_bg_alpha_desc" : "Changes the left list background alpha",
 	"wolfhud_hudlist_loot_plates" : "Printing Plates",
 	"wolfhud_colors_debuff" : "Debuff",
-	"wolfhud_colors_team" : "Team"
+	"wolfhud_colors_team" : "Team",
+
+	"wolfhud_languages_polish" : "Polish"
 }
