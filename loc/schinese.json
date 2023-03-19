@@ -283,8 +283,8 @@
 	"wolfhud_adv_assault_title" : "高级突击横幅",
 	"wolfhud_adv_assault_desc" : "显示突击阶段、剩余时间以及突击剩余兵力\n(仅限主机)",
 
-	"wolfhud_assault_position_title": "横幅位置",
-	"wolfhud_assault_position_desc" : "调整横幅的水平位置",
+	"wolfhud_assault_position_title": "突击横幅居中",
+	"wolfhud_assault_position_desc" : "这个选项用于调整突击横幅",
 	"wolfhud_mui_assault_fix_title": "禁用游戏内时钟",
 	"wolfhud_mui_assault_fix_desc": "在与MUI、BL2HUD、WarFrame之类的HUD一起使用时启用可以提升兼容性",
 
