@@ -477,8 +477,8 @@
 	"wolfhud_hudlist_right_list_height_offset_desc" : "右侧列表的顶部位置偏移量",
 	"wolfhud_hudlist_left_list_height_offset_title" : "左侧列表偏移",
 	"wolfhud_hudlist_left_list_height_offset_desc" : "右侧列表的顶部位置偏移量",
-	"wolfhud_hudlist_buff_list_height_offset_title" : "Buff列表偏移",
-	"wolfhud_hudlist_buff_list_height_offset_desc" : "右侧列表的顶部位置偏移量",
+	"wolfhud_hudlist_buff_list_height_offset_title" : "BUFF列表偏移",
+	"wolfhud_hudlist_buff_list_height_offset_desc" : "BUFF列表的顶部位置偏移量",
 	"wolfhud_mui_buff_fix_title" : "MUI BUFF列表修复",
 	"wolfhud_mui_buff_fix_desc" : "阻止BUFF列表与字幕重叠",
 
