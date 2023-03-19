@@ -1351,5 +1351,16 @@
 	"wolfhud_hudlist_left_list_bg_alpha_desc" : "Changes the left list background alpha",
 	"wolfhud_hudlist_loot_plates" : "Printing Plates",
 	"wolfhud_colors_debuff" : "Debuff",
-	"wolfhud_colors_team" : "Team"
+	"wolfhud_colors_team" : "Team",
+
+    "wolfhud_languages_polish" : "Polish",
+	"wolfhud_hide_content_news_title" : "Hide New Content Banner",
+	"wolfhud_hide_content_news_desc" : "Hides the new content news banner in the main menu",
+	"wolfhud_hudlist_old_sixth_sense_buff_title" : "Old Sixth Sense Faster Contour Highlight",
+	"wolfhud_hudlist_old_sixth_sense_buff_desc" : "Makes the contour highlight instant after the countdown, instead of one at a time",
+
+	"wolfhud_hudlist_copycat_health_invul_buff_title" : "Copycat (Health Invulnerability)",
+	"wolfhud_hudlist_copycat_health_invul_buff_desc" : "",
+	"wolfhud_hudlist_copycat_health_shot_buff_title" : "Copycat (Headshot Health Regen)",
+	"wolfhud_hudlist_copycat_health_shot_buff_desc" : ""
 }

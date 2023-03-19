@@ -1,6 +1,6 @@
 {
 	"menu_jowi" : "Wick",
-	"hud_int_hold_grab_the_bag" : "Przytrzymaj $BTN_INTERACT; by podnieść $BAG",
+	"hud_int_hold_grab_the_bag" : "Przytrzymaj $INTERACT; by podnieść $BAG",
 
 	"wolfhud_dialog_force_start_title" : "Czy wymusić start?",
 	"wolfhud_dialog_force_start_desc" : "Czy jesteś pewien by wymusić start?\n\nUżyj tego wyłącznie przy zbugowanych lobby, lub gdy gracz AFczy.\nUpewnij się, że wszyscy mieli dosyć czasy by wybrać uzbrojenie.",
@@ -1334,5 +1334,15 @@
 	"wolfhud_hudlist_left_list_bg_alpha_desc" : "Zmienia przezroczystość tła lewej listy",
 	"wolfhud_hudlist_loot_plates" : "Płyty drukarskie",
 	"wolfhud_colors_debuff" : "Debuff",
-	"wolfhud_colors_team" : "Zespół"
+	"wolfhud_colors_team" : "Zespół",
+	
+	"wolfhud_hide_content_news_title" : "Hide New Content Banner",
+	"wolfhud_hide_content_news_desc" : "Hides the new content news banner in the main menu",
+	"wolfhud_hudlist_old_sixth_sense_buff_title" : "Old Sixth Sense Faster Contour Highlight",
+	"wolfhud_hudlist_old_sixth_sense_buff_desc" : "Makes the contour highlight instant after the countdown, instead of one at a time",
+
+	"wolfhud_hudlist_copycat_health_invul_buff_title" : "Copycat (Health Invulnerability)",
+	"wolfhud_hudlist_copycat_health_invul_buff_desc" : "",
+	"wolfhud_hudlist_copycat_health_shot_buff_title" : "Copycat (Headshot Health Regen)",
+	"wolfhud_hudlist_copycat_health_shot_buff_desc" : ""
 }

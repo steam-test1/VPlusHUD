@@ -208,5 +208,11 @@
 	"bm_w_x_sko12"				: "Akimbo SKO-12",
 	"bm_w_korth"				: "Korth NXA/NXS",
 	"bm_w_sko12"				: "SKO-12",
-	"bm_w_hailstorm"			: "Metal Storm Based Fictional Gun"
+	"bm_w_hailstorm"			: "Metal Storm Based Fictional Gun",
+
+	"bm_w_victor"				: "Springfield SAINT Victor AR-15",
+
+	"bm_w_tkb"					: "TKB-059",
+	"bm_w_hcar"					: "Ohio Ordnance HCAR",
+	"bm_w_contender"			: "Thompson/Center G2 Contender"
 }
