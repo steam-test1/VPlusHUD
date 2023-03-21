@@ -1088,7 +1088,7 @@
     "wolfhud_sub_scale_title" : "字幕规模",
     "wolfhud_sub_scale_desc" : "更改字幕文本大小",
 	"wolfhud_enable_inspire_hint_title" : "激励冷却提示",
-    "wolfhud_enable_inspire_hint_desc" : "添加一条提示消息，显示激励的剩余冷却时间",
+    "wolfhud_enable_inspire_hint_desc" : "添加一条提示信息，显示激励的剩余冷却时间",
 	"wolfhud_inspire_hint_text" : "激励战吼还有 %.f 的冷却时间",
 	"wolfhud_create_empty_lobby_title" : "创建一个空的大厅",
 	"wolfhud_create_empty_lobby_desc" : "创建一个无合约的多人大厅",
