@@ -21,7 +21,7 @@ if not _G.VHUDPlus then
 		["lib/managers/menumanagerdialogs"] 						= { "MenuTweaks.lua" },
 		["lib/managers/chatmanager"] 								= { "MenuTweaks.lua" },
 		["lib/managers/crimenetmanager"]							= { "MenuTweaks.lua" },
-		["lib/managers/localizationmanager"] 						= { "AdvAssault.lua" },
+		["lib/managers/localizationmanager"] 						= { "AdvAssault.lua", "Scripts.lua" },
 		["lib/managers/experiencemanager"] 							= { "Scripts.lua" },
 		["lib/managers/moneymanager"] 								= { "Scripts.lua" },
 		["lib/managers/multiprofilemanager"]						= { "ProfileMenu.lua" },
@@ -116,8 +116,6 @@ if not _G.VHUDPlus then
 		["lib/tweak_data/timespeedeffecttweakdata"] 				= { "Scripts.lua" },
 		["core/lib/managers/menu/items/coremenuitemslider"] 		= { "MenuTweaks.lua" },
 		["core/lib/managers/subtitle/coresubtitlepresenter"] 		= { "EnhancedObjective.lua" },
-		["lib/managers/platformmanager"] 							= { "RichPresence.lua" },
-		["lib/managers/skirmishmanager"] 							= { "RichPresence.lua" },
 		["core/lib/managers/coreenvironmentcontrollermanager"] 		= { "Scripts.lua" },
 		["lib/managers/menu/preplanningmapgui"]						= { "PrePlanManager.lua" },
 		["lib/managers/hud/hudhitconfirm"] 							= { "Scripts.lua" },
@@ -133,6 +131,7 @@ if not _G.VHUDPlus then
 		["lib/managers/menu/renderers/menunodetablegui"]			= { "FastNet.lua" },
 		["lib/managers/hud/hudpresenter"]			            	= { "Scripts.lua" },
 		["core/lib/managers/menu/reference_input/coremenuinput"]	= { "Scripts.lua" },
+		["lib/managers/menu/menucomponentmanager"]					= { "MenuTweaks.lua" },
 
 		--Utils and custom classes...
 		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },
@@ -256,7 +255,7 @@ if not _G.VHUDPlus then
 					APALPHA							= 0.75,
 				},
 				USE_REAL_AMMO 						= true,
-				HUD_SCALE 						    = 1,	
+				HUD_SCALE 						    = 1,
 			},
 			MISCHUD = {
 				ENABLE_IFBG							= false,
@@ -408,6 +407,7 @@ if not _G.VHUDPlus then
 				civilian_color 							= "white", 		--EnemyCounter Civillian and Hostage icon color
 				thug_color 								= "white",		--EnemyCounter Thug and Mobster icon color
 				enemy_color 							= "white",		--EnemyCounter Cop and Specials icon color
+				guard_color								= "white",
 				special_color 							= "white",
 				turret_color							= "white",
 				shield_color							= "white",
@@ -423,6 +423,20 @@ if not _G.VHUDPlus then
 				buff_icon_color_team_fix				= "team",
 				left_list_color							= "white",
 				left_list_color_bg						= "black",
+				jokers_color							= "white",
+				pagers_color							= "white",
+				cam_color								= "green",
+				bodybags_color							= "white",
+				corpse_color							= "white",
+				loot_color								= "white",
+				special_items_color						= "white",
+				timers_color							= "white",
+				equipment_color							= "white",
+				minions_info_color						= "white",
+				pagers_timer_color						= "white",
+				ecms_color								= "white",
+				ecm_feedback_color						= "white",
+				tape_loop_color							= "white",
 				LEFT_LIST = {
 					show_timers 							= true,     --Drills, time locks, hacking etc.
 					show_ammo_bags							= true,  	--Deployables (ammo)
@@ -481,7 +495,7 @@ if not _G.VHUDPlus then
 					        melee_charge                            = false,
 					        reload                                  = false,
 					        interact                                = false,
-					},      
+					},
 					MASTERMIND_BUFFS = {
 						forced_friendship					= true,
 						aggressive_reload_aced				= true,
@@ -512,6 +526,7 @@ if not _G.VHUDPlus then
 						dire_need							= true,
 						second_wind							= true,
 						sixth_sense							= true,
+						old_sixth_sense						= false,
 						unseen_strike						= true,
 					},
 					FUGITIVE_BUFFS = {
@@ -555,6 +570,8 @@ if not _G.VHUDPlus then
 						tag_team 							= true,
 						yakuza								= false,
 						copr_ability						= true,
+						copycat_health_invul				= true,
+						copycat_health_shot					= true,
 					},
 					GAGE_BOOSTS = {
 						invulnerable_buff					= true,
@@ -582,7 +599,7 @@ if not _G.VHUDPlus then
 				SHOW_MINIONS							= true,
 				ENABLE_JOKER_FLOATING_NAME			    = true,
 				ENABLE_JOKER_FLOATING_HP			    = true,
-				ENABLE_JOKER_FLOATING_KILLS			    = true,				
+				ENABLE_JOKER_FLOATING_KILLS			    = true,
 				SHOW_PAGER								= false,
 				SHOW_SPECIAL_EQUIPMENT					= false,
 				LOOT = {
@@ -614,7 +631,7 @@ if not _G.VHUDPlus then
 				HOLD2PICK								= true,
 				CUSTOM_HUDS_SUPPORT						= false,
 				DRILL_ICONS                             = false,
-				HIDEINTERACTIONINSTRUCTIONS				= true,	
+				HIDEINTERACTIONINSTRUCTIONS				= true,
 				HIDEBAGVALUE							= false,
 				DRILL_ICONS_X_POS						= 0,
 				DRILL_ICONS_Y_POS						= 90,
@@ -715,7 +732,7 @@ if not _G.VHUDPlus then
 					melee_weapons 						= { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
 				},
 				SHOW_HEAT 								= true,
-				SHOW_REDUCTION                          = true,				
+				SHOW_REDUCTION                          = true,
 				crnt_colorize							= false,
 				crnt_align								= false,
 				crnt_size								= 0.9,
@@ -727,6 +744,7 @@ if not _G.VHUDPlus then
 				CONFIRM_DIALOGS                     	= false,
 				SAVE_FILTERS							= true,
 				SHOW_SILENT_WEAPONS						= true,
+				HiDE_CONTENT_NEWS						= false,
 			},
 			SkipIt = {
 				SKIP_BLACKSCREEN 						= true,		--Skip the blackscreen on mission start
@@ -752,7 +770,7 @@ if not _G.VHUDPlus then
 			},
 		}
 	end
-	
+
 	function VHUDPlus:OutlineText(panel, bg, txt)
         bg.name = nil
         local bgs = {}
@@ -768,7 +786,7 @@ if not _G.VHUDPlus then
         bgs[4]:set_x(txt:x() + 1)
         bgs[4]:set_y(txt:y() + 1)
         return bgs
-    end	
+    end
 
 	function VHUDPlus:print_log(...)
 		local LOG_MODES = self:getTweakEntry("LOG_MODE", "table", {})
@@ -1047,7 +1065,7 @@ if not _G.VHUDPlus then
 			return default
 		end
 	end
-	
+
 	function VHUDPlus:getCharacterName(character_id, to_upper)
 		local name = character_id or "UNKNOWN"
 		local character_names = self:getTweakEntry("CHARACTER_NAMES", "table", {})
@@ -1098,7 +1116,7 @@ if not _G.VHUDPlus then
 			DB:create_entry(Idstring("texture"), Idstring("assets/guis/textures/".. file:gsub(".texture", "")), VHUDPlus.mod_path.. "assets/guis/textures/".. file)
 		end
 	end
-	
+
 	--callback functions to apply changed settings on the fly
 	if not VHUDPlus.apply_settings_clbk then
 		VHUDPlus.apply_settings_clbk = {
@@ -1142,7 +1160,7 @@ if not _G.VHUDPlus then
 				if WeaponGadgetBase and WeaponGadgetBase.update_theme_setting and #setting >= 4 then
 					WeaponGadgetBase.update_theme_setting(setting[1], setting[2], setting[3], setting[4], VHUDPlus:getColor(value) or value)
 				end
-			end,	
+			end,
 		}
 	end
 
@@ -1370,7 +1388,7 @@ if not _G.VHUDPlus then
 					priority = offset,
 					disabled_color = Color(0.6, 0.6, 0.6),
 				}
-				
+
 				do	-- Copy of MenuHelper:AddMultipleChoice (Without ipairs for options)
 					local data = {
 						type = "MenuItemMultiChoice"
@@ -1378,7 +1396,7 @@ if not _G.VHUDPlus then
 					for k, v in pairs( multi_data.items or {} ) do
 						table.insert( data, { _meta = "option", text_id = v, value = k } )
 					end
-					
+
 					local params = {
 						name = multi_data.id,
 						text_id = multi_data.title,
@@ -1387,7 +1405,7 @@ if not _G.VHUDPlus then
 						filter = true,
 						localize = multi_data.localized,
 					}
-					
+
 					local menu = MenuHelper:GetMenu( multi_data.menu_id )
 					local item = menu:create_item(data, params)
 					item._priority = multi_data.priority
@@ -1565,7 +1583,7 @@ if not _G.VHUDPlus then
 			next_node = VHUDPlus.fast_net,
 			menu_id = VHUDPlus.fast_net_core
 		})
-		
+
 		MenuHelper:AddButton({
 			id = "play_STEAM_online_with_friends",
 			title = "menu_play_with_friends",
@@ -1687,7 +1705,7 @@ if not _G.VHUDPlus then
 
 		nodes[VHUDPlus.fast_net] = MenuHelper:BuildMenu(VHUDPlus.fast_net)
 		VHUDPlus.fast_net_node = nodes[VHUDPlus.fast_net]
-		
+
 		nodes[VHUDPlus.fast_net_friends] = MenuHelper:BuildMenu(VHUDPlus.fast_net_friends)
 		VHUDPlus.fast_net_friends_node = nodes[VHUDPlus.fast_net_friends]
 
@@ -1702,7 +1720,7 @@ if not _G.VHUDPlus then
         else
             scene_background = "standard"
         end
-		
+
 		local arguments = {
 			_meta = "node",
 			[1] = {
@@ -1747,12 +1765,9 @@ if not _G.VHUDPlus then
 			update = "MenuSTEAMHostBrowser",
 			scene_state = scene_background
 		}
-		local type = "MenuNodeServerList"
-		if type then
-			node_class = CoreSerialize.string_to_classtable(type)
-		end
+		node_class = CoreSerialize.string_to_classtable(arguments.type)
 		nodes[VHUDPlus.fast_net] = node_class:new(arguments)
-		
+
 		local callback_handler = CoreSerialize.string_to_classtable("MenuCallbackHandler")
 		nodes[VHUDPlus.fast_net]:set_callback_handler(callback_handler:new())
 
@@ -1793,12 +1808,9 @@ if not _G.VHUDPlus then
 			update = "MenuSTEAMHostBrowser",
 			scene_state = scene_background
 		}
-		local type = "MenuNodeServerList"
-		if type then
-			node_class = CoreSerialize.string_to_classtable(type)
-		end
+		node_class = CoreSerialize.string_to_classtable(arguments_friends.type)
 		nodes[VHUDPlus.fast_net_friends] = node_class:new(arguments_friends)
-		
+
 		local callback_handler = CoreSerialize.string_to_classtable("MenuCallbackHandler")
 		nodes[VHUDPlus.fast_net_friends]:set_callback_handler(callback_handler:new())
 	end)
@@ -1822,8 +1834,8 @@ if not _G.VHUDPlus then
 
 		if VHUDPlus:getSetting({"MISCHUD", "MASK_INSTRUCT"}, true) then
 		    localized_strings["hud_instruct_mask_on"] = ""
-		end			
-		
+		end
+
 		if VHUDPlus:getSetting({"HUDSuspicion", "SHOW_PERCENTAGE"}, true) then
 		    localized_strings["hud_suspicion_detected"] = ""
 	        end
@@ -1832,10 +1844,10 @@ if not _G.VHUDPlus then
 		if VHUDPlus:getSetting({"SkipIt", "SKIP_BLACKSCREEN"}, false) then
 			localized_strings["hud_skip_blackscreen"] = ""
 		end
-			
+
 		if LobbySettings then
             localized_strings["menu_cn_premium_buy_fee_short"] = ""
-		end			
+		end
 
 		-- Add macro $VALUE to all interaction strings
 		for interact_id, data in pairs(tweak_data.interaction) do
@@ -1868,24 +1880,10 @@ if MenuItemMultiChoice then
 	end)
 end
 
-if EconomyTweakData then
-	-- Fix community market links for Real Weapon Names
-	Hooks:PostHook(EconomyTweakData, "create_weapon_skin_market_search_url" ,"WolfHUD_EconomyTweakDataPostCreateWeaponSkinMarketSearchUrl", function(self, weapon_id, cosmetic_id)
-		local cosmetic_name = tweak_data.blackmarket.weapon_skins[cosmetic_id] and managers.localization:text(tweak_data.blackmarket.weapon_skins[cosmetic_id].name_id)
-		local weapon_name = managers.localization.orig.text(managers.localization, tweak_data.weapon[weapon_id].name_id) -- bypass custom localizations
-		if cosmetic_name and weapon_name then
-			cosmetic_name = string.gsub(cosmetic_name, " ", "+")
-			weapon_name = string.gsub(weapon_name, " ", "+")
-			return string.gsub("http://steamcommunity.com/market/search?appid=218620&q=" .. cosmetic_name .. "+" .. weapon_name, "++", "+")
-		end
-		return nil
-	end)
-end
-
 if MenuNodeGui then
-	CloneClass(MenuNodeGui)
+	local _create_legends_original = MenuNodeGui._create_legends
 	function MenuNodeGui._create_legends(self, node)
-		self.orig._create_legends(self, node)
+		_create_legends_original(self, node)
 		local is_pc = managers.menu:is_pc_controller()
 		local has_pc_legend = false
 		local visible_callback_name, visible_callback

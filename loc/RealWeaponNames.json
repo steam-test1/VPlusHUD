@@ -214,5 +214,9 @@
 
 	"bm_w_tkb"					: "TKB-059",
 	"bm_w_hcar"					: "Ohio Ordnance HCAR",
-	"bm_w_contender"			: "Thompson/Center G2 Contender"
+	"bm_w_contender"			: "Thompson/Center G2 Contender",
+
+	"bm_w_kacchainsaw"			: "KAC ChainSAW",
+	"bm_w_supernova"			: "Benelli Supernova",
+	"bm_w_awp"					: "AT308"
 }
