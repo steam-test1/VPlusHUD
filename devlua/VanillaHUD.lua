@@ -1026,64 +1026,37 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 then
 		local set_negotiating_visible_orig  = HUDPlayerCustody.set_negotiating_visible
 		local set_can_be_trade_visible_orig = HUDPlayerCustody.set_can_be_trade_visible
 
-		function HUDPlayerCustody:set_negotiating_visible(...)
-		set_negotiating_visible_orig(self, ...)
-			local trade_text = self._hud.trade_text2
+		local vhudplus_getCustodyOffset = function()
+			local scale = VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1)
+			--[[ Old values:
+			Scale, offset
+			0.55, 720
+			... in steps of 0.05
+			1.00, 145
+			else  80
 
-			if VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
-				offset = 720
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
-				offset = 660
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
-				offset = 595
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
-				offset = 530
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
-				offset = 465
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
-				offset = 400
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
-				offset = 335
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
-				offset = 275
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
-				offset = 210
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
-				offset = 145
-			else
-				offset = 80 
-			end
+			linear regression: f(x) = -64.15*x + 786
+			Note: was this ever tested for non-1080p resolutions?
+			This probably must be some ratio of screen height rather than hardcoded pixel position
+			]]
+			local offset = math.floor(-64.15 * scale + 786)
+			return math.clamp(offset, 720, 80)
+		end
+
+		function HUDPlayerCustody:set_negotiating_visible(...)
+			set_negotiating_visible_orig(self, ...)
+
+			local trade_text = self._hud.trade_text2
+			local offset = vhudplus_getCustodyOffset()
 
 			trade_text:set_right(self._hud.trade_text2:w() + offset )
 		end
 
 		function HUDPlayerCustody:set_can_be_trade_visible(...)
-		set_can_be_trade_visible_orig(self, ...)
+			set_can_be_trade_visible_orig(self, ...)
+
 			local trade_text = self._hud.trade_text1
-			
-			if VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.55 then
-				offset = 720
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.60 then
-				offset = 660
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.65 then
-				offset = 595
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.70 then
-				offset = 530
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.75 then
-				offset = 465
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.80 then
-				offset = 400
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.85 then
-				offset = 335
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.90 then
-				offset = 275
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 0.95 then
-				offset = 210
-			elseif VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1) < 1 then
-				offset = 145
-			else
-				offset = 80 
-			end
+			local offset = vhudplus_getCustodyOffset()
 			
 			trade_text:set_right(self._hud.trade_text1:w() + offset )
 		end
