@@ -56,7 +56,7 @@ function HUDManager:set_slot_ready(peer, peer_id, ...)
 										gsm_state:start_game_intro()
 									else
 										-- 'ingame_mask_off' state is the black loading screen
-										log(string.format("VPlusHUD: Cannot force start in current game state '%s' (%s)",
+										log(string.format("VHUDPlus: Cannot force start in current game state '%s' (%s)",
 											gsm.current_state_name and gsm:current_state_name() or "",
 											tostring(gsm_state)
 										))
