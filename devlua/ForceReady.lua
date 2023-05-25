@@ -44,16 +44,18 @@ function HUDManager:set_slot_ready(peer, peer_id, ...)
 							[1] = {
 								text = managers.localization:text("dialog_yes"),
 								callback = function(self, item)
-									managers.chat:send_message(ChatManager.GAME, local_peer, managers.localization:text("wolfhud_dialog_force_start_msg"))
-
 									local gsm = game_state_machine
 									local gsm_state = gsm and gsm:current_state()
 									-- Fix crash where Force Start menu remains open
 									-- into the loading screen (between lobby and in-game state)
 									-- @TODO: Automatically close the menu when the game starts?
 									if gsm_state and gsm_state.start_game_intro then
+										managers.chat:send_message(ChatManager.GAME, local_peer,
+											managers.localization:text("wolfhud_dialog_force_start_msg"))
+
 										gsm_state:start_game_intro()
 									else
+										-- 'ingame_mask_off' state is the black loading screen
 										log(string.format("VPlusHUD: Cannot force start in current game state '%s' (%s)",
 											gsm.current_state_name and gsm:current_state_name() or "",
 											tostring(gsm_state)
