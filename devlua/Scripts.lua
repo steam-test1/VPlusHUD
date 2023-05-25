@@ -13,6 +13,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		return set_teammate_ammo_amount_orig(self, id, selection_index, max_clip, current_clip, current_left, max, ...)
 	end
 
+	-- Host-controlled force start
+	-- Need to click the "Ready" button in lobby multiple times for a menu to appear
 	local FORCE_READY_CLICKS = 3
 	local FORCE_READY_TIME = 2
 	local FORCE_READY_ACTIVE_T = 90
@@ -48,13 +50,22 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 								break
 							end
 						end
+
 						if game_state_machine and not abort then
 							local menu_options = {
 								[1] = {
 									text = managers.localization:text("dialog_yes"),
 									callback = function(self, item)
 										managers.chat:send_message(ChatManager.GAME, local_peer, managers.localization:text("wolfhud_dialog_force_start_msg"))
-										game_state_machine:current_state():start_game_intro()
+
+										local gsm = game_state_machine
+										local gsm_current = gsm and gsm:current_state()
+										-- Fix crash where Force Start menu remains open
+										-- into the loading screen (between lobby and in-game state)
+										-- @TODO: Automatically close the menu when the game starts?
+										if gsm_current and gsm_current.start_game_intro then
+											gsm_current:start_game_intro()
+										end
 									end,
 								},
 								[2] = {
