@@ -1210,8 +1210,8 @@
 	"wolfhud_enemy_triad" : "Triaden",
 	"FastNETENABLEDTitleID" : "Zeige Fast.Net im Hauptmenü",
 	"FastNETENABLEDDescID" : "Zeigt Fast.Net im Hauptmenü",
-	"wolfhud_hide_intewraction_text_title" : "Zeige Interaktionsanleitung",
-	"wolfhud_hide_intewraction_text_desc" : "Zeigt den Text 'halte [Taste] zum interagieren'",
+	"wolfhud_hide_interaction_text_title" : "Zeige Interaktionsanleitung",
+	"wolfhud_hide_interaction_text_desc" : "Zeigt den Text 'halte [Taste] zum interagieren'",
 	"wolfhud_languages_japanese" : "Japanese",
 	"wolfhud_hudlist_show_jokers_health_bar_title" : "Zeige Joker-Lebenspunkte",
 	"wolfhud_hudlist_show_jokers_health_bar_desc" : "Zeigt die Lebenspunkte von Jokern",
@@ -1375,5 +1375,8 @@
 	"wolfhud_hudlist_loot_color_title" : "Beutetaschenfarbe",
 	"wolfhud_hudlist_loot_color_desc" : "Farbe für den auf der Karte verfügbaren Loot",
 	"wolfhud_hudlist_special_items_color_title" : "Farbe für besondere Gegenstände",
-	"wolfhud_hudlist_special_items_color_desc" : "Farbe für die Anzahl der auf der Karte verfügbaren besonderen Gegenstände"
+	"wolfhud_hudlist_special_items_color_desc" : "Farbe für die Anzahl der auf der Karte verfügbaren besonderen Gegenstände",
+
+	"wolfhud_hudlist_show_gage_packages_title" : "Show Gage Packages",
+	"wolfhud_hudlist_show_gage_packages_desc" : ""
 }

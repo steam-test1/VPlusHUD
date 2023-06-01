@@ -1234,8 +1234,8 @@
     "wolfhud_enemy_triad" : "Triade",
     "FastNETENABLEDTitleID" : "Mostra Fast.Net nel menu principale",
     "FastNETENABLEDDescID" : "Mostra Fast.Net nel menu principale",
-    "wolfhud_hide_intewraction_text_title" : "Mostra Istruzioni di Interazione",
-    "wolfhud_hide_intewraction_text_desc" : "Mostra il testo 'Tieni premuto [tasto] per interagire'",
+    "wolfhud_hide_interaction_text_title" : "Mostra Istruzioni di Interazione",
+    "wolfhud_hide_interaction_text_desc" : "Mostra il testo 'Tieni premuto [tasto] per interagire'",
     "wolfhud_languages_japanese" : "Giapponese",
     "wolfhud_hudlist_show_jokers_health_bar_title" : "Mostra Salute Joker",
     "wolfhud_hudlist_show_jokers_health_bar_desc" : "Mostra la barra di salute dei joker",
@@ -1393,5 +1393,8 @@
 	"wolfhud_hudlist_loot_color_title" : "Lootbags Color",
 	"wolfhud_hudlist_loot_color_desc" : "Color for the number of loot available on a map",
 	"wolfhud_hudlist_special_items_color_title" : "Special Items Color",
-	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map"
+	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map",
+
+	"wolfhud_hudlist_show_gage_packages_title" : "Show Gage Packages",
+	"wolfhud_hudlist_show_gage_packages_desc" : ""
 }

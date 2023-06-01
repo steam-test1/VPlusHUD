@@ -1227,8 +1227,8 @@
 	"wolfhud_show_custom_inv_names_title" : "Nombres de inventario personalizados",
 	"wolfhud_show_custom_inv_names_desc" : "Muestra los nombres de inventarios personalizados. Desactiva si usas la versión de TdLQ's",
 
-	"wolfhud_hide_intewraction_text_title" : "Mostrar instrucciones de interacción",
-	"wolfhud_hide_intewraction_text_desc" : "Muestra el texto de la [tecla] a mantener para interactuar",
+	"wolfhud_hide_interaction_text_title" : "Mostrar instrucciones de interacción",
+	"wolfhud_hide_interaction_text_desc" : "Muestra el texto de la [tecla] a mantener para interactuar",
 
 	"wolfhud_hudlist_show_jokers_health_bar_title" : "Mostrar vida de los convertidos",
 	"wolfhud_hudlist_show_jokers_health_bar_desc" : "Muestra una barra de vida en los convertidos",
@@ -1398,5 +1398,8 @@
 	"wolfhud_hudlist_loot_color_title" : "Lootbags Color",
 	"wolfhud_hudlist_loot_color_desc" : "Color for the number of loot available on a map",
 	"wolfhud_hudlist_special_items_color_title" : "Special Items Color",
-	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map"
+	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map",
+
+	"wolfhud_hudlist_show_gage_packages_title" : "Show Gage Packages",
+	"wolfhud_hudlist_show_gage_packages_desc" : ""
 }

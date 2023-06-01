@@ -1210,8 +1210,8 @@
 	"wolfhud_enemy_triad" : "Triads",
 	"FastNETENABLEDTitleID" : "Show Fast.Net in the main menu",
 	"FastNETENABLEDDescID" : "Shows Fast.Net in the main menu",
-	"wolfhud_hide_intewraction_text_title" : "Show Interaction Instructions",
-	"wolfhud_hide_intewraction_text_desc" : "Shows the hold [key] to interact text",
+	"wolfhud_hide_interaction_text_title" : "Show Interaction Instructions",
+	"wolfhud_hide_interaction_text_desc" : "Shows the hold [key] to interact text",
 	"wolfhud_languages_japanese" : "Japanese",
 	"wolfhud_hudlist_show_jokers_health_bar_title" : "Show Jokers Health",
 	"wolfhud_hudlist_show_jokers_health_bar_desc" : "Shows jokers health bar",
@@ -1375,5 +1375,8 @@
 	"wolfhud_hudlist_loot_color_title" : "Lootbags Color",
 	"wolfhud_hudlist_loot_color_desc" : "Color for the number of loot available on a map",
 	"wolfhud_hudlist_special_items_color_title" : "Special Items Color",
-	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map"
+	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map",
+
+	"wolfhud_hudlist_show_gage_packages_title" : "Show Gage Packages",
+	"wolfhud_hudlist_show_gage_packages_desc" : ""
 }

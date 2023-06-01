@@ -1214,8 +1214,8 @@
 	"wolfhud_enemy_triad" : "黑帮",
 	"FastNETENABLEDTitleID" : "在主界面显示FASTNET",
 	"FastNETENABLEDDescID" : "在主界面显示FASTNET",
-	"wolfhud_hide_intewraction_text_title" : "显示互动说明",
-	"wolfhud_hide_intewraction_text_desc" : "显示按住 [key] 按键与互动文本",
+	"wolfhud_hide_interaction_text_title" : "显示互动说明",
+	"wolfhud_hide_interaction_text_desc" : "显示按住 [key] 按键与互动文本",
 	"wolfhud_languages_japanese" : "日文",
 	"wolfhud_hudlist_show_jokers_health_bar_title" : "显示变节敌人血量",
 	"wolfhud_hudlist_show_jokers_health_bar_desc" : "显示变节敌人生命栏",
@@ -1379,5 +1379,8 @@
 	"wolfhud_hudlist_loot_color_title" : "Lootbags Color",
 	"wolfhud_hudlist_loot_color_desc" : "Color for the number of loot available on a map",
 	"wolfhud_hudlist_special_items_color_title" : "Special Items Color",
-	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map"
+	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map",
+
+	"wolfhud_hudlist_show_gage_packages_title" : "Show Gage Packages",
+	"wolfhud_hudlist_show_gage_packages_desc" : ""
 }

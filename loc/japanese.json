@@ -1212,8 +1212,8 @@
     "wolfhud_show_custom_inv_names_desc": "インベントリのページに自分でつけた名前を表示するようにします\nTdLQ氏作の同名Modをインストールしている場合はチェックを外してください",
     "FastNETENABLEDTitleID": "Fast.Netをメインメニューに表示する",
     "FastNETENABLEDDescID": "メインメニューにFast.Netの項目を追加します",
-    "wolfhud_hide_intewraction_text_title": "インタラクトの指示を表示する",
-    "wolfhud_hide_intewraction_text_desc": "チェックを外すと、「[key]長押しでインタラクトする」といったテキストの表示が無くなります",
+    "wolfhud_hide_interaction_text_title": "インタラクトの指示を表示する",
+    "wolfhud_hide_interaction_text_desc": "チェックを外すと、「[key]長押しでインタラクトする」といったテキストの表示が無くなります",
     "wolfhud_hudlist_show_jokers_health_bar_title": "ジョーカーのヘルスを表示する",
     "wolfhud_hudlist_show_jokers_health_bar_desc": "ジョーカーのヘルスバーを表示します",
     "wolfhud_hudlist_show_jokers_kill_counter_title": "ジョーカーのキル数を表示する",
@@ -1376,5 +1376,8 @@
 	"wolfhud_hudlist_loot_color_title" : "Lootbags Color",
 	"wolfhud_hudlist_loot_color_desc" : "Color for the number of loot available on a map",
 	"wolfhud_hudlist_special_items_color_title" : "Special Items Color",
-	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map"
+	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map",
+
+	"wolfhud_hudlist_show_gage_packages_title" : "Show Gage Packages",
+	"wolfhud_hudlist_show_gage_packages_desc" : ""
 }

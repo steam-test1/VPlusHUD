@@ -5095,8 +5095,8 @@ if VHUDPlus then
 					},
 					{
 						type = "toggle",
-						name_id = "wolfhud_hide_intewraction_text_title",
-						desc_id = "wolfhud_hide_intewraction_text_desc",
+						name_id = "wolfhud_hide_interaction_text_title",
+						desc_id = "wolfhud_hide_interaction_text_desc",
 						value = {"INTERACTION", "HIDEINTERACTIONINSTRUCTIONS"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
