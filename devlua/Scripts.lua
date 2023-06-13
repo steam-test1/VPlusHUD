@@ -1,4 +1,5 @@
 if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
+	local set_slot_ready_orig = HUDManager.set_slot_ready
 	local set_teammate_ammo_amount_orig = HUDManager.set_teammate_ammo_amount
 
 	function HUDManager:set_teammate_ammo_amount(id, selection_index, max_clip, current_clip, current_left, max, ...)
@@ -11,7 +12,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		end
 		return set_teammate_ammo_amount_orig(self, id, selection_index, max_clip, current_clip, current_left, max, ...)
 	end
-
 
     local ability_radial = HUDManager.set_teammate_ability_radial
     function HUDManager:set_teammate_ability_radial(i, data)
@@ -78,12 +78,12 @@ local custom_radial = HUDManager.set_teammate_custom_radial
     end
 
 	Hooks:PreHook(HUDManager, "_setup_player_info_hud_pd2", "wolfhud_scaling", function(self)
-		if HSAS or NepgearsyHUDReborn then return end
+		if HSAS or NepgearsyHUDReborn or _G.IS_VR then return end
 		managers.gui_data:layout_scaled_fullscreen_workspace(managers.hud._saferect)
 	end)
 
 	function HUDManager:recreate_player_info_hud_pd2()
-		if HSAS or NepgearsyHUDReborn then return end
+		if HSAS or NepgearsyHUDReborn or _G.IS_VR then return end
 		if not self:alive(PlayerBase.PLAYER_INFO_HUD_PD2) then return end
 		local hud = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2)
 		self:_create_teammates_panel(hud)
@@ -107,7 +107,7 @@ local custom_radial = HUDManager.set_teammate_custom_radial
 
 	core:module("CoreGuiDataManager")
 	function GuiDataManager:layout_scaled_fullscreen_workspace(ws)
-		if HSAS or NepgearsyHUDReborn then return end
+		if HSAS or NepgearsyHUDReborn or _G.IS_VR then return end
 		local base_res = {x = 1280, y = 720}
 		local res = RenderSettings.resolution
 		local sc = (2 - _G.VHUDPlus:getSetting({"CustomHUD", "HUD_SCALE"}, 1))
@@ -276,13 +276,13 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 		return set_ammo_amount_by_type_orig(self, type, max_clip, current_clip, current_left, max, weapon_panel, ...)
 	end
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudpresenter" then
-	local _present_done_orig = HUDPresenter._present_done
-	function HUDPresenter:_present_done()
-		_present_done_orig(self)
-		local present_panel = managers.hud._hud_presenter._hud_panel:child("present_panel")
-		present_panel:set_visible(false)
-		managers.hud._hud_presenter:_present_done()
-	end
+	-- local _present_done_orig = HUDPresenter._present_done
+	-- function HUDPresenter:_present_done()
+	-- 	_present_done_orig(self)
+	-- 	local present_panel = managers.hud._hud_presenter._hud_panel:child("present_panel")
+	-- 	present_panel:set_visible(false)
+	-- 	managers.hud._hud_presenter:_present_done()
+	-- end
 elseif string.lower(RequiredScript) == "core/lib/managers/menu/reference_input/coremenuinput" then
 	core:module("CoreMenuInput")
 	core:import("CoreDebug")
@@ -427,7 +427,7 @@ elseif string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
 
 	function StatisticsManager:session_damage(peer_id)
 		local peer = peer_id and managers.network:session():peer(peer_id)
-		local peer_uid = peer and peer:user_id() or Steam:userid()
+		local peer_uid = peer and peer:user_id() or managers.network.account:player_id()
 		self._session_damage = self._session_damage or {}
 		return math.round(self._session_damage[peer_uid] or 0)
 	end
@@ -439,14 +439,14 @@ elseif string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
 
 	function StatisticsManager:add_session_damage(damage, peer_id)
 		local peer = peer_id and managers.network:session():peer(peer_id)
-		local peer_uid = peer and peer:user_id() or Steam:userid()
+		local peer_uid = peer and peer:user_id() or managers.network.account:player_id()
 		self._session_damage = self._session_damage or {}
 		self._session_damage[peer_uid] = (self._session_damage[peer_uid] or 0 ) + (damage * 10)
 	end
 
 	function StatisticsManager:reset_session_damage(peer_id)
 		local peer = peer_id and managers.network:session():peer(peer_id)
-		local peer_uid = peer and peer:user_id() or Steam:userid()
+		local peer_uid = peer and peer:user_id() or managers.network.account:player_id()
 		self._session_damage = self._session_damage or {}
 		self._session_damage[peer_uid] = 0
 	end
@@ -461,7 +461,7 @@ elseif string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
 			end
 		end
 
-		local peer_name = user_id and Steam:username(user_id) or managers.localization:text("debug_undecided")
+		local peer_name = managers.network.account:username_id() or managers.localization:text("debug_undecided")
 		return string.format("%s (%s)", peer_name, managers.money:add_decimal_marks_to_string(tostring(max_damage)))
 	end
 elseif string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" and not VHUDPlus.tabstat_fix then

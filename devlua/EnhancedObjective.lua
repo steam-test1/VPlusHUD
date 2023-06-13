@@ -14,11 +14,11 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudobjectives" then
 	function HUDObjectives:init(hud)
 		if VHUDPlus:getSetting({"CustomHUD", "ENABLED_ENHANCED_OBJECTIVE"}, false) then
 
-			if alive(self._panel) then
-				hud.panel:remove(self._panel)
+			if alive(self._hud_panel) then
+				hud.panel:remove(self._hud_panel)
 			end
 
-			self._panel = hud.panel:panel({
+			self._hud_panel = hud.panel:panel({
 				visible = false,
 				name = "objectives_panel",
 				h = 130,
@@ -27,7 +27,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudobjectives" then
 				valign = "top"
 			})
 
-			self._bg_box = HUDBGBox_create(self._panel, {
+			self._bg_box = HUDBGBox_create(self._hud_panel, {
 				w = 400,
 				h = 38,
 			})
@@ -71,9 +71,9 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudobjectives" then
 
 	function HUDObjectives:activate_objective(data)
 		if VHUDPlus:getSetting({"CustomHUD", "ENABLED_ENHANCED_OBJECTIVE"}, false) then
-		
+
 			self._active_objective_id = data.id
-			self._panel:set_visible(true)
+			self._hud_panel:set_visible(true)
 			self._objective_text:set_visible(true)
 			self._amount_text:set_visible(false)
 
@@ -100,9 +100,9 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudobjectives" then
 	end
 
 	function HUDObjectives:update_amount_objective(data, hide_animation)
-		
+
 		if VHUDPlus:getSetting({"CustomHUD", "ENABLED_ENHANCED_OBJECTIVE"}, false) then
-			
+
 			if data.id ~= self._active_objective_id then
 				return
 			end
@@ -124,9 +124,9 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudobjectives" then
 	end
 
 	function HUDObjectives:remind_objective(id)
-		
+
 		if VHUDPlus:getSetting({"CustomHUD", "ENABLED_ENHANCED_OBJECTIVE"}, false) then
-		
+
 			if id ~= self._active_objective_id then
 				return
 			end
@@ -140,20 +140,15 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudobjectives" then
 	end
 
 	function HUDObjectives:complete_objective(data)
-		
+
 		if VHUDPlus:getSetting({"CustomHUD", "ENABLED_ENHANCED_OBJECTIVE"}, false) then
-			
+
 			if data.id ~= self._active_objective_id then
 				return
 			end
 
 			self._active_objective_id = ""
-			self._amount_text:set_visible(false)
-			self._objective_text:set_visible(false)
-			self._panel:set_visible(false)
-			self._bg_box:set_w(0)
 
-			self:apply_offset(self._offset_y)
 		else
 			return complete_objective_original(self, data)
 		end
@@ -186,7 +181,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudobjectives" then
 		end
 
 		function HUDObjectives:_get_text_dimensions(text_string)
-			local string_width_measure_text_field = self._panel:child("string_dimensions") or self._panel:text({
+			local string_width_measure_text_field = self._hud_panel:child("string_dimensions") or self._hud_panel:text({
 				name = "string_dimensions",
 				visible = false,
 				font_size = HUDObjectives._FONT_SIZE,
@@ -201,7 +196,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudobjectives" then
 		end
 
 		function HUDObjectives:_get_wrapped_text_dimensions(text_string)
-			local layout_text_field = self._panel:child("layout") or self._panel:text({
+			local layout_text_field = self._hud_panel:child("layout") or self._hud_panel:text({
 				name = "layout",
 				width = self._MAX_WIDTH,
 				visible = false,
@@ -333,12 +328,12 @@ elseif string.lower(RequiredScript) == "core/lib/managers/subtitle/coresubtitlep
 			word_wrap = true
 		})
 		label:set_text(text)
-		shadow:set_text(text)	
+		shadow:set_text(text)
 		label:set_font_size(self.__font_size * self._text_scale)
 		shadow:set_font_size(self.__font_size * self._text_scale)
 		shadow:set_visible(text_shadow)
 	end
-	
+
 	local _on_resolution_changed_original = OverlayPresenter._on_resolution_changed
 	function OverlayPresenter:_on_resolution_changed(...)
 		_on_resolution_changed_original(self, ...)

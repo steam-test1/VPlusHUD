@@ -85,7 +85,7 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 or VHUDPlus:getSetting(
 
 			self._health_panel:bitmap({
 				name = "risk_indicator_bg",
-				texture = "guis/textures/pd2/crimenet_marker_glow",
+				texture = "guis/textures/pd2/hot_cold_glow",
 				texture_rect = { 0, 0, 64, 64 },
 				blend_mode = "normal",
 				color = Color.black,

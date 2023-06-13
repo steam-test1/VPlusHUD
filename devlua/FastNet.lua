@@ -51,19 +51,21 @@ if requiredScript == "lib/managers/menumanager" then
 			managers.network.matchmake:register_callback("search_lobby", f)
 			managers.menu:show_retrieving_servers_dialog()
 			managers.network.matchmake:search_lobby(friends_only)
-			local usrs_f = function(success, amount)
-				print("usrs_f", success, amount)
-				if success then
-					local stack = managers.menu:active_menu().renderer._node_gui_stack
-					local node_gui = stack[#stack]
-					local is_FastNet = (managers.menu:active_menu().logic:selected_node():parameters().name == VHUDPlus.fast_net_node)
-					if is_FastNet and node_gui.set_mini_info then
-						node_gui:set_mini_info(managers.localization:text("menu_players_online", {COUNT = amount}))
-					end
-				end
+			if SystemInfo:distribution() == Idstring("STEAM") then
+                local function usrs_f(success, amount)
+                    print("usrs_f", success, amount)
+                    if success then
+                        local stack = managers.menu:active_menu().renderer._node_gui_stack
+                        local node_gui = stack[#stack]
+                        local is_FastNet = (managers.menu:active_menu().logic:selected_node():parameters().name == VHUDPlus.fast_net_node)
+                        if is_FastNet and node_gui.set_mini_info then
+                            node_gui:set_mini_info(managers.localization:text("menu_players_online", {COUNT = amount}))
+                        end
+                    end
 			end
 			Steam:sa_handler():concurrent_users_callback(usrs_f)
 			Steam:sa_handler():get_concurrent_users()
+        end
 		end
 		if self:is_ps3() or self:is_ps4() then
 			if #PSN:get_world_list() == 0 then
@@ -432,9 +434,8 @@ if requiredScript == "lib/managers/menumanager" then
 			end
 		end
 		
-		local friends_list = Steam:logged_on() and Steam:friends() or {}
 		for i, room in ipairs(room_list) do
-			if managers.network.matchmake:is_server_ok(friends_only, room.owner_id, attribute_list[i], nil) then
+			if managers.network.matchmake:is_server_ok(friends_only, room, attribute_list[i], nil) then
 				local host_name = tostring(room.owner_name)
 				local attributes_numbers = attribute_list[i].numbers
 				local attributes_mutators = attribute_list[i].mutators
@@ -1324,7 +1325,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         end]]--
         MenuNodeTableGui.super.mouse_pressed(self, button, x, y)
         if button == Idstring("0") and self._mini_info_text:inside(x, y) then
-            Steam:overlay_activate("url", "http://store.steampowered.com/stats")
+            managers.network.account:overlay_activate("url", "http://store.steampowered.com/stats")
             return true
         end
     end

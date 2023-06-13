@@ -15,14 +15,14 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 then
 		local update_original = HUDManager.update
 
 		function HUDManager:set_stamina_value(value, ...)
-			if self._teammate_panels[self.PLAYER_PANEL] then
+			if self._teammate_panels[self.PLAYER_PANEL].set_current_stamina then
 				self._teammate_panels[self.PLAYER_PANEL]:set_current_stamina(value)
 			end
 			return set_stamina_value_original(self, value, ...)
 		end
 
 		function HUDManager:set_max_stamina(value, ...)
-			if self._teammate_panels[self.PLAYER_PANEL] then
+			if self._teammate_panels[self.PLAYER_PANEL].set_max_stamina then
 				self._teammate_panels[self.PLAYER_PANEL]:set_max_stamina(value)
 			end
 			return set_max_stamina_original(self, value, ...)
@@ -179,6 +179,13 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 2 then
 				self:_init_interact_info()
 				self:_create_ping_info()
 			end
+
+			self._panel:child("name_bg"):set_visible(false)
+			self._cable_ties_panel:child("bg"):set_visible(false)
+			self._deployable_equipment_panel:child("bg"):set_visible(false)
+			self._grenades_panel:child("bg"):set_visible(false)
+			self._player_panel:child("weapons_panel"):child("primary_weapon_panel"):child("bg"):set_visible(false)
+			self._player_panel:child("weapons_panel"):child("secondary_weapon_panel"):child("bg"):set_visible(false)
 		end
 
 		function HUDTeammate:set_name(name, ...)

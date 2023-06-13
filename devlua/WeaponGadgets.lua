@@ -122,7 +122,7 @@ elseif RequiredScript == "lib/units/weapons/weaponlaser" then
 			return Color(theme.brush:unpack())
 		end
 
-		return tweak_data.custom_colors.defaults.laser
+		return self._custom_color or tweak_data.custom_colors.defaults.laser
 	end
 
 	function WeaponLaser:update(unit, t, dt, ...)
@@ -182,6 +182,95 @@ elseif RequiredScript == "lib/units/weapons/weaponlaser" then
 		self._light_glow:set_color(self._light_glow_color)
 		self._brush:set_color(self._brush_color)
 	end
+
+	local init_multi_original = WeaponMultiLaser.init
+	local update_multi_original = WeaponMultiLaser.update
+
+	function WeaponMultiLaser:init(...)
+		init_multi_original(self, ...)
+		--self._brush = Draw:brush(self._brush_color or Color(0, 1, 0))
+		self._theme_type = "default"
+		self:refresh_themes()
+	end
+
+	function WeaponMultiLaser:set_color(color)	--OVERWRITE
+		self._custom_color = Vector3(color:unpack())
+
+		self:refresh_themes()
+	end
+
+	function WeaponMultiLaser:color()	--OVERWRITE
+		local theme = self._themes[self._theme_type] or self._themes.default
+		
+		if theme and theme.brush then
+			return Color(theme.brush:unpack())
+		end
+
+		return self._custom_color or tweak_data.custom_colors.defaults.laser
+	end
+
+	function WeaponMultiLaser:update(unit, t, dt, ...)
+		update_multi_original(self, unit, t, dt, ...)
+		self:_update_effects(self._themes[self._theme_type], t, dt)
+	end
+
+	function WeaponMultiLaser:set_color_by_theme(type)
+		if not self._themes[type] then print_info("ERROR (WeaponMultiLaser:set_color_by_theme): Attempting to set missing theme %s", tostring(type)) end
+
+		self._theme_type = type
+		self:_set_colors()
+	end
+
+	function WeaponMultiLaser:refresh_themes()
+		for theme, data in pairs(WeaponGadgetBase.THEME_SETTINGS.laser or {}) do
+			local beam = data.beam.enabled and Vector3(data.beam.r, data.beam.g, data.beam.b) or self._custom_color or Vector3(tweak_data.custom_colors.defaults.laser:unpack())
+
+			self._themes[theme] = {
+				light = data.dot.match_beam and beam or Vector3(data.dot.r, data.dot.g, data.dot.b),
+				glow = data.glow.match_beam and beam or Vector3(data.glow.r, data.glow.g, data.glow.b),
+				brush = beam,
+				alpha = { dot = data.dot.a, glow = data.glow.a, beam = data.beam.a },
+				rainbow = data.beam.enabled and data.rainbow.enabled and {
+					frequency = data.rainbow.frequency,
+				},
+				pulse = data.pulse.enabled and {
+					min = data.pulse.min,
+					max = data.pulse.max,
+					frequency = data.pulse.frequency,
+				},
+			}
+		end
+
+		self._current_intensity = 1
+		self:_set_theme(self._theme_type)
+	end
+
+	function WeaponMultiLaser:_set_theme(theme_id)
+		self:set_color_by_theme(theme_id)
+	end
+
+	function WeaponMultiLaser:_modify_color(color, intensity)
+		self._current_intensity = intensity or self._current_intensity
+		self:_set_colors(color, color, color)
+	end
+
+	function WeaponMultiLaser:_set_colors(light, glow, brush)
+		local theme = self._themes[self._theme_type] or self._themes.default
+		local alpha = theme and theme.alpha or { dot = 1, glow = 0.02, beam = 0.15 }
+
+		mvector3.set(self._light_color, (light or theme.light) * 10 * alpha.dot * (self._current_intensity or 1))
+		mvector3.set(self._light_glow_color, (glow or theme.glow) * 10 * alpha.glow * (self._current_intensity or 1))
+		self._brush_color = Color((brush or theme.brush):unpack()):with_alpha(alpha.beam * (self._current_intensity or 1))
+
+		for _, light in ipairs(self._lights) do
+			light:set_color(self._light_color)
+		end
+		for _, light_glow in ipairs(self._light_glows) do
+			light_glow:set_color(self._light_glow_color)
+		end
+		self._brush:set_color(self._brush_color)
+	end
+
 elseif RequiredScript == "lib/units/weapons/weaponflashlight" then
 	local init_original = WeaponFlashLight.init
 	local update_original = WeaponFlashLight.update
@@ -348,13 +437,13 @@ if string.lower(RequiredScript) == "lib/units/weapons/newraycastweaponbase" then
     local on_enabled_original = NewRaycastWeaponBase.on_enabled
 
     function NewRaycastWeaponBase:on_enabled(...)
-		on_enabled_original(self, ...)
+        on_enabled_original(self, ...)
 
-		if not self._init_laser_state and not self:is_npc() and self._assembly_complete and managers.player:current_state() == "standard" and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
-			self:_setup_laser()
-			self._init_laser_state = true
-		end
-	end
+        if not self._init_laser_state and self._assembly_complete then
+            self:on_equip(managers.player:player_unit())
+            self._init_laser_state = true
+        end
+    end
 
     function NewRaycastWeaponBase:on_equip(user_unit, ...)
         if not self._init_laser_state and self._assembly_complete then
@@ -366,6 +455,11 @@ if string.lower(RequiredScript) == "lib/units/weapons/newraycastweaponbase" then
     end
 
     function NewRaycastWeaponBase:_setup_laser(user_unit)
+        --if user_unit:network():id() ~= managers.network:session():local_peer():id() then
+        if self:is_npc() or not VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
+            return
+        end
+
         if self:has_gadget() then
             for i, part_id in ipairs(self._gadgets) do
                 local unit = self._parts[part_id] and self._parts[part_id].unit
@@ -380,11 +474,11 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playermas
 	local _enter_original = PlayerMaskOff._enter
 	function PlayerMaskOff:_enter(...)
 		_enter_original(self, ...)
-		for _, selection in ipairs(self._unit:inventory():available_selections()) do
+		for i, selection in ipairs(self._unit:inventory():available_selections()) do
 			local weapon_unit = selection.unit
 
-			if weapon_unit and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
-				weapon_unit:base():set_gadget_on(1, true)
+			if weapon_unit and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) and (WeaponLaser.GADGET_TYPE or "laser") then
+				weapon_unit:base():set_gadget_on(i, true)
 			end
 		end
 	end
@@ -392,34 +486,38 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerdri
 	local _enter_drive_original = PlayerDriving._enter
 	function PlayerDriving:_enter(...)
 		_enter_drive_original(self, ...)
-		for _, selection in ipairs(self._unit:inventory():available_selections()) do
+		for i, selection in ipairs(self._unit:inventory():available_selections()) do
 			local weapon_unit = selection.unit
 
-			if weapon_unit and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
-				weapon_unit:base():set_gadget_on(1, true)
+			if weapon_unit and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) and (WeaponLaser.GADGET_TYPE or "laser") then
+				weapon_unit:base():set_gadget_on(i, true)
 			end
 		end
 	end
 	local _exit_drive_original = PlayerDriving.exit
 	function PlayerDriving:exit(...)
 		_exit_drive_original(self, ...)
-		for _, selection in ipairs(self._unit:inventory():available_selections()) do
+		for i, selection in ipairs(self._unit:inventory():available_selections()) do
 			local weapon_unit = selection.unit
 
-			if weapon_unit and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) then
-				weapon_unit:base():set_gadget_on(1, true)
+			if weapon_unit and VHUDPlus:getSetting({"GADGETS", "LASER_AUTO_ON"}, true) and (WeaponLaser.GADGET_TYPE or "laser") then
+				weapon_unit:base():set_gadget_on(i, true)
 			end
 		end
 	end
 end
 
--- Rotated Secondary Sight
+-- Rotated Secondary Sight # Disabled
+--[[
 if string.lower(RequiredScript) == "lib/units/cameras/fpcameraplayerbase" then
 	local clbk_stance_entered_original = FPCameraPlayerBase.clbk_stance_entered
 	FPCameraPlayerBase.angled_sight_rotation = {
 		wpn_fps_upg_o_45iron = Rotation(0, 0, -45),
 		wpn_fps_upg_o_45rds = Rotation(0, 0, -45),
 		wpn_fps_upg_o_45rds_v2 = Rotation(0, 0, -45),
+		wpn_fps_upg_o_45steel = Rotation(0, 0, -45),
+		wpn_fps_upg_o_xpsg33 = Rotation(0, 0, -45),
+		wpn_fps_upg_o_sig = Rotation(0, 0, -45),
 	}
 	FPCameraPlayerBase.angled_sight_translation = {
 		-- Vector3(x, y, z) -- x = right, y = forward, z = upward
@@ -485,6 +583,8 @@ if string.lower(RequiredScript) == "lib/units/cameras/fpcameraplayerbase" then
 		self._weapon_name = w_name
 		self._sight_id = sight_id
 	end
+elseif string.lower(RequiredScript) == "lib/units/weapons/newraycastweaponbase" then
+
 elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandard" then
 	local _stance_entered_original = PlayerStandard._stance_entered
 	local _check_action_weapon_gadget_original = PlayerStandard._check_action_weapon_gadget
@@ -492,27 +592,22 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 		wpn_fps_upg_o_45iron = true,
 		wpn_fps_upg_o_45rds = true,
         wpn_fps_upg_o_45rds_v2 = true,
+		wpn_fps_upg_o_45steel = true,
+		wpn_fps_upg_o_xpsg33 = true,
+        wpn_fps_upg_o_sig = true,
 	}
 
 	function PlayerStandard:_stance_entered(...)
 		local weapon_base = self._equipped_unit:base()
-		local sight_id = weapon_base and weapon_base._second_sight_data and weapon_base._second_sight_data.part_id
-		local rotate_weapon = VHUDPlus:getSetting({"GADGETS", "SHOW_ANGELED_SIGHT"}, true) and sight_id and PlayerStandard.ANGELED_SIGHTS[sight_id]
-		self._camera_unit:base():set_want_rotated(not self._state_data.in_steelsight and self._equipped_unit:base():is_second_sight_on() and not self:_is_reloading() and rotate_weapon)
-		self._camera_unit:base():set_want_restored(not self._state_data.in_steelsight and (not self._equipped_unit:base():is_second_sight_on() or self:_is_reloading()) and rotate_weapon)
-		self._camera_unit:base():set_weapon_name(weapon_base and weapon_base._name_id, sight_id)
-		return _stance_entered_original(self, ...)
-	end
-
-	function PlayerStandard:_check_action_weapon_gadget(t, input, ...)
-		local value = _check_action_weapon_gadget_original(self, t, input, ...)
-
-		local weapon_base = self._equipped_unit:base()
-		local sight_id = weapon_base and weapon_base._second_sight_data and weapon_base._second_sight_data.part_id
-		if input.btn_weapon_gadget_press and sight_id and PlayerStandard.ANGELED_SIGHTS[sight_id] then
-			self:_stance_entered()
+		local sight_id = weapon_base and weapon_base.weapon_tweak_data and PlayerStandard.ANGELED_SIGHTS[weapon_base.weapon_tweak_data]
+		local rotate_weapon = VHUDPlus:getSetting({"GADGETS", "SHOW_ANGELED_SIGHT"}, true)
+		if rotate_weapon then
+			self._camera_unit:base():set_want_rotated(not self._state_data.in_steelsight and self._equipped_unit:base():is_second_sight_on() and not self:_is_reloading())
+			self._camera_unit:base():set_want_restored(not self._state_data.in_steelsight and (not self._equipped_unit:base():is_second_sight_on() or self:_is_reloading()))
+			self._camera_unit:base():set_weapon_name(weapon_base._name_id and sight_id)
 		end
 
-		return value
+		return _stance_entered_original(self, ...)
 	end
 end
+]]

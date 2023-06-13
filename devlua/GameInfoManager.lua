@@ -23,92 +23,101 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 	GameInfoManager = GameInfoManager or class()
 
 	GameInfoManager._TIMER_CALLBACKS = {
-		default = {
-			--Digital specific functions
-			set = function(timers, key, timer)
-				GameInfoManager._TIMER_CALLBACKS.default.update(timers, key, Application:time(), timer)
-			end,
-			start_count_up = function(timers, key)
-				if timers[key] and timers[key].ext._visible then
-					GameInfoManager._TIMER_CALLBACKS.default.set_active(timers, key, true)
-					GameInfoManager._TIMER_CALLBACKS.default.set_jammed(timers, key, false)
-				end
-			end,
-			start_count_down = function(timers, key)
-				if timers[key] and timers[key].ext._visible then
-					GameInfoManager._TIMER_CALLBACKS.default.set_active(timers, key, true)
-					GameInfoManager._TIMER_CALLBACKS.default.set_jammed(timers, key, false)
-				end
-			end,
-			pause = function(timers, key)
-				GameInfoManager._TIMER_CALLBACKS.default.set_jammed(timers, key, true)
-			end,
-			resume = function(timers, key)
-				GameInfoManager._TIMER_CALLBACKS.default.set_jammed(timers, key, false)
-			end,
-			stop = function(timers, key)
-				GameInfoManager._TIMER_CALLBACKS.default.set_active(timers, key, false)
-			end,
+        default = {
+            --Digital specific functions
+            set = function(timers, key, timer)
+                GameInfoManager._TIMER_CALLBACKS.default.update(timers, key, Application:time(), timer)
+            end,
+            start_count_up = function(timers, key)
+                if timers[key] and timers[key].ext._visible then
+                    GameInfoManager._TIMER_CALLBACKS.default.set_active(timers, key, true)
+                    GameInfoManager._TIMER_CALLBACKS.default.set_jammed(timers, key, false)
+                end
+            end,
+            start_count_down = function(timers, key)
+                if timers[key] and timers[key].ext._visible then
+                    GameInfoManager._TIMER_CALLBACKS.default.set_active(timers, key, true)
+                    GameInfoManager._TIMER_CALLBACKS.default.set_jammed(timers, key, false)
+                end
+            end,
+            pause = function(timers, key)
+                GameInfoManager._TIMER_CALLBACKS.default.set_jammed(timers, key, true)
+            end,
+            resume = function(timers, key)
+                GameInfoManager._TIMER_CALLBACKS.default.set_jammed(timers, key, false)
+            end,
+            stop = function(timers, key)
+                GameInfoManager._TIMER_CALLBACKS.default.set_active(timers, key, false)
+            end,
 
-			--General functions
-			update = function(timers, key, t, timer, timer_ratio)
-				if timers[key] then
-					timers[key].timer_value = timer
-					timers[key].timer_ratio = timer_ratio
-					managers.gameinfo:_listener_callback("timer", "update", key, timers[key])
-				end
-			end,
-			set_active = function(timers, key, status)
-				if timers[key] and timers[key].active ~= status then
-					timers[key].active = status
-					managers.gameinfo:_listener_callback("timer", "set_active", key, timers[key])
-				end
-			end,
-			set_jammed = function(timers, key, status)
-				if timers[key] and timers[key].jammed ~= status then
-					timers[key].jammed = status
-					managers.gameinfo:_listener_callback("timer", "set_jammed", key, timers[key])
-				end
-			end,
-			set_powered = function(timers, key, status)
-				if timers[key] and timers[key].powered ~= status then
-					timers[key].powered = status
-					managers.gameinfo:_listener_callback("timer", "set_powered", key, timers[key])
-				end
-			end,
-			-- Only securitylocks
-			set_current_bar = function(timers, key, current_bar)
-				if timers[key] and timers[key].current_bar ~= current_bar then
-					timers[key].current_bar = current_bar
-					managers.gameinfo:_listener_callback("timer", "set_current_bar", key, timers[key])
-				end
-			end,
-			set_total_bars = function(timers, key, total_bars)
-				if timers[key] and timers[key].total_bars ~= total_bars then
-					timers[key].total_bars = total_bars
-					managers.gameinfo:_listener_callback("timer", "set_total_bars", key, timers[key])
-				end
-			end,
-			-- Only upgradable drills/saws
-			set_upgradable = function(timers, key, upgradable)
-				if timers[key] and timers[key].upgradable ~= upgradable then
-					timers[key].upgradable = upgradable
-					managers.gameinfo:_listener_callback("timer", "set_upgradable", key, timers[key])
-				end
-			end,
-			set_upgrades = function(timers, key, upgrades)
-				if timers[key] then
-					timers[key].upgrades = upgrades
-					managers.gameinfo:_listener_callback("timer", "set_upgrades", key, timers[key])
-				end
-			end,
-			set_autorepair = function(timers, key, auto_repair)
-				if timers[key] and timers[key].auto_repair ~= auto_repair then
-					timers[key].auto_repair = auto_repair
-					managers.gameinfo:_listener_callback("timer", "set_autorepair", key, timers[key])
-				end
-			end,
-		},
+            --General functions
+            update = function(timers, key, t, timer, timer_ratio)
+                if timers[key] then
+                    timers[key].timer_value = timer
+                    timers[key].timer_ratio = timer_ratio
+                    managers.gameinfo:_listener_callback("timer", "update", key, timers[key])
+                end
+            end,
+            set_active = function(timers, key, status)
+                if timers[key] and timers[key].active ~= status then
+                    timers[key].active = status
+                    managers.gameinfo:_listener_callback("timer", "set_active", key, timers[key])
+                end
+            end,
+            set_jammed = function(timers, key, status)
+                if timers[key] and timers[key].jammed ~= status then
+                    timers[key].jammed = status
+                    managers.gameinfo:_listener_callback("timer", "set_jammed", key, timers[key])
+                end
+            end,
+            set_powered = function(timers, key, status)
+                if timers[key] and timers[key].powered ~= status then
+                    timers[key].powered = status
+                    managers.gameinfo:_listener_callback("timer", "set_powered", key, timers[key])
+                end
+            end,
+            -- Only securitylocks
+            set_current_bar = function(timers, key, current_bar)
+                if timers[key] and timers[key].current_bar ~= current_bar then
+                    timers[key].current_bar = current_bar
+                    managers.gameinfo:_listener_callback("timer", "set_current_bar", key, timers[key])
+                end
+            end,
+            set_total_bars = function(timers, key, total_bars)
+                if timers[key] and timers[key].total_bars ~= total_bars then
+                    timers[key].total_bars = total_bars
+                    managers.gameinfo:_listener_callback("timer", "set_total_bars", key, timers[key])
+                end
+            end,
+            -- Only Piggy Bank
+            set_progress = function(timers, key, current, total)
+                if timers[key] and (timers[key].current ~= current or timers[key].total ~= total) then
+                    timers[key].current = current
+                    timers[key].total = total
+                    timers[key].progress = current / total
+                    managers.gameinfo:_listener_callback("timer", "set_progress", key, timers[key])
+                end
+            end,
+            -- Only upgradable drills/saws
+            set_upgradable = function(timers, key, upgradable)
+                if timers[key] and timers[key].upgradable ~= upgradable then
+                    timers[key].upgradable = upgradable
+                    managers.gameinfo:_listener_callback("timer", "set_upgradable", key, timers[key])
+                end
+            end,
+            set_upgrades = function(timers, key, upgrades)
+                if timers[key] then
+                    timers[key].upgrades = upgrades
+                    managers.gameinfo:_listener_callback("timer", "set_upgrades", key, timers[key])
+                end
+            end,
+            set_autorepair = function(timers, key, auto_repair)
+                if timers[key] and timers[key].auto_repair ~= auto_repair then
+                    timers[key].auto_repair = auto_repair
+                    managers.gameinfo:_listener_callback("timer", "set_autorepair", key, timers[key])
+                end
+            end,
+        },
 		overrides = {
 			--Common functions
 			stop_on_loud_pause = function(...)
@@ -610,6 +619,7 @@ lounge		100421		100448			102049
             unseen_strike = "unseen_strike",
 			pocket_ecm_kill_dodge =	"pocket_ecm_kill_dodge",
 			copr_ability = "copr_ability",
+			mrwi_health_invulnerable = { "copycat_health_invul", "copycat_health_invul_passive" },
 
 			--"properties"
 			bloodthirst_reload_speed = "bloodthirst_aced",
@@ -1898,7 +1908,8 @@ if string.lower(RequiredScript) == "lib/units/props/securitylockgui" then
 
 	function SecurityLockGui:init(unit, ...)
 		self._info_key = tostring(unit:key())
-		managers.gameinfo:event("timer", "set_total_bars", self._info_key, self._bars)
+		managers.gameinfo:event("timer", "create", self._info_key, unit, self, "securitylock")
+        managers.gameinfo:event("timer", "set_total_bars", self._info_key, self._bars)
 		init_original(self, unit, ...)
 	end
 
@@ -2883,6 +2894,14 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 				self._message_system:register(Message.OnHeadShot, "bullseye_debuff_listener", on_headshot)
 			end
 
+			if self:has_category_upgrade("player", "headshot_regen_health_bonus") then
+				local function on_headshot()
+					managers.gameinfo:event("timed_buff", "activate", "copycat_health_shot_debuff", { duration = tweak_data.upgrades.on_headshot_dealt_cooldown or 0 })
+				end
+
+				self._message_system:register(Message.OnHeadShot, "copycat_health_shot_debuff_listener", on_headshot)
+			end
+
 			self._is_sociopath = self:has_category_upgrade("player", "killshot_regen_armor_bonus") or
 					self:has_category_upgrade("player", "killshot_close_regen_armor_bonus") or
 					self:has_category_upgrade("player", "killshot_close_panic_chance") or
@@ -3042,6 +3061,9 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 		if (self._on_headshot_dealt_t or 0) <= t and self:has_category_upgrade("player", "headshot_regen_armor_bonus") then
 			managers.gameinfo:event("timed_buff", "activate", "bullseye_debuff", { t = t, duration = tweak_data.upgrades.on_headshot_dealt_cooldown or 0 })
 		end
+		if (self._on_headshot_dealt_t or 0) <= t and self:has_category_upgrade("player", "headshot_regen_health_bonus") then
+			managers.gameinfo:event("timed_buff", "activate", "copycat_health_shot_debuff", { t = t, duration = tweak_data.upgrades.on_headshot_dealt_cooldown or 0 })
+		end
 
 		return on_headshot_dealt_original(self, ...)
 	end
@@ -3080,6 +3102,10 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 			managers.gameinfo:event("buff", "activate", "combat_medic_passive")
 			managers.gameinfo:event("buff", "set_value", "combat_medic_passive", { value = value })
 		end
+		if name == "mrwi_health_invulnerable" then
+			managers.gameinfo:event("buff", "activate", "copycat_health_invul_passive")
+			managers.gameinfo:event("buff", "set_value", "copycat_health_invul_passive", { value = value })
+		end
 	end
 
 	function PlayerManager:remove_property(name, ...)
@@ -3087,6 +3113,9 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 
 		if name == "revive_damage_reduction" then
 			managers.gameinfo:event("buff", "deactivate", "combat_medic_passive")
+		end
+		if name == "mrwi_health_invulnerable" then
+			managers.gameinfo:event("buff", "deactivate", "copycat_health_invul_passive")
 		end
 	end
 
@@ -3408,6 +3437,8 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playermovement" then
 				base_dodge = base_dodge + managers.player:upgrade_value("player", "crouch_dodge_chance", 0)
 			elseif self:zipline_unit() then
 				base_dodge = base_dodge + managers.player:upgrade_value("player", "on_zipline_dodge_chance", 0)
+			elseif managers.player:has_category_upgrade("player", "mrwi_dodge_chance") then
+				base_dodge = base_dodge + managers.player:upgrade_value("player", "mrwi_dodge_chance", 0)
 			end
 
 			if not LAST_BASE_DODGE or LAST_BASE_DODGE ~= base_dodge then
@@ -3690,22 +3721,46 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 		end
 
 		self._state_data.omniscience_t = self._state_data.omniscience_t or t + tweak_data.player.omniscience.start_t
-		if t >= self._state_data.omniscience_t then
-			local sensed_targets = World:find_units_quick("sphere", self._unit:movement():m_pos(), tweak_data.player.omniscience.sense_radius, managers.slot:get_mask("trip_mine_targets"))
-			managers.gameinfo:event("buff", "set_stack_count", "sixth_sense", { stack_count = #sensed_targets })
 
-			for _, unit in ipairs(sensed_targets) do
-				if alive(unit) and not unit:base():char_tweak().is_escort then
-					self._state_data.omniscience_units_detected = self._state_data.omniscience_units_detected or {}
-					if not self._state_data.omniscience_units_detected[unit:key()] or t >= self._state_data.omniscience_units_detected[unit:key()] then
-						self._state_data.omniscience_units_detected[unit:key()] = t + tweak_data.player.omniscience.target_resense_t
-						managers.game_play_central:auto_highlight_enemy(unit, true)
+		if VHUDPlus:getSetting({"HUDList", "BUFF_LIST", "GHOST_BUFFS", "old_sixth_sense"}, false) then
+			if t >= self._state_data.omniscience_t then
+				local sensed_targets = World:find_units_quick("sphere", self._unit:movement():m_pos(), tweak_data.player.omniscience.sense_radius, managers.slot:get_mask("trip_mine_targets"))
+				managers.gameinfo:event("buff", "set_stack_count", "sixth_sense", { stack_count = #sensed_targets })
+	
+				for _, unit in ipairs(sensed_targets) do
+					if alive(unit) and not unit:base():char_tweak().is_escort then
+						self._state_data.omniscience_units_detected = self._state_data.omniscience_units_detected or {}
+						if not self._state_data.omniscience_units_detected[unit:key()] or t >= self._state_data.omniscience_units_detected[unit:key()] then
+							self._state_data.omniscience_units_detected[unit:key()] = t + tweak_data.player.omniscience.target_resense_t
+							managers.game_play_central:auto_highlight_enemy(unit, true)
+						end
+					else
 					end
-				else
 				end
+				self._state_data.omniscience_t = t + tweak_data.player.omniscience.interval_t
+				managers.gameinfo:event("buff", "set_duration", "sixth_sense", { duration = tweak_data.player.omniscience.interval_t })
 			end
-			self._state_data.omniscience_t = t + tweak_data.player.omniscience.interval_t
-			managers.gameinfo:event("buff", "set_duration", "sixth_sense", { duration = tweak_data.player.omniscience.interval_t })
+		else
+			if self._state_data.omniscience_t <= t then
+				local sensed_targets = World:find_units_quick("sphere", self._unit:movement():m_pos(), tweak_data.player.omniscience.sense_radius, managers.slot:get_mask("trip_mine_targets"))
+				managers.gameinfo:event("buff", "set_stack_count", "sixth_sense", { stack_count = #sensed_targets })
+
+				for _, unit in ipairs(sensed_targets) do
+					if alive(unit) and not unit:base():char_tweak().is_escort then
+						self._state_data.omniscience_units_detected = self._state_data.omniscience_units_detected or {}
+						if not self._state_data.omniscience_units_detected[unit:key()] or self._state_data.omniscience_units_detected[unit:key()] <= t then
+							self._state_data.omniscience_units_detected[unit:key()] = t + tweak_data.player.omniscience.target_resense_t
+		
+							managers.game_play_central:auto_highlight_enemy(unit, true)
+		
+							break
+						end
+					else
+					end
+				end
+				self._state_data.omniscience_t = t + tweak_data.player.omniscience.interval_t
+				managers.gameinfo:event("buff", "set_duration", "sixth_sense", { duration = tweak_data.player.omniscience.interval_t })
+			end
 		end
 	end
 
@@ -3771,6 +3826,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 	local delay_damage_original = PlayerDamage.delay_damage
 	local clear_delayed_damage_original = PlayerDamage.clear_delayed_damage
 	local init_original = PlayerDamage.init
+	local damage_bullet_original = PlayerDamage.damage_bullet
 
 	local CALM_COOLDOWN = false
 	local CALM_HEALING = false
@@ -3800,6 +3856,8 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 				end
 			end)
 		end
+
+		
 	end
 
 	local HEALTH_RATIO_BONUSES = {
@@ -4028,6 +4086,25 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 
 		return clear_delayed_damage_original(self, ...)
 	end
+
+	-- function PlayerDamage:damage_bullet(attack_data, ...)
+	-- 	local pm = managers.player
+	-- 	local dodge_value = tweak_data.player.damage.DODGE_INIT or 0
+	-- 	local armor_dodge_chance = pm:body_armor_value("dodge")
+	-- 	local skill_dodge_chance = pm:skill_dodge_chance(self._unit:movement():running(), self._unit:movement():crouching(), self._unit:movement():zipline_unit())
+	-- 	dodge_value = dodge_value + armor_dodge_chance + skill_dodge_chance
+
+	-- 	if not LAST_BASE_DODGE or LAST_BASE_DODGE ~= base_dodge then
+	-- 		if dodge_value then
+	-- 			managers.gameinfo:event("buff", "activate", "movement_dodge")
+	-- 			managers.gameinfo:event("buff", "set_value", "movement_dodge", { value = dodge_value })
+	-- 		else
+	-- 			managers.gameinfo:event("buff", "deactivate", "movement_dodge")
+	-- 		end
+	-- 	end
+
+	-- 	damage_bullet_original(self, attack_data, ...)
+	-- end
 end
 
 if string.lower(RequiredScript) == "lib/player_actions/skills/playeractionbloodthirstbase" then

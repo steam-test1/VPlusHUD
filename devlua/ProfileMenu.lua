@@ -277,8 +277,8 @@ elseif RequiredScript == "lib/managers/multiprofilemanager" then
 				mask = self:get_item_data("mask", profile.mask),
 				deployable = profile.deployable,
 				secondary_deployable = profile.deployable_secondary,
-				deployable_amount = self:get_deployable_amount(profile.deployable, gd.skills),
-				secondary_deployable_amount = self:get_deployable_amount(profile.deployable_secondary, gd.skills),
+				deployable_amount = self:get_deployable_amount(profile.deployable, gd and gd.skills),
+				secondary_deployable_amount = self:get_deployable_amount(profile.deployable_secondary, gd and gd.skills),
 			}
 			return outfit
 		else

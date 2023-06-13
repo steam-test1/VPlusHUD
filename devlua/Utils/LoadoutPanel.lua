@@ -1,4 +1,6 @@
 LoadoutBaseItem = LoadoutBaseItem or class()
+require("lib/utils/HttpRequest")
+
 function LoadoutBaseItem:init(base_panel, owner, name, width, height, params)
 	self._name = name
 	self._owner_panel = base_panel
@@ -814,7 +816,7 @@ function LoadoutPlaytimeItem:set_outfit(outfit)
 
 			--local profile_url = string.format("http://steamcommunity.com/profiles/%s/?xml=1", tostring(steam_id))
 			local all_games_url = string.format("http://steamcommunity.com/profiles/%s/games/?xml=1", tostring(steam_id))
-			Steam:http_request(all_games_url, callback(self, self, "set_playtime_clbk"))
+			HttpRequest:get(all_games_url, callback(self, self, "set_playtime_clbk"), nil)
 		end
 	else
 		self:set_enabled("peer", false)

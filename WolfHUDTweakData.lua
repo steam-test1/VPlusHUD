@@ -125,8 +125,9 @@ function WolfHUDTweakData:init()
 	self.CHARACTER_NAMES = {
 		[ "civilian" ] 							= { default = "wolfhud_enemy_civilian" },
 		[ "civilian_female" ] 					= { default = "wolfhud_enemy_civilian" },
-		[ "civilian_mariachi" ] 				= { default = "wolfhud_enemy_mariachi" },		
+		[ "civilian_mariachi" ] 				= { default = "wolfhud_enemy_mariachi" },
 		[ "captain" ] 							= { default = "wolfhud_enemy_civilian" },
+		[ "civilian_no_penalty" ] 				= { default = "wolfhud_enemy_civilian" },
 		[ "gangster" ] 							= { default = "wolfhud_enemy_gangster" },
 		[ "triad" ] 							= { default = "wolfhud_enemy_triad" },
 		[ "biker" ] 							= { default = "wolfhud_enemy_biker" },
@@ -185,6 +186,7 @@ function WolfHUDTweakData:init()
 		[ "boris" ]								= { default = "wolfhud_enemy_boris" },
 		[ "spa_vip" ]							= { default = "wolfhud_enemy_spa_vip" },
 		[ "spa_vip_hurt" ]						= { default = "wolfhud_enemy_spa_vip_hurt" },
+		[ "escort_criminal" ]					= { default = "wolfhud_enemy_vlad" },
 		[ "old_hoxton_mission" ] 				= { default = "wolfhud_enemy_locke_mission", hox_1 = "wolfhud_enemy_old_hoxton_mission", hox_2 = "wolfhud_enemy_old_hoxton_mission", rvd1 = "wolfhud_enemy_reservoirdogs", rvd2 = "wolfhud_enemy_reservoirdogs" },
 		[ "hector_boss" ] 						= { default = "wolfhud_enemy_hector_boss" },
 		[ "hector_boss_no_armor" ] 				= { default = "wolfhud_enemy_hector_boss_no_armor" },

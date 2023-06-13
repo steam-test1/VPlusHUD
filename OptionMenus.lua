@@ -628,10 +628,10 @@ if VHUDPlus then
 								name_id = "wolfhud_panels_show_new_downcounter_title",
 								desc_id = "wolfhud_panels_show_new_downcounter_desc",
 								visible_reqs = {
-									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
+									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 2 },
 								},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
+									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 2 },
 								},
 								value = {"CustomHUD", "PLAYER", "NEWDOWNCOUNTER"},
 							},
@@ -1109,10 +1109,10 @@ if VHUDPlus then
 								name_id = "wolfhud_panels_show_new_downcounter_title",
 								desc_id = "wolfhud_panels_show_new_downcounter_desc",
 								visible_reqs = {
-									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
+									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 2 },
 								},
 								enabled_reqs = {
-									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 3 },
+									{ setting = {"CustomHUD", "HUDTYPE"}, min = 2, max = 2 },
 								},
 								value = {"CustomHUD", "TEAMMATE", "NEWDOWNCOUNTER"},
 							},
@@ -4050,6 +4050,17 @@ if VHUDPlus then
 									},
 									{
 										type = "toggle",
+										name_id = "wolfhud_hudlist_old_sixth_sense_buff_title",
+										desc_id = "wolfhud_hudlist_old_sixth_sense_buff_desc",
+										value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "old_sixth_sense"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
 										name_id = "wolfhud_hudlist_unseen_strike_buff_title",
 										desc_id = "wolfhud_hudlist_unseen_strike_buff_desc",
 										value = {"HUDList", "BUFF_LIST", "GHOST_BUFFS", "unseen_strike"},
@@ -4487,6 +4498,28 @@ if VHUDPlus then
 										name_id = "wolfhud_hudlist_copr_buff_title",
 										desc_id = "wolfhud_hudlist_copr_buff_desc",
 										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "copr_ability"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "wolfhud_hudlist_copycat_health_invul_buff_title",
+										desc_id = "wolfhud_hudlist_copycat_health_invul_buff_desc",
+										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "copycat_health_invul"},
+										visible_reqs = {},
+										enabled_reqs = {
+											{ setting = { "HUDList", "ENABLED" }, invert = false },
+											{ setting = {"HUDList", "BUFF_LIST", "show_buffs"}, invert = false },
+										},
+									},
+									{
+										type = "toggle",
+										name_id = "wolfhud_hudlist_copycat_health_shot_buff_title",
+										desc_id = "wolfhud_hudlist_copycat_health_shot_buff_desc",
+										value = {"HUDList", "BUFF_LIST", "PERK_BUFFS", "copycat_health_shot"},
 										visible_reqs = {},
 										enabled_reqs = {
 											{ setting = { "HUDList", "ENABLED" }, invert = false },
@@ -5095,8 +5128,8 @@ if VHUDPlus then
 					},
 					{
 						type = "toggle",
-						name_id = "wolfhud_hide_interaction_text_title",
-						desc_id = "wolfhud_hide_interaction_text_desc",
+						name_id = "wolfhud_hide_intewraction_text_title",
+						desc_id = "wolfhud_hide_intewraction_text_desc",
 						value = {"INTERACTION", "HIDEINTERACTIONINSTRUCTIONS"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
@@ -5218,17 +5251,17 @@ if VHUDPlus then
 						desc_id = "wolfhud_gadget_team_flashlight_options_help",
 						options = get_gadget_options("flashlight", "team")
 					},
-					{
-						type = "divider",
-						size = 24,
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_show_angeled_sight_title",
-						desc_id = "wolfhud_show_angeled_sight_desc",
-						value = {"GADGETS", "SHOW_ANGELED_SIGHT"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
+					-- {
+					-- 	type = "divider",
+					-- 	size = 24,
+					-- },
+					-- {
+					-- 	type = "toggle",
+					-- 	name_id = "wolfhud_show_angeled_sight_title",
+					-- 	desc_id = "wolfhud_show_angeled_sight_desc",
+					-- 	value = {"GADGETS", "SHOW_ANGELED_SIGHT"},
+					-- 	visible_reqs = {}, enabled_reqs = {},
+					-- },
 				},
 			},
 			{
@@ -5507,6 +5540,13 @@ if VHUDPlus then
 						name_id = "wolfhud_show_silent_weapons_title",
 						desc_id = "wolfhud_show_silent_weapons_desc",
 						value = {"INVENTORY", "SHOW_SILENT_WEAPONS"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_hide_content_news_title",
+						desc_id = "wolfhud_hide_content_news_desc",
+						value = {"INVENTORY", "HiDE_CONTENT_NEWS"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
 				},

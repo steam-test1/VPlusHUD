@@ -110,7 +110,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudassaultcorner" then
 
 		VHUDPlus._heist_time = time
 		
-		if self._assault_timer then
+		if self._assault_timer and not enhanced_obj then
 			self._assault_timer:set_time(t)
 			local _, _, cw, _ = self._assault_timer._timer_text:text_rect()
 			if alive(self._bg_box:child("text_panel")) and self._bg_box:w() >= 242 and cw ~= self._last_assault_timer_size then
@@ -119,7 +119,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudassaultcorner" then
 				self._bg_box:child("text_panel"):set_x(cw + 8)
 			end
 		end
-		if self._casing_timer then
+		if self._casing_timer and not enhanced_obj then
 			self._casing_timer:set_time(t)
 			local _, _, aw, _ = self._casing_timer._timer_text:text_rect()
 			if alive(self._casing_bg_box:child("text_panel")) and self._casing_bg_box:w() >= 242 and aw ~= self._last_casing_timer_size then

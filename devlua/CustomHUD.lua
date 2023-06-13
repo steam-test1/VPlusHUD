@@ -490,15 +490,11 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 		end
 
 		function HUDTeammateCustom:set_revives_amount(value)
-			self:call_listeners("set_revives", value)
-		end
-
-		function HUDTeammateCustom:increment_downs()
-			self:call_listeners("increment_downs")
+			self:call_listeners("set_revives", value -1)
 		end
 
 		function HUDTeammateCustom:reset_downs()
-			self:call_listeners("reset_downs")
+			self:set_revives_amount(0)
 		end
 
 		function HUDTeammateCustom:set_detection(value)
@@ -1906,7 +1902,7 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 
 			local center_bg = self._panel:bitmap({
 				name = "center_bg",
-				texture = "guis/textures/pd2/crimenet_marker_glow",
+				texture = "guis/textures/pd2/hot_cold_glow",
 				blend_mode = "add" and VHUDPlus:getSetting({"CustomHUD", "DisableBlend"}, false) or "normal",
 				color = Color.black,
 				alpha = 0.65,
@@ -2011,20 +2007,21 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 			self._stored_health_max = 0
 
 			self._risk = 0
-			self._downs = 0
+
 			self._max_downs = (Global.game_settings.one_down and 2 or tweak_data.player.damage.LIVES_INIT) - 1
 			if managers.modifiers and managers.modifiers.modify_value then
 				self._max_downs = managers.modifiers:modify_value("PlayerDamage:GetMaximumLives", self._max_downs)
 			end
+
+			self._downs = self._max_revives
+        	self:set_revives(self._downs)
 
 			self._reviver_count = 0
 
 			self._owner:register_listener("PlayerStatus", { "health" }, callback(self, self, "set_health"), false)
 			self._owner:register_listener("PlayerStatus", { "stored_health" }, callback(self, self, "set_stored_health"), false)
 			self._owner:register_listener("PlayerStatus", { "stored_health_max" }, callback(self, self, "set_stored_health_max"), false)
-			self._owner:register_listener("PlayerStatus", { "set_revives" }, callback(self, self, "set_revives_amount"), false)
-			self._owner:register_listener("PlayerStatus", { "increment_downs" }, callback(self, self, "increment_downs"), false)
-			self._owner:register_listener("PlayerStatus", { "reset_downs" }, callback(self, self, "reset_downs"), false)
+			self._owner:register_listener("PlayerStatus", { "set_revives" }, callback(self, self, "set_revives"), false)
 			self._owner:register_listener("PlayerStatus", { "detection" }, callback(self, self, "set_detection"), false)
 			self._owner:register_listener("PlayerStatus", { "armor" }, callback(self, self, "set_armor"), false)
 			self._owner:register_listener("PlayerStatus", { "stamina" }, callback(self, self, "set_stamina"), false)
@@ -2048,7 +2045,7 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 
 		function PlayerInfoComponent.PlayerStatus:destroy()
 			self._owner:unregister_listener("PlayerStatus", {
-				"health", "stored_health", "stored_health_max", "set_revives", "increment_downs", "reset_downs", "detection",
+				"health", "stored_health", "stored_health_max", "set_revives", "detection",
 				"armor",
 				"stamina", "stamina_max",
 				"damage_taken",
@@ -2073,7 +2070,7 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 
 			local vis_down = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
 			local vis_detect = self._condition_icon:visible() or not (HUDManager.DETECT_COUNTER_PLUGIN and self._settings.DETECTIONCOUNTER)
-			self._downs_counter:set_visible(not vis_down and not managers.groupai:state():whisper_mode())
+			self._downs_counter:set_visible(not vis_down and (not managers.groupai:state():whisper_mode() or self:down_amount() > 0))
 			self._detection_counter:set_visible(not vis_detect and not self._downs_counter:visible() and managers.groupai:state():whisper_mode())
 
 			if self:set_enabled("setting", self._settings.STATUS) then
@@ -2103,12 +2100,9 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 		function PlayerInfoComponent.PlayerStatus:set_is_local_player(state)
 			if PlayerInfoComponent.PlayerStatus.super.set_is_local_player(self, state) then
 				self._stamina_radial:set_visible(self._is_local_player and self._settings.STAMINA)
-				--self._max_downs = managers.modifiers:modify_value("PlayerDamage:GetMaximumLives", (Global.game_settings.one_down and 2 or tweak_data.player.damage.LIVES_INIT)) - 1
 				if self._is_local_player then
 					self._max_downs = self._max_downs + managers.player:upgrade_value("player", "additional_lives", 0)
-					self:set_revives_amount(self._max_downs)
-				else
-					self:set_downs(0)
+					self:set_revives(self._max_downs)
 				end
 			end
 		end
@@ -2178,20 +2172,19 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 			self:set_stored_health(self._stored_health)
 		end
 
-		function PlayerInfoComponent.PlayerStatus:set_downs(revive_amount)
-			if revive_amount then
+		function PlayerInfoComponent.PlayerStatus:set_revives(amount)
+			if amount and self._downs ~= amount then
 				self._downs = amount
-				self._downs_counter:set_text(tostring(math.max(revive_amount - 1, 0)))
+				self.current_downs = math.max(self._max_downs, self._downs)
+				self._downs_counter:set_text(tostring(self._downs))
+				local progress = math.clamp(self:down_amount() / self.current_downs, 0, 1)
+				self._downs_counter:set_color(math.lerp(Color.white, Color(1, 1, 0.2, 0), progress))
 				local vis_down = self._condition_icon:visible() or not (HUDManager.DOWNS_COUNTER_PLUGIN and self._settings.DOWNCOUNTER)
 				self._downs_counter:set_visible(not vis_down and not managers.groupai:state():whisper_mode())
 				self._detection_counter:set_visible(not self._downs_counter:visible())
 			end
-		end
 
-		function PlayerInfoComponent.PlayerStatus:set_revives_amount(revive_amount)
-			self:set_downs(revive_amount)
-
-			if revive_amount == 0 then
+			if amount == 0 then
 				self._downs_counter:stop()
 				self._downs_counter:animate(callback(self, self, "_animate_low_life"), self._downs_counter:h() * 0.65, self._downs_counter:h() * 0.95)
 			else
@@ -2200,16 +2193,8 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 			end
 		end
 
-		function PlayerInfoComponent.PlayerStatus:increment_downs()
-			self:set_downs(self._downs + 1)
-		end
-
-		function PlayerInfoComponent.PlayerStatus:reset_downs()
-			self:set_downs(self._is_local_player and self._max_downs or 0)
-		end
-
 		function PlayerInfoComponent.PlayerStatus:down_amount()
-			-- return self._is_local_player and self._max_downs - self._downs or self._downs
+			return self._max_downs - self._downs
 		end
 
 		function PlayerInfoComponent.PlayerStatus:set_detection(risk)
@@ -4290,7 +4275,8 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 			if wbase:fire_mode() == "single" or (wbase:can_toggle_firemode() and not wbase._locked_fire_mode) then
 				table.insert(fire_modes, { "single", "S" })
 			end
-			if wbase:fire_mode() == "burst" or (wbase:can_toggle_firemode() and not wbase._locked_fire_mode) then
+			if wbase.can_use_burst_mode and wbase:can_use_burst_mode() and not wbase._locked_fire_mode then
+				active_mode = wbase:in_burst_mode() and "burst" or active_mode
 				table.insert(fire_modes, { "burst", "B" })
 			end
 			if wbase:fire_mode() == "auto" or (wbase:can_toggle_firemode() and not wbase._locked_fire_mode) then
@@ -4559,15 +4545,9 @@ if VHUDPlus:getSetting({"CustomHUD", "HUDTYPE"}, 2) == 3 then
 		end
 
 		function HUDManager:set_player_revives(i, revive_amount)
-			self._teammate_panels[i]:set_revives_amount(revive_amount)
-		end
-
-		function HUDManager:increment_teammate_downs(i)
-			self._teammate_panels[i]:increment_downs()
 		end
 
 		function HUDManager:reset_teammate_downs(i)
-			self._teammate_panels[i]:reset_downs()
 		end
 
 		function HUDManager:set_teammate_detection(i, value)

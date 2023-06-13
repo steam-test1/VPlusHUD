@@ -91,7 +91,7 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" th
 		if alive(self._unit) and (attack_data.position or attack_data.col_ray.position) then
 			local distance = mvector3.distance(attack_data.position or attack_data.col_ray.position, self._unit:position())
 			if self:_chk_can_take_dmg() and distance <= attack_data.range and not (self._god_mode or self._invulnerable or self._mission_damage_blockers.invulnerable or self:incapacitated() or self._bleed_out) then
-				self:_hit_direction(attack_data.position, HUDHitDirection.DAMAGE_TYPES.FRIENDLY_FIRE)
+				self:_hit_direction(attack_data.position, attack_data.col_ray and attack_data.col_ray.ray, HUDHitDirection.DAMAGE_TYPES.FRIENDLY_FIRE)
 			end
 		end
 		return value
@@ -102,17 +102,42 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" th
 		if alive(self._unit) and (attack_data.position or attack_data.col_ray.position) then
 			local distance = mvector3.distance(attack_data.position or attack_data.col_ray.position, self._unit:position())
 			if self:_chk_can_take_dmg() and distance and not (self._god_mode or self._invulnerable or self._mission_damage_blockers.invulnerable or self:incapacitated() or self._bleed_out) then
-				self:_hit_direction(attack_data.position, HUDHitDirection.DAMAGE_TYPES.FRIENDLY_FIRE)
+				self:_hit_direction(attack_data.position, attack_data.col_ray and attack_data.col_ray.ray, HUDHitDirection.DAMAGE_TYPES.FRIENDLY_FIRE)
 			end
 		end
 		return value
 	end
 
-	function PlayerDamage:_hit_direction(position_vector, damage_type)
+	function PlayerDamage:_hit_direction(position_vector, direction_vector, damage_type)
 		if position_vector then
 			local armor_left, low_health = (self:get_real_armor() > 0), ((self:get_real_health() / self:_max_health()) <= 0.20)
 			local dmg_type = damage_type or armor_left and HUDHitDirection.DAMAGE_TYPES.ARMOUR or low_health and HUDHitDirection.DAMAGE_TYPES.CRIT or HUDHitDirection.DAMAGE_TYPES.HEALTH
 			managers.hud:on_hit_direction(position_vector, dmg_type)
+
+			if direction_vector then
+				local infront = math.dot(self._unit:camera():forward(), direction_vector)
+	
+				if infront < -0.9 then
+					managers.environment_controller:hit_feedback_front()
+				elseif infront > 0.9 then
+					managers.environment_controller:hit_feedback_back()
+				else
+					local polar = self._unit:camera():forward():to_polar_with_reference(-direction_vector, math.UP)
+					local direction = Vector3(polar.spin, polar.pitch, 0):normalized()
+	
+					if math.abs(direction.y) < math.abs(direction.x) then
+						if direction.x < 0 then
+							managers.environment_controller:hit_feedback_left()
+						else
+							managers.environment_controller:hit_feedback_right()
+						end
+					elseif direction.y < 0 then
+						managers.environment_controller:hit_feedback_up()
+					else
+						managers.environment_controller:hit_feedback_down()
+					end
+				end
+			end
 		end
 	end
 elseif string.lower(RequiredScript) == "lib/units/vehicles/vehicledamage" then

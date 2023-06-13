@@ -37,7 +37,7 @@ if RequiredScript == "lib/units/enemies/cop/copdamage" and not VHUDPlus.dmg_pop 
 
 		if attacker and damage >= 0.1 and not damage_check then
 			local body = damage_info and damage_info.col_ray and damage_info.col_ray.body
-			local headshot = body and damage_info.headshot == "head"
+			local headshot = body and damage_info.headshot
 			if damage_info and damage_info.variant == "bullet" and attacker:in_slot(2) then
 				killer = attacker
 				self._hud:show_damage(damage, self._dead, headshot)

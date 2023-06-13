@@ -1,4 +1,4 @@
-if string.lower(RequiredScript) == "lib/managers/hudmanager" then
+if string.lower(RequiredScript) == "lib/managers/hudmanager" and not HopLib then
 
 	Hooks:PostHook( HUDManager , "_player_hud_layout" , "WolfHUDPostHUDManagerPlayerInfoHUDLayout" , function( self )
 		self._health_text_rect = { 2 , 18 , 232 , 11 } --Green Bar
@@ -37,7 +37,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 			blend_mode 	= "normal",
 			alpha 		= 1,
 			halign 		= "right",
-			font 		= "fonts/font_medium_shadow_mf",
+			font 		= tweak_data.hud.medium_font,
 			font_size 	= 20,
 			color 		= Color.white,
 			align 		= "center",
@@ -50,7 +50,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 			blend_mode 	= "normal",
 			alpha 		= 1,
 			halign 		= "left",
-			font 		= "fonts/font_medium_mf",
+			font 		= tweak_data.hud.medium_font,
 			font_size 	= 22,
 			color 		= Color.white,
 			align 		= "center",
@@ -64,7 +64,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 			visible 	= VHUDPlus:getSetting({"EnemyHealthbar", "SHOW_POINTER"}, false),
 			alpha 		= 0.75,
 			halign 		= "center",
-			font 		= "fonts/font_medium_shadow_mf",
+			font 		= tweak_data.hud.medium_font,
 			font_size 	= 20,
 			color 		= Color.white,
 			align 		= "center",
@@ -131,10 +131,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 				self._unit_health_panel:set_visible( false )
 			end )
 		end
-		
+
 		if VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED_ALT"}, true) then
 		    managers.hud:set_enemy_health_visible(false)
-		end		
+		end
 	end
 
 	function HUDManager:set_unit_health( current , total , tweak_table )
@@ -192,21 +192,210 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 		self._unit_health_enemy_location:set_rotation( angle )
 
 	end
-elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandard" then
+elseif string.lower(RequiredScript) == "lib/managers/hudmanager" and HopLib then
+	Hooks:PostHook( HUDManager , "_player_hud_layout" , "WolfHUDPostHUDManagerPlayerInfoHUDLayout" , function( self )
+		self._health_text_rect = { 2 , 18 , 232 , 11 } --Green Bar
+		self._shield_text_rect = { 2 , 34 , 232 , 11 } --Blue Bar
+		self._bar_text_rect = self._health_text_rect
+		self._shield = false
+
+		local unit_health_main = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_PD2).panel:panel({
+			name 	= "unit_health_main",
+			halign 	= "grow",
+			valign 	= "grow"
+		})
+
+		self._unit_health_panel = unit_health_main:panel({
+			name 	= "unit_health_panel",
+			visible = false
+		})
+
+		self._unit_bar = self._unit_health_panel:bitmap({
+			name 			= "unit_health",
+			texture 		= "guis/textures/pd2/healthshield",
+			texture_rect 	= self._bar_text_rect,
+			blend_mode 		= "normal"
+		})
+
+		self._unit_bar_bg = self._unit_health_panel:bitmap({
+			name 			= "unit_shield",
+			texture 		= "guis/textures/pd2/healthshield",
+			texture_rect 	= { 1, 1, 234, 13 },
+			blend_mode 		= "normal"
+		})
+
+		self._unit_health_text = self._unit_health_panel:text({
+			name 		= "unit_health_text",
+			text 		= "250000/250000",
+			blend_mode 	= "normal",
+			alpha 		= 1,
+			halign 		= "right",
+			font 		= tweak_data.hud.medium_font,
+			font_size 	= 20,
+			color 		= Color.white,
+			align 		= "center",
+			layer 		= 1
+		})
+
+		self._unit_health_enemy_text = self._unit_health_panel:text({
+			name 		= "unit_health_enemy_text",
+			text 		= "SWAT VAN TURRET",
+			blend_mode 	= "normal",
+			alpha 		= 1,
+			halign 		= "left",
+			font 		= tweak_data.hud.medium_font,
+			font_size 	= 22,
+			color 		= Color.white,
+			align 		= "center",
+			layer 		= 1
+		})
+
+		self._unit_health_enemy_location = self._unit_health_panel:text({
+			name 		= "unit_health_enemy_location",
+			text 		= "^",
+			blend_mode 	= "normal",
+			visible 	= VHUDPlus:getSetting({"EnemyHealthbar", "SHOW_POINTER"}, false),
+			alpha 		= 0.75,
+			halign 		= "center",
+			font 		= tweak_data.hud.medium_font,
+			font_size 	= 20,
+			color 		= Color.white,
+			align 		= "center",
+			layer 		= 1
+		})
+
+		local _ ,_ ,hw ,hh = self._unit_health_text:text_rect()
+		local _ ,_ ,ew ,eh = self._unit_health_enemy_text:text_rect()
+		local _ ,_ ,lw ,lh = self._unit_health_enemy_location:text_rect()
+
+		self._unit_health_text:set_size( hw , hh )
+		self._unit_health_enemy_text:set_size( ew , eh )
+		self._unit_health_enemy_location:set_size( lw , lh )
+
+		self._unit_bar:set_w( self._unit_bar:w() - 2 )
+
+		self._unit_bar:set_center( self._unit_health_panel:center_x() , self._unit_health_panel:center_y() - 190 )
+		self._unit_bar_bg:set_center( self._unit_health_panel:center_x() , self._unit_health_panel:center_y() - 190 )
+
+		self._unit_health_text:set_right( self._unit_bar_bg:right() )
+		self._unit_health_text:set_bottom( self._unit_bar_bg:top() )
+
+		self._unit_health_enemy_text:set_left( self._unit_bar_bg:left() )
+		self._unit_health_enemy_text:set_bottom( self._unit_bar_bg:top() )
+
+		self._unit_health_enemy_location:set_center_x( self._unit_bar_bg:center_x() )
+		self._unit_health_enemy_location:set_top( self._unit_bar_bg:bottom() )
+
+	end )
+
+	function HUDManager:set_unit_health_visible( visible, shield )
+		if visible and self._shield ~= shield then
+			self._shield = shield or false
+			self._bar_text_rect = self._shield and self._shield_text_rect or self._health_text_rect
+		end
+
+		if visible == true and not self._unit_health_visible and VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED_ALT"}, true) then
+
+			self._unit_health_visible = true
+			self._unit_health_enemy_location:set_visible(VHUDPlus:getSetting({"EnemyHealthbar", "SHOW_POINTER"}, false))
+			self._unit_health_panel:stop()
+			self._unit_health_panel:animate( function( p )
+				self._unit_health_panel:set_visible( true )
+
+				over( 0.25 , function( o )
+					self._unit_health_panel:set_alpha( math.lerp( self._unit_health_panel:alpha() , 1 , o ) )
+				end )
+			end )
+
+		elseif visible == false and self._unit_health_visible then
+
+			self._unit_health_visible = nil
+			self._unit_health_panel:stop()
+
+			self._unit_health_panel:animate( function( p )
+				if self._unit_health_panel:alpha() >= 0.9 then
+					over( 0.5 , function( o ) end )
+				end
+
+				over( 1.5 , function( o )
+					self._unit_health_panel:set_alpha( math.lerp( self._unit_health_panel:alpha() , 0 , o ) )
+				end )
+
+				self._unit_health_panel:set_visible( false )
+			end )
+		end
+
+		if VHUDPlus:getSetting({"EnemyHealthbar", "ENABLED_ALT"}, true) then
+		    managers.hud:set_enemy_health_visible(false)
+		end
+	end
+
+	function HUDManager:set_unit_health( current , total , unit )
+
+		if not current or not total then return end
+
+		local info = HopLib and HopLib:unit_info_manager():get_info(unit)
+
+		local enemy = info and info:name() or "Unknown"
+
+		local _r = current / total
+
+		local r = self._unit_bar:width()
+		local rn = ( self._unit_bar_bg:w() - 4 ) * _r
+
+		self._unit_health_enemy_text:set_text( enemy )
+		self._unit_health_text:set_text( string.format( "%d/%d" , current * 10 , total * 10 ) )
+
+		local _ ,_ ,hw ,hh = self._unit_health_text:text_rect()
+		local _ ,_ ,ew ,eh = self._unit_health_enemy_text:text_rect()
+
+		self._unit_health_text:set_size( hw , hh )
+		self._unit_health_enemy_text:set_size( ew , eh )
+
+		self._unit_health_text:set_right( self._unit_bar_bg:right() )
+		self._unit_health_text:set_bottom( self._unit_bar_bg:top() )
+		self._unit_health_enemy_text:set_left( self._unit_bar_bg:left() )
+		self._unit_health_enemy_text:set_bottom( self._unit_bar_bg:top() )
+
+		self._unit_health_text:set_color( _r <= 0.1 and Color.red or _r <= 0.25 and Color.yellow or Color.white )
+
+		self._unit_bar:stop()
+
+		self._bar_text_rect = self._shield and self._shield_text_rect or self._health_text_rect
+
+		self._unit_bar:animate( function( p )
+			if rn < r then
+				over( 0.2 , function( o )
+					self._unit_bar:set_w( math.lerp( r , rn , o ) )
+					self._unit_bar:set_texture_rect( self._bar_text_rect[1] , self._bar_text_rect[2] , math.lerp( r , rn , o ) , self._bar_text_rect[4] )
+				end )
+			end
+
+			self._unit_bar:set_w( _r * ( self._bar_text_rect[3] - 2 ) )
+			self._unit_bar:set_texture_rect( self._bar_text_rect[1] , self._bar_text_rect[2] , self._bar_text_rect[3] * _r , self._bar_text_rect[4] )
+		end )
+	end
+
+	function HUDManager:set_unit_health_rotation( angle )
+
+		self._unit_health_enemy_location:set_rotation( angle )
+
+	end
+elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandard" and not HopLib then
 	Hooks:PostHook( PlayerStandard , "_update_fwd_ray" , "WolfHUDPostPlayerStandardUpdate" , function( self , t , dt )
 		if self._fwd_ray and self._fwd_ray.unit and type(self._fwd_ray.unit) == "userdata" then
 			local unit = self._fwd_ray.unit
 			if unit:in_slot( 8 ) and alive(unit:parent()) then -- Fix when aiming at shields shield.
 				unit = unit:parent()
 			end
-			
+
 			if VHUDPlus:getSetting({"EnemyHealthbar", "IGNORE_CIVILIAN_HEALTH"}, true) and managers.enemy:is_civilian(unit) then
 				return
 			end
 			if VHUDPlus:getSetting({"EnemyHealthbar", "IGNORE_TEAM_AI_HEALTH"}, true) and unit:in_slot(16) then
 				return
 			end
-			
+
 			local visible, name, name_id, health, max_health, shield, repair_check
 			if alive( unit ) then
 				if alive( unit ) and unit:in_slot( 25 ) and unit:character_damage() and not unit:character_damage():dead() then
@@ -285,6 +474,79 @@ elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playersta
 		local rotation = math.floor( vector:to_polar_with_reference( forward , math.UP ).spin )
 
 		return rotation
+
+	end
+elseif string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandard" and HopLib then
+	Hooks:PostHook( PlayerStandard , "_update_fwd_ray" , "uHUDPostPlayerStandardUpdateFwdRay" , function( self )
+
+		if self._last_unit then
+
+			local iAngle = 360
+			local cAngle = 360
+
+			iAngle = self:getUnitRotation( self._last_unit )
+
+			if iAngle then
+
+				cAngle = cAngle + ( iAngle - cAngle )
+
+				if cAngle == 0 then cAngle = 360 end
+
+				managers.hud:set_unit_health_rotation( cAngle )
+
+			end
+
+		end
+
+		if self._fwd_ray and self._fwd_ray.unit then
+
+			local unit = self._fwd_ray.unit
+
+			if unit:in_slot( 8 ) and alive( unit:parent() ) then
+				unit = unit:parent()
+			end
+
+			if VHUDPlus:getSetting({"EnemyHealthbar", "IGNORE_CIVILIAN_HEALTH"}, true) and managers.enemy:is_civilian(unit) then
+				return
+			end
+			if VHUDPlus:getSetting({"EnemyHealthbar", "IGNORE_TEAM_AI_HEALTH"}, true) and unit:in_slot(16) then
+				return
+			end
+
+			if alive( unit ) and unit:character_damage() and not unit:character_damage()._dead and unit:base() and (unit:base()._tweak_table or unit:base()._tweak_table_id) then
+
+				if unit:in_slot( 25 ) then
+					local repair_check
+					repair_check = unit:character_damage():needs_repair()
+					if not repair_check then
+						shield = true
+						managers.hud:set_unit_health_visible( true, true)
+						managers.hud:set_unit_health( unit:character_damage()._shield_health or 0 , unit:character_damage()._SHIELD_HEALTH_INIT or 0 , unit )
+					end
+				else
+					self._last_unit = unit
+					managers.hud:set_unit_health_visible( true, false )
+					managers.hud:set_unit_health( unit:character_damage()._health or 0 , unit:character_damage()._HEALTH_INIT or 0 , unit )
+				end
+
+			elseif self._last_unit and alive( self._last_unit ) then
+				managers.hud:set_unit_health( self._last_unit:character_damage()._health or 0 , self._last_unit:character_damage()._HEALTH_INIT or 0 , self._last_unit )
+				managers.hud:set_unit_health_visible( false, false )
+			end
+		end
+
+	end )
+
+	function PlayerStandard:getUnitRotation( unit )
+
+		if not unit or not alive( unit ) then return 360 end
+
+		local unit_position = unit:position()
+		local vector = self._camera_unit:position() - unit_position
+		local forward = self._camera_unit:rotation():y()
+		local rotation = math.floor( vector:to_polar_with_reference( forward , math.UP ).spin )
+
+		return -( rotation + 180 )
 
 	end
 elseif string.lower(RequiredScript) == "lib/states/ingamearrested" then

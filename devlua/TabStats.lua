@@ -1243,9 +1243,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" and VHUD
 			local progress = (next_level_data.current_points or 1) / (next_level_data.points or 1)
 			local gain_progress = (gain_xp or 1) / (next_level_data.points or 1)
 			local get_rank = managers.experience:current_rank()
-			local stored_xp =  managers.experience:get_prestige_xp_percentage_progress()
-			
-		
+
 			local exp_gain_ring = profile_wrapper_panel:bitmap({
 				texture = "guis/textures/pd2/level_ring_potential_small" or at_max_level and "guis/textures/pd2/exp_ring_purple",
 				h = 64,
