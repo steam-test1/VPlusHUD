@@ -1390,5 +1390,9 @@
 	"wolfhud_hudlist_special_items_color_desc" : "Color for the number of special items available on a map",
 
 	"wolfhud_hudlist_show_gage_packages_title" : "Show Gage Packages",
-	"wolfhud_hudlist_show_gage_packages_desc" : ""
+	"wolfhud_hudlist_show_gage_packages_desc" : "",
+
+	"wolfhud_hudlist_loot_papers" : "Papers",
+	"wolfhud_fastnet_reconnect" : "$BTN_START Reconnect",
+	"wolfhud_no_lobby_collect_to" : "Seems like there's no server to connect to"
 }
