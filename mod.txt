@@ -2,7 +2,7 @@
 	"name" : "VanillaHUDPlus",
 	"description" : "This is a Mod Collection of HUD altering scripts, as well as quality of life changes to the game and its menus",
 	"author" : "Test1, LT71 (Bunnie( 2)), Kamikaze94, BangL",
-	"version" : "3.3.7.31",
+	"version" : "3.3.7.43",
 	"priority" : 1,
 	"blt_version" : 2,
 	"updates": [
@@ -132,6 +132,7 @@
 		{ "hook_id" : "lib/managers/hud/hudpresenter", 		                	"script_path" : "Core.lua" },
 		{ "hook_id" : "core/lib/managers/menu/reference_input/coremenuinput", 	"script_path" : "Core.lua" },
 		{ "hook_id" : "lib/managers/menu/menucomponentmanager", 				"script_path" : "Core.lua" },
+		{ "hook_id" : "lib/network/matchmaking/networkmatchmakingepic", 		"script_path" : "Core.lua" },
 
 		{ "hook_id" : "lib/entry", 												"script_path" : "Core.lua" },
 		{ "hook_id" : "lib/managers/systemmenumanager", 						"script_path" : "Core.lua" },

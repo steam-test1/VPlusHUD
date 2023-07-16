@@ -346,12 +346,16 @@ elseif string.lower(RequiredScript) == "core/lib/managers/menu/reference_input/c
 				self._logic:update_node()
 			end
 
-			if self._controller:get_input_pressed("menu_update") then
+			if self._controller:get_input_pressed("menu_update") and managers.menu:active_menu().logic:selected_node():parameters().name == "fast_net" then
 				managers.menu:open_node("crimenet_filters", {})
 				-- managers.menu_component:disable_crimenet()
 				self._logic:update_node()
 				-- managers.network.matchmake:load_user_filters()
 				managers.network.matchmake:search_lobby(managers.network.matchmake:search_friends_only())
+			end
+
+			if self._controller:get_input_pressed("menu_respec_tree_all") and managers.menu:active_menu().logic:selected_node():parameters().name == "fast_net" then
+					_G.VHUDPlus:Reconnect()
 			end
 		end
 
@@ -461,7 +465,7 @@ elseif string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
 			end
 		end
 
-		local peer_name = managers.network.account:username_id() or managers.localization:text("debug_undecided")
+		local peer_name = user_id and managers.network.account:username_id(user_id) or managers.localization:text("debug_undecided")
 		return string.format("%s (%s)", peer_name, managers.money:add_decimal_marks_to_string(tostring(max_damage)))
 	end
 elseif string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" and not VHUDPlus.tabstat_fix then

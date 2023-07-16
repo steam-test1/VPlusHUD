@@ -20,7 +20,7 @@ if not _G.VHUDPlus then
 		["lib/managers/menumanager"] 								= { "PrePlanManager.lua", "MenuTweaks.lua", "ProfileMenu.lua", "FastNet.lua"  },
 		["lib/managers/menumanagerdialogs"] 						= { "MenuTweaks.lua" },
 		["lib/managers/chatmanager"] 								= { "MenuTweaks.lua" },
-		["lib/managers/crimenetmanager"]							= { "MenuTweaks.lua" },
+		["lib/managers/crimenetmanager"]							= { "MenuTweaks.lua", "FastNet.lua" },
 		["lib/managers/localizationmanager"] 						= { "AdvAssault.lua", "Scripts.lua" },
 		["lib/managers/experiencemanager"] 							= { "Scripts.lua" },
 		["lib/managers/moneymanager"] 								= { "Scripts.lua" },
@@ -132,6 +132,7 @@ if not _G.VHUDPlus then
 		["lib/managers/hud/hudpresenter"]			            	= { "Scripts.lua" },
 		["core/lib/managers/menu/reference_input/coremenuinput"]	= { "Scripts.lua" },
 		["lib/managers/menu/menucomponentmanager"]					= { "MenuTweaks.lua" },
+		["lib/network/matchmaking/networkmatchmakingepic"]			= {	"FastNet.lua" },
 
 		--Utils and custom classes...
 		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },
@@ -476,6 +477,7 @@ if not _G.VHUDPlus then
 						crowbar                             = true,
 						planks                              = true,
 						mission_pickups 					= true,
+						gage_packages						= true,
 						collectables 						= true,
 						valuables 							= true,
 					}
@@ -745,6 +747,7 @@ if not _G.VHUDPlus then
 				SAVE_FILTERS							= true,
 				SHOW_SILENT_WEAPONS						= true,
 				HiDE_CONTENT_NEWS						= false,
+				ROOM_ID									= false,
 			},
 			SkipIt = {
 				SKIP_BLACKSCREEN 						= true,		--Skip the blackscreen on mission start
@@ -1116,6 +1119,44 @@ if not _G.VHUDPlus then
 			DB:create_entry(Idstring("texture"), Idstring("assets/guis/textures/".. file:gsub(".texture", "")), VHUDPlus.mod_path.. "assets/guis/textures/".. file)
 		end
 	end
+
+	function VHUDPlus:Reconnect(last_room_id)
+        last_room_id = VHUDPlus:getSetting({"INVENTORY", "ROOM_ID"}, false)
+        if last_room_id then
+            managers.network.matchmake:join_server(last_room_id)
+        else
+            local dialog_data = {
+                title = managers.localization:text("dialog_warning_title"),
+                text = managers.localization:text("wolfhud_no_lobby_collect_to")
+            }
+
+            local no_button = {
+                text = managers.localization:text("dialog_ok"),
+                cancel_button = true
+            }
+            dialog_data.button_list = {
+                no_button
+            }
+
+            managers.system_menu:show(dialog_data)
+        end
+    end
+
+	function VHUDPlus:apply_lobby_filter(diff_filter)
+        if diff_filter > 8 then
+            managers.network.matchmake:add_lobby_filter("difficulty", diff_filter - 6, "equalto_or_greater_than")
+        end
+    end
+
+    function VHUDPlus:fix_preset_difficulties(presets)
+        for _, preset in pairs(presets or {}) do
+            if preset.difficulty_id > 8 then
+                local min_difficulty = preset.difficulty_id - 6
+                preset.difficulty_id = math.round(min_difficulty + math.rand(8 - min_difficulty))
+                preset.difficulty = tweak_data:index_to_difficulty(preset.difficulty_id)
+            end
+        end
+    end
 
 	--callback functions to apply changed settings on the fly
 	if not VHUDPlus.apply_settings_clbk then
@@ -1579,7 +1620,7 @@ if not _G.VHUDPlus then
 			id = "play_STEAM_online",
 			title = "menu_play_online",
 			desc = "menu_play_online_help",
-			callback = "load_filters find_online_games",
+			callback = "find_online_games",
 			next_node = VHUDPlus.fast_net,
 			menu_id = VHUDPlus.fast_net_core
 		})
@@ -1588,7 +1629,7 @@ if not _G.VHUDPlus then
 			id = "play_STEAM_online_with_friends",
 			title = "menu_play_with_friends",
 			desc = "menu_play_with_friends_help",
-			callback = "load_filters find_online_games_with_friends",
+			callback = "find_online_games_with_friends",
 			next_node = VHUDPlus.fast_net_friends,
 			menu_id = VHUDPlus.fast_net_core
 		})
@@ -1737,7 +1778,12 @@ if not _G.VHUDPlus then
 				name = "wolfhud_fastnet_filters",
 				pc = "true"
 			},
-			[4] = {
+            [4] = {
+				_meta = "legend",
+				name = "wolfhud_fastnet_reconnect",
+				pc = "true"
+			},
+			[5] = {
 				_meta = "legend",
 				name = "menu_legend_back"
 			},
@@ -1752,9 +1798,11 @@ if not _G.VHUDPlus then
 				_meta = "legend",
 				name = "wolfhud_fastnet_update",
 				_meta = "legend",
-				name = "wolfhud_fastnet_filters"
+				name = "wolfhud_fastnet_filters",
+                _meta = "legend",
+                name = "wolfhud_fastnet_reconnect"
 			},
-			menu_components = "play_online crimenet_filters",
+			menu_components = "",
 			modifier = "MenuSTEAMHostBrowser",
 			name = VHUDPlus.fast_net,
 			refresh = "MenuSTEAMHostBrowser",
@@ -1900,6 +1948,7 @@ if MenuNodeGui then
 				t_text = t_text .. spacing .. utf8.to_upper(managers.localization:text(legend.string_id, {
 					BTN_X = managers.localization:btn_macro("menu_toggle_legends") or managers.localization:get_default_macro("BTN_X"),
 					BTN_Y = managers.localization:btn_macro("menu_update") or managers.localization:get_default_macro("BTN_Y"),
+                    BTN_START = managers.localization:btn_macro("menu_respec_tree_all") or managers.localization:get_default_macro("BTN_START"),
 					BTN_BACK = managers.localization:btn_macro("back")
 				}))
 			end

@@ -245,6 +245,8 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			pda9_collective_3 =					"_special_equipment_interaction_handler",
 			pda9_collective_4 =					"_special_equipment_interaction_handler",
 			trai_usb_key = 						"_special_equipment_interaction_handler",
+			corp_key_fob = 						"_special_equipment_interaction_handler",
+			corp_achi_blueprint =				"_special_equipment_interaction_handler",
             hold_take_vault_blueprint =         "_special_equipment_interaction_handler",
 			firstaid_box =						"_deployable_interaction_handler",
 			ammo_bag =							"_deployable_interaction_handler",
@@ -628,29 +630,28 @@ lounge		100421		100448			102049
 		cooldown = {
 			long_dis_revive = "inspire_revive_debuff",
 		},
-		--Team upgrades
-		team = {
-			damage_dampener = {
-				team_damage_reduction =						{ "cc_passive_damage_reduction" },
-				hostage_multiplier =							{ "cc_hostage_damage_reduction" },
-			},
-			stamina = {
-				passive_multiplier = 						{ "cc_passive_stamina_multiplier" },
-				hostage_multiplier =							{ "cc_hostage_stamina_multiplier" },
-			},
-			health = {
-				passive_multiplier =							{ "cc_passive_health_multiplier" },
-				hostage_multiplier =							{ "cc_hostage_health_multiplier" },
-			},
-			armor = {
-				multiplier =									{ "cc_passive_armor_multiplier" },
-				passive_regen_time_multiplier =			{ "armorer_armor_regen_multiplier" },
-				regen_time_multiplier =						{ "shock_and_awe" },
-			},
-			damage = {
-				hostage_absorption =							{ "forced_friendship" },
-			},
-		},
+		 --Team upgrades
+		 damage_dampener = {
+            hostage_multiplier =  { id = "crew_chief_9", level = 9 },
+            team_damage_reduction = { id = "crew_chief_1", level = 1 },
+        },
+        stamina = {
+            multiplier = { id = "endurance", level = 0 },
+            passive_multiplier = { id = "crew_chief_3", level = 3 },
+            hostage_multiplier =  { id = "crew_chief_9", level = 9 },
+        },
+        health = {
+            passive_multiplier = { id = "crew_chief_5", level = 5 },
+            hostage_multiplier = { id = "crew_chief_9", level = 9 },
+        },
+        armor = {
+            multiplier =  { id = "crew_chief_7", level = 7 },
+            regen_time_multiplier = { id = "bulletproof", level = 0 },
+            passive_regen_time_multiplier = { id = "armorer_9", level = 9 },
+        },
+        damage = {
+            hostage_absorption = { id = "forced_friendship", level = 0 },
+        },
 		--[[
 		weapon = {
 			recoil_multiplier = "leadership_aced",
@@ -738,14 +739,14 @@ lounge		100421		100448			102049
 	end
 
 	function GameInfoManager:event(source, ...)
-		local target = "_" .. source .. "_event"
+        local target = "_" .. source .. "_event"
 
-		if self[target] then
-			self[target](self, ...)
-		else
-			print_debug("No event handler for %s", target, "error")
-		end
-	end
+        if self[target] then
+            self[target](self, ...)
+        else
+            print_debug("No event handler for %s", target, "error")
+        end
+    end
 
 	function GameInfoManager:get_timers(key)
 		if key then
@@ -1504,35 +1505,73 @@ lounge		100421		100448			102049
 		end
 	end
 
-	function GameInfoManager:_team_buff_event(event, peer_id, category, upgrade, level, data)
-		local defs = GameInfoManager._BUFFS.team
-		local id = defs[category] and defs[category][upgrade] and defs[category][upgrade][level]
+	-- function GameInfoManager:_team_buff_event(event, peer_id, category, upgrade, level, data)
+	-- 	local defs = GameInfoManager._BUFFS.team
+	-- 	local id = defs[category] and defs[category][upgrade] and defs[category][upgrade][level]
 
-		self._team_buffs = self._team_buffs or {}
+	-- 	self._team_buffs = self._team_buffs or {}
 		
-		if id then
-			self._team_buffs[id] = self._team_buffs[id] or {}
-			local was_active = next(self._team_buffs[id])
+	-- 	if id then
+	-- 		self._team_buffs[id] = self._team_buffs[id] or {}
+	-- 		local was_active = next(self._team_buffs[id])
 
-			if event == "activate" then
-				self._team_buffs[id][peer_id] = true
+	-- 		if event == "activate" then
+	-- 			self._team_buffs[id][peer_id] = true
 
-				if not was_active then
-					self:_buff_event(event, id)
-				end
-			elseif event == "deactivate" then
-				self._team_buffs[id][peer_id] = nil
+	-- 			if not was_active then
+	-- 				self:_buff_event(event, id)
+	-- 			end
+	-- 		elseif event == "deactivate" then
+	-- 			self._team_buffs[id][peer_id] = nil
 
-				if was_active and not next(self._team_buffs[id]) then
-					self:_buff_event(event, id)
-				end
-			elseif event == "set_value" then
-				self:_buff_event(event, id, data)
-			end
-		else
-			print_debug("(%.2f) GameInfoManager:_team_buff_event(%s, %s): Unrecognized buff %s %s %s", Application:time(), event, tostring(peer_id), tostring(category), tostring(upgrade), tostring(level))
-		end
-	end
+	-- 			if was_active and not next(self._team_buffs[id]) then
+	-- 				self:_buff_event(event, id)
+	-- 			end
+	-- 		elseif event == "set_value" then
+	-- 			self:_buff_event(event, id, data)
+	-- 		end
+	-- 	else
+	-- 		print_debug("(%.2f) GameInfoManager:_team_buff_event(%s, %s): Unrecognized buff %s %s %s", Application:time(), event, tostring(peer_id), tostring(category), tostring(upgrade), tostring(level))
+	-- 	end
+	-- end
+
+	function GameInfoManager:_team_buff_event(event, data)
+        local buff_data = GameInfoManager._BUFFS[data.category] and GameInfoManager._BUFFS[data.category][data.upgrade]
+        local id = buff_data and buff_data.id
+        local level = buff_data and buff_data.level
+
+        if id then
+            if event == "activate" then
+                local was_active = self._buffs[id]
+
+                if not was_active then
+                    self:_buff_event("activate", id)
+                    self._buffs[id].peers = {}
+                    self._buffs[id].level = level
+                end
+
+                if not self._buffs[id].peers[data.peer] then
+                    self._buffs[id].peers[data.peer] = true
+                    self:_buff_event("change_stack_count", id, { difference = 1 })
+                end
+
+                if not was_active and data.value ~= 0 then
+                    self:_buff_event("set_value", id, { value = data.value })
+                end
+            elseif event == "deactivate" then
+                if self._buffs[id] and self._buffs[id].peers[data.peer] then
+                    self._buffs[id].peers[data.peer] = nil
+                    self:_buff_event("change_stack_count", id, { difference = -1 })
+
+                    if next(self._buffs[id].peers) == nil then
+                        self:_buff_event("deactivate", id)
+                    end
+                end
+            end
+        else
+            print_debug("Unknown team buff event: %s, %s, %s", event, data.category, data.upgrade, "warning")
+        end
+    end
 
 	function GameInfoManager:_player_action_event(event, id, data)
 		print_debug("_player_action_event(%s, %s)", tostring(event), tostring(id), "info")
@@ -2419,6 +2458,7 @@ if string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammerbase
 	function ECMJammerBase:destroy(...)
 		managers.gameinfo:event("ecm", "set_feedback_active", self._ecm_unit_key, { feedback_active = false })
 		managers.gameinfo:event("ecm", "set_retrigger_active", self._ecm_unit_key, { retrigger_active = false })
+		managers.gameinfo:event("ecm", "set_jammer_active", self._ecm_unit_key, { jammer_active = false })
 		managers.gameinfo:event("ecm", "destroy", self._ecm_unit_key)
 		destroy_original(self, ...)
 	end
@@ -2866,14 +2906,15 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 
 		if id == 1 then
 			if not PLAYER_HAS_SPAWNED then
-				PLAYER_HAS_SPAWNED = true
+                PLAYER_HAS_SPAWNED = true
 
-				for category, data in pairs(self._global.team_upgrades) do
-					for upgrade, value in pairs(data) do
-						managers.gameinfo:event("team_buff", "activate", 0, category, upgrade, 1)
-					end
-				end
-			end
+                for category, data in pairs(self._global.team_upgrades) do
+                    for upgrade, value in pairs(data) do
+                        local value = self:team_upgrade_value(category, upgrade, 0)
+                        managers.gameinfo:event("team_buff", "activate", { peer = 0, category = category, upgrade = upgrade, value = value })
+                    end
+                end
+            end
 
 			if self:has_category_upgrade("player", "messiah_revive_from_bleed_out") and (self._messiah_charges or 0) > 0 then
 				managers.gameinfo:event("buff", "activate", "messiah")
@@ -3031,19 +3072,24 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 	end
 
 	function PlayerManager:aquire_team_upgrade(upgrade, ...)
-		aquire_team_upgrade_original(self, upgrade, ...)
-		managers.gameinfo:event("team_buff", "activate", 0, upgrade.category, upgrade.upgrade, 1)
-	end
-	
-	function PlayerManager:unaquire_team_upgrade(upgrade, ...)
-		unaquire_team_upgrade_original(self, upgrade, ...)
-		managers.gameinfo:event("team_buff", "deactivate", 0, upgrade.category, upgrade.upgrade, 1)
-	end
-	
-	function PlayerManager:add_synced_team_upgrade(peer_id, category, upgrade, ...)
-		add_synced_team_upgrade_original(self, peer_id, category, upgrade, ...)
-		managers.gameinfo:event("team_buff", "activate", peer_id, category, upgrade, 1)
-	end
+        aquire_team_upgrade_original(self, upgrade, ...)
+
+        local value = self:team_upgrade_value(upgrade.category, upgrade.upgrade, 0)
+        managers.gameinfo:event("team_buff", "activate", { peer = 0, category = upgrade.category, upgrade = upgrade.upgrade, value = value })
+    end
+
+    function PlayerManager:unaquire_team_upgrade(upgrade, ...)
+        unaquire_team_upgrade_original(self, upgrade, ...)
+
+        managers.gameinfo:event("team_buff", "deactivate", { peer = 0, category = upgrade.category, upgrade = upgrade.upgrade })
+    end
+
+    function PlayerManager:add_synced_team_upgrade(peer_id, category, upgrade, ...)
+        add_synced_team_upgrade_original(self, peer_id, category, upgrade, ...)
+
+        local value = self:team_upgrade_value(category, upgrade, 0)
+        managers.gameinfo:event("team_buff", "activate", { peer = peer_id, category = category, upgrade = upgrade, value = value })
+    end
 	
 	function PlayerManager:peer_dropped_out(peer, ...)
 		local peer_id = peer:id()

@@ -10,9 +10,10 @@ if requiredScript == "lib/managers/menumanager" then
     function MenuCallbackHandler:load_filters()
         if managers.network.matchmake and managers.network.matchmake.load_user_filters then
             managers.network.matchmake:load_user_filters()
+            managers.network.matchmake:search_lobby(managers.network.matchmake:search_friends_only())
         end
     end
-    
+
     -- function MenuCallbackHandler:choice_state_filter(item)
     --     local state_filter = item:value()
     --     if managers.network.matchmake:get_lobby_filter("state") == state_filter then
@@ -21,77 +22,71 @@ if requiredScript == "lib/managers/menumanager" then
     --     managers.network.matchmake:add_lobby_filter("state", state_filter, "equal")
     --     managers.network.matchmake:search_lobby(managers.network.matchmake:search_friends_only())
     -- end
-    
+
     -- function MenuCallbackHandler:choice_gamemode_filter2(item)
     --     Global.game_settings.gamemode_filter = item:value()
-    
+
     --     managers.user:set_setting("crimenet_gamemode_filter", item:value())
-    
+
     --     local logic = managers.menu:active_menu().logic
-    
+
     --     if logic then
     --         logic:refresh_node_stack()
     --     end
-    
+
     --     managers.network.matchmake:search_lobby(managers.network.matchmake:search_friends_only())
     -- end
 
     function MenuSTEAMHostBrowser:add_filter(node)
     end
 
+    local _find_online_games_original = MenuCallbackHandler._find_online_games
+
     function MenuCallbackHandler:_find_online_games(friends_only)
-		friends_only = friends_only or Global.game_settings.search_friends_only
-		if self:is_win32() then
-			local function f(info)
-				print("info in function")
-				print(inspect(info))
-				managers.network.matchmake:search_lobby_done()
-				managers.menu:active_menu().logic:refresh_node(VHUDPlus.fast_net_node, true, info, friends_only)
-			end
-			managers.network.matchmake:register_callback("search_lobby", f)
-			managers.menu:show_retrieving_servers_dialog()
-			managers.network.matchmake:search_lobby(friends_only)
-			if SystemInfo:distribution() == Idstring("STEAM") then
-                local function usrs_f(success, amount)
-                    print("usrs_f", success, amount)
-                    if success then
-                        local stack = managers.menu:active_menu().renderer._node_gui_stack
-                        local node_gui = stack[#stack]
-                        local is_FastNet = (managers.menu:active_menu().logic:selected_node():parameters().name == VHUDPlus.fast_net_node)
-                        if is_FastNet and node_gui.set_mini_info then
-                            node_gui:set_mini_info(managers.localization:text("menu_players_online", {COUNT = amount}))
-                        end
-                    end
-			end
-			Steam:sa_handler():concurrent_users_callback(usrs_f)
-			Steam:sa_handler():get_concurrent_users()
-        end
-		end
-		if self:is_ps3() or self:is_ps4() then
-			if #PSN:get_world_list() == 0 then
-				return
-			end
-			local function f(info_list)
-				print("info_list in function")
-				print(inspect(info_list))
-				managers.network.matchmake:search_lobby_done()
-				managers.menu:active_menu().logic:refresh_node("play_online", true, info_list, friends_only)
-			end
-			managers.network.matchmake:register_callback("search_lobby", f)
-			managers.network.matchmake:start_search_lobbys(friends_only)
-		end
+        _find_online_games_original(self, friends_only)
+		-- friends_only = friends_only or Global.game_settings.search_friends_only
+		-- if self:is_win32() then
+		-- 	local function f(info)
+		-- 		print("info in function")
+		-- 		print(inspect(info))
+		-- 		managers.network.matchmake:search_lobby_done()
+		-- 		managers.menu:active_menu().logic:refresh_node(VHUDPlus.fast_net_node, true, info, friends_only)
+		-- 	end
+		-- 	managers.network.matchmake:register_callback("search_lobby", f)
+		-- 	managers.network.matchmake:search_lobby(friends_only)
+        --     if SystemInfo:distribution() == Idstring("STEAM") then
+        --         local function usrs_f(success, amount)
+        --             print("usrs_f", success, amount)
+
+        --             if success then
+        --                 local stack = managers.menu:active_menu().renderer._node_gui_stack
+        --                 local node_gui = stack[#stack]
+
+        --                 local is_FastNet = (managers.menu:active_menu().logic:selected_node():parameters().name == VHUDPlus.fast_net_node)
+        --                 if is_FastNet and node_gui.set_mini_info then
+        --                     node_gui:set_mini_info(managers.localization:text("menu_players_online", {
+        --                         COUNT = amount
+        --                     }))
+        --                 end
+        --             end
+        --         end
+
+        --         Steam:sa_handler():concurrent_users_callback(usrs_f)
+        --         Steam:sa_handler():get_concurrent_users()
+        --     end
+        -- end
 	end
-    
+
     -- function MenuSTEAMHostBrowser:add_filter(node)
     --     if node:item("server_filter") then
     --         return
     --     end
-    
+
         if managers.network and managers.network.matchmake then
-    --         managers.network.matchmake:reset_crash_fix()
+        --     managers.network.matchmake:reset_crash_fix()
             managers.network.matchmake:search_lobby(managers.network.matchmake:search_friends_only())
         end
-    
+
     --     local params = {
     --         name = "gamemode_filter",
     --         text_id = "menu_gamemode",
@@ -99,7 +94,7 @@ if requiredScript == "lib/managers/menumanager" then
     --         callback = "choice_gamemode_filter2",
     --         filter = true
     --     }
-        
+
     --     local data_node = {
     --         type = "MenuItemMultiChoice",
     --         {
@@ -121,7 +116,7 @@ if requiredScript == "lib/managers/menumanager" then
     --     local new_item = node:create_item(data_node, params)
     --     new_item:set_value(managers.user:get_setting("crimenet_gamemode_filter"))
     --     node:add_item(new_item)
-        
+
     --     local params = {
     --         name = "job_id_filter",
     --         text_id = "menu_job_id_filter",
@@ -143,7 +138,7 @@ if requiredScript == "lib/managers/menumanager" then
     --         local contact_tweak = tweak_data.narrative.contacts[contact]
     --         local is_hidden = job_tweak.hidden or contact_tweak and contact_tweak.hidden
     --         local allow = not job_tweak.wrapped_to_job and not is_hidden
-    
+
     --         if allow then
     --             local text_id, color_data = tweak_data.narrative:create_job_name(job_id)
     --             local params = {
@@ -152,13 +147,13 @@ if requiredScript == "lib/managers/menumanager" then
     --                 text_id = text_id,
     --                 value = index
     --             }
-    
+
     --             for count, color in ipairs(color_data) do
     --                 params["color" .. count] = color.color
     --                 params["color_start" .. count] = color.start
     --                 params["color_stop" .. count] = color.stop
     --             end
-    
+
     --             table.insert(data_node, params)
     --         end
     --     end
@@ -171,7 +166,7 @@ if requiredScript == "lib/managers/menumanager" then
     --     local new_item = node:create_item(data_node, params)
     --     new_item:set_value(managers.network.matchmake:get_lobby_filter("job_id") or -1)
     --     node:add_item(new_item)
-        
+
     --     local params = {
     --         name = "server_filter",
     --         text_id = "menu_dist_filter",
@@ -200,7 +195,7 @@ if requiredScript == "lib/managers/menumanager" then
     --     local new_item = node:create_item(data_node, params)
     --     new_item:set_value(managers.network.matchmake:distance_filter())
     --     node:add_item(new_item)
-        
+
     --     local params = {
     --         name = "difficulty_filter",
     --         text_id = "menu_diff_filter",
@@ -254,7 +249,7 @@ if requiredScript == "lib/managers/menumanager" then
     --     local new_item = node:create_item(data_node, params)
     --     new_item:set_value(managers.network.matchmake:difficulty_filter())
     --     node:add_item(new_item)
-        
+
     --     local params = {
     --         name = "max_lobbies_filter",
     --         text_id = "menu_max_lobbies_filter",
@@ -286,7 +281,7 @@ if requiredScript == "lib/managers/menumanager" then
     --     local new_item = node:create_item(data_node, params)
     --     new_item:set_value(managers.network.matchmake:get_lobby_return_count())
     --     node:add_item(new_item)
-        
+
     --     local params = {
     --         name = "state_filter",
     --         text_id = "menu_state_filter",
@@ -296,7 +291,7 @@ if requiredScript == "lib/managers/menumanager" then
     --     }
     --     local data_node = {
     --         type = "MenuItemMultiChoice",
-            
+
     --         {
     --             _meta = "option",
     --             text_id = "menu_all",
@@ -321,7 +316,7 @@ if requiredScript == "lib/managers/menumanager" then
     --     local new_item = node:create_item(data_node, params)
     --     new_item:set_value(managers.network.matchmake:get_lobby_filter("state"))
     --     node:add_item(new_item)
-        
+
     --     local params = {
     --         name = "job_plan_filter",
     --         text_id = "menu_preferred_plan",
@@ -350,7 +345,7 @@ if requiredScript == "lib/managers/menumanager" then
     --     local new_item = node:create_item(data_node, params)
     --     new_item:set_value(managers.network.matchmake:get_lobby_filter("job_plan"))
     --     node:add_item(new_item)
-    
+
     --     local params = {
     --         callback = "chocie_one_down_filter",
     --         name = "t_one_down_lobby",
@@ -389,20 +384,20 @@ if requiredScript == "lib/managers/menumanager" then
     --         type = "CoreMenuItemToggle.ItemToggle"
     --     }
     --     new_item = node:create_item(data_node, params)
-    
+
     --     new_item:set_value(managers.user:set_setting("crimenet_filter_one_down"))
     --     node:add_item(new_item)
     -- end
-    
+
     -- function MenuCallbackHandler:chocie_one_down_filter(item)
     --     local allow_one_down = item:value() == "on" and true or false
     --     Global.game_settings.search_one_down_lobbies = allow_one_down
-    
+
     --     managers.user:set_setting("crimenet_filter_one_down", allow_one_down)
-        
+
     --     managers.network.matchmake:search_lobby(managers.network.matchmake:search_friends_only())
     -- end
-    
+
     function MenuCallbackHandler:setup_join_cs_manager(item, ...)
         local params = item:parameters()
         if params.is_crime_spree then
@@ -418,22 +413,22 @@ if requiredScript == "lib/managers/menumanager" then
         -- end
 
         local new_node = node
-		
+
 		if not info then
 			managers.menu:add_back_button(new_node)
 			return new_node
 		end
-		
+
 		local room_list = info.room_list
 		local attribute_list = info.attribute_list
-		
+
 		local dead_list = {}
 		for _, item in ipairs(node:items()) do
 			if not item:parameters().back and not item:parameters().filter and not item:parameters().pd2_corner then
 				dead_list[item:parameters().room_id] = true
 			end
 		end
-		
+
 		for i, room in ipairs(room_list) do
 			if managers.network.matchmake:is_server_ok(friends_only, room, attribute_list[i], nil) then
 				local host_name = tostring(room.owner_name)
@@ -454,7 +449,7 @@ if requiredScript == "lib/managers/menumanager" then
                     local is_one_down = (tonumber(attribute_list[i].one_down) or 0) == 1
                     local state_string_id = tweak_data:index_to_server_state(attributes_numbers[4])
                     local state_name = state_string_id and managers.localization:text("menu_lobby_server_state_" .. state_string_id) or "UNKNOWN"
-                    local display_job = job_name .. ((job_name ~= level_name and job_name ~= "CONTRACTLESS" and level_name ~= "CONTRACTLESS" and job_days > 1) and " (" .. level_name .. ")" or "") 
+                    local display_job = job_name .. ((job_name ~= level_name and job_name ~= "CONTRACTLESS" and level_name ~= "CONTRACTLESS" and job_days > 1) and " (" .. level_name .. ")" or "")
                     local state = attributes_numbers[4]
                     local num_plrs = attributes_numbers[5]
                     local kick_option = attributes_numbers[8]
@@ -478,6 +473,7 @@ if requiredScript == "lib/managers/menumanager" then
                             crime_spree_mission_name = managers.localization:text(tweak and tweak.name_id or "UNKNOWN")
                         end
                     end
+                    local is_friend = managers.network.matchmake:is_user_friend(room.owner_id, room.owner_account_id)
                     local item = new_node:item(room.room_id)
                     if not item and not (state  ~= 1 and not tweak_data.narrative.jobs[job_id]) then
                         print("ADD", name_str)
@@ -578,17 +574,134 @@ if requiredScript == "lib/managers/menumanager" then
         for name, _ in pairs(dead_list) do
             new_node:delete_item(name)
         end
+
+        table.sort(new_node:items(), function (a, b) 
+			local a_diff = (a:parameters().is_crime_spree and a:parameters().crime_spree or a:parameters().difficulty_num or 2) + (a:parameters().is_one_down and 0.5 or 0)
+			local b_diff = (b:parameters().is_crime_spree and b:parameters().crime_spree or b:parameters().difficulty_num or 2) + (b:parameters().is_one_down and 0.5 or 0)
+			local lower_difficulty 	= (a_diff < b_diff)
+			local equal_difficulty 	= (a_diff == b_diff)
+			local less_players 		= (a:parameters().num_plrs or 0) < (b:parameters().num_plrs or 0)
+			return lower_difficulty or (equal_difficulty and less_players) or false
+		end)
+
         managers.menu:add_back_button(new_node)
         return new_node
     end
+
+    local modify_filter_node_actual = MenuCrimeNetFiltersInitiator.modify_node
+	local choice_difficulty_filter_original = MenuCallbackHandler.choice_difficulty_filter
+
+	local server_count = {10, 20, 30, 40, 50, 60, 70}
+	local difficulties = {
+		{ name_id = "menu_any", 					value = -1 },
+		{ name_id = "menu_difficulty_normal", 		value = 2 },
+		{ name_id = "menu_difficulty_hard", 		value = 3 },
+		{ name_id = "menu_difficulty_very_hard", 	value = 4 },
+		{ name_id = "menu_difficulty_overkill", 	value = 5 },
+		{ name_id = "menu_difficulty_easy_wish", 	value = 6 },
+		{ name_id = "menu_difficulty_apocalypse", 	value = 7 },
+		{ name_id = "menu_difficulty_sm_wish", 		value = 8 },
+		{ name_id = "menu_difficulty_hard", 		value = 9, 	suffix = "+" },
+		{ name_id = "menu_difficulty_very_hard", 	value = 10, suffix = "+" },
+		{ name_id = "menu_difficulty_overkill", 	value = 11, suffix = "+" },
+		{ name_id = "menu_difficulty_easy_wish", 	value = 12, suffix = "+" },
+		{ name_id = "menu_difficulty_apocalypse", 	value = 13, suffix = "+" },
+	}
+
+	function MenuCrimeNetFiltersInitiator:modify_node(original_node, ...)
+		local new_node = modify_filter_node_actual(self, original_node, ...)
+		if server_count ~= nil then
+			local max_lobbies = new_node:item("max_lobbies_filter")
+			if max_lobbies ~= nil then
+				max_lobbies:clear_options()
+				for _, count in ipairs(server_count) do
+					max_lobbies:add_option(CoreMenuItemOption.ItemOption:new({
+						_meta = "option",
+						text_id = tostring(count),
+						value = count,
+						localize = false
+					}))
+				end
+				max_lobbies:_show_options(nil)
+			end
+		end
+
+		if difficulties ~= nil then
+			local diff_filter = new_node:item("difficulty_filter")
+			if diff_filter ~= nil then
+				diff_filter:clear_options()
+				for _, v in ipairs(difficulties) do
+					diff_filter:add_option(CoreMenuItemOption.ItemOption:new({
+						_meta = "option",
+						text_id = managers.localization:text(v.name_id) .. (v.suffix or ""),
+						value = v.value,
+						localize = false
+					}))
+				end
+				diff_filter:_show_options(nil)
+				local matchmake_filters = managers.network.matchmake:lobby_filters()
+				if matchmake_filters and matchmake_filters.difficulty then
+					diff_filter:set_value(matchmake_filters.difficulty.value + (matchmake_filters.difficulty.comparision_type == "equal" and 0 or 6))
+				end
+			end
+		end
+
+		return new_node
+	end
+
+	function MenuCallbackHandler:choice_difficulty_filter(item, ...)
+		choice_difficulty_filter_original(self, item, ...)
+		VHUDPlus:apply_lobby_filter(item:value())
+	end
+
 elseif requiredScript == "lib/network/matchmaking/networkmatchmakingsteam" then
-    
+
     function NetworkMatchMakingSTEAM:reset_crash_fix()
         local usr = managers.user
-    
+
         usr:set_setting("crimenet_gamemode_filter", usr:get_default_setting("crimenet_gamemode_filter"))
         self:load_user_filters()
     end
+
+    Hooks:PostHook(NetworkMatchMakingSTEAM, "join_server", "FastNet_Reconnect_Steam", function(self, room_id)
+		VHUDPlus:Reconnect(room_id)
+		log("[Reconnect to server] Saving Steam room ID "..room_id)
+	end)
+
+    local load_user_filters_original = NetworkMatchMakingSTEAM.load_user_filters
+
+	function NetworkMatchMakingSTEAM:load_user_filters(...)
+		load_user_filters_original(self, ...)
+		VHUDPlus:apply_lobby_filter(managers.user:get_setting("crimenet_filter_difficulty"))
+	end
+
+elseif requiredScript == "lib/network/matchmaking/networkmatchmakingepic" then
+
+    Hooks:PostHook(NetworkMatchMakingEPIC, "join_server", "FastNet_Reconnect_Epic", function(self, room_id)
+		VHUDPlus:Reconnect(room_id)
+		log("[Reconnect to server] Saving Epic room ID "..room_id)
+	end)
+
+	local load_user_filters_original = NetworkMatchMakingEPIC.load_user_filters
+
+	function NetworkMatchMakingEPIC:load_user_filters(...)
+		load_user_filters_original(self, ...)
+		VHUDPlus:apply_lobby_filter(managers.user:get_setting("crimenet_filter_difficulty"))
+	end
+
+elseif requiredScript == "lib/managers/crimenetmanager" then
+    local _setup_original = CrimeNetManager._setup
+	local update_difficulty_filter_original = CrimeNetManager.update_difficulty_filter
+
+	function CrimeNetManager:_setup(...)
+		_setup_original(self, ...)
+		VHUDPlus:fix_preset_difficulties(self._presets)
+	end
+
+	function CrimeNetManager:update_difficulty_filter(...)
+		update_difficulty_filter_original(self, ...)
+		VHUDPlus:fix_preset_difficulties(self._presets)
+	end
 elseif requiredScript == "lib/managers/menu/nodes/menunodeserverlist" then
     function MenuNodeServerList:_setup_columns()
         self:_add_column({		-- Server Name
@@ -651,51 +764,51 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         mini_text:set_left(0)
         self._mini_info_text = mini_text
     end
-    
-    
+
+
     function MenuNodeTableGui:set_mini_info(text)
         self._mini_info_text:set_text(text)
     end
-    
+
     function MenuNodeTableGui:completed_job(job_id, difficulty, require_one_down)
         local job_stats = managers.statistics._global.sessions.jobs
         local tweak_jobs = tweak_data.narrative.jobs
         local job_wrapper = nil
-    
+
         if tweak_data.narrative:has_job_wrapper(job_id) then
             job_wrapper = tweak_jobs[job_id].job_wrapper
         elseif tweak_data.narrative:is_wrapped_to_job(job_id) then
             job_wrapper = tweak_jobs[tweak_jobs[job_id].wrapped_to_job].job_wrapper
         end
-    
+
         local function single_job_count(job_id, difficulty, require_one_down)
             local stat_prefix = tostring(job_id) .. "_" .. tostring(difficulty)
             local stat_suffix = "_completed"
             local count = 0
             count = count + (job_stats[stat_prefix .. "_od" .. stat_suffix] or 0)
-    
+
             if not require_one_down then
                 count = count + (job_stats[stat_prefix .. stat_suffix] or 0)
             end
-    
+
             return count
         end
-    
+
         local count = 0
-    
+
         if job_wrapper then
             local count = 0
-    
+
             for _, wrapped_job in ipairs(job_wrapper) do
                 count = count + single_job_count(wrapped_job, difficulty, require_one_down)
             end
-    
+
             return count
         end
-    
+
         return single_job_count(job_id, difficulty, require_one_down)
     end
-    
+
     function MenuNodeTableGui:_create_menu_item(row_item)
         if row_item.type == "column" then
             local columns = row_item.node:columns()
@@ -750,7 +863,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 elseif row_item.item:parameters().mutators then
                     color = tweak_data.screen_colors.mutators_color
                 end
-                
+
                 local new_font_size
                 if PDTH_Menu then
                     new_font_size = tweak_data.menu.server_list_font_size
@@ -778,8 +891,8 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 x = x + w
             end
             local x, y, w, h = row_item.gui_columns[1]:text_rect()
-            row_item.gui_panel:set_height(h)	
-            
+            row_item.gui_panel:set_height(h)
+
             local x = row_item.gui_columns[2]:right()
             local y = 0
             row_item.difficulty_icons = {}
@@ -859,7 +972,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                     end
                 end
             end
-            
+
             local level_id = row_item.item:parameters().level_id
             local mutators = row_item.item:parameters().mutators or {}
             local mutators_list = {}
@@ -869,18 +982,18 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 for mutator_id, mutator_data in pairs(mutators) do
                     local mutator = managers.mutators:get_mutator_from_id(mutator_id)
                     if mutator then
-                        table.insert(mutators_list, mutator:name()) 
+                        table.insert(mutators_list, mutator:name())
                     end
                 end
                 managers.mutators:set_crimenet_lobby_data(nil)
-                table.sort(mutators_list, function(a, b) 
+                table.sort(mutators_list, function(a, b)
                     return a < b
                 end)
                 for i, mutator in ipairs(mutators_list) do
                     mutators_text = string.format("%s%s", mutators_text, (mutator .. (i < #mutators_list and "\n" or "")))
                 end
             end
-    
+
             row_item.gui_info_panel = self.safe_rect_panel:panel({
                 visible = false,
                 layer = self.layers.items,
@@ -915,7 +1028,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 wrap = true,
                 word_wrap = true
             })
-            
+
             local font_size = tweak_data.menu.pd2_small_font_size
             row_item.server_title = row_item.gui_info_panel:text({
                 name = "server_title",
@@ -986,7 +1099,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-            
+
             row_item.level_pro_text = row_item.gui_info_panel:text({
                 name = "level_pro_text",
                 text = utf8.to_upper(row_item.item:parameters().pro and "PRO JOB" or ""),
@@ -999,7 +1112,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-            
+
             row_item.difficulty_title = row_item.gui_info_panel:text({
                 name = "difficulty_title",
                 text = utf8.to_upper(managers.localization:text("menu_lobby_difficulty_title")) .. " ",
@@ -1011,7 +1124,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-            
+
             local wave = row_item.item:parameters().skirmish_wave
             local skirm_text = managers.localization:to_upper_text("menu_skirmish_wave_number", {
                 wave = wave
@@ -1028,7 +1141,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-            
+
             row_item.one_down_text = row_item.gui_info_panel:text({
                 name = "one_down_text",
                 text = managers.localization:to_upper_text("menu_one_down"),
@@ -1041,7 +1154,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-            
+
             row_item.job_plan_title = row_item.gui_info_panel:text({
                 name = "job_plan_title",
                 text = utf8.to_upper(managers.localization:text("menu_lobby_job_plan_title")) .. " ",
@@ -1053,7 +1166,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-    
+
             local difficulty_stat = row_item.item:parameters().difficulty_num
             local stat = self:completed_job( row_item.item:parameters().level_name, tweak_data:index_to_difficulty( difficulty_stat ) )
             row_item.stats_title = row_item.gui_info_panel:text({
@@ -1067,7 +1180,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-    
+
             row_item.stats_text = row_item.gui_info_panel:text({
                 name = "stats_text",
                 text = managers.localization:to_upper_text("menu_stat_job_completed_new", {
@@ -1082,8 +1195,8 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-                
-    
+
+
             row_item.server_mutators_text = row_item.gui_info_panel:text({
                 name = "server_mutators_text",
                 text = utf8.to_upper(row_item.item:parameters().mutators and "MUTATORS ENABLED" or ""),
@@ -1096,7 +1209,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-            
+
             row_item.crime_spree_text = row_item.gui_info_panel:text({
                 name = "crime_spree_text",
                 text = utf8.to_upper(row_item.item:parameters().is_crime_spree and "[CRIME SPREE]" or ""),
@@ -1109,7 +1222,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-    
+
             row_item.job_plan_text = row_item.gui_info_panel:text({
                 name = "job_plan_text",
                 text = utf8.to_upper(managers.localization:text("menu_job_plan_" .. tostring(row_item.item:parameters().job_plan))),
@@ -1122,7 +1235,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-    
+
             row_item.mutators_title = row_item.gui_info_panel:text({
                 name = "mutators_title",
                 text = managers.localization:to_upper_text("menu_mutators") .. ":  ",
@@ -1146,7 +1259,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-    
+
             row_item.days_title = row_item.gui_info_panel:text({
                 name = "days_title",
                 text = utf8.to_upper(managers.localization:text("menu_lobby_days_title")) .. "  ",
@@ -1158,7 +1271,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-            
+
             row_item.days_text = row_item.gui_info_panel:text({
                 name = "days_text",
                 text = utf8.to_upper(math.max(row_item.item:parameters().days, 1)),
@@ -1171,7 +1284,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
                 h = font_size,
                 layer = 1
             })
-            
+
             self:_align_server_column(row_item)
             local visible = row_item.item:menu_unselected_visible(self, row_item) and not row_item.item:parameters().back
             row_item.menu_unselected = self.item_panel:bitmap({
@@ -1201,8 +1314,8 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         row_item.server_text:set_lefttop(row_item.server_title:righttop())
         row_item.server_text:set_w(row_item.gui_info_panel:w())
         row_item.server_text:set_position(math.round(row_item.server_text:x()), math.round(row_item.server_text:y()))
-        
-        
+
+
         row_item.server_info_title:set_font_size(font_size)
         row_item.server_info_text:set_font_size(font_size)
         local x, y, w, h = row_item.server_info_title:text_rect()
@@ -1212,17 +1325,17 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         row_item.server_info_text:set_lefttop(row_item.server_info_title:righttop())
         row_item.server_info_text:set_w(row_item.gui_info_panel:w())
         row_item.server_info_text:set_position(math.round(row_item.server_info_text:x()), math.round(row_item.server_info_text:y()))
-        
+
         row_item.server_mutators_text:set_lefttop(row_item.server_info_text:righttop())
         row_item.server_mutators_text:set_w(row_item.gui_info_panel:w())
         row_item.server_mutators_text:set_position(math.round(row_item.server_mutators_text:x()), math.round(row_item.server_mutators_text:y()))
         local _, _, w, _ = row_item.server_mutators_text:text_rect()
         row_item.server_mutators_text:set_w(w)
-        
+
         row_item.crime_spree_text:set_lefttop(row_item.server_mutators_text:righttop())
         row_item.crime_spree_text:set_w(row_item.gui_info_panel:w())
         row_item.crime_spree_text:set_position(math.round(row_item.crime_spree_text:x()), math.round(row_item.crime_spree_text:y()))
-    
+
         row_item.level_title:set_font_size(font_size)
         row_item.level_text:set_font_size(font_size)
         row_item.level_pro_text:set_font_size(font_size)
@@ -1234,11 +1347,11 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         row_item.level_text:set_lefttop(row_item.level_title:righttop())
         row_item.level_text:set_w(w)
         row_item.level_text:set_position(math.round(row_item.level_text:x()), math.round(row_item.level_text:y()))
-        
+
         row_item.level_pro_text:set_lefttop(row_item.level_text:righttop())
         row_item.level_pro_text:set_w(row_item.gui_info_panel:w())
         row_item.level_pro_text:set_position(math.round(row_item.level_pro_text:x()), math.round(row_item.level_pro_text:y()))
-        
+
         row_item.days_title:set_font_size(font_size)
         row_item.days_text:set_font_size(font_size)
         local x, y, w, h = row_item.days_title:text_rect()
@@ -1248,7 +1361,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         row_item.days_text:set_lefttop(row_item.days_title:righttop())
         row_item.days_text:set_w(row_item.gui_info_panel:w())
         row_item.days_text:set_position(math.round(row_item.days_text:x()), math.round(row_item.days_text:y()))
-        
+
         row_item.difficulty_title:set_font_size(font_size)
         row_item.difficulty_text:set_font_size(font_size)
         local x, y, w, h = row_item.difficulty_title:text_rect()
@@ -1259,12 +1372,12 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         local _, _, w, _ = row_item.difficulty_text:text_rect()
         row_item.difficulty_text:set_w(w + 8)
         row_item.difficulty_text:set_position(math.round(row_item.difficulty_text:x()), math.round(row_item.difficulty_text:y()))
-        
+
         row_item.one_down_text:set_lefttop(row_item.difficulty_text:righttop())
         row_item.one_down_text:set_w(row_item.gui_info_panel:w())
         row_item.one_down_text:set_position(math.round(row_item.one_down_text:x()), math.round(row_item.one_down_text:y()))
         row_item.one_down_text:set_visible(row_item.item:parameters().is_one_down or false)
-        
+
         row_item.job_plan_title:set_font_size(font_size)
         row_item.job_plan_text:set_font_size(font_size)
         local x, y, w, h = row_item.job_plan_title:text_rect()
@@ -1274,26 +1387,26 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         row_item.job_plan_text:set_lefttop(row_item.job_plan_title:righttop())
         row_item.job_plan_text:set_w(row_item.gui_info_panel:w())
         row_item.job_plan_text:set_position(math.round(row_item.job_plan_text:x()), math.round(row_item.job_plan_text:y()))
-    
+
         local mutators_active = row_item.item:parameters().mutators or false
-            
+
         local _, _, w, h = row_item.mutators_list:text_rect()
         row_item.mutators_list:set_w(row_item.gui_info_panel:w())
         row_item.mutators_list:set_h(h)
         row_item.mutators_list:set_bottom(self._info_bg_rect:h() - 2 * tweak_data.menu.info_padding)
         row_item.mutators_list:set_visible(mutators_active)
-        
+
         local _, _, w, _ = row_item.mutators_title:text_rect()
         row_item.mutators_title:set_x(tweak_data.menu.info_padding)
         row_item.mutators_title:set_w(w)
         row_item.mutators_title:set_visible(mutators_active)
-        
+
         row_item.mutators_title:set_top(row_item.mutators_list:top())
         row_item.mutators_list:set_left(row_item.mutators_title:right())
-        
+
         row_item.mutators_title:set_position(math.round(row_item.mutators_title:x()), math.floor(row_item.mutators_title:y()))
         row_item.mutators_list:set_position(math.round(row_item.mutators_list:x()), math.floor(row_item.mutators_list:y()))
-        
+
         row_item.stats_title:set_font_size(font_size)
         row_item.stats_text:set_font_size(font_size)
         local x, y, w, h = row_item.stats_title:text_rect()
@@ -1303,7 +1416,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         row_item.stats_text:set_lefttop(row_item.stats_title:righttop())
         row_item.stats_text:set_w(row_item.gui_info_panel:w())
         row_item.stats_text:set_position(math.round(row_item.stats_text:x()), math.round(row_item.stats_text:y()))
-        
+
         local _, _, _, h = row_item.heist_name:text_rect()
         local w = row_item.gui_info_panel:w()
         row_item.heist_name:set_height(h)
@@ -1314,7 +1427,7 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
         row_item.heist_briefing:set_y(tweak_data.menu.info_padding + offset * 7 + tweak_data.menu.info_padding * 2)
         row_item.heist_briefing:set_position(math.round(row_item.heist_briefing:x()), math.round(row_item.heist_briefing:y()))
     end
-    
+
     function MenuNodeTableGui:mouse_pressed(button, x, y)
         --[[if self.item_panel:inside(x, y) and self._item_panel_parent:inside(x, y) and x > self:_mid_align() then
             if button == Idstring("mouse wheel down") then
@@ -1329,9 +1442,9 @@ elseif requiredScript == "lib/managers/menu/renderers/menunodetablegui" then
             return true
         end
     end
-    
+
     function MenuNodeTableGui:mouse_moved(o, x, y)
-    
+
         local inside = self._mini_info_text:inside(x, y)
         --self._mouse_over = inside
         return inside, inside and "link"

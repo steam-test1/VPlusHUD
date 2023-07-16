@@ -1,3 +1,7 @@
+if Global.load_level == true and Global.game_settings.level_id == "modders_devmap" then
+	return
+end
+
 --[[
 Weapon tweak data attributes:
 	BURST_FIRE:
