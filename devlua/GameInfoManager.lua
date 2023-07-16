@@ -3092,15 +3092,16 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
     end
 	
 	function PlayerManager:peer_dropped_out(peer, ...)
-		local peer_id = peer:id()
-		for category, data in pairs(self._global.synced_team_upgrades[peer_id] or {}) do
-			for upgrade, value in pairs(data) do
-				managers.gameinfo:event("team_buff", "deactivate", peer_id, category, upgrade, 1)
-			end
-		end
-	
-		return peer_dropped_out_original(self, peer, ...)
-	end
+        local peer_id = peer:id()
+
+        for category, data in pairs(self._global.synced_team_upgrades[peer_id] or {}) do
+            for upgrade, value in pairs(data) do
+                managers.gameinfo:event("team_buff", "deactivate", { peer = peer_id, category = category, upgrade = upgrade })
+            end
+        end
+
+        return peer_dropped_out_original(self, peer, ...)
+    end
 
 	function PlayerManager:on_headshot_dealt(...)
 		local t = Application:time()
